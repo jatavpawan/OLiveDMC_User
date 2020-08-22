@@ -1,0 +1,316 @@
+
+
+  
+  <div class="overlay"></div>
+  
+  <!-- fixed social media start-->
+  <div id="fixed-social">
+    <div>
+      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+    </div>
+  </div>
+  <!-- fixed social media end -->
+  <!-- slider section html START -->
+  
+  
+  <!-- inner banner section html START -->
+  
+  <section  *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../assets/PublicAssets/images/flight-banner.jpg)">
+  
+      <div class="baner-cnt">
+        <h2>Hotel</h2>
+        <div class="breadcrumbs">
+          <a href="home.html">Home</a><span class=""> / </span><span class="current">Hotel</span>
+        </div>
+      </div>
+  
+  </section>
+  <section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+    <div class="baner-cnt">
+      <h2>{{bannerDetail?.title}}</h2>
+      <div class="breadcrumbs">
+        <a href="home.html">Home</a><span class=""> / </span><span class="current">Hotel</span>
+      </div>
+    </div>
+  </section>
+  
+ 
+  
+  <!-- inner banner section html END -->
+  
+  
+  <!-- flight section START -->
+  <section class="comon-space">
+    <div class="container">
+      <div class="comn-heading">
+        <h2>Book Flight</h2>
+        <h3 class="heading-before">FLight</h3>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between">
+        <div class="booking-form">
+          <form>
+            <div class="form-group">
+              <label>From<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="John Deo">
+            </div>
+            <div class="form-group">
+              <label>To<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="John Deo">
+            </div>
+            <div class="form-group">
+              <label>Departure Time<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="John Deo">
+            </div>
+            <div class="form-group">
+              <label>Return Date<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="John Deo">
+            </div>
+            <div class="form-group">
+              <label>Travel & Class<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="John Deo">
+            </div>
+            <div class="form-group">
+              <a href="javascript:void(0)" class="purpel-btn">Search</a>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <!-- flight section END -->
+  
+  <!-- Flight Experience section START -->
+  
+  <section class="blue-bg">
+    <div class="container">
+      <div class="comn-heading">
+        <h2>Flight Experience</h2>
+        <h3 class="heading-before">Experience</h3>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      </div>
+    </div>
+  
+    <div class="container">
+        <div class="d-flex flex-wrap">
+          <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Vibra Mahou Fest</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Kenny G</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Seems Street Live</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Peetercen Ballet</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Seems Street Live</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Seems Street Live</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Seems Street Live</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+          <div class="events-main">
+            <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+            <div class="destination-cnt">
+              <h3>Seems Street Live</h3>
+              <h4>Green Park Chicago</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+  
+  </section>
+  
+  <!-- Flight Experience section END -->
+  
+  
+  <!-- Flight Discounts For You section START -->
+  <section class="comon-space">
+    <div class="container">
+      <div class="comn-heading">
+        <h2>Flight Discounts For You</h2>
+        <h3 class="heading-before">Flight Discounts</h3>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="d-flex flex-wrap">
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="booking-ads">
+            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </section>
+  <!-- Flight Discounts For You section END -->
+  
+   <!--Video Modal Start-->
+  <div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+         <video controls autoplay loop id="video1">
+              <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!--Video Modal End-->
+  

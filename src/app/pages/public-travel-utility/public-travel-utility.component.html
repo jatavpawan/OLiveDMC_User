@@ -1,0 +1,188 @@
+
+
+  
+  <div class="overlay"></div>
+  
+  <!-- fixed social media start-->
+  <div id="fixed-social">
+    <div>
+      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+    </div>
+  </div>
+  <!-- fixed social media end -->
+  <!-- slider section html START -->
+  
+
+<!-- inner banner section html START -->
+
+<section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../../../assets/PublicAssets/images/travel-utility.jpg)">
+
+  <div class="baner-cnt">
+    <h2>Travel Utility</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Travel Utility</span>
+    </div>
+  </div>
+
+</section>
+
+<section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+  <div class="baner-cnt">
+    <h2>{{bannerDetail?.title}}</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Travel Utility</span>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- inner banner section html END -->
+
+
+
+<!-- inner banner section html END -->
+
+
+<!-- utility section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Utility</h2>
+      <h3 class="heading-before">Utility</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between">
+      
+        <div class="col-md-6">
+          <div class="ad-left"><img src="../../../assets/PublicAssets/images/add-left.jpg"></div>
+        </div>
+        <div class="col-md-6">
+          <div class="ad-left"><img src="../../../assets/PublicAssets/images/add-rgt.jpg"></div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+<!-- utility section END -->
+
+
+<!-- utility boxes design START-->
+<section class="comon-space"> 
+  <div class="container">
+    <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+    <div class="d-flex flex-wrap">
+     
+    <ng-container *ngFor="let utility of utilities;let i = index">
+      <div class="col-md-3 mb-5">
+        <div *ngIf="utility?.utilityType != 'VIP Lounge' && utility?.utilityType != 'Forex' && utility?.utilityType != 'Travel Insurance' " class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms">
+          <div class="utility-img" [routerLink]="['/travelUtility-detail', utility?.utilityType]"><img [src]="utilityImgsrcPath+utility?.image"></div>
+          <div class="utility-h" [routerLink]="['/travelUtility-detail', utility?.utilityType]"><h3>{{utility?.utilityType}}</h3></div>
+        </div>
+        <!-- <div *ngIf="utility?.utilityType == 'VIP Lounge' || utility?.utilityType == 'Forex' || utility?.utilityType == 'Travel Insurance'"
+         class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms" data-toggle="modal" 
+         data-target="#exampleModalCenter"> -->
+        <div *ngIf="utility?.utilityType == 'VIP Lounge' || utility?.utilityType == 'Forex' || utility?.utilityType == 'Travel Insurance'"
+         class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms" (click)="openDialog(utility?.utilityType)"  >
+          <div class="utility-img"><img [src]="utilityImgsrcPath+utility?.image"></div>
+          <div class="utility-h"><h3>{{utility?.utilityType}}</h3></div>
+        </div>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+</section>
+<!-- utility boxes design END-->
+
+<!-- utility bottom ad START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <div class="col-md-12">
+        <div class="bottom-ad-left"><img src="../../../assets/PublicAssets/images/insurance-ad.jpg"></div>
+      </div>
+    </div>
+  </div>  
+</section>
+
+<!-- utility bottom ad END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <!-- Modal START -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Forex</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-email" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-number" class="col-form-label">Mobile:</label>
+              <input type="text" class="form-control" id="recipient-number">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal END -->

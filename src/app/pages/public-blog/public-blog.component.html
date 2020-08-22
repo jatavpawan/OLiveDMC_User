@@ -1,0 +1,429 @@
+
+
+  
+  <div class="overlay"></div>
+  
+  <!-- fixed social media start-->
+  <div id="fixed-social">
+    <div>
+      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+    </div>
+  </div>
+  <!-- fixed social media end -->
+  <!-- slider section html START -->
+  
+  
+<!-- inner banner section html START -->
+
+<section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+  <div class="baner-cnt">
+    <h2>{{bannerDetail?.title}}</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Blogs</span>
+    </div>
+  </div>
+</section>
+<section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../../../assets/PublicAssets/images/blog-banner.jpg)">
+  <div class="baner-cnt">
+    <h2>Corporate</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Blogs</span>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- inner banner section html END -->
+
+
+<!-- blogs section START -->
+<section class="comon-space">
+<div class="container">
+  <div class="comn-heading">
+    <h2>Blogs</h2>
+    <h3 class="heading-before">our blogs</h3>
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="d-flex flex-wrap blogs-main">
+   <div class="col-md-4">
+     <div class="blog-main-left">
+       <div class="search-blk">
+          <i class="fa fa-search"></i>
+         <input type="text" name="" placeholder="search blogger...">
+       </div>
+       <div class="categories">
+        <div class="b-head">Categories</div>
+        <div class="b-listing">
+         <ul *ngIf="categories.length > 0 ">
+           <li *ngFor="let category of categories"><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>{{category.categoryName}}</a></li>
+           <!-- <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Lorem ipsum is simple</a></li>
+           <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>May Variations</a></li>
+           <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Random Texts</a></li>
+           <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Lorem ipsum is simple</a></li>
+           <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Its Random</a></li>
+           <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Poulet blogger</a></li> -->
+         </ul>
+        </div>
+       </div>
+       <div class="popular-post">
+        <div class="b-head">Popular Post</div>
+        <div class="popular-lisitng">
+          <ul>
+            <li>
+              <a href="javascript:void(0)">
+                <div class="d-flex align-items-center">
+                  <div class="p-left-img"><img src="../../../assets/PublicAssets/images/p-list-1.jpg" alt=""></div>
+                  <div class="p-rgt-cnt">
+                    <h3>Snow Hills</h3>
+                    <h4>By : Hussain Ansari</h4>
+                    <h5>24 Dec 2020</h5>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <div class="d-flex align-items-center">
+                  <div class="p-left-img"><img src="../../../assets/PublicAssets/images/p-list-2.jpg" alt=""></div>
+                  <div class="p-rgt-cnt">
+                    <h3>Snow Hills</h3>
+                    <h4>By : Hussain Ansari</h4>
+                    <h5>24 Dec 2020</h5>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <div class="d-flex align-items-center">
+                  <div class="p-left-img"><img src="../../../assets/PublicAssets/images/p-list-3.jpg" alt=""></div>
+                  <div class="p-rgt-cnt">
+                    <h3>Snow Hills</h3>
+                    <h4>By : Hussain Ansari</h4>
+                    <h5>24 Dec 2020</h5>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">
+                <div class="d-flex align-items-center">
+                  <div class="p-left-img"><img src="../../../assets/PublicAssets/images/p-list-4.jpg" alt=""></div>
+                  <div class="p-rgt-cnt">
+                    <h3>Snow Hills</h3>
+                    <h4>By : Hussain Ansari</h4>
+                    <h5>24 Dec 2020</h5>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul> 
+        </div>
+         
+       </div>
+
+       <div class="popular-tags">
+        <div class="b-head">Popular tags</div>
+        <div class="tags-inr">
+         <ul>
+          <li><a href="javascript:void(0)">Adventure</a></li>
+          <li><a href="javascript:void(0)">Luxary</a></li>
+          <li><a href="javascript:void(0)">Romantic</a></li>
+          <li><a href="javascript:void(0)">Foodie</a></li>
+          <li><a href="javascript:void(0)">Villas</a></li>
+          <li><a href="javascript:void(0)">Cruise</a></li>
+          <li><a href="javascript:void(0)">Beach</a></li>
+          <li><a href="javascript:void(0)">Family</a></li>
+          <li><a href="javascript:void(0)">Shopping</a></li>
+         </ul>
+       </div>
+       </div>
+     </div>
+   </div>
+   <div class="col-md-8">
+    <div class="d-flex flex-wrap">
+    
+    
+      <div class="col-md-6" *ngFor="let blog of showBlogPriorityList">
+      <div class="blog-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+        <div class="blog-main-img" [routerLink]="['/blog-detail', blog?.id ]">
+          <img [src]="blogimgsrcpath+blog?.featuredImage" alt="">
+        </div>
+        
+        <div class="blog-outer-cnt d-flex justify-content-between">
+
+          <div class="icons-left">
+            <ul>
+              <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+            </ul>
+          </div>
+          <div class="commnts-rgt">
+            <ul>
+              <li><h6>9 comments</h6></li>
+              <li><h6>0 share</h6></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="blog-details">
+          <h6>{{ blog?.createdDate|date: 'dd MMM yyyy'}}</h6>
+          <h4 class="blog-title" [routerLink]="['/blog-detail', blog?.id]">{{blog?.title}}</h4>
+          <!-- <p [innerHTML]="blog?.description|safeHtml"></p> -->
+          <p>{{blog?.shortDescription}}</p>
+          <a class="blog-read-more" href="javascript:void(0)" [routerLink]="['/blog-detail',blog?.id]">Read More</a>
+        </div>
+      </div> 
+    </div>
+    <div class="col-md-12 load-more-blogs" (click)="loadMoreBlogs()">
+      <a>Load More</a>
+    </div>
+      <!-- <div class="col-md-6">
+      <div class="blog-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+        <div class="blog-main-img">
+          <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+        </div>
+        
+        <div class="blog-outer-cnt d-flex justify-content-between">
+
+          <div class="icons-left">
+            <ul>
+              <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+            </ul>
+          </div>
+          <div class="commnts-rgt">
+            <ul>
+              <li><h6>9 comments</h6></li>
+              <li><h6>0 share</h6></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="blog-details">
+          <h6>24 Aug 2020</h6>
+          <h4>Eirmod diam amet diam clita</h4>
+          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <a href="javascript:void(0)">Read More</a>
+        </div>
+      </div> 
+    </div>
+    <div class="col-md-6">
+      <div class="blog-block wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+        <div class="blog-main-img">
+          <img src="../../../assets/PublicAssets/images/blog-main-2.jpg" alt="">
+        </div>
+        
+        <div class="blog-outer-cnt d-flex justify-content-between">
+
+          <div class="icons-left">
+            <ul>
+              <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+            </ul>
+          </div>
+          <div class="commnts-rgt">
+            <ul>
+              <li><h6>9 comments</h6></li>
+              <li><h6>0 share</h6></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="blog-details">
+          <h6>24 Aug 2020</h6>
+          <h4>Eirmod diam amet diam clita</h4>
+          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <a href="javascript:void(0)">Read More</a>
+        </div>
+      </div> 
+    </div>
+    <div class="col-md-6">
+      <div class="blog-block wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+        <div class="blog-main-img">
+          <img src="../../../assets/PublicAssets/images/blog-main-3.jpg" alt="">
+        </div>
+        
+        <div class="blog-outer-cnt d-flex justify-content-between">
+
+          <div class="icons-left">
+            <ul>
+              <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+            </ul>
+          </div>
+          <div class="commnts-rgt">
+            <ul>
+              <li><h6>9 comments</h6></li>
+              <li><h6>0 share</h6></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="blog-details">
+          <h6>24 Aug 2020</h6>
+          <h4>Eirmod diam amet diam clita</h4>
+          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <a href="javascript:void(0)">Read More</a>
+        </div>
+      </div> 
+    </div>
+    <div class="col-md-6">
+      <div class="blog-block wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+        <div class="blog-main-img">
+          <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+        </div>
+        
+        <div class="blog-outer-cnt d-flex justify-content-between">
+
+          <div class="icons-left">
+            <ul>
+              <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+              <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+            </ul>
+          </div>
+          <div class="commnts-rgt">
+            <ul>
+              <li><h6>9 comments</h6></li>
+              <li><h6>0 share</h6></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="blog-details">
+          <h6>24 Aug 2020</h6>
+          <h4>Eirmod diam amet diam clita</h4>
+          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <a href="javascript:void(0)">Read More</a>
+        </div>
+      </div> 
+    </div> -->
+
+
+    </div>
+   </div>
+      
+    </div>
+  </div>  
+</section>
+<!-- blogs section END -->
+
+
+<!-- upload blog section START -->
+<!-- <section class="comon-space">
+<div class="blog-upload-banner"><img src="../../../assets/PublicAssets/images/blog-up-banner.jpg" alt=""></div>
+<div class="container">
+  <div class="create-main">
+    <div class="create-head"><h3>Create Your Own Diary</h3></div>
+    <div class="blog-form">
+      <div class="d-flex flex-wrap align-items-center justify-content-around upload-form-blk">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <input type="text" name="" placeholder="Full Name">
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group col-md-4">
+              <input type="text" name="" placeholder="Email">
+               <i class="fa fa-envelope"></i>
+            </div>
+            <div class="form-group col-md-4">
+              <input type="text" name="" placeholder="Blog Subject">
+               <i class="fa fa-bars"></i>
+            </div>
+          </div>
+          <div class="form-row write-blog">
+            <div class="form-group col-md-8">
+              <textarea placeholder="write blog..."></textarea>
+            </div>
+            <div class="form-group col-md-4">
+              <input type="file" name="">
+              <div class="upload-img"><img src="../../../assets/PublicAssets/images/upload-photo.png" alt=""></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <a href="javascript:void(0)" class="purpel-btn">post</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section> -->
+<section class="comon-space" *ngIf="userLoggedIn == true">
+<div class="blog-upload-banner"><img src="../../../assets/PublicAssets/images/blog-up-banner.jpg" alt=""></div>
+<div class="container">
+  <div class="create-main">
+    <div class="create-head"><h3>Create Your Own Diary</h3></div>
+    <div class="blog-form">
+      <div class="d-flex flex-wrap align-items-center justify-content-around upload-form-blk">
+        <form [formGroup]="blogForm">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <input disabled type="text" name="" placeholder="Full Name" formControlName="userName">
+              <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group col-md-4">
+              <input disabled type="text" name="" placeholder="Email" formControlName="email">
+               <i class="fa fa-envelope"></i>
+            </div>
+            <div class="form-group col-md-4">
+              <input type="text" name="" placeholder="Blog Subject" formControlName="title">
+               <i class="fa fa-bars"></i>
+               <span class="text-danger "
+               *ngIf="(blogForm.get('title').touched && blogForm.get('title').hasError('required')) || (blogForm.get('title').untouched && submitBlogForm == true) ">
+               Blog Subject is required</span>
+            </div>
+          </div>
+          <div class="form-row write-blog">
+            <div class="form-group col-md-8">
+              <textarea placeholder="write blog..." formControlName="description"></textarea>
+              <span class="text-danger "
+              *ngIf="(blogForm.get('description').touched && blogForm.get('description').hasError('required')) || (blogForm.get('description').untouched && submitBlogForm == true) ">
+              Blog Description is required</span>
+            </div>
+            <div class="form-group col-md-4">
+              <input type="file" name="" formControlName="featuredImage" #files (change)="preview(files)">
+              <div class="upload-img">
+                <img *ngIf="fileUploaded == false" src="../../../assets/PublicAssets/images/upload-photo.png" alt="">
+                <img *ngIf="fileUploaded == true" [src]="previewUrl" alt="">
+              </div>
+              <span class="text-danger "
+              *ngIf="(blogForm.get('featuredImage').touched && blogForm.get('featuredImage').hasError('required')) || (blogForm.get('featuredImage').untouched && submitBlogForm == true) ">
+              Blog Image is required</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <a href="javascript:void(0)" type="submit" class="purpel-btn" (click)="submitBlogData()">post</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- upload blog section END -->
+  
+  
+  

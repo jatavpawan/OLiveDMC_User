@@ -1,0 +1,436 @@
+
+
+  
+  <div class="overlay"></div>
+  
+  <!-- fixed social media start-->
+  <div id="fixed-social">
+    <div>
+      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+    </div>
+  </div>
+  <!-- fixed social media end -->
+  <!-- slider section html START -->
+  
+  
+  <!-- inner banner section html START -->
+  
+  <section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../assets/PublicAssets/images/news&events-banner.jpg)">
+  
+      <div class="baner-cnt">
+        <h2>News & Events</h2>
+        <div class="breadcrumbs">
+          <a href="home.html">Home</a><span class=""> / </span><span class="current">News & Events</span>
+        </div>
+      </div>
+  
+  </section>
+
+  <section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+    <div class="baner-cnt">
+      <h2>{{bannerDetail?.title}}</h2>
+      <div class="breadcrumbs">
+        <a href="home.html">Home</a><span class=""> / </span><span class="current">News & Events</span>
+      </div>
+    </div>
+  </section>
+  
+  <!-- inner banner section html END -->
+  
+  
+  <!-- news section START -->
+  <section class="comon-space">
+    <div class="container">
+      <div class="comn-heading">
+        <h2>News</h2>
+        <h3 class="heading-before">News</h3>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="d-flex flex-wrap">
+        <!-- <div class="col-md-8 mb-5">
+            <div class="interview-video-main wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/news-1.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div> -->
+  
+          <!-- <div class="col-md-4 mb-5">
+            <div class="interview-video-main wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/news-2.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-4 mb-5">
+            <div class="interview-video-main wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/news-3.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="interview-video-main wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/news-4.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="interview-video-main wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/news-4.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-5">
+            <div class="interview-video-main wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/interview-3.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="interview-video-main wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/interview-4.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="interview-video-main wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+              <div class="interview-video"><img src="../assets/PublicAssets/images/interview-5.jpg" alt=""></div>
+              <div class="interview-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div> -->
+
+          <ng-container *ngFor="let news of newses;let i = index">
+            <div class="mb-5" [ngClass]="{'col-md-8': i == 0, 'col-md-4': i >= 1 }">
+              <div class="interview-video-main wow" [ngClass]="{'fadeInLeft': i==0, 'fadeInRight': i==1, 'fadeInUp': i>1 }" [attr.data-wow-delay]="news?.dataWowDelay" data-wow-duration="1500ms">
+                <div class="interview-video" [routerLink]="['/news-detail', news?.id]"><img [src]="newsImgsrcPath+news?.featuredImage" alt=""></div>
+                <div class="interview-video-cnt">
+                  <h3 [routerLink]="['/news-detail', news?.id]">{{news?.title}}</h3>
+                  <p [innerHTML]="news?.description|safeHtml"></p>
+                </div>
+                <div class="hero-video" data-wow-delay="0.5s" *ngIf="news?.video != '' && news?.video != null ">
+                  <span type="button" (click)="openDialog(newsVideosrcPath+news?.video)">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+      </div>
+    </div>
+  </section>
+  <!-- news section END -->
+  
+  <!-- Events section START -->
+  
+  <section class="blue-bg">
+    <div class="container">
+      <div class="comn-heading">
+        <h2>Events</h2>
+        <h3 class="heading-before">Events</h3>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      </div>
+    </div>
+  
+    <div class="container">
+        <div class="d-flex flex-wrap">
+          <!-- <div class="col-md-4 mb-5">
+            <div class="evnts-video-main wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="events-video-1"><img src="../assets/PublicAssets/images/destionation-v-3.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="evnts-video-main wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="events-video-2"><img src="../assets/PublicAssets/images/blog-main-2.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="evnts-video-main wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+              <div class="events-video-3"><img src="../assets/PublicAssets/images/blog-main-3.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-6 mb-5">
+            <div class="evnts-video-main wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="events-video-4"><img src="../assets/PublicAssets/images/events-4.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-6 mb-5">
+            <div class="evnts-video-main wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="events-video-5"><img src="../assets/PublicAssets/images/events-5.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="evnts-video-main wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="events-video-6"><img src="../assets/PublicAssets/images/events-6.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="col-md-8 mb-5">
+            <div class="evnts-video-main wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="events-video-7"><img src="../assets/PublicAssets/images/events-7.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+  
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="evnts-video-main wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+              <div class="events-video-1"><img src="../assets/PublicAssets/images/destionation-v-3.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="evnts-video-main wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+              <div class="events-video-2"><img src="../assets/PublicAssets/images/blog-main-2.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-5">
+            <div class="evnts-video-main wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+              <div class="events-video-3"><img src="../assets/PublicAssets/images/blog-main-3.jpg" alt=""></div>
+              <div class="events-video-cnt">
+                <h3>Eva Stuard</h3>
+                <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div> -->
+          <ng-container *ngFor="let event of events;let i = index">
+            <div class="mb-5" [ngClass]="{'col-md-4': i <= 2 || i == 5 || (i >=7 && i <=9), 'col-md-6': i == 3 || i == 4, 'col-md-8': i == 6 }">
+              <div class="evnts-video-main wow" [ngClass]="{'fadeInLeft': i == 3 || i == 5, 'fadeInRight':i == 4 || i == 6, 'fadeInUp': i <= 2 || (i >=7 && i <=9) }" [attr.data-wow-delay]="event.dataWowDelay" data-wow-duration="1500ms">
+                <!-- <div class="events-video-1"><img [src]="eventImgsrcpath+event?.featuredImage" alt=""></div> -->
+                <div [class]="event.class" [routerLink]="['/event-detail', event?.id]"><img [src]="eventImgsrcpath+event?.featuredImage" alt=""></div>
+                <div class="events-video-cnt">
+                  <h3 [routerLink]="['/event-detail', event?.id]">{{event?.title}}</h3>
+                  <p [innerHTML]="event?.description|safeHtml"></p>
+                </div>
+                <div class="hero-video" data-wow-delay="0.5s" *ngIf="event?.video != '' && event?.video != null ">
+                  <span type="button"  (click)="openDialog(eventVideosrcpath+event?.video)">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+  
+  </section>
+  
+  <!-- Events destination section END -->
+  
+  
+  <!-- Festival Details section css START -->
+  <section class="comon-space">
+    <div class="container">
+      <div class="comn-heading">
+        <h2>Festival Details</h2>
+        <h3 class="heading-before">Festival Details</h3>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="d-flex flex-wrap festival-details">
+        <ng-container *ngFor="let festival of festivals;let i = index">
+          <div class="col-md-6">
+            <div class="festival-main">
+              <div [class]="festival.class"><img [routerLink]="['/festival-detail', festival?.id]" [src]="festivalImgsrcPath+festival?.featuredImage" alt=""></div>
+              <div class="festival-cnt">
+                <h3 [routerLink]="['/festival-detail', festival?.id]"># {{festival.title}}</h3>
+                <p >{{festival.shortDescription}}</p>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s"  *ngIf="festival?.video != '' && festival?.video != null ">
+                <span type="button"  (click)="openDialog(festivalImgsrcPath+festival?.video)">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        
+      
+
+    
+     
+        <!-- <div class="col-md-6">
+          <div class="festival-main">
+            <div class="festival-img"><img src="../assets/PublicAssets/images/festival-1.jpg" alt=""></div>
+            <div class="festival-cnt">
+              <h3>Maha Shivratri</h3>
+              <p>The grand festival is celebrated on the occasion of overcoming darkness and ignorance. ain temples of God are visited in Varanasi and Somnath. The Mandi Fair is organized in the town of Mandi, Himachal Pradesh.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="festival-main">
+            <div class="festival-img-2"><img src="../assets/PublicAssets/images/festival-2.jpg" alt=""></div>
+            <div class="festival-cnt">
+              <h3>Holi</h3>
+              <p>The festival of colours is the most amiable festival of the country. Holika Dahan takes place a night before Holi where all negatives are burnt in a bonfire</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="festival-main">
+            <div class="festival-img-3"><img src="../assets/PublicAssets/images/festival-3.jpg" alt=""></div>
+            <div class="festival-cnt">
+              <h3>Mahavir Jayanti</h3>
+              <p>It is the most significant festival of Jains. Grand celebrations are viewed in the states of Gujarat and Rajasthan.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="festival-main">
+            <div class="festival-img-4"><img src="../assets/PublicAssets/images/festival-4.jpg" alt=""></div>
+            <div class="festival-cnt">
+              <h3>Eid ul-Fitr</h3>
+              <p>The holy festival of Ramadan consists of month-long fasting. It is believed that fasting makes a man give up his vices which bring him closer to Allah.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="festival-main">
+            <div class="festival-img-5"><img src="../assets/PublicAssets/images/festival-5.jpg" alt=""></div>
+            <div class="festival-cnt">
+              <h3># Independence Day</h3>
+              <p>The grand festival is celebrated on the occasion of overcoming darkness and ignorance. ain temples of God are visited in Varanasi and Somnath. The Mandi Fair is organized in the town of Mandi, Himachal Pradesh.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="festival-main">
+            <div class="festival-img-6"><img src="../assets/PublicAssets/images/festival-6.jpg" alt=""></div>
+            <div class="festival-cnt">
+              <h3># New Year Celebration</h3>
+              <p>The grand festival is celebrated on the occasion of overcoming darkness and ignorance. ain temples of God are visited in Varanasi and Somnath. The Mandi Fair is organized in the town of Mandi, Himachal Pradesh.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+          </div>
+        </div> -->
+  
+      </div>
+    </div>
+  </section>
+  <!-- Festival Details section css END -->
+  
+  
+  
+  
+  
+  
+   <!--Video Modal Start-->
+  <div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+         <video controls autoplay loop id="video1">
+              <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!--Video Modal End-->

@@ -1,0 +1,159 @@
+/*@media (min-width: 1200px){
+.container {max-width: 1300px; }
+}*/
+
+@media screen and (min-width: 320px) {
+    .sticky header {position: fixed; -webkit-animation: fadeInDown 600ms; -moz-animation: fadeInDown 600ms; -ms-animation: fadeInDown 600ms; -o-animation: fadeInDown 600ms; background: #ffffff; z-index: 999; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+}
+}
+
+@media screen and (max-width: 991px) {
+    ul.top-nav-menu li a {padding: 0px 2px; }
+    h2 {font-size: 28px; }
+}
+
+@media screen and (min-width: 768px) {
+    .mobile-nav, .closeIcn {display: none; }
+    header .dropdown-menu {left: auto !important; right: 0px; }
+    ul.submenu, .submenu-child, .submenu-parent-child {position: absolute; left: 0; top: 100%; min-width: 200px; opacity: 0; visibility: hidden; -webkit-transition: all .3s linear 0s; -o-transition: all .3s linear 0s; transition: all .3s linear 0s; background-color: #ffffff; z-index: 1; -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.03); box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.03); border-top: 3px solid #5758E0; } ul.top-nav-menu li:hover ul.submenu {opacity: 1; visibility: visible; }
+    .nav-tabs {display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-pack: justify; -ms-flex-pack: justify; justify-content: space-between; }     
+    .submenu-child{left: 100%; top: 0; }
+    .submenu-parent-child{left: 100%; top: 0; }
+    ul.top-nav-menu li ul li:hover ul.submenu-child {opacity: 1; visibility: visible; }
+    ul.submenu-child li:hover ul.submenu-parent-child {opacity: 1; visibility: visible; }
+    .social-post-main .nav-tabs{ justify-content: inherit !important;}
+}
+
+@media screen and (max-width: 767px) {
+    header {padding: 10px; }
+    .top-hedaer {padding: 5px; }
+    ul.submenu-child {display: none; }
+    .top-nav-menu li {position: relative; }
+    .top-nav-menu li span { position: absolute; top: 11px; right: 12px; font-size: 32px; }
+    .menus-nav {background-color: rgb(255 255 255 / 0.90); position: fixed; width: 250px; top: 0; left: -250px; height: 100%; z-index: 6; }
+    header>.container {position: relative; }
+    ul.top-nav-menu li a {padding: 15px 10px; display: block; border-bottom: 1px solid #ddd; }
+    .open-menu .menus-nav {left: 0px; overflow-x: hidden; overflow-y: auto;}
+    header .dropdown {margin-right: 45px; }
+    .main ul.top-nav-menu li:hover ul.submenu {position: static; display: block; }
+    ul.submenu {display: none; }
+    ul.submenu li a {background-color: rgba(255, 146, 0, 0.03); padding: 10px 10px !important; }
+    .service-dropdown a span {float: right; font-size: 22px; font-weight: 600; line-height: 12px; }
+    .inner-banner {min-height: 300px; margin: 89px 0 0 0; }
+    .baner-cnt h2 {font-size: 30px; }
+    #fixed-social {top: 130px; display: none;}
+    /*home page css start*/
+    .comn-heading h2 {font-size: 28px; }
+    .heading-before {font-size: 30px; top: -10px;}
+    .screenshot_slider.owl-carousel.owl-loaded.owl-drag {padding: 15px;}
+    .video-heading {left: 10px; font-size: 18px;}
+    .comon-space {margin: 40px 0; }
+    .logo.mr-auto {margin-right: inherit !important; }
+    .site-main-navigation {position: inherit; margin: 40px 10px 0px 0px; }
+    .site-search {position: inherit; margin: 40px 10px 0px 0px; }
+    .profile-bg {display: none; }
+    .profile-1 {margin-left: 0; margin-top: 0; }
+    .profile-2 {margin-left: 0; margin-top: 5%; margin-bottom: 20px; }
+    .profile-right {border-radius: 10px; }
+    .guru-rgt {margin-left: 0; margin-top: 10px; }
+    .blog-cnt h4 {font-size: 16px; }
+    .blog-cnt > a {font-size: 14px; }
+    #owl-interview-video {margin-left: 0; }
+    .interview-video-bg {display: none; }
+    #owl-interview-video .owl-nav {position: inherit; margin-top: 20px; bottom: 0; text-align: center; }
+    .tranding-main-all .col-12.col-sm-6.col-md-4.col-lg-3 {padding: 15px; }
+    .tranding-cnt {padding: 10px; }
+    .events-cnt {padding: 15px; }
+    .flip-card {width: auto; min-height: 346px; }
+    .footer-bg {padding: 70px 0 0 0; }
+    .contact-main ul li a {font-weight: 400; }
+    /*home page css END*/
+
+    /*about us page css START*/
+    .our-mission-main .col-12.col-lg-6 {padding: 15px; }
+    .welcome-left h2 {font-size: 24px; }
+    .left-img img, .right-img img {position: inherit; margin: 10px 0; }
+    .mission-cnt h3 {margin: 10px 0; }
+    .mission-cnt {margin: 0 auto 20px; }
+    /*about us page css END*/
+
+    /*blog page css START*/
+    .blog-block {margin-bottom: 150px;}
+    .blogs-main .col-md-8 {padding: 0;}
+    .blog-details {margin: -390px auto 0;}
+    .write-blog textarea {min-height: 180px;}
+    .create-head h3 {font-size: 20px; }
+    .blog-upload-banner > img {width: auto; object-fit: cover; height: 100%; }
+    .upload-img {height: 30px; }
+    /*blog page css END*/
+
+    /*contact us page css START*/
+    .contact-left h3 {font-size: 24px; line-height: 35px; }
+    .contact-left p {padding: 10px 0; }
+    /*contact us page css END*/
+    
+    /*destination finder page css START*/
+    .d-flex.flex-wrap.flex-row-reverse.align-items-center.justify-content-center.visa-detail .col-md-6, .d-flex.flex-wrap.flex-row.align-items-center.justify-content-center.visa-detail .col-md-6 {
+    padding: 15px;
+    }
+    /*destination finder page css END*/
+
+    /*event-detail page css START*/
+    .place-time {display: block; word-break: break-word; }
+    /*event-detail page css END*/
+
+    /*flight booking page css START*/
+    .booking-form > form {display: block; }
+    /*flight booking page css END*/
+
+    /*forogt /login / signup form css START*/
+    .col-md-6.offset-1.lg-offset-0 {margin: 0; }
+    .form-wraper .card {padding: 20px; }
+    .form-wraper .card h3 {font-size: 24px; }
+    section.form-wraper .container {padding: 0; }
+    .form-wraper {height: 100%;} 
+    .main-form {padding: 20px 0; }
+    .card .form-group > label {font-size: 16px; }
+    /*forogt /login / signup form css END*/
+
+    /*social media page css START*/
+    .social-icons-of-social {width: 100%; margin-top: 20px; }
+    .user-social-profile {height: 100px; width: 100px; margin-top: -60px; }
+    .add-friend {position: inherit; right: 0; bottom: 0; margin: 20px 0 30px 0; }
+    .banner-img img {width: 100%; min-height: 270px; height: 100%; -o-object-fit: cover; object-fit: cover; }
+    .social-bottom {margin-top: 0; }
+    .post-numbers {width: 100%; }
+    .post-numbers > ul {-webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; }
+    .comon-tabs-links .nav.nav-pills {-ms-flex-wrap: nowrap; flex-wrap: nowrap; }
+    .comon-tabs-links .nav-item span {font-size: 14px; }
+    .friends-message-btn > a {margin: 10px; display: block; }
+    .personal-info {margin: 30px 0; }
+    .interview-video-cnt h3, .interview-video-cnt p {color: #3f3939; }
+    .interview-video-cnt {position: inherit; }
+    .interview-video-main .hero-video {top: 44%; right: 40px; }
+    .add-video.text-right {text-align: left !important; margin-top: 20px; }
+    /*social media page css END*/
+}
+@media screen and (min-width: 576px){
+.gallery-box-main .modal-dialog {
+    max-width: 1300px !important;
+    margin: 60px auto 30px !important;
+}
+}
+ @media screen and (max-width: 575px) {
+      p {font-size: 14px; }
+     .logo-inr {margin: 0 0 20px 0; }
+     ul.process-line li {margin: 15px 10px; }
+     .d-md-inline {padding: 0; }
+    .logo.mr-auto {max-width: 230px; padding: 12px 0; margin-right: inherit !important; }
+    .site-search {position: relative; margin: 31px 0 0 0; }
+    .site-main-navigation {margin-top: 30px; }
+    /* .btn-login {font-size: 12px; padding: 1px 12px; } */
+    .btn-login {font-size: 12px }
+}
+
+ @media screen and (max-width: 480px) {
+    .logo.mr-auto img {max-width: 105px; }
+}

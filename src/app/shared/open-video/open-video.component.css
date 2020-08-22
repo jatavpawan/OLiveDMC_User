@@ -1,0 +1,6 @@
+/***Hero Modal Css Start***/
+/* .video-model-body { position: relative; } */
+video { width: 100%; }
+button.close { position: absolute; right: -15px; top: -20px; line-height: 1; width: 40px; height: 40px; background: black; color: #fff; text-shadow: none; line-height: 38px; border-radius: 40px; }
+button.close span { font-size: 40px; }
+/***Hero Modal Css End***/

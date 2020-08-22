@@ -1,0 +1,255 @@
+
+
+<!-- <main>
+    <section class="form-wraper" style="background-image: url(../assets/PublicAssets/images/login-bg.jpg); ">
+        <div class="container">
+            <div class="row align-items-center main-form">
+                <div class="col-lg-5">
+                    <div class="form-left-wrap">
+                        <div class="login-logo">
+                            <img src="../assets/PublicAssets/images/LiveTraveller-white.png" alt="">
+                        </div>
+                        <h2>Welcome To LiveTravller</h2>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 offset-1 lg-offset-0">
+                    <div class="form-right-wrap">
+                        <div class="card">
+                            <h3>Register</h3>
+                            <h4>Create an account</h4>
+                            <form [formGroup]="signupForm">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>First Name<span class="compulsary-star">*</span></label>
+                                        <input type="text" class="form-control" placeholder="First Name"
+                                            formControlName="firstName">
+                                        <span class="text-danger "
+                                            *ngIf="(signupForm.get('firstName').touched && signupForm.get('firstName').hasError('required')) || (signupForm.get('firstName').untouched && submitSignupForm == true) ">
+                                            First Name is required</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Last Name<span class="compulsary-star">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Last Name"
+                                            formControlName="lastName" />
+                                        <span class="text-danger"
+                                            *ngIf="(signupForm.get('lastName').touched && signupForm.get('lastName').hasError('required')) || (signupForm.get('lastName').untouched && submitSignupForm == true)">
+                                            Last Name is required</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Email Id<span class="compulsary-star">*</span></label>
+                                        <input type="email" class="form-control" placeholder="xyz@gmail.com"
+                                            formControlName="emailId">
+                                        <span class="text-danger"
+                                            *ngIf="(signupForm.get('emailId').touched && signupForm.get('emailId').hasError('required')) || (signupForm.get('emailId').untouched && submitSignupForm == true)">
+                                            Email Id is required</span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Mobile No<span class="compulsary-star">*</span></label>
+                                        <input type="text" maxlength="10" class="form-control" placeholder="Mobile No"
+                                            formControlName="mobileNo">
+                                        <span class="text-danger"
+                                            *ngIf="(signupForm.get('mobileNo').touched && signupForm.get('mobileNo').hasError('required')) || (signupForm.get('mobileNo').untouched && submitSignupForm == true)">
+                                            Mobile No is required</span>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Password<span class="compulsary-star">*</span></label>
+                                        <input type="password" class="form-control" placeholder="********"
+                                            formControlName="password">
+                                        <span class="text-danger"
+                                            *ngIf="(signupForm.get('password').touched && signupForm.get('password').hasError('required')) || (signupForm.get('password').untouched && submitSignupForm == true)">
+                                            Password is required</span>
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Confirm Password<span class="compulsary-star">*</span></label>
+                                        <input type="password" class="form-control" placeholder="********"
+                                            formControlName="confirmPassword" (blur)="passwordMatch()">
+                                        <span class="text-danger"
+                                            *ngIf="( signupForm.get('confirmPassword').touched && signupForm.get('confirmPassword').hasError('required')) || (signupForm.get('confirmPassword').untouched && submitSignupForm == true)">Confirm
+                                            Password is required</span>
+                                        <span class="text-success"
+                                            *ngIf=" signupForm.get('confirmPassword').touched && !signupForm.get('confirmPassword').hasError('required') && passwordMatchError && checkPasswordMatch ">Password
+                                            Matched</span>
+                                        <span class="text-danger"
+                                            *ngIf="signupForm.get('confirmPassword').touched && !signupForm.get('confirmPassword').hasError('required') && !passwordMatchError && checkPasswordMatch">Password
+                                            Not Matched</span>
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label>Category<span class="compulsary-star">*</span></label>
+                                        <select class="form-control select-category" formControlName="category">
+                                            <option value="">Select Category</option>
+                                            <option value="1">Travel Guru</option>
+                                            <option value="2">Expert Traveller</option>
+                                        </select>
+                                        <span class="text-danger"
+                                            *ngIf="(signupForm.get('category').touched && signupForm.get('category').hasError('required')) || (signupForm.get('category').untouched && submitSignupForm == true)">
+                                            Category is required</span>
+                                    </div>
+                                <div class="form-group">
+                                    <label class="checkbox"><input type="checkbox" name="checkbox"
+                                        formControlName="travelEnthuiast"><i> </i>TravelEnthuiast</label>
+                                </div>
+                                    
+                                <div class="form-group">
+                                        <button class="purpel-btn" (click)="signUp()"><span
+                                                class="btn-main-text">Register</span></button>
+                                </div> 
+                                <div class="form-group">
+                                <div class="bottom-nav">
+                                    <h2>Already have an account? <span [routerLink]="['/login']">Login</span></h2>
+                                </div>
+                            </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main> -->
+
+
+<main>
+    <div class="back-to-home rounded d-none d-sm-block">
+        <a [routerLink]="['/home']" class="text-white rounded d-inline-block text-center"><i class="fa fa-home"></i></a>
+    </div>
+    <section class="form-wraper" style="background-image: url(../../../assets/PublicAssets/images/login-bg.jpg); ">
+       <div class="container">
+          <div class="d-flex flex-wrap align-items-center main-form">
+              <div class="col-md-5">
+                 <div class="form-left-wrap">
+                    <div class="login-logo">
+                       <img src="../../../assets/PublicAssets/images/LiveTraveller-white.png" alt="">
+                   </div>
+                   <h2>Welcome To LiveTravller</h2>
+                   <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing</p>
+               </div>
+           </div>
+
+           <div class="col-md-6 offset-1 lg-offset-0">
+             <div class="form-right-wrap">
+               <div class="card">
+                 <h3>Register</h3>
+                 <h4>Create an account</h4>
+                 <form [formGroup]="signupForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>First Name<span class="compulsary-star">*</span></label>
+                            <input type="text" class="form-control" placeholder="First Name"
+                                formControlName="firstName">
+                            <span class="text-danger "
+                                *ngIf="(signupForm.get('firstName').touched && signupForm.get('firstName').hasError('required')) || (signupForm.get('firstName').untouched && submitSignupForm == true) ">
+                                First Name is required</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Last Name<span class="compulsary-star">*</span></label>
+                            <input type="text" class="form-control" placeholder="Last Name"
+                                formControlName="lastName" />
+                            <span class="text-danger"
+                                *ngIf="(signupForm.get('lastName').touched && signupForm.get('lastName').hasError('required')) || (signupForm.get('lastName').untouched && submitSignupForm == true)">
+                                Last Name is required</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Email Id<span class="compulsary-star">*</span></label>
+                            <input type="email" class="form-control" placeholder="xyz@gmail.com"
+                                formControlName="emailId">
+                            <!-- <span class="text-danger"
+                                *ngIf="(signupForm.get('emailId').touched && signupForm.get('emailId').hasError('required')) || (signupForm.get('emailId').untouched && submitSignupForm == true)">
+                                Email Id is required</span> -->
+                                <div *ngIf="signupForm.get('emailId').touched && signupForm.get('emailId').invalid" class="text-danger">
+                                    <div *ngIf="signupForm.get('emailId').errors.required">Email is required.</div>
+                                    <div *ngIf="signupForm.get('emailId').errors.pattern">Please, Enter Valid Email.</div>
+                                </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Mobile No<span class="compulsary-star">*</span></label>
+                            <input type="text" maxlength="10" class="form-control" placeholder="Mobile No"
+                                formControlName="mobileNo">
+                            <!-- <span class="text-danger"
+                                *ngIf="(signupForm.get('mobileNo').touched && signupForm.get('mobileNo').hasError('required')) || (signupForm.get('mobileNo').untouched && submitSignupForm == true)">
+                                Mobile No is required</span> -->
+
+                                <div *ngIf="signupForm.get('mobileNo').touched && signupForm.get('mobileNo').invalid" class="text-danger">
+                                    <div *ngIf="signupForm.get('mobileNo').errors.required">Mobile Number is required.</div>
+                                    <div *ngIf="signupForm.get('mobileNo').errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+                                </div>
+
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Password<span class="compulsary-star">*</span></label>
+                            <input type="password" class="form-control" placeholder="********"
+                                formControlName="password">
+                            <span class="text-danger"
+                                *ngIf="(signupForm.get('password').touched && signupForm.get('password').hasError('required')) || (signupForm.get('password').untouched && submitSignupForm == true)">
+                                Password is required</span>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Confirm Password<span class="compulsary-star">*</span></label>
+                            <input type="password" class="form-control" placeholder="********"
+                                formControlName="confirmPassword" (blur)="passwordMatch()">
+                            <span class="text-danger"
+                                *ngIf="( signupForm.get('confirmPassword').touched && signupForm.get('confirmPassword').hasError('required')) || (signupForm.get('confirmPassword').untouched && submitSignupForm == true)">Confirm
+                                Password is required</span>
+                            <span class="text-success"
+                                *ngIf=" signupForm.get('confirmPassword').touched && !signupForm.get('confirmPassword').hasError('required') && passwordMatchError && checkPasswordMatch ">Password
+                                Matched</span>
+                            <span class="text-danger"
+                                *ngIf="signupForm.get('confirmPassword').touched && !signupForm.get('confirmPassword').hasError('required') && !passwordMatchError && checkPasswordMatch">Password
+                                Not Matched</span>
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label>Category<span class="compulsary-star">*</span></label>
+                            <select class="form-control select-category" formControlName="category">
+                                <option value="">Select Category</option>
+                                <option value="1">Travel Guru</option>
+                                <option value="2">Expert Traveller</option>
+                            </select>
+                            <span class="text-danger"
+                                *ngIf="(signupForm.get('category').touched && signupForm.get('category').hasError('required')) || (signupForm.get('category').untouched && submitSignupForm == true)">
+                                Category is required</span>
+                        </div>
+                    <div class="form-group">
+                        <label class="checkbox"><input type="checkbox" name="checkbox"
+                            formControlName="travelEnthuiast"><i> </i>TravelEnthuiast</label>
+                    </div>
+                        
+                    <div class="form-group">
+                            <button class="purpel-btn" (click)="signUp()"><span
+                                    class="btn-main-text">Register</span></button>
+                    </div> 
+                    <div class="form-group">
+                    <div class="bottom-nav">
+                        <h2>Already have an account? <span [routerLink]="['/login']">Login</span></h2>
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <div class="bottom-nav">
+                            <h2><a [routerLink]="['/home']"><i class="fa fa-angle-left"></i><span>Back to Home</span></a></h2>    
+                        </div>
+                </div>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+</main>

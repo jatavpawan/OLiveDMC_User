@@ -1,0 +1,135 @@
+<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#f0acaf" type = "timer" [fullScreen] = "true">
+    <p style="color: white" > Loading... </p>
+  </ngx-spinner> -->
+
+
+    <!--Start of header-->
+<header [style.display]="showheader == false ? 'none' : '' ">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <div class="logo mr-auto"><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/LiveTraveller-white.png" alt=""></a></div>
+        <nav class="menus-nav">
+          <div class="closeIcn"><h3>Menu</h3> <span></span></div>
+          <ul class="top-nav-menu">
+            <li class="d-md-inline" routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
+            <li class="d-md-inline" routerLinkActive="active"><a [routerLink]="['/destination-finder']" >Destination Finder</a></li>
+            <li class="d-md-inline" routerLinkActive="active"><a [routerLink]="['/blog']" >Blogs</a></li>
+            <li class="d-md-inline" routerLinkActive="active"><a [routerLink]="['/news-events']" >News & Events</a></li>
+            <li class="d-md-inline" routerLinkActive="active"><a [routerLink]="['/whats-new']" >What's New</a></li>
+            <li class="d-md-inline dropdown-link service-dropdown parent">
+              <a href="javascript:void(0)">Booking</a>
+              <ul class="submenu">
+                <li><a [routerLink]="['/flight']">Flight Booking</a></li>
+                <li><a [routerLink]="['/hotel-booking']">Hotel Booking</a></li>
+                <li><a [routerLink]="['/packages']">Packages</a></li>
+                <li><a [routerLink]="['/attraction']">Attraction</a></li>
+              </ul>
+              <span class="fa fa-angle-down"></span>
+            </li>
+            <li class="d-md-inline"><a [routerLink]="['/travel-utility']" routerLinkActive="active" >Travel Utility</a></li>
+          </ul>
+        </nav>
+        <a class="btn-login" (click)="goSocial()">Go Social<span><img src="../assets/PublicAssets/images/sent.png"></span></a>
+        <!-- <a class="btn-login" (click)="goSocial()">Go Social<span><i class="fa fa-send"></i></span></a> -->
+       
+        <div class="site-search">
+          <button class="btn-search" type="button" data-toggle="dropdown"><img src="../assets/PublicAssets/images/search-icon.png" alt=""></button> 
+          <div class="search-wrapper dropdown-menu">
+            <form>
+              <div class="form-group">
+                <input type="text" placeholder="Type product name here" class="search-control">
+              </div>
+            </form>
+          </div>                      
+        </div>
+        <div class="site-main-navigation">
+          <div class="navigation-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            <img src="../assets/PublicAssets/images/account.png" alt="">
+          </div>
+          <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 21px, 0px);">
+            <li><a  [routerLink]="['/social-media']" >My Account</a></li>
+            <li><a  [routerLink]="['/login']" (click)="hideHeader()">Login</a></li>
+            <li><a  [routerLink]="['/signUp']" (click)="hideHeader()">Sign up</a></li>
+            <!-- <li><a *ngIf="userLogin == true" [routerLink]="['/social-media']" >My Account</a></li>
+            <li><a *ngIf="userLogin == true" (click)="logout()" >Logout</a></li>
+            <li><a *ngIf="userLogin == false" [routerLink]="['/login']" (click)="hideHeader()">Login</a></li>
+            <li><a *ngIf="userLogin == false" [routerLink]="['/signUp']" (click)="hideHeader()">Sign up</a></li> -->
+          </ul>
+        </div>
+
+    </div>
+    <nav class="mobile-nav">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </nav>
+  </div>
+  </div>
+</header>
+<!--End of header-->
+<router-outlet></router-outlet>
+
+
+  <!-- footer section START -->
+  <footer class="footer-bg" [style.display]="showfooter == false ? 'none' : '' " style="background-image: url(../assets/PublicAssets/images/footer-bg.jpg);">
+    <div class="container">
+      <div class="d-flex flex-wrap">
+        <div class="col-md-3">
+          <div class="about-ftr">
+            <h4><img src="../assets/PublicAssets/images/LiveTraveller-white.png"></h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+            <div class="social-icons">
+              <ul>
+                <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-google"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="about-ftr">
+            <h4>Company</h4>
+            <div class="contact-main ">
+              <ul>
+                <li><a [routerLink]="['/about']"  >About Us</a></li>
+                <li><a [routerLink]="['/contact-us']"  >Contact Us</a></li>
+                <li><a [routerLink]="['/about']"  >Our team</a></li>
+                <li><a [routerLink]="['/privacy-policy']"  >Privacy Policy</a></li>
+                <li><a [routerLink]="['/faq']"  >FAQ</a></li>
+                <li><a [routerLink]="['/career']"  >Career</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+       <div class="col-md-3">
+          <div class="about-ftr">
+            <h4>Contact Us</h4>
+            <div class="contact-main ">
+              <ul>
+                <li><a href="javascript:void(0)"><i class="fa fa-map-marker"></i>2005 Stokes Isle Apt. 896, Venaville 10010, USA</a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-envelope"></i>hello@tankumbrella.io</a></li>
+                <li><a href="javascript:void(0)"><i class="fa fa-phone"></i>(+12) 345 6789</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+          <div class="about-ftr">
+            <h4>Join the newsletter</h4>
+            <div class="contact-main ">
+              <ul>
+                <li><input type="text" name="" placeholder="Email"></li>
+                <li><button class="btn btn-suscribe purpel-btn">suscribe</button></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">&copy; 2020 — by <a href="Rohitphotocrafts.com">livetrveller.in</a> All Right Reserved.</div>
+  </footer>
+  <!-- footer section END -->
+  

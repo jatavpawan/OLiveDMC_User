@@ -1,0 +1,2047 @@
+<div class="overlay"></div>
+
+<!-- banner section START -->
+<section class="social-banner">
+  <div class="container">
+    <div class="social-media-banner d-flex flex-wrap justify-content-center">
+      <div class="banner-img" >
+        <img *ngIf="coverImageUploaded == false" src="../../../assets/PublicAssets/images/social-media-banner.jpg" alt="">
+        <img *ngIf="coverImageUploaded == true" [src]="coverImageUrl" alt="">
+        <div class="edit-profile">
+          <label for="coverImg"><a><i class="fa fa-camera"></i></a></label> 
+          <input type="file" id="coverImg" #coverImgfile (change)="uploadCoverImage(coverImgfile)">
+        </div>
+      </div>
+      <div class="user-social-profile">
+        <img *ngIf="profileImageUploaded == false" src="../../../assets/PublicAssets/images/social-profile.jpg" alt="">
+        <img *ngIf="profileImageUploaded == true" [src]="profileImageUrl" alt="">
+        <div class="edit-profile">
+          <label for="profileImg"><a><i class="fa fa-camera"></i></a></label> 
+          <input type="file" id="profileImg"  #profileImgfile (change)="uploadProfileImage(profileImgfile)">
+        </div>
+      </div>
+      <div class="user-name">
+        <h3>Merline Luies</h3>
+        <h5>Travel lover</h5>
+      </div>
+      <div class="add-friend">
+      <a href="JavaScript:void(0)" class="purpel-btn">add friend +</a>
+      <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+    </div>
+    <div class="d-flex flex-wrap align-items-center justify-content-between social-bottom">
+      <div class="post-numbers">
+        <ul>
+          <li>930 <br><span> post</span></li>
+          <li>58 <br><span> Friends</span></li>
+          <li>2.5K <br><span> visit</span></li>
+        </ul>
+      </div>
+      <div class="social-icons-of-social ">
+        <ul>
+          <li>
+            <a href="JavaScript:void(0)"><img src="../../../assets/PublicAssets/images/facebook.png" alt=""></a>
+          </li>
+          <li>
+            <a href="JavaScript:void(0)"><img src="../../../assets/PublicAssets/images/twitter.png" alt=""></a>
+          </li>
+          <li>
+            <a href="JavaScript:void(0)"><img src="../../../assets/PublicAssets/images/googel-plus.png" alt=""></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- banner section END -->
+
+<section class="tabing-space">
+  <div class="container">
+    <div class="comon-tabs-links">
+      <ul class="nav nav-pills" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-home" aria-selected="true">
+            <div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-profille-icon.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-profille-icon-color.png" class="img-top" alt="">
+            </div>
+            <span>Profile</span></a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" id="video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-profile" aria-selected="false"><div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-video.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-video-color.png" class="img-top" alt="">
+            </div>
+            <span>Videos</span>
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" id="images-tab" data-toggle="pill" href="#pills-images" role="tab" aria-controls="pills-contact" aria-selected="false"><div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-image.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-image-color.png" class="img-top" alt="">
+            </div>
+            <span>Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="blogs-tab" data-toggle="pill" href="#pills-blogs" role="tab" aria-controls="pills-contact" aria-selected="false"><div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-blog.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-blog-color.png" class="img-top" alt="">
+            </div>
+            <span>blogs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="scrapbook-tab" data-toggle="pill" href="#pills-scrapbook" role="tab" aria-controls="pills-contact" aria-selected="false"><div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-book.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-book-color.png" class="img-top" alt="">
+            </div>
+            <span>Scrap books</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="friends-request-tab" data-toggle="pill" href="#pills-friends-request" role="tab" aria-controls="pills-contact" aria-selected="false"><div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-network.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-network-color.png" class="img-top" alt="">
+            </div>
+            <span>network</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="social-space">
+  
+      <div class="my-profile-main">
+        <div class="tab-content" id="pills-tabContent">
+          <!-- tab-1 START -->
+          <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="container">
+              <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search blogs...">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                  <div class="add-video text-right">
+                    <a href="javscriptscript:void(0)" class="purpel-btn add-blogs-hide" data-toggle="modal" data-target="#profile-social-post" >add post +</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+            <div class="profile-tab-main">
+              <div class="d-flex flex-wrap">
+                <div class="col-md-3">
+                  <div class="about-me">
+                    <div class="article-head d-flex align-items-center">
+                      <div class="post-avatar">
+                        <h3>About Me</h3>
+                      </div>
+                      <div class="article-options ml-auto d-flex align-items-center">
+                        <div class="dropdown">
+                          <span class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                          </span>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#about-modal">Edit</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="about-cnt">
+                      <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      <p>Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                    </div>
+                  </div>
+                  <div class="personal-info">
+                    <div class="article-head d-flex align-items-center">
+                      <div class="post-avatar">
+                        <h3>personal-info</h3>
+                      </div>
+                      <div class="article-options ml-auto d-flex align-items-center">
+                        <div class="dropdown">
+                          <span class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                          </span>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#personal-info">Edit</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="personal-info-cnt">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="fileds">Email :</td>
+                          <td>merlineluiesdemo.com</td>
+                        </tr>
+                        <tr>
+                          <td class="fileds">Birthday :</td>
+                          <td>24 Aug 1987</td>
+                        </tr>
+                        <tr>
+                          <td class="fileds">Occupation :</td>
+                          <td>Costume Designer</td>
+                        </tr>
+                        <tr>
+                          <td class="fileds">City :</td>
+                          <td>Delhi</td>
+                        </tr>
+                        <tr>
+                          <td class="fileds">Country :</td>
+                          <td>India</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  
+                  <div class="journey-trail">
+                    <div class="article-head d-flex align-items-center">
+                      <div class="post-avatar ic-avatar avatar big">
+                        <a href="">
+                          <small class="post-avatar-placeholder">S</small>
+                          <span>Sidehustle</span>
+                        </a>
+                      </div>
+                      <div class="article-options ml-auto d-flex align-items-center">
+                        <small>30 min ago</small>
+                        <div class="dropdown">
+                          <span class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                          </span>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#social-post">New Post</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="journy-head-main">
+                    <div class="journy-head"> Journey Trails</div>
+                  </div> -->
+                    <!-- <div class="journey-profile d-flex flex-wrap align-items-top">
+                      <div class="journey-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                      <div class="journey-cnt">
+                        <h3>Merline Luies</h3>
+                        <h5>29 min ago</h5>
+                      </div>
+                    </div> -->
+                    <div class="journey-stories">
+                     <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                     <p>Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                   </div>
+
+                   <div class="journey-trip-img">
+                    <img src="../../../assets/PublicAssets/images/journey-img.jpg" alt="">
+                  </div>
+                  <div class="user-comnt-cnt d-flex justify-content-between">
+                    <div class="icons-left">
+                      <ul>
+                        <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                        <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                        <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                      </ul>
+                    </div>
+                    <div class="commnts-rgt">
+                      <ul>
+                        <li><h6>9 comments</h6></li>
+                        <li><h6>0 share</h6></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="user-react">
+                    <ul>
+                      <li><a href="JavaScript:void(0)"><i class="fa fa-thumbs-o-up"></i>React</a></li>
+                      <li><a href="JavaScript:void(0)"><i class="fa fa-comment-o"></i>9 comments</a></li>
+                      <li><a href="JavaScript:void(0)"><i class="fa  fa-share-square-o"></i>0 share</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="user-comments-list">
+                    <div class="coment-lisitng">
+                      <ul class="lisitng-start">
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                            <div class="col-md-10">
+                              <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                            <div class="col-md-10">
+                              <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                            <div class="col-md-10">
+                              <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+
+                <div class="load-more-text">Load more comments <span>9+</span></div>
+
+                <div class="comment-box">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Comment">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i class="fa fa-send"></i></span>
+                    </div>
+                  </div>
+                </div>
+                  
+
+                </div>
+                <div class="loader-bars">
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                    <div class="loader-bar"></div>
+                  </div>
+                
+              </div>
+
+              <div class="col-md-3">
+                  <div class="travel-detail-ad">
+                    <ul>
+                      <li><a href="javascript:void(0)"><img src="../../../assets/PublicAssets/images/ad-Image-1.jpg"></a></li>
+                      <li><a href="javascript:void(0)"><img src="../../../assets/PublicAssets/images/ad-Image-2.jpg"></a></li>
+                      <li><a href="javascript:void(0)"><img src="../../../assets/PublicAssets/images/ad-Image-3.jpg"></a></li>
+                    </ul>
+                  </div>                
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          <!-- tab-1 END -->
+
+          <!-- tab-2 start -->
+          <!-- <div class="tab-pane fade" id="pills-video" role="tabpanel" aria-labelledby="video-tab">
+            <div class="video-tab-main">
+            <div class="container">
+              <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search videos...">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                  <div class="add-video text-right">
+                    <a href="javscriptscript:void(0)" class="purpel-btn" data-toggle="modal" data-target="#upload-video">add video +</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class="list-top-videos d-flex flex-wrap">
+               <div class="col-md-3 mb-5">
+                 <div class="events-main">
+                  <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+                  <div class="events-cnt">
+                    <h3>October 31, 2021</h3>
+                    <h4>Vibra Mahou Fest</h4>
+                    <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                  </div>
+                  <div class="hero-video" data-wow-delay="0.5s" >
+                    <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                  </div>
+                  <div class="crud">
+                    <ul>
+                      <li class="delete-video"><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li data-toggle="modal" data-target="#upload-video"><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-5">
+               <div class="events-main">
+                <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+                <div class="events-cnt">
+                  <h3>October 31, 2021</h3>
+                  <h4>Vibra Mahou Fest</h4>
+                  <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                </div>
+                <div class="hero-video" data-wow-delay="0.5s" >
+                  <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                </div>
+                <div class="crud">
+                    <ul>
+                      <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-5">
+             <div class="events-main">
+              <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+              <div class="events-cnt">
+                <h3>October 31, 2021</h3>
+                <h4>Vibra Mahou Fest</h4>
+                <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+              <div class="crud">
+                <ul>
+                  <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                  <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-5">
+           <div class="events-main">
+            <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+            <div class="events-cnt">
+              <h3>October 31, 2021</h3>
+              <h4>Vibra Mahou Fest</h4>
+              <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+                 <div class="events-main">
+                  <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+                  <div class="events-cnt">
+                    <h3>October 31, 2021</h3>
+                    <h4>Vibra Mahou Fest</h4>
+                    <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                  </div>
+                  <div class="hero-video" data-wow-delay="0.5s" >
+                    <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                  </div>
+                  <div class="crud">
+                    <ul>
+                      <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-5">
+               <div class="events-main ">
+                <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+                <div class="events-cnt">
+                  <h3>October 31, 2021</h3>
+                  <h4>Vibra Mahou Fest</h4>
+                  <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                </div>
+                <div class="hero-video" data-wow-delay="0.5s" >
+                  <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                </div>
+                <div class="crud">
+                    <ul>
+                      <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-5">
+             <div class="events-main ">
+              <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+              <div class="events-cnt">
+                <h3>October 31, 2021</h3>
+                <h4>Vibra Mahou Fest</h4>
+                <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+              <div class="crud">
+                <ul>
+                  <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                  <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-5">
+           <div class="events-main ">
+            <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+            <div class="events-cnt">
+              <h3>October 31, 2021</h3>
+              <h4>Vibra Mahou Fest</h4>
+              <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="comn-heading">
+          <h2>My Recorded Videos</h2>
+          <h3 class="heading-before">Recorded Videos</h3>
+        </div>
+      </div>
+
+      <div class="container">
+    <div class="d-flex flex-wrap">
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-1.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                 <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                 <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-2.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-3.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-4.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-5.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+          </div> -->
+          <!-- tab-2 END -->
+
+          <!-- tab-3 START -->
+          <div class="tab-pane fade" id="pills-images" role="tabpanel" aria-labelledby="images-tab">
+            <div class="images-tab-main">
+            <div class="container">
+              <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search...">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                  <div class="add-video text-right">
+                    <a href="javscriptscript:void(0)" class="purpel-btn" data-toggle="modal" data-target="#upload-photos">add photos +</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class="d-flex flex-wrap">
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal-video">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-5">
+                  <div class="evnts-video-main">
+                    <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt=""></div>
+                    <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+                    <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+                      <ul>
+                        <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                        <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          </div>
+          <!-- tab-3 END -->
+
+          <!-- tab-4 START -->
+          <div class="tab-pane fade" id="pills-blogs" role="tabpanel" aria-labelledby="blogs-tab">
+            <div class="container">
+              <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search blogs...">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                  <div class="add-video text-right">
+                    <a href="javscriptscript:void(0)" class="purpel-btn add-blogs-hide">add blogs +</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+            <div class="blogs-tab-main">
+            <div class="d-flex flex-wrap">
+       <div class="col-md-4">
+        <div class="blog-block">
+          <div class="blog-main-img">
+            <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+          </div>
+          <div class="crud">
+            <ul>
+              <li class="add-blogs"><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+              <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+            </ul>
+          </div>
+          
+          <div class="blog-outer-cnt d-flex justify-content-between">
+
+            <div class="icons-left">
+              <ul>
+                <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+              </ul>
+            </div>
+            <div class="commnts-rgt">
+              <ul>
+                <li><h6>9 comments</h6></li>
+                <li><h6>0 share</h6></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="blog-details">
+            <h6>24 Aug 2020</h6>
+            <h4>Eirmod diam amet diam clita</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <a href="javascript:void(0)">Read More</a>
+          </div>
+        </div> 
+      </div>
+      <div class="col-md-4">
+        <div class="blog-block">
+          <div class="blog-main-img">
+            <img src="../../../assets/PublicAssets/images/blog-main-3.jpg" alt="">
+          </div>
+          <div class="crud">
+            <ul>
+              <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+              <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+            </ul>
+          </div>
+          <div class="blog-outer-cnt d-flex justify-content-between">
+
+            <div class="icons-left">
+              <ul>
+                <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+              </ul>
+            </div>
+            <div class="commnts-rgt">
+              <ul>
+                <li><h6>9 comments</h6></li>
+                <li><h6>0 share</h6></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="blog-details">
+            <h6>24 Aug 2020</h6>
+            <h4>Eirmod diam amet diam clita</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <a href="javascript:void(0)">Read More</a>
+          </div>
+        </div> 
+      </div>
+      <div class="col-md-4">
+        <div class="blog-block">
+          <div class="blog-main-img">
+            <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+          </div>
+          <div class="crud">
+            <ul>
+              <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+              <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+            </ul>
+          </div>
+          <div class="blog-outer-cnt d-flex justify-content-between">
+
+            <div class="icons-left">
+              <ul>
+                <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+              </ul>
+            </div>
+            <div class="commnts-rgt">
+              <ul>
+                <li><h6>9 comments</h6></li>
+                <li><h6>0 share</h6></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="blog-details">
+            <h6>24 Aug 2020</h6>
+            <h4>Eirmod diam amet diam clita</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <a href="javascript:void(0)">Read More</a>
+          </div>
+        </div> 
+      </div>
+      <div class="col-md-4">
+        <div class="blog-block">
+          <div class="blog-main-img">
+            <img src="../../../assets/PublicAssets/images/blog-main-3.jpg" alt="">
+          </div>
+          <div class="crud">
+            <ul>
+              <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+              <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+            </ul>
+          </div>
+          <div class="blog-outer-cnt d-flex justify-content-between">
+
+            <div class="icons-left">
+              <ul>
+                <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+              </ul>
+            </div>
+            <div class="commnts-rgt">
+              <ul>
+                <li><h6>9 comments</h6></li>
+                <li><h6>0 share</h6></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="blog-details">
+            <h6>24 Aug 2020</h6>
+            <h4>Eirmod diam amet diam clita</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <a href="javascript:void(0)">Read More</a>
+          </div>
+        </div> 
+      </div>
+      <div class="col-md-4">
+        <div class="blog-block">
+          <div class="blog-main-img">
+            <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+          </div>
+          <div class="crud">
+            <ul>
+              <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+              <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+            </ul>
+          </div>
+          <div class="blog-outer-cnt d-flex justify-content-between">
+
+            <div class="icons-left">
+              <ul>
+                <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+              </ul>
+            </div>
+            <div class="commnts-rgt">
+              <ul>
+                <li><h6>9 comments</h6></li>
+                <li><h6>0 share</h6></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="blog-details">
+            <h6>24 Aug 2020</h6>
+            <h4>Eirmod diam amet diam clita</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <a href="javascript:void(0)">Read More</a>
+          </div>
+        </div> 
+      </div>
+      <div class="col-md-4">
+        <div class="blog-block">
+          <div class="blog-main-img">
+            <img src="../../../assets/PublicAssets/images/blog-main-3.jpg" alt="">
+          </div>
+          <div class="crud">
+            <ul>
+              <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+              <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+            </ul>
+          </div>
+          <div class="blog-outer-cnt d-flex justify-content-between">
+
+            <div class="icons-left">
+              <ul>
+                <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+              </ul>
+            </div>
+            <div class="commnts-rgt">
+              <ul>
+                <li><h6>9 comments</h6></li>
+                <li><h6>0 share</h6></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="blog-details">
+            <h6>24 Aug 2020</h6>
+            <h4>Eirmod diam amet diam clita</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <a href="javascript:void(0)">Read More</a>
+          </div>
+        </div> 
+      </div>
+     </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="create-own-blog-main">
+            <div class="create-main">
+              <div class="create-head"><h3>Create Your Own Diary</h3></div>
+              <div class="blog-form">
+                <div class="d-flex flex-wrap align-items-center justify-content-around upload-form-blk">
+                  <form>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <input type="text" name="" placeholder="Full Name">
+                        <i class="fa fa-user"></i>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <input type="text" name="" placeholder="Email">
+                        <i class="fa fa-envelope"></i>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <input type="text" name="" placeholder="Blog Subject">
+                        <i class="fa fa-bars"></i>
+                      </div>
+                    </div>
+                    <div class="form-row write-blog">
+                      <div class="form-group col-md-8">
+                        <textarea placeholder="write blog..."></textarea>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <input type="file" name="">
+                        <div class="upload-img"><img src="../../../assets/PublicAssets/images/upload-photo.png" alt=""></div>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <a href="javascript:void(0)" class="purpel-btn">post</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+        
+        </div>
+          <!-- tab-4 END -->
+
+          <!-- tab-5 START -->
+          <div class="tab-pane fade" id="pills-scrapbook" role="tabpanel" aria-labelledby="scrapbook-tab">
+            <div class="scrapbook-tab-main">
+            <div class="container">
+              <div class="d-flex flex-wrap">
+                <div class="col-md-8">
+                  <ul class="event-listing">
+                    <li>
+                      <div class="utility-detail">
+                        <div class="utility-detail-banner"><img src="../../../assets/PublicAssets/images/event-listing-1.jpg" alt=""></div>
+                        <div class="date-details">
+                          <div class="d-flex flex-wrap justify-content-between">
+                            <div class="col-md-2">
+                              <div class="date-box">
+                                <h3>24</h3>
+                                <h4>April</h4>
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="date-heading">
+                                <div class="date-h"><h3>London Going Visa</h3></div>
+                                <div class="place-time">
+                                  <h4><i class="fa fa-map-marker"></i>Brooklyn, NY 10036 new York united state</h4>
+                                  <h4><i class="fa fa-clock-o"></i>08 : 00 pm to 11:pm onwords</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="utility-held-detail">
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dropdown-linkres et ea rebum. Stet clita kasd.</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="utility-detail">
+                        <div class="utility-detail-banner"><img src="../../../assets/PublicAssets/images/event-listing-2.jpg" alt=""></div>
+                        <div class="date-details">
+                          <div class="d-flex flex-wrap justify-content-between">
+                            <div class="col-md-2">
+                              <div class="date-box">
+                                <h3>24</h3>
+                                <h4>April</h4>
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="date-heading">
+                                <div class="date-h"><h3>London Going Visa</h3></div>
+                                <div class="place-time">
+                                  <h4><i class="fa fa-map-marker"></i>Brooklyn, NY 10036 new York united state</h4>
+                                  <h4><i class="fa fa-clock-o"></i>08 : 00 pm to 11:pm onwords</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="utility-held-detail">
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dropdown-linkres et ea rebum. Stet clita kasd.</p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="utility-detail">
+                        <div class="utility-detail-banner"><img src="../../../assets/PublicAssets/images/event-listing-3.jpg" alt=""></div>
+                        <div class="date-details">
+                          <div class="d-flex flex-wrap justify-content-between">
+                            <div class="col-md-2">
+                              <div class="date-box">
+                                <h3>24</h3>
+                                <h4>April</h4>
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="date-heading">
+                                <div class="date-h"><h3>London Going Visa</h3></div>
+                                <div class="place-time">
+                                  <h4><i class="fa fa-map-marker"></i>Brooklyn, NY 10036 new York united state</h4>
+                                  <h4><i class="fa fa-clock-o"></i>08 : 00 pm to 11:pm onwords</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="utility-held-detail">
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br>
+                          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dropdown-linkres et ea rebum. Stet clita kasd.</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+
+                <div class="col-md-4">
+                  <div class="recent-blog-post">
+                    <div class="recent-blog-post-head">recent blog post</div>
+                    <div class="recent-blog-post-listing">
+                      <ul class="event-listing-inr">
+                        <li class="event-listing-images">
+
+                          <div class="post-list"><img src="../../../assets/PublicAssets/images/blog-list-1.jpg">
+                            <div class="post-date">25<br>Dec</div>
+                          </div>
+                          <div class="post-cnt"><p>Lorem Ipsum is simply dummy text the printing and typesetting industry.</p></div>
+
+                        </li>
+                        <li class="event-listing-images">
+
+                          <div class="post-list"><img src="../../../assets/PublicAssets/images/blog-list-1.jpg">
+                           <div class="post-date">25<br>Dec</div>
+                         </div>
+                         <div class="post-cnt"><p>Lorem Ipsum is simply dummy text the printing and typesetting industry.</p></div>
+
+                       </li>
+                       <li class="event-listing-images">
+
+                        <div class="post-list"><img src="../../../assets/PublicAssets/images/blog-list-1.jpg">
+                          <div class="post-date">25<br>Dec</div>
+                        </div>
+                        <div class="post-cnt"><p>Lorem Ipsum is simply dummy text the printing and typesetting industry.</p></div>
+
+                      </li>
+                      <li class="event-listing-images">
+
+                        <div class="post-list">               
+                          <img src="../../../assets/PublicAssets/images/blog-list-1.jpg">
+                          <div class="post-date">25<br>Dec</div>
+                        </div>
+                        <div class="post-cnt"><p>Lorem Ipsum is simply dummy text the printing and typesetting industry.</p></div>
+
+                      </li>
+
+                      <li class="event-listing-images">
+
+                        <div class="post-list"><img src="../../../assets/PublicAssets/images/blog-list-1.jpg">
+                          <div class="post-date">25<br>Dec</div>
+                        </div>
+                        <div class="post-cnt"><p>Lorem Ipsum is simply dummy text the printing and typesetting industry.</p></div>
+
+                      </li>
+
+                    </ul>  
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+          <!-- tab-5 END -->
+
+          <!-- tab-6 START -->
+          <div class="tab-pane fade" id="pills-friends-request" role="tabpanel" aria-labelledby="friends-request-tab">
+            <div class="friends-request-tab-main">
+            <div class="container">
+              <!-- <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search"> -->
+                      <!-- <select>
+                        <option>
+                          <div class="d-flex flex-wrap">
+                            <ul>
+                              <li>
+                              <div class="circel-img"><img src="../../../assets/PublicAssets/images/../../../assets/PublicAssets/images/user-5.png"></div>
+                              <div class="user-name">
+                                <h3>eva stuard</h3>
+                                <p>united state</p>
+                              </div>
+                              </li>
+                          </ul>
+                          </div>
+                        </option>
+                        <option>
+                          <div class="d-flex flex-wrap">
+                            <ul>
+                              <li>
+                              <div class="circel-img"><img src="../../../assets/PublicAssets/images/../../../assets/PublicAssets/images/user-5.png"></div>
+                              <div class="user-name">
+                                <h3>eva stuard</h3>
+                                <p>united state</p>
+                              </div>
+                              </li>
+                          </ul>
+                          </div>
+                        </option>
+                      </select> -->
+                    <!-- </div>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                  <div class="add-video text-right">
+                    <a href="javscriptscript:void(0)" class="purpel-btn add-blogs-hide">Add Post +</a>
+                  </div>
+                </div>
+                </div>
+              </div> -->
+              <div class="d-flex flex-wrap">
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="col-12 col-sm-6 col-md-3 mb-5">
+                  <div class="friend-list">
+                    <div class="friend-banner"><img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt=""></div>
+                    <div class="friend-img-main">
+                      <div class="friend-img"><img src="../../../assets/PublicAssets/images/social-profile.jpg" alt=""></div>
+                    <div class="friend-name">
+                      <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5>
+                    </div>
+                      <div class="friend-des">
+                        <p>Hi! My name is Merline but some people may know me as GameHuntress! I have a Twitch channel where I stream, play and review all the newest games.</p>
+                      </div>
+                      <div class="friends-message-btn">
+                        <a href="JavaScript:void(0)" class="purpel-btn">Add friend +</a>
+                        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+                    </div>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+              
+            </div>
+</div>
+
+          </div>
+          <!-- tab-6 END -->
+        </div>
+      </div>
+    
+</section>
+  
+
+ <!--Video Modal Start-->
+<div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+       </button>
+       <video controls autoplay loop id="video1">
+            <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!--Video Modal End-->
+
+<!-- about me Modal start-->
+<div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">About Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body about-popup">
+        <div class="form-group">
+          <label>Describe</label>
+          <textarea placeholder="About Me..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- about me Modal end-->
+
+<!-- Personal-Info Modal start-->
+<div class="modal fade" id="personal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">About Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body personal-info-main">
+        <div class="form-group">
+          <label>email</label>
+          <input type="email" name="">
+        </div>
+        <div class="form-group">
+          <label>Birthday</label>
+          <input type="date" name="">
+        </div>
+        <div class="form-group">
+          <label>Occupation</label>
+          <input type="date" name="">
+        </div>
+        <div class="form-group">
+          <label>city</label>
+          <select>
+            <option>Dehli</option>
+            <option>Indore</option>
+            <option>Pune</option>
+            <option>Banglore</option>
+            <option>Hyderabad</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <select>
+            <option>India</option>
+            <option>London</option>
+            <option>New york</option>
+            <option>Australia</option>
+            <option>Canada</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Personal-Info Modal end-->
+
+<!-- social-post Modal start-->
+<div class="modal fade" id="social-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload New Post Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body social-post-main">
+        <div class="top-status">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="update-status-tab" data-toggle="tab" href="#update-status" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-edit"></i>update status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="add-photo-video-tab" data-toggle="tab" href="#add-photo-video" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-image"></i>Add photos/video</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="update-status" role="tabpanel" aria-labelledby="update-status-tab">
+              <div class="form-group">
+                <label>Status</label>
+                <textarea placeholder="what's on your mind..."></textarea>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="add-photo-video" role="tabpanel" aria-labelledby="add-photo-video-tab">
+              <div class="form-group">
+                <label>upload photos</label>
+                <input type="file" name="">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- social-post Modal end-->
+
+
+<!-- profile social-post Modal start-->
+<div class="modal fade" id="profile-social-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload New Post Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body social-post-main upload-video-post-main">
+        <div class="top-status">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="update-status-tab" data-toggle="tab" href="#update-status" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-edit"></i>update status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="add-photo-video-tab" data-toggle="tab" href="#add-photo-video-new" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-image"></i>Add photos/video</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="update-status" role="tabpanel" aria-labelledby="update-status-tab">
+              <div class="form-group">
+                <label>Status</label>
+                <textarea placeholder="what's on your mind..."></textarea>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="add-photo-video-new" role="tabpanel" aria-labelledby="add-photo-video-tab">
+              <div class="form-group">
+                <label>upload photos</label>
+                <input type="file" name="">
+                <div class="drop-image"><img src="images/drop-attachment.png"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- profile social-post Modal end-->
+
+
+<!-- upload video Modal start-->
+<div class="modal fade" id="upload-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload videos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body upload-video-post-main">
+        <div class="form-group">
+          <label>upload photos</label>
+          <input type="file" name="">
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">upload</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- upload video Modal end-->
+
+<!-- upload photos Modal start-->
+<div class="modal fade" id="upload-photos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload videos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body upload-video-post-main">
+        <div class="form-group">
+          <label>upload photos</label>
+          <input type="file" name="">
+          <div class="drop-image"><img src="../../../assets/PublicAssets/images/drop-attachment.png"></div>
+        </div>
+        <div class="upload-pictures">
+          <ul>
+            <li><div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-2.jpg"><i class="fa fa-time"></i></div></li>
+            <li><div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-1.jpg"><i class="fa fa-times"></i></div></li>
+            <li><div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-2.jpg"><i class="fa fa-times"></i></div></li>
+            <li><div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-1.jpg"><i class="fa fa-times"></i></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">upload</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- upload photos Modal end-->
+
+
+<!-- gallery box Modal start-->
+<div class="gallery-box-main">
+<div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body gallery-box-modal">
+        <div class="container">
+          <div class="d-flex flex-wrap">
+            <div class="col-md-6">
+              <div class="gallery-left-img"><img src="../../../assets/PublicAssets/images/gallery-1.png"></div>
+            </div>
+            <div class="col-md-6">
+              <div class="gallery-right-cnt">
+              <div class="article-head d-flex align-items-center">
+                <div class="post-avatar ic-avatar avatar big">
+                  <a href="">
+                    <small class="post-avatar-placeholder">S</small>
+                    <span>Sidehustle</span>
+                  </a>
+                </div>
+                <div class="article-options ml-auto d-flex align-items-center">
+                  <div class="dropdown">
+                    <span class="dropdown-toggle" data-toggle="dropdown">
+                      <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                    </span>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Go to post</a>
+                      <a class="dropdown-item" href="#" data-dismiss="modal" aria-label="Close">Delete Post</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="user-comments-list">
+                <div class="coment-lisitng">
+                  <ul class="lisitng-start">
+                    <li>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                        <div class="col-md-10">
+                          <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                          </div>
+                          <div class="user-reaction">
+                            <ul class="reaction-line">
+                              <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                              <li>react</li>
+                              <li>29 min ago</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                        <div class="col-md-10">
+                          <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                          </div>
+                          <div class="user-reaction">
+                            <ul class="reaction-line">
+                              <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                              <li>react</li>
+                              <li>29 min ago</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                        <div class="col-md-10">
+                          <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                          </div>
+                          <div class="user-reaction">
+                            <ul class="reaction-line">
+                              <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                              <li>react</li>
+                              <li>29 min ago</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+                <div class="load-more-text">Load more comments <span>9+</span></div>
+
+                <div class="comment-box">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Comment">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i class="fa fa-send"></i></span>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- gallery box Modal end-->
+
+
+
+<!-- gallery box video Modal start-->
+<div class="gallery-box-main">
+<div class="modal fade" id="gallery-modal-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body gallery-box-modal">
+        <div class="container">
+          <div class="d-flex flex-wrap">
+            <div class="col-md-6">
+              <div class="gallery-left-video">
+                <video controls width="100%" poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217">
+                  <source src="../../../assets/PublicAssets/video/AWP.mp4">
+                  <source src="../../../assets/PublicAssets/video/AWP.ogg">
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="gallery-right-cnt">
+              <div class="article-head d-flex align-items-center">
+                <div class="post-avatar ic-avatar avatar big">
+                  <a href="">
+                    <small class="post-avatar-placeholder">S</small>
+                    <span>Sidehustle</span>
+                  </a>
+                </div>
+                <div class="article-options ml-auto d-flex align-items-center">
+                  <div class="dropdown">
+                    <span class="dropdown-toggle" data-toggle="dropdown">
+                      <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                    </span>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Go to post</a>
+                      <a class="dropdown-item" href="#" data-dismiss="modal" aria-label="Close">Delete Post</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="user-comments-list">
+                <div class="coment-lisitng">
+                  <ul class="lisitng-start">
+                    <li>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                        <div class="col-md-10">
+                          <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                          </div>
+                          <div class="user-reaction">
+                            <ul class="reaction-line">
+                              <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                              <li>react</li>
+                              <li>29 min ago</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                        <div class="col-md-10">
+                          <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                          </div>
+                          <div class="user-reaction">
+                            <ul class="reaction-line">
+                              <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                              <li>react</li>
+                              <li>29 min ago</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-md-2"><div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png"></div></div>
+                        <div class="col-md-10">
+                          <div class="user-comments"><p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we have at least half the fun than last time it will be an incredible success!</p>
+                          </div>
+                          <div class="user-reaction">
+                            <ul class="reaction-line">
+                              <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                              <li>react</li>
+                              <li>29 min ago</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+                <div class="load-more-text">Load more comments <span>9+</span></div>
+
+                <div class="comment-box">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Comment">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"><i class="fa fa-send"></i></span>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- gallery box video Modal end-->

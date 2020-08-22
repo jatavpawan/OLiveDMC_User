@@ -1,0 +1,312 @@
+
+
+  
+  <div class="overlay"></div>
+  
+  <!-- fixed social media start-->
+  <div id="fixed-social">
+    <div>
+      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+    </div>
+    <div>
+      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+    </div>
+  </div>
+  <!-- fixed social media end -->
+  <!-- slider section html START -->
+  
+  
+  <!-- inner banner section html START -->
+  
+  <section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../assets/PublicAssets/images/faq-banner.jpg)">
+  
+      <div class="baner-cnt">
+        <h2>FAQ'S</h2>
+        <div class="breadcrumbs">
+          <a href="home.html">Home</a><span class=""> / </span><span class="current">FAQ'S</span>
+        </div>
+      </div>
+  
+  </section>
+  
+  <section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+    <div class="baner-cnt">
+      <h2>{{bannerDetail?.title}}</h2>
+      <div class="breadcrumbs">
+        <a href="home.html">Home</a><span class=""> / </span><span class="current">FAQ'S</span>
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- inner banner section html END -->
+  
+  
+  <!-- faq section START -->
+  <section class="comon-space">
+    <div class="container">
+      <div class="comn-heading">
+        <h2>Top Ten Most Popular FAQ's</h2>
+        <h3 class="heading-before">Top FAQ"S</h3>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <div class="d-flex flex-wrap">
+         <div class="col-md-6">
+           <div class="faq-left">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div *ngFor="let leftFaq of leftFaqs;let i = index" class="panel panel-default wow fadeInLeft" [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms">
+                <div class="panel-heading" role="tab" [id]="'heading'+leftFaq.id">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#'+leftFaq.id" aria-expanded="true" aria-controls="{{leftFaq.id}}">
+                      <i class="more-less fa fa-plus"></i>
+                      {{leftFaq.title}}
+                    </a>
+                  </h4>
+                </div>
+                <div [id]="leftFaq.id" class="panel-collapse collapse" role="tabpanel" [attr.aria-labelledby]="'heading'+leftFaq.id">
+                  <div class="panel-body">
+                    <p [innerHTML]="leftFaq.description|safeHtml"></p>
+                  <!-- <p>Thank you for taking sides with us and purchasing our theme. In order for the theme to function properly on your site, you must be running WordPress 4.9 or higher, PHP 5.6 or higher, and MySQL 5 or higher. We have tested it with Mac, Windows and Linux.</p> -->
+                  </div>
+                </div>
+              </div>  
+
+              <!-- <div class="panel panel-default wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <i class="more-less fa fa-plus"></i>
+                      Theme Requirements
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+  
+                  <p>Thank you for taking sides with us and purchasing our theme. In order for the theme to function properly on your site, you must be running WordPress 4.9 or higher, PHP 5.6 or higher, and MySQL 5 or higher. We have tested it with Mac, Windows and Linux.</p>
+                  </div>
+                </div>
+              </div>   -->
+  
+  
+              <!-- <div class="panel panel-default wow fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <i class="more-less fa fa-plus"></i>
+                      How to translate the theme
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    <p>PPC can work in distinct ways, based upon your advertisement network and advertising type. By way of example, while similar, Microsoft Advertising and Google Ads use different algorithms for their advertising auctions. When discussing how PPC advertising functions, most refer to Google's procedure</p>
+                    <h5>So, if you advertise on Google, you can anticipate the following:</h5>
+                    <ul class="keyword-style">
+                      <li>A user searches on an internet search engine such as Google</li>
+                      <li>Google launches the ad auction, compiling all pertinent ads and their Quality Scores</li>
+                      <li>The voucher appears at every ad's bid, quality, and potential impact to assign an Advertisement Rank</li>
+                      <li>Google delivers the advertisements in order of highest Ad Rank to lowest Ad Rank</li>
+                    </ul>
+                    <p>With the following formula, Google also computes your CPC throughout the ad auction:</p>
+                    <p>CPC = Advertisement Rank of this advertisement below you Your Quality score + $0.01</p>
+                    <p>This formula is the reason why PPC consultants, as well as agencies, focus on generating high quality. If you desire to construct an engaging advertisement, you can attain a more top quality score, which can result in lower costs and an improved Ad Rank.</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="panel panel-default wow fadeInLeft" data-wow-delay="400ms" data-wow-duration="1500ms">
+                <div class="panel-heading" role="tab" id="headingThree">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <i class="more-less fa fa-plus"></i>
+                      Why use Pay Per Click advertising?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+                    <h5>There are a lot of reasons. We provided 10 of these:</h5>
+                    <ul class="keyword-style">
+                      <li>It's scalable</li>
+                      <li>It's measurable</li>
+                      <li>It's flexible</li>
+                      <li>It is quicker than SEO</li>
+                      <li>It's (usually) simpler than SEO</li>
+                      <li>It's taking over the SERPs</li>
+                      <li>It is engaging</li>
+                      <li>It converts</li>
+                      <li>It's complementary to other advertising channels</li>
+                      <li>Your competitors are doing it</li>
+                    </ul>
+  
+                  </div>
+                </div>
+              </div>
+  
+              <div class="panel panel-default wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
+                <div class="panel-heading" role="tab" id="headingFour">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      <i class="more-less fa fa-plus"></i>
+                      Which kind of businesses should use marketing, and why?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+                    <h5>Almost every kind of business should be using some online advertising because that's where the people are! Some of the business types that may benefit, particularly from PPC comprise:</h5>
+                    <ul class="keyword-style">
+                      <li>Business with high customer lifetime values, including dentists and doctors, online degree programs, and cable and internet providers</li>
+                      <li>Businesses with large margins like attorneys, repairers, and vendors of all big-ticket things such as appliances and automobiles.</li>
+                      <li>Firms that sell hard-to-find products, which people often order rather than looking for in brick-and-mortar shops</li>
+                      <li>Firms with a broad, diverse array of goods such as Amazon, eBay, Target, and department stores</li>
+                      <li>Seasonal businesses like florists and gift baskets</li>
+                    </ul>
+                    <p>But again, the internet is for everyone, and whatever your business, there is likely a form of internet marketing that you ought to be taking advantage of.</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="panel panel-default wow fadeInLeft" data-wow-delay="800ms" data-wow-duration="1500ms">
+                <div class="panel-heading" role="tab" id="headingFive">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      <i class="more-less fa fa-plus"></i>
+                      Why Advertise with pay-per-click advertisements?
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                  <div class="panel-body">
+                   <h5>Advertising with PPC advertisements offers your business several benefits in the marketplace</h5>
+                   <ul class="keyword-style">
+                    <li>Establish a custom budget Which You Can alter at any time</li>
+                    <li>Access useful targeting options unavailable in traditional advertising</li>
+                    <li>Get insightful audience and campaign data</li>
+                    <li>Respond to campaign functionality in real-time to maximize performance</li>
+                    <li>Appear above organic results in Internet searches</li>
+                    <li>Outrank competitions</li>
+                    <li>Accomplish various goals, from brand recognition to buys</li>
+                    <li>Reach people when they're looking for you</li>
+                    <li>Support other digital marketing campaigns, such as search engine optimization (Search Engine Optimization )</li>
+                  </ul>
+                  <p>The simple fact that PPC provides an ROI of 2:1 shows its usefulness in your marketing strategy. If you want to Cultivate your business online, also, to compete with top competitors, PPC can assist you in accomplishing those goals.</p>
+                </div>
+              </div>
+            </div> -->
+  
+            </div>         
+           </div>
+         </div>
+  
+         <div class="col-md-6">
+           <div class="faq-rgt">
+             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+             <div  *ngFor="let rightFaq of rightFaqs;let i = index" class="panel panel-default wow fadeInRight" [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms">
+              <div class="panel-heading" role="tab" [id]="'heading'+rightFaq.id">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#'+rightFaq.id" aria-expanded="false" aria-controls="collapseSix">
+                    <i class="more-less fa fa-plus"></i>
+                    {{rightFaq.title}}
+                  </a>
+                </h4>
+              </div>
+              <div [id]="rightFaq.id" class="panel-collapse collapse" role="tabpanel" [attr.aria-labelledby]="'heading'+rightFaq.id">
+                <div class="panel-body">
+                  <p [innerHTML]="rightFaq.description|safeHtml"></p>
+                  <!-- <p>Ads that appear in search results bring in more than 45% of web page clicks</p>
+                  <p>Better still, people who click on ads are twice as likely to obtain a product or service than a natural visitor or somebody who visits your site without clicking an ad. With PPC ads, you can reach people looking to purchase, which can make an immediate impact.</p>
+                  <p>Not to mention, PPC advertisements also provide an average return on investment (ROI) of $2 for each $1 invested. That number increases to $ 8 if you are marketing with Google Ads</p>
+                  <p>According to several studies, people are more likely to click on these attractive and engaging ads than organic posts.</p> -->
+                </div>
+              </div>
+            </div>
+  
+            <!-- <div class="panel panel-default wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
+              <div class="panel-heading" role="tab" id="headingSeven">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    <i class="more-less fa fa-plus"></i>
+                    Where can you advertise with PPC ads?
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                <div class="panel-body">
+                  <p>You can market across the web with PPC advertisements</p>
+                  <h5>The most well-known locations include</h5>
+                  <ul class="keyword-style">
+                    <li>Search outcome</li>
+                    <li>bookmarking sites</li>
+                    <li>Social networking</li>
+                  </ul>
+                  <h5>When advertisements online, most businesses will focus on specific platforms, like</h5>
+                  <ul class="keyword-style">
+                    <li>Google</li>
+                    <li>Bing</li>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>LinkedIn</li>
+                    <li>Instagram</li>
+                    <li>YouTube</li>
+                  </ul>
+                  <p>If you're producing a PPC campaign, you wish to focus your efforts on the most precious channels for your industry</p>
+                  <p>For example, if your audience uses Facebook more than Twitter, you most likely wish to dedicate more of your advertising budget into Facebook. Polling clients that are current, as well as assessing your audience, can help concentrate your PPC campaign on the platforms with the most possible engagement</p>
+  
+  
+                </div>
+              </div>
+            </div>
+  
+            <div class="panel panel-default wow fadeInRight" data-wow-delay="400ms" data-wow-duration="1500ms">
+              <div class="panel-heading" role="tab" id="headingEight">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                    <i class="more-less fa fa-plus"></i>
+                    Why is the click-through rate significantly less than Google's of Facebook?
+                  </a>
+                </h4>
+              </div>
+              <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                <div class="panel-body">
+                  <p>The average CTR of a Facebook advertisement is approximately 0.05%. The average CTR of a Google display ad is around 0.4% -- nearly ten times higher. Search ads have CTR. There might be several reasons Facebook's advertising CTR might be comparatively low:</p>
+                  <ul class="keyword-style">
+                    <li>Facebook's advertising formats are more restrictive and less engaging than Google's.</li>
+                    <li>Facebook ads are more clearly ads, whereas Google ads blend in more seamlessly with all the organic results.</li>
+                    <li>Folks aren't in shopping mode when using Facebook.</li>
+                  </ul>
+                  <p>However, none of this implies that you can't make Facebook marketing work for you</p>
+  
+  
+                </div>
+              </div>
+            </div> -->
+  
+           </div>
+         </div>
+       </div>
+
+        </div>
+        
+       </div>
+  
+  </section>
+  <!-- faq section END -->
+  
+  
+  
+  

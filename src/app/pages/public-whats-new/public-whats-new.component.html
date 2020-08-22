@@ -1,0 +1,353 @@
+<div class="overlay"></div>
+
+<!-- fixed social media start-->
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+  </div>
+</div>
+<!-- fixed social media end -->
+<!-- slider section html START -->
+
+
+<!-- inner banner section html START -->
+
+<section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../assets/PublicAssets/images/whats-new-banner.jpg)">
+
+  <div class="baner-cnt">
+    <h2>What's New</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">What's new</span>
+    </div>
+  </div>
+
+</section>
+
+<section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+  <div class="baner-cnt">
+    <h2>{{bannerDetail?.title}}</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">What's new</span>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- inner banner section html END -->
+
+
+<!-- interview section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Interviews</h2>
+      <h3 class="heading-before">Interviews</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <ng-container *ngFor="let interview of interviews;let i = index">
+        <div class="col-md-4 mb-5" [ngClass]="{'col-md-8': i == 1, 'col-md-4': i != 1 }">
+          <div class="interview-video-main wow fadeInLeft"
+            [ngClass]="{'fadeInLeft': i==0, 'fadeInRight': i==1, 'fadeInUp': i>1 }"
+            [attr.data-wow-delay]="interview?.dataWowDelay" data-wow-duration="1500ms">
+            <div class="interview-video"><img [routerLink]="['/interviewInWhatsNew-detail', interview?.id]" [src]="interviewImgsrcPath+interview?.featuredImage" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3 [routerLink]="['/interviewInWhatsNew-detail', interview?.id]">{{interview?.title}}</h3>
+              <p>{{interview?.shortDescription}}</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" *ngIf="interview?.video != '' && interview?.video != null ">
+              <span type="button" (click)="openDialog(interviewVideosrcPath+interview?.video)">&nbsp;<img
+                  src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- <div class="col-md-4 mb-5">
+        <div class="interview-video-main wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/interview-1.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 mb-5">
+        <div class="interview-video-main wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/interview-2.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="interview-video-main wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/interview-3.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="interview-video-main wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/interview-4.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="interview-video-main wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/interview-5.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+<!-- interview section END -->
+
+<!-- new destination section START -->
+
+<section class="blue-bg">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>New Destinations</h2>
+      <h3 class="heading-before">Destinations</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+
+
+
+      <ng-container *ngFor="let destination1 of destinations1;let i = index">
+        <div class="col-md-3 mb-5">
+          <div class="events-main wow fadeInUp" [attr.data-wow-delay]=" (i*200)+'ms' " data-wow-duration="1500ms">
+            <div class="events-img"><img [routerLink]="['/newDestinationInWhatsNew-detail', destination1?.id]" [src]="destinationImgsrcpath+destination1?.featuredImage" alt=""></div>
+            <div class="destination-cnt">
+              <h3 [routerLink]="['/newDestinationInWhatsNew-detail', destination1?.id]">{{destination1?.title}}</h3>
+              <h4>{{destination1?.location}}</h4>
+              <p>{{destination1?.shortDescription}}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- <div class="col-md-3 mb-5">
+        <div class="events-main wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Vibra Mahou Fest</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="events-main wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Kenny G</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="events-main wow fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="events-main wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Peetercen Ballet</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <ng-container *ngFor="let destination2 of destinations2;let i = index">
+        <div class="mb-5" [ngClass]="{'col-md-6': i < 2, 'col-md-4': i >= 2 }">
+          <div class="interview-video-main wow" [attr.data-wow-delay]="destination2?.dataWowDelay" data-wow-duration="1500ms" [ngClass]="{'fadeInLeft': i==0, 'fadeInRight': i==1, 'fadeInUp': i>1 }"ration="1500ms">
+            <div class="interview-video"><img [routerLink]="['/newDestinationInWhatsNew-detail', destination2?.id]" [src]="destinationImgsrcpath+destination2?.featuredImage" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3 [routerLink]="['/newDestinationInWhatsNew-detail', destination2?.id]">{{destination2?.title}}</h3>
+              <p>{{destination2?.shortDescription}}</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" *ngIf="destination2?.video != '' && destination2?.video != null ">
+              <span type="button" (click)="openDialog(destinationVideosrcpath+destination2?.video)" >&nbsp;<img
+                  src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div> 
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- <div class="col-md-6 mb-5">
+        <div class="interview-video-main wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/destionation-v-1.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-5">
+        <div class="interview-video-main wow fadeInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/destionation-v-2.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="interview-video-main wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/destionation-v-3.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="interview-video-main wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/destionation-v-4.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="interview-video-main wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+          <div class="interview-video"><img src="../assets/PublicAssets/images/destionation-v-5.jpg" alt=""></div>
+          <div class="interview-video-cnt">
+            <h3>Eva Stuard</h3>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+          <div class="hero-video" data-wow-delay="0.5s">
+            <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img
+                src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+</section>
+
+<!-- new destination section END -->
+
+
+
+
+
+
+
+<!--Video Modal Start-->
+<div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <video controls autoplay loop id="video1">
+          <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Video Modal End-->

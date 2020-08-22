@@ -1,0 +1,512 @@
+<!-- <div class="loader"></div> -->
+<!--  <embed src="/html/Kalimba.mp3" loop="true" autostart="true" width="2" height="0"> -->
+
+
+<div class="overlay"></div>
+
+<!-- fixed social media start-->
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+  </div>
+</div>
+<!-- fixed social media end -->
+<!-- slider section html START -->
+
+<section class="banner-top">
+
+  <div class="slider">
+    <div class="slider__slide slider__slide--active" data-slide="1">
+      <div class="slider__wrap">
+        <div class="slider__back"></div>
+      </div>
+      <div class="slider__inner">
+        <div class="slider__content">
+          <h1>Just Go</h1><a class="go-to-next">next</a>
+        </div>
+      </div>
+    </div>
+    <div class="slider__slide" data-slide="2">
+      <div class="slider__wrap">
+        <div class="slider__back"></div>
+      </div>
+      <div class="slider__inner">
+        <div class="slider__content">
+          <h1>adventure Waterfall</h1><a class="go-to-next">next</a>
+        </div>
+      </div>
+    </div>
+    <div class="slider__slide" data-slide="3">
+      <div class="slider__wrap">
+        <div class="slider__back"></div>
+      </div>
+      <div class="slider__inner">
+        <div class="slider__content">
+          <h1>Clibing pie of Rock</h1><a class="go-to-next">next</a>
+        </div>
+      </div>
+    </div>
+    <div class="slider__indicators"></div>
+  </div>
+</section>
+<!-- slider section html START -->
+
+
+<!-- home destination section css START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Destination Videos</h2>
+      <h3 class="heading-before">destination</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="destination--video-slider">
+    <div class="section-padding">
+      <owl-carousel  [options]="destinationVideosSlideOptions" [items]="destinationVideos" [carouselClasses]="['owl-theme', 'screenshot_slider', 'sliding']">
+       <ng-container *ngFor="let destinationVideo of destinationVideos; let i=index">
+          <div class="item" *ngIf="destinationVideo?.showInFrontEnd == true">
+            <div class="destination-main-video">
+              <img [routerLink]="['/destinationVideos-detail', destinationVideo?.id]" [src]="destinationVideoImgsrcpath+destinationVideo?.featuredImage" alt="" title="">
+              <div class="hero-video" data-wow-delay="0.5s">
+                <span type="button" (click)="openDialog(destinationVideosVideosrcpath+destinationVideo?.video)">&nbsp;<img
+                    src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+              <div [routerLink]="['/destinationVideos-detail', destinationVideo?.id]" class="video-heading">#{{i+1}} {{destinationVideo?.title}}</div>
+            </div>
+          </div>
+        </ng-container>
+      </owl-carousel>
+    </div>
+  </div>
+</section>
+<!-- home destination section css END -->
+
+<!-- theme based pacakges section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Theme Based Packages</h2>
+      <h3 class="heading-before">Packages</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="about-rgt">
+      <div class="pacakge-img">
+        <owl-carousel id="theme-based"  [options]="themeSlideOptions" [items]="themes" [carouselClasses]="['owl-theme', 'sliding']">
+          <ng-container *ngFor="let theme of themes">
+            <div class="item" *ngIf=" theme?.status == true" >
+              <div class="blog-blk" [routerLink]="['/theme-detail', theme?.id]">
+                <img  [src]="themeimgsrcpath+theme?.featuredImage" alt="">
+                <div class="theme-cnt">
+                  <h3>{{theme?.themeName}}</h3>
+                  <p [innerHTML]="theme?.description|safeHtml"></p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </owl-carousel>
+      </div>
+    </div>
+
+  </div>
+
+
+</section>
+
+<!-- theme based pacakges section END -->
+
+<!-- profile section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Profile</h2>
+      <h3 class="heading-before">Profile</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="profile-main">
+    <div class="d-flex flex-wrap">
+      <div class="col-md-6">
+        <div class="profile-left d-flex flex-wrap justify-content-center">
+          <div class="profile-bg"><img src="../assets/PublicAssets/images/profile-bg.jpg" alt=""></div>
+          <div class="profile-1"><img src="../assets/PublicAssets/images/People-1.jpg" alt=""></div>
+          <div class="profile-2"><img src="../assets/PublicAssets/images/People-2.jpg" alt=""></div>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <div class="profile-right">
+          <div class="d-flex flex-wrap">
+            <div class="col-md-6">
+              <div class="travel-guru">
+                <h2>Travel Gurus Profile</h2>
+                <ul>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-1.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-2.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-3.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-4.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-5.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="travel-guru">
+                <h2>Expert Travllers</h2>
+                <ul>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-6.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-7.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-8.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-9.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">
+                      <div class="guru-main d-flex flex-wrap align-items-top">
+                        <div class="guru-left">
+                          <img src="../assets/PublicAssets/images/user-10.png" alt="">
+                        </div>
+                        <div class="guru-rgt">
+                          <h4>eva stuard</h4>
+                          <p>Lorem Ipsum is simply dummy text the printing and typesetting.</p>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- profile section END -->
+
+<!-- latest blog section START -->
+<section class="pink-bg">
+
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Latest Blog</h2>
+      <h3 class="heading-before">Blog</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <div class="col-md-4 mb-4" *ngFor="let blog of blogPriorityList">
+        <div class="blog-main">
+          <div class="blog-img" [routerLink]="['/blog-detail', blog?.id]"><img [src]="blogimgsrcpath+blog?.featuredImage" alt=""></div>
+          <div class="blog-cnt">
+            <h3>{{ blog?.createdDate|date: 'MMM dd, yyyy'}}</h3>
+            <h4 class="blog-title" [routerLink]="['/blog-detail', blog?.id]">{{blog?.title}}</h4>
+            <!-- <p [innerHTML]="blog?.description|safeHtml"> </p> -->
+            <p>{{blog?.shortDescription}} </p>
+            <a [routerLink]="['/blog-detail', blog?.id]">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- latest blog section END-->
+
+
+<!-- interview video section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Interview Videos</h2>
+      <h3 class="heading-before">Interview</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="interview-video">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center interview-video-inr">
+        <div class="col-md-8">
+          <owl-carousel id="owl-interview-video"  [options]="interviewSlideOptions" [items]="interviews" [carouselClasses]="['owl-theme', 'sliding']">
+            <ng-container *ngFor="let interview of interviews">
+              <div class="item" *ngIf=" interview?.showInFrontEnd == true" >
+                <div class="d-flex flex-wrap align-items-center interview-video-left">
+                  <div class="col-md-6">
+                    <div class="interview-lft-cnt">
+                      <h2 [routerLink]="['/interview-detail', interview?.id]">{{interview?.name}}</h2>
+                      <h3>{{interview?.designation}}</h3>
+                      <p  [innerHTML]="interview?.description|safeHtml"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="interview-rgt-img">
+                      <img [routerLink]="['/interview-detail', interview?.id]" [src]="interviewImgsrcpath+interview?.featuredImage" alt="">
+                    </div>
+                    <div class="hero-video" data-wow-delay="0.5s">
+                      <span type="button" (click)="openDialog(interviewVideosrcpath+interview?.video)" >&nbsp;<img
+                          src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </owl-carousel>
+        </div>
+        <div class="col-md-4">
+          <div class="interview-video-bg">
+            <img src="../assets/PublicAssets/images/video-bg.jpg" alt="">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<!-- interview video section END -->
+
+
+<!-- trending news section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Trending News</h2>
+      <h3 class="heading-before">Trending News</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="d-flex flex-wrap tranding-main-all">
+    <div class="col-md-3" *ngFor="let news of trendingNewses">
+      <div class="tranding-main-upr">
+        <div class="tranding-main" [routerLink]="['/trendingNews-detail', news?.id]">
+          <img [src]="trendingNewsImgsrcPath+news?.featuredImage" alt="">
+          <div class="tranding-cnt">
+            <h3>{{news?.title}}</h3>
+            <p [innerHTML]="news?.description|safeHtml"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- trending news section END -->
+
+<!-- events section START -->
+<section class="green-bg">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Events in 2020</h2>
+      <h3 class="heading-before">Events</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <ng-container *ngFor="let latestEvent of latestEvents">
+        <div class="col-md-3 mb-5" *ngIf="latestEvent?.showInFrontEnd != false">
+          <div class="events-main">
+            <div [routerLink]="['/latestEvent-detail', latestEvent?.id]" class="events-img"><img [src]="latestEventImgsrcPath+latestEvent?.featuredImage" alt=""></div>
+            <div class="events-cnt">
+              <h3>{{ latestEvent?.createdDate|date: 'MMM dd, yyyy'}}</h3>
+              <h4 [routerLink]="['/latestEvent-detail', latestEvent?.id]">{{latestEvent?.title}}</h4>
+              <h5><i class="fa fa-map-marker"></i>{{latestEvent?.location}}</h5>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</section>
+
+<!-- events section END -->
+
+<!-- top 10 destionation section START -->
+
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Top 10 Destination to Visit In India</h2>
+      <h3 class="heading-before">Top Destination</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <ng-container *ngFor="let destination of topDestinations">
+        <div class="col-md-3 mb-5" *ngIf="destination?.showInFrontEnd == true">
+          <div class="flip-card">
+            <div class="flip-card-inner" [routerLink]="['/topDestination-detail', destination?.id]">
+              <div class="flip-card-front">
+                <img [src]="destinationImgsrcPath+destination?.featuredImage" alt="">
+              </div>
+              <div class="flip-card-back">
+                <h3>{{destination?.title}}</h3>
+                <p [innerHTML]="destination?.description|safeHtml "></p>
+                <a href="javascript:void(0)">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+
+</section>
+<!-- top 10 destionation section END -->
+
+<!--Video Modal Start-->
+<!-- <div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <video controls autoplay loop id="video1">
+          <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--Video Modal End-->

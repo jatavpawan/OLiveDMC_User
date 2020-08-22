@@ -1,0 +1,34 @@
+<!-- <p>open-video works!</p> -->
+
+
+<!-- <div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <video controls autoplay loop id="video1">
+            <source src="../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+  
+      </div>
+    </div>
+  </div> -->
+
+
+  <mat-dialog-content>
+    <div class="video-model-body">
+      <button type="button" class="close"  mat-dialog-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <!-- <video controls autoplay width="200" height="200"  loop id="video1"> -->
+      <video controls autoplay loop id="video1">
+        <!-- <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4"> -->
+        <source [src]="data" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </mat-dialog-content>

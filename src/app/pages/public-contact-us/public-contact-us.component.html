@@ -1,0 +1,147 @@
+<div class="overlay"></div>
+
+<!-- fixed social media start-->
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+  </div>
+</div>
+<!-- fixed social media end -->
+<!-- slider section html START -->
+
+
+<!-- inner banner section html START -->
+
+<section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner"
+  style="background-image: url(../assets/PublicAssets/images/contact-us-banner.jpg)">
+
+  <div class="baner-cnt">
+    <h2>Contact Us</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Contact Us</span>
+    </div>
+  </div>
+
+</section>
+
+<section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner"
+  [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+  <div class="baner-cnt">
+    <h2>{{bannerDetail?.title}}</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Contact Us</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- inner banner section html END -->
+
+
+<!-- contact us section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Let's Get in touch</h2>
+      <h3 class="heading-before">Get in Touch</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-top">
+      <div class="col-md-5">
+        <div class="contact-left">
+          <h3 class="wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">Let's discuss your<br>thoughts now
+          </h3>
+          <p class="wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">Contact us to give life to awesome
+            ideas or make suggestions on improvements to be made.</p>
+          <h4 class="wow fadeInLeft" data-wow-delay="900ms" data-wow-duration="1500ms">Email us
+            :<span>info@livetravller.com</span></h4>
+          <div class="social-icons-contact wow fadeInLeft" data-wow-delay="1100ms" data-wow-duration="1500ms">
+            <ul>
+              <li><a href="javascript:void(0)"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="javascript:void(0)"><i class="fa fa-envelope"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <div class="contact-form">
+          <form [formGroup]="contactUsForm">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">First Name</label>
+                <input type="text" class="form-control" placeholder="John" formControlName="firstName">
+                <span class="text-danger "
+                  *ngIf="(contactUsForm.get('firstName').touched && contactUsForm.get('firstName').hasError('required')) || (contactUsForm.get('firstName').untouched && submitContactUsForm == true) ">
+                  First Name is required</span>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Last Name</label>
+                <input type="text" class="form-control" placeholder="Deo" formControlName="lastName">
+                <span class="text-danger "
+                  *ngIf="(contactUsForm.get('lastName').touched && contactUsForm.get('lastName').hasError('required')) || (contactUsForm.get('lastName').untouched && submitContactUsForm == true) ">
+                  Last Name is required</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Mobile Number</label>
+                <input type="text" class="form-control" placeholder="Enter Mobile Number" maxlength="10"
+                  formControlName="mobile">
+                <span class="text-danger "
+                  *ngIf="(contactUsForm.get('mobile').touched && contactUsForm.get('mobile').hasError('required')) || (contactUsForm.get('mobile').untouched && submitContactUsForm == true) ">
+                  Mobile is required</span>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Email Address</label>
+                <input type="email" class="form-control" placeholder="Deo" formControlName="email">
+                <span class="text-danger "
+                  *ngIf="(contactUsForm.get('email').touched && contactUsForm.get('email').hasError('required')) || (contactUsForm.get('email').untouched && submitContactUsForm == true) ">
+                  Email Address is required</span>
+              </div>
+            </div>
+            <!-- <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Select Cities</label>
+                <ng-select [items]="cities2" bindLabel="name" bindValue="id" [multiple]="true"
+                  placeholder="Select cities">
+                </ng-select>
+              </div>
+            </div> -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="inputAddress">Message</label>
+                <textarea placeholder="message here..." formControlName="message"></textarea>
+                <span class="text-danger "
+                  *ngIf="(contactUsForm.get('message').touched && contactUsForm.get('message').hasError('required')) || (contactUsForm.get('message').untouched && submitContactUsForm == true) ">
+                  Message is required</span>
+              </div>
+            </div>
+
+            <button class="btn purpel-btn" (click)="submitContactUsData()">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- contact page section END -->

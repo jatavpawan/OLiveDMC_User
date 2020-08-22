@@ -1,0 +1,90 @@
+<!-- <p>travel-utility-form works!</p> -->
+
+<mat-dialog-content>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{data}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" mat-dialog-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!-- <form [formGroup]="utilityForm" (ngSubmit)="submitUtilityData()"> -->
+    <form [formGroup]="utilityForm">
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Name:</label>
+                <input type="text" class="form-control" id="recipient-name" formControlName="name">
+                <span class="text-danger "
+                    *ngIf="(utilityForm.get('name').touched && utilityForm.get('name').hasError('required')) || (utilityForm.get('name').untouched && submitUtilityForm == true) ">
+                    Name is required</span>
+            </div>
+            <div class="form-group">
+                <label for="recipient-email" class="col-form-label">Email:</label>
+                <input type="text" class="form-control" id="recipient-name" formControlName="email">
+                <span class="text-danger "
+                    *ngIf="(utilityForm.get('email').touched && utilityForm.get('email').hasError('required')) || (utilityForm.get('email').untouched && submitUtilityForm == true) ">
+                    Email is required</span>
+
+            </div>
+            <div class="form-group">
+                <label for="recipient-number" class="col-form-label">Mobile:</label>
+                <input type="text" class="form-control" id="recipient-number" formControlName="mobile">
+                <span class="text-danger "
+                    *ngIf="(utilityForm.get('mobile').touched && utilityForm.get('mobile').hasError('required')) || (utilityForm.get('mobile').untouched && submitUtilityForm == true) ">
+                    Mobile is required</span>
+
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="message-text" formControlName="message"></textarea>
+                <span class="text-danger "
+                    *ngIf="(utilityForm.get('message').touched && utilityForm.get('message').hasError('required')) || (utilityForm.get('message').untouched && submitUtilityForm == true) ">
+                    Message is required</span>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" mat-dialog-close>Close</button>
+            <button type="button" class="btn btn-primary" (click)="submitUtilityData()">Save changes</button>
+        </div>
+    </form>
+</mat-dialog-content>
+
+
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Forex</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-email" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="recipient-number" class="col-form-label">Mobile:</label>
+              <input type="text" class="form-control" id="recipient-number">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

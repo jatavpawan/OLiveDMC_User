@@ -1,0 +1,11 @@
+.blog-main-img:focus , .blog-title:focus , .blog-read-more:focus{
+   outline: none;
+}
+.blog-main-img:hover , .blog-title:hover , .blog-read-more:hover{
+    cursor: pointer; 
+}
+.load-more-blogs{
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}
