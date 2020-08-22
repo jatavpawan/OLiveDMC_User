@@ -195,6 +195,30 @@ export class PublicHomeComponent implements OnInit {
       goToSlide(currentSlide);
     })
 
+
+    //for home page banner slider START
+$('#banner-slider').owlCarousel({
+  loop: true,
+  margin: 20,
+  dots:false,
+  nav: false,
+  autoplay: true,
+  animateOut: 'fadeOut',
+  autoplaySpeed:2000,
+  responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 1
+    },
+    1000: {
+      items: 1
+    }
+  }
+});
+//for home page banner slider END
+
     this.getBlogPriorityList();
     this.GetAllLatestEventInFrontEnd();
     this.GetAllTrendingNews();
