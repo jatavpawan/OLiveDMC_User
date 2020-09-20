@@ -1,0 +1,323 @@
+<div class="friends-request-tab-main">
+    <div class="container">
+      <div class="search-box-top">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <div class="col-md-6">
+            <div class="search-blk">
+              <i class="fa fa-search"></i>
+              <input type="text" name="" placeholder="search...">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="post-numbers network-entities">
+              <ul class="nav nav-pills" id="pills-taba" role="tablist">
+                <li><span *ngIf="userList != undefined"> {{userList.length}}</span> <br><a class="nav-link active"
+                    id="friend-suggestions-tab" data-toggle="pill" href="#friend-suggestions" role="tab"
+                    aria-controls="pills-friend-suggestions" aria-selected="false"
+                    (click)="TabClicked('friends_request')">
+                    <span>Friend Suggestion</span>
+                  </a>
+                </li>
+                <li><span *ngIf="friendRequestList != undefined"> {{friendRequestList.length}}</span> <br><a
+                    class="nav-link" id="add-friends-request-tab" data-toggle="pill"
+                    href="#pills-add-friends-request" role="tab" aria-controls="pills-friend-request"
+                    aria-selected="false" (click)="TabClicked('friends_request')">
+                    <span>Request From Friend</span>
+                  </a>
+                </li>
+                <li> <span *ngIf="userFriends != undefined"> {{userFriends.length}}</span> <br><a class="nav-link"
+                    id="user-friends-tab" data-toggle="pill" href="#pills-user-friends" role="tab"
+                    aria-controls="pills-user-friend-list" aria-selected="false"
+                    (click)="TabClicked('user_friends')">
+                    <span>Friends</span>
+                  </a>
+                </li>
+                <li><span *ngIf="pendingRequestList != undefined"> {{pendingRequestList.length}}</span> <br><a
+                    class="nav-link" id="pending-request-tab" data-toggle="pill" href="#pills-pending-request"
+                    role="tab" aria-controls="pills-pending-friend-request" aria-selected="false"
+                    (click)="TabClicked('pending_request')">
+                    <span>Pending Request</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-content" id="pills-tabContents">
+
+        <!-- Network tab-6 START -->
+        <div class="tab-pane fade active show" id="friend-suggestions" role="tabpanel"
+          aria-labelledby="friend-suggestions-tab">
+
+          <div class="d-flex flex-wrap">
+
+
+            <ng-container
+              *ngIf="friendSuggestionLoader == false && userList != undefined   && userList.length != 0 ">
+              <!-- <div class="col-12 col-sm-6 col-md-3 mb-5" *ngIf="userLoggedinInfo?.id != user?.id"> -->
+              <div class="col-12 col-sm-6 col-md-3 mb-5" *ngFor="let user of userList">
+                <div class="friend-list">
+                  <div class="friend-banner">
+                    <img *ngIf="user?.coverImage == null"
+                      src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+                    <img *ngIf="user?.coverImage != null" [src]="coverImgsrcpath +user?.coverImage" alt="">
+                  </div>
+                  <div class="friend-img-main">
+                    <div class="friend-img">
+                      <img *ngIf="user?.profileImg == null"
+                        src="../../../assets/PublicAssets/images/social-profile.jpg" alt="">
+                      <img *ngIf="user?.profileImg != null" [src]="profileImgsrcpath + user?.profileImg" alt="">
+                    </div>
+                    <div class="friend-name">
+                      <h3>{{user?.firstName + ' '+ user?.lastName}}</h3>
+                      <h5 *ngIf="user?.category == 1">Travel Guru</h5>
+                      <h5 *ngIf="user?.category == 2">Expert Traveller</h5>
+                      <!-- <h3>Merline Luies</h3>
+                      <h5>Travel lover</h5> -->
+                    </div>
+                    <div class="friend-des">
+                      <p *ngIf="user?.aboutDescription != null">{{user?.aboutDescription}}</p>
+                      <p *ngIf="user?.aboutDescription == null">Hi! My name is Merline but some people may know me
+                        as GameHuntress! I have a Twitch channel
+                        where I stream, play and review all the newest games.</p>
+                    </div>
+                    <div class="friends-message-btn">
+                      <a href="JavaScript:void(0)" class="purpel-btn" *ngIf="user?.sendRequest ==  false"
+                        (click)="sendFriendRequest(user?.id)">Add friend +</a>
+                      <a href="JavaScript:void(0)" class="purpel-btn" *ngIf="user?.sendRequest ==  true"
+                        (click)="cancelSendRequest(user?.id)">Cancel Request</a>
+                      <!-- <a href="JavaScript:void(0)" class="purpel-btn">Message</a> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container
+              *ngIf="friendSuggestionLoader == false && (userList == undefined || userList.length == 0) ">
+              <div class="col-md-12 no-found-containt ">
+                There Is No Friend Suggestion Found
+              </div>
+            </ng-container>
+
+
+            <div class="col-md-12" *ngIf="friendSuggestionLoader == true">
+              <div class="loader-bars">
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+        <!-- Network tab-6 END -->
+
+        <!-- Network tab-7 START -->
+        <div class="tab-pane fade" id="pills-add-friends-request" role="tabpanel"
+          aria-labelledby="add-friends-request-tab">
+          <div class="d-flex flex-wrap">
+            <ng-container
+              *ngIf="friendRequestLoader == false && friendRequestList != undefined && friendRequestList.length !=0">
+              <div class="col-12 col-sm-6 col-md-3 mb-5" *ngFor="let friendRequest of friendRequestList">
+                <div class="friend-list">
+                  <div class="friend-banner">
+                    <img *ngIf="friendRequest?.coverImage == null"
+                      src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+                    <img *ngIf="friendRequest?.coverImage != null"
+                      [src]="coverImgsrcpath +friendRequest?.coverImage" alt="">
+                  </div>
+                  <div class="friend-img-main">
+                    <div class="friend-img">
+                      <img *ngIf="friendRequest?.profileImg == null"
+                        src="../../../assets/PublicAssets/images/social-profile.jpg" alt="">
+                      <img *ngIf="friendRequest?.profileImg != null"
+                        [src]="profileImgsrcpath + friendRequest?.profileImg" alt="">
+                    </div>
+                    <div class="friend-name">
+                      <h3>{{friendRequest?.firstName + ' '+ friendRequest?.lastName}}</h3>
+                      <h5 *ngIf="friendRequest?.category == 1">Travel Guru</h5>
+                      <h5 *ngIf="friendRequest?.category == 2">Expert Traveller</h5>
+                    </div>
+                    <div class="friend-des">
+                      <p *ngIf="friendRequest?.aboutDescription != null">{{friendRequest?.aboutDescription}}</p>
+                      <p *ngIf="friendRequest?.aboutDescription == null">Hi! My name is Merline but some people
+                        may know me as GameHuntress! I have a Twitch channel
+                        where I stream, play and review all the newest games.</p>
+                    </div>
+                    <div class="friends-message-btn">
+                      <a href="JavaScript:void(0)" class="purpel-btn"
+                        (click)="actionOnFriendRequest(friendRequest?.id, 'Accept')">Accept</a>
+                      <a href="JavaScript:void(0)" class="purpel-btn"
+                        (click)="actionOnFriendRequest(friendRequest?.id, 'Reject')">Reject</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container
+              *ngIf="friendRequestLoader == false && (friendRequestList == undefined || friendRequestList.length ==0)">
+              <div class="col-md-12 no-found-containt ">
+                No Request Found From Friend
+              </div>
+            </ng-container>
+
+            <div class="col-md-12" *ngIf="friendRequestLoader == true">
+              <div class="loader-bars">
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Network tab-7 END -->
+
+        <!-- Network tab-8 START -->
+
+        <div class="tab-pane fade" id="pills-user-friends" role="tabpanel" aria-labelledby="user-friends-tab">
+          <div class="d-flex flex-wrap">
+
+            <ng-container *ngIf="friendListLoader == false && userFriends != undefined && userFriends.length !=0">
+              <div class="col-12 col-sm-6 col-md-3 mb-5" *ngFor="let friend of userFriends">
+                <div class="friend-list">
+                  <div class="friend-banner">
+                    <img *ngIf="friend?.coverImage == null"
+                      src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+                    <img *ngIf="friend?.coverImage != null" [src]="coverImgsrcpath +friend?.coverImage" alt="">
+                  </div>
+                  <div class="friend-img-main">
+                    <div class="friend-img">
+                      <img *ngIf="friend?.profileImg == null"
+                        src="../../../assets/PublicAssets/images/social-profile.jpg" alt="">
+                      <img *ngIf="friend?.profileImg != null" [src]="profileImgsrcpath + friend?.profileImg"
+                        alt="">
+                    </div>
+                    <div class="friend-name">
+                      <h3>{{friend?.firstName + ' '+ friend?.lastName}}</h3>
+                      <h5 *ngIf="friend?.category == 1">Travel Guru</h5>
+                      <h5 *ngIf="friend?.category == 2">Expert Traveller</h5>
+                    </div>
+                    <div class="friend-des">
+                      <p *ngIf="friend?.aboutDescription != null">{{friend?.aboutDescription}}</p>
+                      <p *ngIf="friend?.aboutDescription == null">Hi! My name is Merline but some people may know
+                        me as GameHuntress! I have a Twitch channel
+                        where I stream, play and review all the newest games.</p>
+                    </div>
+                    <div class="friends-message-btn">
+                      <a href="JavaScript:void(0)" class="purpel-btn"
+                        (click)="cancelFriendRequest(friend)">UnFriend</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="friendListLoader == false && userFriends == undefined || userFriends.length ==0">
+              <div class="col-md-12 no-found-containt ">
+                There Is No Friend Found Please Send Friend Request To User 
+              </div>
+            </ng-container>
+
+            <div class="col-md-12" *ngIf="friendListLoader == true">
+              <div class="loader-bars">
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- Network tab-8 END -->
+
+        <!-- Network tab-9 START -->
+        <div class="tab-pane fade" id="pills-pending-request" role="tabpanel"
+          aria-labelledby="pending-request-tab">
+          <div class="d-flex flex-wrap">
+            <ng-container *ngIf="pendingRequestLoader == false && pendingRequestList  != undefined && pendingRequestList.length !=0">
+              <div class="col-12 col-sm-6 col-md-3 mb-5" *ngFor="let pendingRequest of pendingRequestList">
+                <div class="friend-list">
+                  <div class="friend-banner">
+                    <img *ngIf="pendingRequest?.coverImage == null"
+                      src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+                    <img *ngIf="pendingRequest?.coverImage != null"
+                      [src]="coverImgsrcpath +pendingRequest?.coverImage" alt="">
+                  </div>
+                  <div class="friend-img-main">
+                    <div class="friend-img">
+                      <img *ngIf="pendingRequest?.profileImg == null"
+                        src="../../../assets/PublicAssets/images/social-profile.jpg" alt="">
+                      <img *ngIf="pendingRequest?.profileImg != null"
+                        [src]="profileImgsrcpath + pendingRequest?.profileImg" alt="">
+                    </div>
+                    <div class="friend-name">
+                      <h3>{{pendingRequest?.firstName + ' '+ pendingRequest?.lastName}}</h3>
+                      <h5 *ngIf="pendingRequest?.category == 1">Travel Guru</h5>
+                      <h5 *ngIf="pendingRequest?.category == 2">Expert Traveller</h5>
+                    </div>
+                    <div class="friend-des">
+                      <p *ngIf="pendingRequest?.aboutDescription != null">{{pendingRequest?.aboutDescription}}</p>
+                      <p *ngIf="pendingRequest?.aboutDescription == null">Hi! My name is Merline but some people
+                        may know me as GameHuntress! I have a Twitch channel
+                        where I stream, play and review all the newest games.</p>
+                    </div>
+                    <div class="friends-message-btn">
+                      <a href="JavaScript:void(0)" class="purpel-btn">Cancel Request </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="pendingRequestLoader == false && pendingRequestList == undefined || pendingRequestList.length ==0">
+              <div class="col-md-12 no-found-containt ">
+               There Is No Pending Request Found
+              </div>
+            </ng-container>
+
+            <div class="col-md-12" *ngIf="pendingRequestLoader == true">
+              <div class="loader-bars">
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+                <div class="loader-bar"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Network tab-9 END -->
+      </div>
+
+
+
+    </div>
+  </div>

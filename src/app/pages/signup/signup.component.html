@@ -166,6 +166,8 @@
                             <label>Email Id<span class="compulsary-star">*</span></label>
                             <input type="email" class="form-control" placeholder="xyz@gmail.com"
                                 formControlName="emailId">
+                            <!-- <input type="email" class="form-control" placeholder="xyz@gmail.com"
+                                formControlName="emailId" (blur)="verifyEmailByOtp()"> -->
                             <!-- <span class="text-danger"
                                 *ngIf="(signupForm.get('emailId').touched && signupForm.get('emailId').hasError('required')) || (signupForm.get('emailId').untouched && submitSignupForm == true)">
                                 Email Id is required</span> -->

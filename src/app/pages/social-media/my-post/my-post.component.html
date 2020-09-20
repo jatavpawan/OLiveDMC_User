@@ -1,0 +1,281 @@
+<div class="container">
+    <div class="search-box-top">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div class="col-md-8">
+          <div class="search-blk">
+            <i class="fa fa-search"></i>
+            <input type="text" name="" placeholder="search...">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="add-video text-right">
+            <a href="javscriptscript:void(0)" class="purpel-btn add-blogs-hide" (click)="openAddPostDialog()">add
+              post +</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-tab-main">
+      <div class="d-flex flex-wrap">
+        <div class="col-md-3">
+          <div class="about-me">
+            <div class="article-head d-flex align-items-center">
+              <div class="post-avatar">
+                <h3>About Me</h3>
+              </div>
+              <div class="article-options ml-auto d-flex align-items-center">
+                <div class="dropdown">
+                  <span class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                  </span>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#about-modal">Edit</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="about-cnt">
+              <p *ngIf="userPersonalInfo?.aboutDescription == undefined">------</p>
+              <p *ngIf="userPersonalInfo?.aboutDescription != undefined">{{userPersonalInfo?.aboutDescription}}
+              </p>
+            </div>
+          </div>
+          <div class="personal-info">
+            <div class="article-head d-flex align-items-center">
+              <div class="post-avatar">
+                <h3>personal-info</h3>
+              </div>
+              <div class="article-options ml-auto d-flex align-items-center">
+                <div class="dropdown">
+                  <span class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                  </span>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#personal-info"
+                      (click)="editPersonalInfo()">Edit</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="personal-info-cnt">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="fileds">Name :</td>
+                    <td *ngIf="userPersonalInfo?.name != undefined"> {{ userPersonalInfo?.name}}</td>
+                    <td *ngIf="userPersonalInfo?.name == undefined">
+                      {{userLoggedinInfo?.firstName + ' '+ userLoggedinInfo?.lastName}}</td>
+                  </tr>
+                  <tr>
+                    <td class="fileds">Mobile:</td>
+                    <td *ngIf="userPersonalInfo?.mobile != undefined"> {{ userPersonalInfo?.mobile}}</td>
+                    <td *ngIf="userPersonalInfo?.mobile == undefined ">{{userLoggedinInfo?.mobileNo}}</td>
+                  </tr>
+                  <tr>
+                    <td class="fileds">Email :</td>
+                    <td *ngIf="userPersonalInfo?.email != undefined"> {{ userPersonalInfo?.email}}</td>
+                    <td *ngIf="userPersonalInfo?.email == undefined ">{{userLoggedinInfo?.emailId}}</td>
+                  </tr>
+                  <tr>
+                    <td class="fileds">Birthday :</td>
+                    <td *ngIf="userPersonalInfo?.birthday != undefined">
+                      {{ userPersonalInfo?.birthday |date: 'dd-MMM-yyyy'}}</td>
+                    <td *ngIf="userPersonalInfo?.birthday == undefined ">-----</td>
+                  </tr>
+                  <tr>
+                    <td class="fileds">Occupation :</td>
+                    <td *ngIf="userPersonalInfo?.occupation != undefined"> {{ userPersonalInfo?.occupation}}</td>
+                    <td *ngIf="userPersonalInfo?.occupation == undefined ">-----</td>
+                  </tr>
+                  <tr>
+                    <td class="fileds">Country :</td>
+                    <td *ngIf="userPersonalInfo?.country != undefined"> {{ userPersonalInfo?.country}}</td>
+                    <td *ngIf="userPersonalInfo?.country == undefined ">-----</td>
+                  </tr>
+                  <tr>
+                    <td class="fileds">State :</td>
+                    <td *ngIf="userPersonalInfo?.state != undefined"> {{ userPersonalInfo?.state}}</td>
+                    <td *ngIf="userPersonalInfo?.state == undefined ">-----</td>
+                  </tr>
+                  <tr>
+                    <td class="fileds">City :</td>
+                    <td *ngIf="userPersonalInfo?.city != undefined"> {{ userPersonalInfo?.city}}</td>
+                    <td *ngIf="userPersonalInfo?.city == undefined ">-----</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+
+          <ng-container
+            *ngIf="myPostLoader == false && LoggedInUserPosts != undefined   && LoggedInUserPosts.length != 0 ">
+            <div class="journey-trail" *ngFor="let post of LoggedInUserPosts">
+              <div class="article-head d-flex align-items-center">
+                <div class="post-avatar ic-avatar avatar big">
+                  <a href="">
+                    <small class="post-avatar-placeholder"
+                      *ngIf="post?.profileImg == undefined || post?.profileImg == null">{{post?.shortUserName| uppercase}}</small>
+                    <img class="post-profile-image"
+                      *ngIf="post?.profileImg != undefined && post?.profileImg != null"
+                      [src]="profileImgsrcpath+post?.profileImg">
+                    <span>{{ post?.userFirstName+ ' ' +post?.userLastName }}</span>
+                  </a>
+                </div>
+                <div class="article-options ml-auto d-flex align-items-center">
+                  <small>{{post?.postTimeFromNow}}</small>
+                  <div class="dropdown">
+                    <span class="dropdown-toggle" data-toggle="dropdown">
+                      <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                    </span>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" (click)="openAddPostDialog(post)">Edit</a>
+                      <a class="dropdown-item" (click)="openDeleteUserPostConfirmDialog(post.id)">Delete</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="journey-stories">
+                <p *ngIf="post?.description.length <= 300">{{post?.description }}</p>
+                <p *ngIf="post?.description.length >= 300 && readMorePost != post?.id">
+                  {{(post?.description|slice:0:300) + '...'}} <span class="post-read-more"
+                    (click)="readMorePost = post?.id"> Read More</span></p>
+                <p *ngIf="post?.description.length >= 300 && readMorePost == post?.id">{{post?.description }}
+                  <span class="post-read-more" (click)="readMorePost = undedfined"> Less More</span></p>
+              </div>
+
+              <div class="journey-trip-img">
+                <img [src]=" userPostImgSrcPath + post?.image" alt="">
+              </div>
+              <div class="user-comnt-cnt d-flex justify-content-between">
+                <div class="icons-left">
+                  <ul>
+                    <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                    <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                    <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                  </ul>
+                </div>
+                <div class="commnts-rgt">
+                  <ul>
+                    <li>
+                      <h6>{{post.likecount}} React</h6>
+                    </li>
+                    <li>
+                      <h6>{{post.commentcount}} comments</h6>
+                    </li>
+                    <li>
+                      <h6>0 share</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+           
+
+              <div class="user-react">
+                <ul>
+                  <li><a href="javascript:void(0)" [class.react-color]="post.reactionStatus"
+                      (click)="UserReactionOnPost(post, 1, 'LoggedInUserPosts')"><i
+                        class="fa fa-thumbs-o-up"></i>React</a></li>
+                  <li><a href="javascript:void(0)"><i class="fa fa-comment-o"></i>comments</a></li>
+                  <li><a href="javascript:void(0)" (click)="UserShareOnPost(post)"><i
+                        class="fa  fa-share-square-o"></i>share</a></li>
+                </ul>
+              </div>
+
+              <div class="user-comments-list" *ngIf="post.commentcount >= 1 ">
+                <div class="coment-lisitng">
+                  <ul class="lisitng-start">
+                    <ng-container *ngFor="let comment of post.commentList; let i = index;">
+                      <li>
+                        <div class="d-flex flex-wrap">
+                          <div class="col-md-2">
+                            <div class="user-circel-img">
+                              <img
+                                *ngIf="comment?.commentUserProfileImg != undefined && comment?.commentUserProfileImg != null"
+                                [src]="profileImgsrcpath+comment?.commentUserProfileImg">
+                            </div>
+                            <small class="post-comment-avatar-placeholder"
+                              *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{comment?.shortUserName}}</small>
+
+                          </div>
+                          <div class="col-md-10">
+                            <div class="user-comments">
+                              <!-- <p><span>{{comment?.commentUserName}} : </span>{{comment?.comment}} </p> -->
+                              <p><span>{{comment?.commentUserFirstName + ' '+ comment?.commentUserLastName}} :
+                                </span>{{comment?.comment}} </p>
+                            </div>
+                            <!-- <div class="user-reaction">
+                              <ul class="reaction-line">
+                                <li  (click)="reactOnPostComment(comment,1, 'LoggedInUserPosts')" *ngIf="comment?.userCommentReactionStatus !=  true"> Like</li>
+                                <li  (click)="reactOnPostComment(comment,0, 'LoggedInUserPosts')" *ngIf="comment?.userCommentReactionStatus ==  true"> UnLike</li>
+                                <li *ngIf="comment?.reactionCount != 0"><img src="../../../assets/PublicAssets/images/like.jpg" >{{comment?.reactionCount}}</li>
+                                <li class="comment-post-time" >{{comment?.postTimeFromNow}}</li>
+                              </ul>
+                            </div> -->
+
+                          </div>
+                        </div>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="load-more-text" *ngIf="post.commentcount >= 2" (click)="initialLoadCommentOnPost(post)">
+                Load more comments</div>
+
+              <div class="comment-box">
+                <form [formGroup]="postCommentForm">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Comment" #comment
+                      (keyup.enter)="UserCommentOnPost(post, comment, 'LoggedInUserPosts')"
+                      formControlName="comment">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2"
+                        (click)="UserCommentOnPost(post, comment, 'LoggedInUserPosts')"><i
+                          class="fa fa-send"></i></span>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+
+            </div>
+          </ng-container>
+
+          <ng-container
+            *ngIf="myPostLoader == false && (LoggedInUserPosts == undefined || LoggedInUserPosts.length == 0) ">
+            <div class="col-md-12 no-found-containt ">
+              There Is No Post Found Please Add Your Post
+            </div>
+          </ng-container>
+
+          <div class="col-md-12" *ngIf="myPostLoader == true">
+            <div class="loader-bars">
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+              <div class="loader-bar"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+          <div class="travel-detail-ad">
+            <ul *ngIf="offerAdsList.length != 0">
+              <li *ngFor="let offerAds of offerAdsList"><a><img [src]="offerAdsImgSrcPath+offerAds.image"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

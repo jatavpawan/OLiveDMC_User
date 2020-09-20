@@ -1,0 +1,48 @@
+<mat-dialog-content>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Upload New Post Yourself</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" mat-dialog-close>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body social-post-main upload-video-post-main">
+          <div class="top-status">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="currentAddPostTab == 'update-status-tab'"  (click)="currentAddPostTab = 'update-status-tab'" id="update-status-tab" data-toggle="tab" role="tab"
+                  aria-controls="home" aria-selected="true"><i class="fa fa-edit"></i>update status</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [class.active]="currentAddPostTab == 'add-photo-video-tab'"  (click)="currentAddPostTab = 'add-photo-video-tab'" id="add-photo-video-tab" data-toggle="tab" role="tab"
+                  aria-controls="profile" aria-selected="false"><i class="fa fa-image"></i>Add photos/video</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <form [formGroup]="userPostForm">
+              <div class="tab-pane fade " [ngClass]="{'show active': currentAddPostTab == 'update-status-tab'}" *ngIf="currentAddPostTab == 'update-status-tab'" id="update-status" role="tabpanel"
+                aria-labelledby="update-status-tab">
+                <div class="form-group">
+                  <label>Status</label>
+                  <textarea placeholder="what's on your mind..." formControlName="description"></textarea>
+                  <span class="text-danger "
+                  *ngIf="(userPostForm.get('description').touched && userPostForm.get('description').hasError('required')) || (userPostForm.get('description').untouched && submituserPostForm == true) ">
+                  Status Description is required</span>
+                </div>
+              </div>
+              <div class="tab-pane fade" [ngClass]="{'show active': currentAddPostTab == 'add-photo-video-tab'}" *ngIf="currentAddPostTab == 'add-photo-video-tab'" id="add-photo-video-new" role="tabpanel" aria-labelledby="add-photo-video-tab">
+                <div class="form-group">
+                  <label>upload photos</label>
+                  <input type="file" name="" #files (change)="uploadFile(files)">
+                  <div class="drop-image" *ngIf="fileUploaded == false && editUserPost == false"><img src="../../../assets/PublicAssets/images/drop-attachment.png"></div>
+                  <div class="drop-image" *ngIf="fileUploaded == true || editUserPost == true"><img [src]="uploadFileUrl"></div>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+  
+        </div>
+        <div class="modal-footer" (click)="submitPostData()">
+          <button type="button" class="purpel-btn" >Post</button>
+        </div>
+</mat-dialog-content>

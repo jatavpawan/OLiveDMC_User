@@ -71,7 +71,9 @@
         <div class="b-head">Categories</div>
         <div class="b-listing">
          <ul *ngIf="categories.length > 0 ">
-           <li *ngFor="let category of categories"><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>{{category.categoryName}}</a></li>
+           <li (click)="allCategoryBlog()"><a href="javascript:void(0)" [class.select-category]="selectCategory == 0"><i class="fa fa-angle-right"></i>All</a></li>
+           <li *ngFor="let category of categories"  (click)="BlogListByCategoryId(category.id)"><a href="javascript:void(0)" [class.select-category]="selectCategory == category.id"><i class="fa fa-angle-right"></i>{{category.categoryName}}</a></li>
+           <!-- <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>{{category.categoryName}}</a></li> -->
            <!-- <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Lorem ipsum is simple</a></li>
            <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>May Variations</a></li>
            <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i>Random Texts</a></li>
@@ -84,8 +86,21 @@
        <div class="popular-post">
         <div class="b-head">Popular Post</div>
         <div class="popular-lisitng">
-          <ul>
-            <li>
+          <ul *ngIf="randomBlogs.length != 0">
+            <li *ngFor="let blog of randomBlogs">
+              <a href="javascript:void(0)">
+                <div class="d-flex align-items-center">
+                  <div class="p-left-img"><img [src]="blogimgsrcpath+blog?.featuredImage" alt=""></div>
+                  <!-- <div class="p-left-img"><img src="../../../assets/PublicAssets/images/p-list-1.jpg" alt=""></div> -->
+                  <div class="p-rgt-cnt">
+                    <h3>{{ blog?.title.length > 50 ?  (blog?.title|slice:0:50) +'...' : blog?.title  }}</h3>
+                    <h4>By : {{blog?.firstName+' '+blog?.lastName }}</h4>
+                    <h5>{{blog?.createdDate| date:'dd MMM yyyy'}}</h5>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <!-- <li>
               <a href="javascript:void(0)">
                 <div class="d-flex align-items-center">
                   <div class="p-left-img"><img src="../../../assets/PublicAssets/images/p-list-1.jpg" alt=""></div>
@@ -132,17 +147,18 @@
                   </div>
                 </div>
               </a>
-            </li>
+            </li> -->
           </ul> 
         </div>
          
        </div>
 
        <div class="popular-tags">
-        <div class="b-head">Popular tags</div>
+        <div class="b-head">Popular tags</div>  
         <div class="tags-inr">
          <ul>
-          <li><a href="javascript:void(0)">Adventure</a></li>
+          <li *ngFor="let tag of popularTagList"><a (click)="BlogListByCategoryId(tag.categoryId)" [class.select-tag]="selectCategory == tag.categoryId">{{tag.categoryName}}</a></li>
+          <!-- <li><a href="javascript:void(0)">Adventure</a></li>
           <li><a href="javascript:void(0)">Luxary</a></li>
           <li><a href="javascript:void(0)">Romantic</a></li>
           <li><a href="javascript:void(0)">Foodie</a></li>
@@ -150,7 +166,7 @@
           <li><a href="javascript:void(0)">Cruise</a></li>
           <li><a href="javascript:void(0)">Beach</a></li>
           <li><a href="javascript:void(0)">Family</a></li>
-          <li><a href="javascript:void(0)">Shopping</a></li>
+          <li><a href="javascript:void(0)">Shopping</a></li> -->
          </ul>
        </div>
        </div>
@@ -162,7 +178,7 @@
     
       <div class="col-md-6" *ngFor="let blog of showBlogPriorityList">
       <div class="blog-block wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-        <div class="blog-main-img" [routerLink]="['/blog-detail', blog?.id ]">
+        <div class="blog-main-img">
           <img [src]="blogimgsrcpath+blog?.featuredImage" alt="">
         </div>
         
@@ -185,14 +201,19 @@
         </div>
         <div class="blog-details">
           <h6>{{ blog?.createdDate|date: 'dd MMM yyyy'}}</h6>
-          <h4 class="blog-title" [routerLink]="['/blog-detail', blog?.id]">{{blog?.title}}</h4>
+          <h4 class="blog-title" [routerLink]="['/blog-detail', blog?.id]">{{ blog?.title.length > 50 ?  (blog?.title|slice:0:50) +'...' : blog?.title  }}</h4>
           <!-- <p [innerHTML]="blog?.description|safeHtml"></p> -->
-          <p>{{blog?.shortDescription}}</p>
+          <!-- <p>{{blog?.shortDescription}}</p> -->
+          <p>{{ blog?.shortDescription.length > 160 ?  (blog?.shortDescription|slice:0:160) +'...' : blog?.shortDescription  }}</p>
+          
           <a class="blog-read-more" href="javascript:void(0)" [routerLink]="['/blog-detail',blog?.id]">Read More</a>
         </div>
       </div> 
     </div>
-    <div class="col-md-12 load-more-blogs" (click)="loadMoreBlogs()">
+    <div class="col-md-12 load-more-blogs" *ngIf="infiniteLoader == true && selectCategory == 0" (click)="loadMoreBlogs()">
+      <a>Load More</a>
+    </div>
+    <div class="col-md-12 load-more-blogs" *ngIf="infiniteLoader == true && selectCategory != 0" (click)="BlogListByCategoryId()">
       <a>Load More</a>
     </div>
       <!-- <div class="col-md-6">
@@ -335,7 +356,7 @@
 <div class="blog-upload-banner"><img src="../../../assets/PublicAssets/images/blog-up-banner.jpg" alt=""></div>
 <div class="container">
   <div class="create-main">
-    <div class="create-head"><h3>Create Your Own Diary</h3></div>
+    <div class="create-head"><h3>Create Your Blog</h3></div>
     <div class="blog-form">
       <div class="d-flex flex-wrap align-items-center justify-content-around upload-form-blk">
         <form>
@@ -371,51 +392,81 @@
   </div>
 </div>
 </section> -->
-<section class="comon-space" *ngIf="userLoggedIn == true">
+<!-- <section class="comon-space" *ngIf="userLoggedIn == true"> -->
+<section class="comon-space">
 <div class="blog-upload-banner"><img src="../../../assets/PublicAssets/images/blog-up-banner.jpg" alt=""></div>
 <div class="container">
   <div class="create-main">
-    <div class="create-head"><h3>Create Your Own Diary</h3></div>
+    <div class="create-head"><h3>Create Your Blog</h3></div>
     <div class="blog-form">
+      <div class="create-blog-msg" *ngIf="userLoggedIn == false">
+        <div class="login-msg">To Write A Blog Please <a [routerLink]="['/login']" [queryParams]="{ page : 'blog' }">Sign In</a> </div>
+    </div>
       <div class="d-flex flex-wrap align-items-center justify-content-around upload-form-blk">
+      
         <form [formGroup]="blogForm">
           <div class="form-row">
-            <div class="form-group col-md-4">
-              <input disabled type="text" name="" placeholder="Full Name" formControlName="userName">
-              <i class="fa fa-user"></i>
-            </div>
-            <div class="form-group col-md-4">
-              <input disabled type="text" name="" placeholder="Email" formControlName="email">
-               <i class="fa fa-envelope"></i>
-            </div>
-            <div class="form-group col-md-4">
-              <input type="text" name="" placeholder="Blog Subject" formControlName="title">
+            <div class="form-group col-md-8">
+              <input type="text" name="" disabled *ngIf="userLoggedIn == false" placeholder="Blog Title" formControlName="title">
+              <input type="text" name=""  *ngIf="userLoggedIn == true" placeholder="Blog Title" formControlName="title">
                <i class="fa fa-bars"></i>
                <span class="text-danger "
                *ngIf="(blogForm.get('title').touched && blogForm.get('title').hasError('required')) || (blogForm.get('title').untouched && submitBlogForm == true) ">
-               Blog Subject is required</span>
+               Blog Title is required</span>
             </div>
+
+            <div class="form-group col-md-4">
+              <select name="" id="" disabled formControlName="category" *ngIf="userLoggedIn == false">
+                <option value="0">Select Category</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{category.categoryName}}</option>
+             </select>
+              <select name="" id=""  formControlName="category" *ngIf="userLoggedIn == true">
+                <option value="0">Select Category</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{category.categoryName}}</option>
+             </select>
+             <span class="text-danger "
+             *ngIf="(blogForm.get('category').touched && blogForm.get('category').hasError('required')) || (blogForm.get('category').untouched && submitBlogForm == true) ">
+             Blog Category is required</span>
+            </div>
+            
           </div>
           <div class="form-row write-blog">
-            <div class="form-group col-md-8">
-              <textarea placeholder="write blog..." formControlName="description"></textarea>
+            <div class="form-group col-md-8 blog-description">
+              <textarea class="blog-short-description" placeholder="write blog short description..." rows="2" disabled formControlName="shortDescription" *ngIf="userLoggedIn == false"></textarea>
+              <textarea class="blog-short-description" placeholder="write blog short description..." rows="2"  formControlName="shortDescription" *ngIf="userLoggedIn == true" (input)="shortDescriptionCharacterCount($event)"></textarea>
+            
+            <div class="blog-description-error">
+              <div class="character-count">count {{characterCount}}/200</div> 
+              <div class="text-danger description-err"
+              *ngIf="(blogForm.get('shortDescription').touched && blogForm.get('shortDescription').hasError('required')) || (blogForm.get('shortDescription').untouched && submitBlogForm == true) ">
+              Blog Short Description is required</div>
+            </div>
+            </div>
+            <div class="form-group col-md-4">
+              <input type="file" *ngIf="userLoggedIn == false" disabled name="" formControlName="featuredImage">
+              <input type="file" *ngIf="userLoggedIn == true" name="" formControlName="featuredImage" #files (change)="preview(files)">
+              <div class="upload-img blog-upload-img">
+                <img *ngIf="fileUploaded == false" src="../../../assets/PublicAssets/images/upload-photo.png" alt="">
+                <img *ngIf="fileUploaded == true" [src]="previewUrl" alt="">
+                <div class="text-danger upload-img-err"
+                *ngIf="(blogForm.get('featuredImage').touched && blogForm.get('featuredImage').hasError('required')) || (blogForm.get('featuredImage').untouched && submitBlogForm == true) ">
+                Blog Image is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="">Blog Description</label>
+              <editor class="blog-description" *ngIf="userLoggedIn == false"   [disabled]="true" apiKey="byg3blvrvimc75hw1cb3hwo9su10wod4ogt2oi6p3nmaukek" formControlName="description" [init]="tinymceConfig"></editor>
+              <editor class="blog-description" *ngIf="userLoggedIn == true" apiKey="byg3blvrvimc75hw1cb3hwo9su10wod4ogt2oi6p3nmaukek" formControlName="description" [init]="tinymceConfig"></editor>
               <span class="text-danger "
               *ngIf="(blogForm.get('description').touched && blogForm.get('description').hasError('required')) || (blogForm.get('description').untouched && submitBlogForm == true) ">
               Blog Description is required</span>
             </div>
-            <div class="form-group col-md-4">
-              <input type="file" name="" formControlName="featuredImage" #files (change)="preview(files)">
-              <div class="upload-img">
-                <img *ngIf="fileUploaded == false" src="../../../assets/PublicAssets/images/upload-photo.png" alt="">
-                <img *ngIf="fileUploaded == true" [src]="previewUrl" alt="">
-              </div>
-              <span class="text-danger "
-              *ngIf="(blogForm.get('featuredImage').touched && blogForm.get('featuredImage').hasError('required')) || (blogForm.get('featuredImage').untouched && submitBlogForm == true) ">
-              Blog Image is required</span>
-            </div>
           </div>
           <div class="form-row">
-            <a href="javascript:void(0)" type="submit" class="purpel-btn" (click)="submitBlogData()">post</a>
+            <a href="javascript:void(0)" type="submit" *ngIf="userLoggedIn == false" class="purpel-btn">post</a>
+            <a href="javascript:void(0)" type="submit" *ngIf="userLoggedIn == true" class="purpel-btn" (click)="submitBlogData()">post</a>
           </div>
         </form>
       </div>

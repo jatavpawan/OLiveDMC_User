@@ -1,3 +1,7 @@
-.blog-title:hover{
-   cursor: pointer;
+.blog-title:hover {
+  cursor: pointer;
+}
+
+.dest-mb{
+  margin-bottom: 5rem !important;
 }

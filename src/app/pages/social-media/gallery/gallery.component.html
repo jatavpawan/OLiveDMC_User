@@ -1,0 +1,418 @@
+<div class="images-tab-main">
+    <div class="container">
+      <div class="search-box-top">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <div class="col-md-10">
+            <div class="search-blk">
+              <i class="fa fa-search"></i>
+              <input type="text" name="" placeholder="search...">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="add-video text-right">
+              <a href="javscriptscript:void(0)" class="purpel-btn" data-toggle="modal"
+                data-target="#upload-photos">add photos +</a>
+            </div>
+          </div>
+          <!-- <div class="col-md-2">
+            <div class="add-video text-right">
+              <a href="javscriptscript:void(0)" class="purpel-btn" data-toggle="modal"
+                data-target="#upload-videos">add Videos +</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="d-flex flex-wrap">
+        <ng-container *ngIf="galleryLoader == false && allGallery != undefined   && allGallery.length != 0 ">
+          <div class="col-md-3 mb-5" *ngFor="let gallery of allGallery">
+            <div class="evnts-video-main">
+              <div class="crud">
+                <ul>
+                  <li><a href="javscript:void(0)"><i class="fa fa-trash"
+                        (click)="openDeleteGalleryConfirmDialog(gallery.id)"></i></a></li>
+                  <li><a href="javscript:void(0)"><i class="fa fa-heart"
+                        (click)="UserReactionOnGallery(gallery, 1)"></i></a></li>
+                  <!-- <li data-toggle="modal" data-target="#upload-photos"><a href="javscript:void(0)"><i class="fa fa-pencil"  (click)="editGallery(gallery)"></i></a></li> -->
+                </ul>
+              </div>
+              <div class="gallery-box"><img [src]="galleryImgsrcpath+gallery.gallery" alt="">
+              </div>
+              <!-- <div class="video-icon"><i class="fa fa-video-camera"></i></div> -->
+              <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal"
+                (click)="openGalleryDialog(gallery)">
+                <!-- <div class="gallery-hover-box" (click)="openGalleryDialog(gallery)"> -->
+                <ul>
+                  <li><a href="javscript:void(0)"><i
+                        class="fa fa-heart"><span>{{gallery.likecount}}</span></i></a></li>
+                  <li><a href="javscript:void(0)"><i
+                        class="fa fa-comment"><span>{{gallery.commentcount}}</span></i></a></li>
+                  <!-- <li (click)="UserReactionOnGallery(gallery, 1)"><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                  <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="galleryLoader == false && (allGallery == undefined || allGallery.length == 0) ">
+          <div class="col-md-12 no-found-containt ">
+            Please Add Photos and Videos In Your Gallery
+          </div>
+        </ng-container>
+
+
+        <div class="col-md-12" *ngIf="galleryLoader == true">
+          <div class="loader-bars">
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+          </div>
+        </div>
+
+        <!-- <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal-video">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-5.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-4.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+          <div class="evnts-video-main">
+            <div class="gallery-box"><img src="../../../assets/PublicAssets/images/destionation-v-3.jpg" alt="">
+            </div>
+            <div class="video-icon"><i class="fa fa-video-camera"></i></div>
+            <div class="gallery-hover-box" data-toggle="modal" data-target="#gallery-modal">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-heart"><span>81</span></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-comment"><span>05</span></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- gallery box Modal start-->
+<div class="gallery-box-main">
+  <div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body gallery-box-modal">
+          <div class="container">
+            <div class="d-flex flex-wrap">
+              <div class="col-md-6">
+                <!-- <div class="gallery-left-img"><img src="../../../assets/PublicAssets/images/gallery-1.png"></div> -->
+                <div class="gallery-left-img"><img [src]="galleryImgsrcpath+galleryDetail?.gallery"></div>
+              </div>
+              <div class="col-md-6">
+                <div class="gallery-right-cnt">
+                  <div class="article-head d-flex align-items-center">
+                    <div class="post-avatar ic-avatar avatar big">
+                      <a href="">
+                        <small class="post-avatar-placeholder">S</small>
+                        <!-- <span>Sidehustle</span> -->
+                        <span>{{galleryDetail?.title}}</span>
+                      </a>
+                    </div>
+                    <div class="article-options ml-auto d-flex align-items-center">
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown">
+                          <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                        </span>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Go to post</a>
+                          <a class="dropdown-item" href="#" data-dismiss="modal" aria-label="Close">Delete Post</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="user-comments-list" *ngIf="galleryDetail?.commentcount >= 1 ">
+                    <div class="coment-lisitng">
+                      <ul class="lisitng-start">
+                        <ng-container *ngFor="let comment of galleryDetail?.commentList; let i = index;">
+                          <li>
+                            <div class="d-flex flex-wrap">
+                              <div class="">
+                                <div class="user-circel-img">
+                                  <!-- <img src="../../../assets/PublicAssets/images/iIMAGE.png"> -->
+                                  <img
+                                    *ngIf="comment?.commentUserProfileImg != undefined && comment?.commentUserProfileImg != null"
+                                    [src]="profileImgsrcpath+comment?.commentUserProfileImg">
+                                </div>
+                                <small class="post-comment-avatar-placeholder"
+                                  *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{comment?.shortUserName}}</small>
+                              </div>
+                              <div class="">
+                                <div class="user-comments">
+                                  <!-- <p><span>{{comment?.commentUserName}}: </span> {{comment?.comment}}</p> -->
+                                  <p><span>{{comment?.commentUserFirstName + ' '+ comment?.commentUserLastName }}:
+                                    </span> {{comment?.comment}}</p>
+                                </div>
+                                <div class="user-reaction">
+                                  <ul class="reaction-line">
+                                    <!-- <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                    <li>react</li>
+                                    <li>{{comment?.postTimeFromNow}}</li> -->
+                                    <li (click)="reactOnGalleryComment(comment,1)"
+                                      *ngIf="comment?.userCommentReactionStatus !=  true"> Like</li>
+                                    <li (click)="reactOnGalleryComment(comment,0)"
+                                      *ngIf="comment?.userCommentReactionStatus ==  true"> UnLike</li>
+                                    <li *ngIf="comment?.reactionCount != 0"><img
+                                        src="../../../assets/PublicAssets/images/like.jpg">{{comment?.reactionCount}}
+                                    </li>
+                                    <li class="comment-post-time">{{comment?.postTimeFromNow}}</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ng-container>
+
+
+                        <!-- <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2">
+                              <div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png">
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="user-comments">
+                                <p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we
+                                  have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2">
+                              <div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png">
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="user-comments">
+                                <p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we
+                                  have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2">
+                              <div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png">
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="user-comments">
+                                <p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we
+                                  have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li> -->
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- <div class="load-more-text" *ngIf="galleryDetail?.commentcount >= 2" (click)="initialLoadCommentOnGallery(galleryDetail)">Load more comments <span>9+</span></div> -->
+                  <div class="load-more-text" *ngIf="galleryDetail?.commentcount >= 2"
+                    (click)="initialLoadCommentOnGallery(galleryDetail)">Load more comments</div>
+
+                  <div class="comment-box">
+                    <form [formGroup]="galleryCommentForm">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Comment" #comment
+                          (keyup.enter)="userCommentOnGallery(galleryDetail, comment)" formControlName="comment">
+                        <div class="input-group-append">
+                          <span class="input-group-text" id="basic-addon2"
+                            (click)="userCommentOnGallery(galleryDetail, comment)"><i class="fa fa-send"></i></span>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- gallery box Modal end-->

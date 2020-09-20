@@ -30,6 +30,7 @@ export class UserPersonalInfoService {
     return <Observable<ResponseModel>> this.dataService.getData('UserPersonalInfo/deleteUserPersonalInfo?Id='+UserPersonalInfoId);
   }
 
+
   AddUpdateUserProfileImage(data){
     return <Observable<ResponseModel>> this.dataService.postFormData('UserPersonalInfo/AddUpdateUserProfileImage', data);
   }
@@ -40,6 +41,12 @@ export class UserPersonalInfoService {
 
   AddUpdateUserCoverImage(data){
     return <Observable<ResponseModel>> this.dataService.postFormData('UserPersonalInfo/AddUpdateUserCoverImage', data);
+  }
+
+   
+  increamentInVisitCount(profleUserId)
+  {
+    return <Observable<ResponseModel>> this.dataService.getData('UserPersonalInfo/increamentInVisitCount?profleUserId='+profleUserId);
   }
 
  

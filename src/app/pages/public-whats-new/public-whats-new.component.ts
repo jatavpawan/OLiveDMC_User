@@ -168,3 +168,4 @@ export class PublicWhatsNewComponent implements OnInit {
   }
 
 }
+

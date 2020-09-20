@@ -67,32 +67,57 @@
 
 <section class="banner-top">
   <div class="hero-slider">
-    <div class="owl-carousel" id="banner-slider">
-      <div class="item">
-        <div class="banner-img">
-          <img src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
+    <ng-container *ngIf="homeBannerList.length != 0">
+      <owl-carousel id="banner-slider" [options]="bannerSlideOptions" [items]="homeBannerList"
+        [carouselClasses]="['owl-theme', 'sliding']">
+
+        <div class="item" *ngFor="let banner of homeBannerList">
+          <div class="banner-img">
+            <img [src]="bannerImgsrcpath+banner?.imagePath" alt="">
+          </div>
+          <div class="banner-cnt">
+            <!-- <h3>Cultivating <br>Lifelong travelling</h3> -->
+            <h3 [innerHTML]="banner.title"></h3>
+          </div>
         </div>
-        <div class="banner-cnt">
-          <h3>Cultivating <br>Lifelong travelling</h3>
+      </owl-carousel>
+    </ng-container>
+    <ng-container *ngIf="homeBannerList.length == 0">
+      <div class="owl-carousel" id="banner-slider">
+        <div class="item">
+          <div class="banner-img">
+            <img
+              src="https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+              alt="">
+          </div>
+          <div class="banner-cnt">
+            <h3>Cultivating <br>Lifelong travelling</h3>
+          </div>
+        </div>
+        <div class="item">
+          <div class="banner-img">
+            <img
+              src="https://images.pexels.com/photos/2106776/pexels-photo-2106776.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+              alt="">
+          </div>
+          <div class="banner-cnt">
+            <h3>Cultivating <br>Lifelong travelling</h3>
+          </div>
+        </div>
+        <div class="item">
+          <div class="banner-img">
+            <img
+              src="https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+              alt="">
+          </div>
+          <div class="banner-cnt">
+            <h3>Cultivating <br>Lifelong travelling</h3>
+          </div>
         </div>
       </div>
-      <div class="item">
-        <div class="banner-img">
-          <img src="https://images.pexels.com/photos/2106776/pexels-photo-2106776.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
-        </div>
-        <div class="banner-cnt">
-          <h3>Cultivating <br>Lifelong travelling</h3>
-        </div>
-      </div>
-      <div class="item">
-        <div class="banner-img">
-          <img src="https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="">
-        </div>
-        <div class="banner-cnt">
-          <h3>Cultivating <br>Lifelong travelling</h3>
-        </div>
-      </div>
-    </div>
+    </ng-container>
+
+
   </div>
 </section>
 <!-- slider section html START -->
@@ -110,16 +135,19 @@
 
   <div class="destination--video-slider">
     <div class="section-padding">
-      <owl-carousel  [options]="destinationVideosSlideOptions" [items]="destinationVideos" [carouselClasses]="['owl-theme', 'screenshot_slider', 'sliding']">
-       <ng-container *ngFor="let destinationVideo of destinationVideos; let i=index">
+      <owl-carousel [options]="destinationVideosSlideOptions" [items]="destinationVideos"
+        [carouselClasses]="['owl-theme', 'screenshot_slider', 'sliding']">
+        <ng-container *ngFor="let destinationVideo of destinationVideos; let i=index">
           <div class="item" *ngIf="destinationVideo?.showInFrontEnd == true">
             <div class="destination-main-video">
-              <img [routerLink]="['/destinationVideos-detail', destinationVideo?.id]" [src]="destinationVideoImgsrcpath+destinationVideo?.featuredImage" alt="" title="">
+              <img [src]="destinationVideoImgsrcpath+destinationVideo?.featuredImage" alt="" title="">
               <div class="hero-video" data-wow-delay="0.5s">
-                <span type="button" (click)="openDialog(destinationVideosVideosrcpath+destinationVideo?.video)">&nbsp;<img
+                <span type="button"
+                  (click)="openDialog(destinationVideosVideosrcpath+destinationVideo?.video)">&nbsp;<img
                     src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
               </div>
-              <div [routerLink]="['/destinationVideos-detail', destinationVideo?.id]" class="video-heading">#{{i+1}} {{destinationVideo?.title}}</div>
+              <div [routerLink]="['/destinationVideos-detail', destinationVideo?.id]" class="video-heading">#{{i+1}}
+                {{destinationVideo?.title}}</div>
             </div>
           </div>
         </ng-container>
@@ -143,14 +171,16 @@
   <div class="container">
     <div class="about-rgt">
       <div class="pacakge-img">
-        <owl-carousel id="theme-based"  [options]="themeSlideOptions" [items]="themes" [carouselClasses]="['owl-theme', 'sliding']">
+        <owl-carousel id="theme-based" [options]="themeSlideOptions" [items]="themes"
+          [carouselClasses]="['owl-theme', 'sliding']">
           <ng-container *ngFor="let theme of themes">
-            <div class="item" *ngIf=" theme?.status == true" >
-              <div class="blog-blk" [routerLink]="['/theme-detail', theme?.id]">
-                <img  [src]="themeimgsrcpath+theme?.featuredImage" alt="">
+            <div class="item" *ngIf=" theme?.status == true">
+              <div class="blog-blk">
+                <img [src]="themeimgsrcpath+theme?.featuredImage" alt="">
                 <div class="theme-cnt">
-                  <h3>{{theme?.themeName}}</h3>
-                  <p [innerHTML]="theme?.description|safeHtml"></p>
+                  <h3 [routerLink]="['/theme-detail', theme?.id]">{{theme?.themeName}}</h3>
+                  <!-- <p [innerHTML]="theme?.description|safeHtml"></p> -->
+                  <p>{{theme?.shortDescription}}</p>
                 </div>
               </div>
             </div>
@@ -359,7 +389,7 @@
     <div class="d-flex flex-wrap">
       <div class="col-md-4 mb-4" *ngFor="let blog of blogPriorityList">
         <div class="blog-main">
-          <div class="blog-img" [routerLink]="['/blog-detail', blog?.id]"><img [src]="blogimgsrcpath+blog?.featuredImage" alt=""></div>
+          <div class="blog-img"><img [src]="blogimgsrcpath+blog?.featuredImage" alt=""></div>
           <div class="blog-cnt">
             <h3>{{ blog?.createdDate|date: 'MMM dd, yyyy'}}</h3>
             <h4 class="blog-title" [routerLink]="['/blog-detail', blog?.id]">{{blog?.title}}</h4>
@@ -390,23 +420,24 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center interview-video-inr">
         <div class="col-md-8">
-          <owl-carousel id="owl-interview-video"  [options]="interviewSlideOptions" [items]="interviews" [carouselClasses]="['owl-theme', 'sliding']">
+          <owl-carousel id="owl-interview-video" [options]="interviewSlideOptions" [items]="interviews"
+            [carouselClasses]="['owl-theme', 'sliding']">
             <ng-container *ngFor="let interview of interviews">
-              <div class="item" *ngIf=" interview?.showInFrontEnd == true" >
+              <div class="item" *ngIf=" interview?.showInFrontEnd == true">
                 <div class="d-flex flex-wrap align-items-center interview-video-left">
                   <div class="col-md-6">
                     <div class="interview-lft-cnt">
                       <h2 [routerLink]="['/interview-detail', interview?.id]">{{interview?.name}}</h2>
                       <h3>{{interview?.designation}}</h3>
-                      <p  [innerHTML]="interview?.description|safeHtml"></p>
+                      <p [innerHTML]="interview?.description|safeHtml"></p>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="interview-rgt-img">
-                      <img [routerLink]="['/interview-detail', interview?.id]" [src]="interviewImgsrcpath+interview?.featuredImage" alt="">
+                      <img [src]="interviewImgsrcpath+interview?.featuredImage" alt="">
                     </div>
                     <div class="hero-video" data-wow-delay="0.5s">
-                      <span type="button" (click)="openDialog(interviewVideosrcpath+interview?.video)" >&nbsp;<img
+                      <span type="button" (click)="openDialog(interviewVideosrcpath+interview?.video)">&nbsp;<img
                           src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
                     </div>
                   </div>
@@ -443,10 +474,10 @@
   <div class="d-flex flex-wrap tranding-main-all">
     <div class="col-md-3" *ngFor="let news of trendingNewses">
       <div class="tranding-main-upr">
-        <div class="tranding-main" [routerLink]="['/trendingNews-detail', news?.id]">
+        <div class="tranding-main">
           <img [src]="trendingNewsImgsrcPath+news?.featuredImage" alt="">
           <div class="tranding-cnt">
-            <h3>{{news?.title}}</h3>
+            <h3 [routerLink]="['/trendingNews-detail', news?.id]">{{news?.title}}</h3>
             <p [innerHTML]="news?.description|safeHtml"></p>
           </div>
         </div>
@@ -473,7 +504,7 @@
       <ng-container *ngFor="let latestEvent of latestEvents">
         <div class="col-md-3 mb-5" *ngIf="latestEvent?.showInFrontEnd != false">
           <div class="events-main">
-            <div [routerLink]="['/latestEvent-detail', latestEvent?.id]" class="events-img"><img [src]="latestEventImgsrcPath+latestEvent?.featuredImage" alt=""></div>
+            <div class="events-img"><img [src]="latestEventImgsrcPath+latestEvent?.featuredImage" alt=""></div>
             <div class="events-cnt">
               <h3>{{ latestEvent?.createdDate|date: 'MMM dd, yyyy'}}</h3>
               <h4 [routerLink]="['/latestEvent-detail', latestEvent?.id]">{{latestEvent?.title}}</h4>
@@ -494,7 +525,7 @@
 <section class="comon-space">
   <div class="container">
     <div class="comn-heading">
-      <h2>Top 10 Destination to Visit In India</h2>
+      <h2>Top 10 Destination to Visit</h2>
       <h3 class="heading-before">Top Destination</h3>
       <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
         dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
@@ -504,16 +535,16 @@
   <div class="container">
     <div class="d-flex flex-wrap">
       <ng-container *ngFor="let destination of topDestinations">
-        <div class="col-md-3 mb-5" *ngIf="destination?.showInFrontEnd == true">
+        <div class="col-md-3 mb-5 dest-mb" *ngIf="destination?.showInFrontEnd == true">
           <div class="flip-card">
-            <div class="flip-card-inner" [routerLink]="['/topDestination-detail', destination?.id]">
+            <div class="flip-card-inner">
               <div class="flip-card-front">
                 <img [src]="destinationImgsrcPath+destination?.featuredImage" alt="">
               </div>
               <div class="flip-card-back">
-                <h3>{{destination?.title}}</h3>
+                <h3 [routerLink]="['/topDestination-detail', destination?.id]">{{destination?.title}}</h3>
                 <p [innerHTML]="destination?.description|safeHtml "></p>
-                <a href="javascript:void(0)">Read More</a>
+                <a href="javascript:void(0)" [routerLink]="['/topDestination-detail', destination?.id]">Read More</a>
               </div>
             </div>
           </div>

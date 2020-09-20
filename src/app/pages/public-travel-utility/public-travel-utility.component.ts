@@ -44,13 +44,13 @@ export class PublicTravelUtilityComponent implements OnInit {
   }
 
   
-  openDialog(utilityType) {
+  openDialog(utility) {
     debugger;
     const dialogRef = this.dialog.open(TravelUtilityFormComponent,
       {
         // panelClass: 'video-dialog-container',
         hasBackdrop: false,
-        data: utilityType,
+        data: utility,
         panelClass: 'my-centered-dialog',
         width: '550px',
         // maxWidth: 80vw;

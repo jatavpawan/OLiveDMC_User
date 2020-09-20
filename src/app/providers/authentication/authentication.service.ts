@@ -39,6 +39,10 @@ export class AuthenticationService {
    loginUser(data){
       return <Observable<ResponseModel>> this.dataService.postData('Login/LoginUser', data);
    }
+   
+   forgotpassword(){
+      return <Observable<ResponseModel>> this.dataService.getData('AboutUs/forgotpassword');
+   }
 
    registerUser(data){
     return <Observable<ResponseModel>> this.dataService.postData('Login/RegisterUser', data);
@@ -78,5 +82,11 @@ export class AuthenticationService {
  UserChangePassword(data){
   return <Observable<ResponseModel>> this.dataService.postData('Login/ChangePassword', data);
  }
+
+ UserEmailOTPVerificationBySendMail(userId)
+ {
+   return <Observable<ResponseModel>> this.dataService.getData('Login/UserEmailOTPVerificationBySendMail?userId='+userId);
+ }
+ 
  
 }

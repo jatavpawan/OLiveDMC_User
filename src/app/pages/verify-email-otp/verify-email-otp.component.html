@@ -1,0 +1,23 @@
+<mat-dialog-content>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Email Verification</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" mat-dialog-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form [formGroup]="otpForm">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">OTP:</label>
+                <input type="text" class="form-control" id="recipient-name" formControlName="otp">
+                <span class="text-danger "
+                    *ngIf="(otpForm.get('otp').touched && otpForm.get('otp').hasError('required')) || (otpForm.get('otp').untouched && submitOtpForm == true) ">
+                    OTP is required</span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="ResendOtp()">Resend OTP</button>
+            <button type="button" class="btn btn-primary" (click)="submitOtpData()">Verify OTP</button>
+        </div>
+    </form>
+</mat-dialog-content>

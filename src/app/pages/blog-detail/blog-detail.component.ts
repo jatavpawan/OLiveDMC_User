@@ -20,6 +20,7 @@ export class BlogDetailComponent implements OnInit {
   blogDetail:any;
   blogImgSrcPath: string;
   offerAdsList: Array<any> = [];
+  offerAdsImgSrcPath: string = '';
   constructor(
     private shareService: ShareService,
     private blogService: BlogService,
@@ -32,6 +33,7 @@ export class BlogDetailComponent implements OnInit {
     this.shareService.hideSocialMediaBtnAction(true);
 
     this.blogImgSrcPath =  environment.apiendpoint + 'Uploads/Blog/image/';
+    this.offerAdsImgSrcPath =  environment.apiendpoint + 'Uploads/OfferAds/image/';
 
     this.activatedRoute.params.subscribe(param =>{
       debugger;

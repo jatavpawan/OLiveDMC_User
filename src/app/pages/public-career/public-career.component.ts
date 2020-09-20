@@ -8,6 +8,9 @@ import { ShareService } from 'src/app/providers/sharedService/share.service';
 })
 export class PublicCareerComponent implements OnInit {
 
+  careerPerson =  "student"
+  // selectPerson: string = "student";
+
   constructor( private  shareService: ShareService, ) {
     this.shareService.hideHeaderFooterAction(false);
     this.shareService.hideSocialMediaBtnAction(true);
@@ -15,6 +18,11 @@ export class PublicCareerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  changePersonIdentity(person){
+    debugger;
+    this.careerPerson = person.value;
   }
 
 }

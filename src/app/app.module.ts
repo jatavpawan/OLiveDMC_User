@@ -72,7 +72,32 @@ import { ContactUsService } from './providers/ContactUsService/contact-us.servic
 import { PrivacyPolicyService } from './providers/PrivacyPolicyService/privacy-policy.service';
 import { OfferAdsService } from './providers/OfferAdsService/offer-ads.service';
 import { UserPersonalInfoService } from './providers/UserPersonalInfoService/user-personal-info.service';
-
+import { DatePipe } from '@angular/common';
+import { VerifyEmailOtpComponent } from './pages/verify-email-otp/verify-email-otp.component';
+import { UserGalleryService } from './providers/UserGalleryService/user-gallery.service';
+import { GalleryDialogComponent } from './pages/gallery-dialog/gallery-dialog.component';
+import { AddGalleryDialogComponent } from './pages/add-gallery-dialog/add-gallery-dialog.component';
+import { UserPostService } from './providers/UserPostService/user-post.service';
+import { AddPostDialogComponent } from './pages/add-post-dialog/add-post-dialog.component';
+import { BlogCategoryService } from './providers/BlogCategoryService/blog-category.service';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { UserNetworkService } from './providers/UserNetworkService/user-network.service';
+import { BuzzWallComponent } from './pages/social-media/buzz-wall/buzz-wall.component';
+import { MyPostComponent } from './pages/social-media/my-post/my-post.component';
+import { GalleryComponent } from './pages/social-media/gallery/gallery.component';
+import { SocialBlogsComponent } from './pages/social-media/social-blogs/social-blogs.component';
+import { ScrapBookComponent } from './pages/social-media/scrap-book/scrap-book.component';
+import { NetworkComponent } from './pages/social-media/network/network.component';
+import { GoSocialComponent } from './pages/social-media/go-social/go-social.component';
+import { ShareSocialMediaComponent } from './pages/share-social-media/share-social-media.component';
+// import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+// import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FilterPipe } from './pipe/filter.pipe';
+import { UserVisitProfileComponent } from './pages/user-visit-profile/user-visit-profile.component';
+import { GalleryVideoModalComponent } from './pages/gallery-video-modal/gallery-video-modal.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -121,19 +146,43 @@ import { UserPersonalInfoService } from './providers/UserPersonalInfoService/use
     FestivalDetailComponent,
     TravelUtilityDetailComponent,
     TravelUtilityFormComponent,
+    VerifyEmailOtpComponent,
+    GalleryDialogComponent,
+    AddGalleryDialogComponent,
+    AddPostDialogComponent,
+    BuzzWallComponent,
+    MyPostComponent,
+    GalleryComponent,
+    SocialBlogsComponent,
+    ScrapBookComponent,
+    NetworkComponent,
+    GoSocialComponent,
+    ShareSocialMediaComponent,
+    FilterPipe,
+    UserVisitProfileComponent,
+    GalleryVideoModalComponent,
   ],
+ 
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     // BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    // NgxSpinnerModule,
+    NgxSpinnerModule,
     OwlModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    EditorModule,
+    MatTooltipModule,
 
+    // ShareButtonsModule,
+    // ShareButtonsModule.withConfig({
+    //   debug: true
+    // }),
+    // ShareIconsModule,
+    // FontAwesomeModule,
   ],
   providers: [
     DataService,
@@ -163,13 +212,20 @@ import { UserPersonalInfoService } from './providers/UserPersonalInfoService/use
       useClass: AuthInterceptor,
       multi: true
     },
-    { provide: Window, useValue: window }
+    { provide: Window, useValue: window },
+    DatePipe,
+    UserGalleryService,
+    UserPostService,
+    BlogCategoryService,
+    UserNetworkService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [
     OpenVideoComponent,
     TravelUtilityFormComponent,
-    
+    AddPostDialogComponent,
+    ShareSocialMediaComponent,
+    GalleryVideoModalComponent,
   ],
 })
 export class AppModule { }

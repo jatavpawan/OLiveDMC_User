@@ -1,0 +1,113 @@
+<mat-dialog-content>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" mat-dialog-close>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body gallery-box-modal">
+        <div class="container">
+          <div class="d-flex flex-wrap">
+            <div class="col-md-6">
+              <div class="gallery-left-video">
+                <video controls width="100%">
+                  <source src="{{galleryVideosrcpath+galleryDetail?.video}}">
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+                <!-- <video controls width="100%"
+                  poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217">
+                  <source [src]="galleryVideosrcpath+galleryDetail?.video">
+                  Sorry, your browser doesn't support embedded videos.
+                </video> -->
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="gallery-right-cnt">
+                <div class="article-head d-flex align-items-center">
+                  <div class="post-avatar ic-avatar avatar big">
+                    <a href="">
+                      <small class="post-avatar-placeholder">S</small>
+                      <!-- <span>Sidehustle</span> -->
+                      <span>{{galleryDetail?.title}}</span>
+                    </a>
+                  </div>
+                  <div class="article-options ml-auto d-flex align-items-center">
+                    <div class="dropdown">
+                      <span class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                      </span>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Go to post</a>
+                        <a class="dropdown-item" href="#" data-dismiss="modal" aria-label="Close">Delete Post</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="user-comments-list" *ngIf="galleryDetail?.commentcount >= 1 ">
+                  <div class="coment-lisitng">
+                    <ul class="lisitng-start">
+                      <ng-container *ngFor="let comment of galleryDetail?.commentList; let i = index;">
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="">
+                              <div class="user-circel-img">
+                                <!-- <img src="../../../assets/PublicAssets/images/iIMAGE.png"> -->
+                                <img
+                                  *ngIf="comment?.commentUserProfileImg != undefined && comment?.commentUserProfileImg != null"
+                                  [src]="profileImgsrcpath+comment?.commentUserProfileImg">
+                              </div>
+                              <small class="post-comment-avatar-placeholder"
+                                *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{comment?.shortUserName}}</small>
+                            </div>
+                            <div class="">
+                              <div class="user-comments">
+                                <!-- <p><span>{{comment?.commentUserName}}: </span> {{comment?.comment}}</p> -->
+                                <p><span>{{comment?.commentUserFirstName + ' '+ comment?.commentUserLastName }}:
+                                  </span> {{comment?.comment}}</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <!-- <li (click)="reactOnGalleryComment(comment,1)"
+                                    *ngIf="comment?.userCommentReactionStatus !=  true"> Like</li>
+                                  <li (click)="reactOnGalleryComment(comment,0)"
+                                    *ngIf="comment?.userCommentReactionStatus ==  true"> UnLike</li>
+                                  <li *ngIf="comment?.reactionCount != 0"><img
+                                      src="../../../assets/PublicAssets/images/like.jpg">{{comment?.reactionCount}}
+                                  </li> -->
+                                  <li class="comment-post-time">{{comment?.postTimeFromNow}}</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ng-container>
+                    
+                    </ul>
+                  </div>
+                </div>
+    
+                <!-- <div class="load-more-text" *ngIf="galleryDetail?.commentcount >= 2" (click)="initialLoadCommentOnGallery(galleryDetail)">Load more comments <span>9+</span></div> -->
+                <div class="load-more-text" *ngIf="galleryDetail?.commentcount >= 2"
+                  (click)="initialLoadCommentOnGallery(galleryDetail)">Load more comments</div>
+    
+                <div class="comment-box">
+                  <form [formGroup]="galleryCommentForm">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Comment" #comment
+                        (keyup.enter)="userCommentOnGallery(galleryDetail, comment)" formControlName="comment">
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"
+                          (click)="userCommentOnGallery(galleryDetail, comment)"><i class="fa fa-send"></i></span>
+                      </div>
+                    </div>
+                  </form>
+    
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</mat-dialog-content>

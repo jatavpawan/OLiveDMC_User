@@ -2,7 +2,7 @@
 
 <mat-dialog-content>
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">{{data}}</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">{{utilityType}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" mat-dialog-close>
             <span aria-hidden="true">&times;</span>
         </button>
@@ -35,14 +35,28 @@
 
             </div>
             <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text" formControlName="message"></textarea>
+                <label for="recipient-number" class="col-form-label">Start Country:</label>
+                <input type="text" class="form-control" id="recipient-number" formControlName="startCountry">
                 <span class="text-danger "
-                    *ngIf="(utilityForm.get('message').touched && utilityForm.get('message').hasError('required')) || (utilityForm.get('message').untouched && submitUtilityForm == true) ">
-                    Message is required</span>
+                    *ngIf="(utilityForm.get('startCountry').touched && utilityForm.get('startCountry').hasError('required')) || (utilityForm.get('startCountry').untouched && submitUtilityForm == true) ">
+                    Start Country is required</span>
 
             </div>
+            <div class="form-group">
+                <label for="recipient-number" class="col-form-label">Destination Country:</label>
+                <input type="text" class="form-control" id="recipient-number" formControlName="destinationCountry">
+                <span class="text-danger "
+                    *ngIf="(utilityForm.get('destinationCountry').touched && utilityForm.get('destinationCountry').hasError('required')) || (utilityForm.get('destinationCountry').untouched && submitUtilityForm == true) ">
+                    Destination Country is required</span>
 
+            </div>
+            <div class="form-group" *ngIf="utilityId == 1 || utilityId == 8">
+                <label for="recipient-number" class="col-form-label">Date Of Travel:</label>
+                <input type="date" class="form-control" id="recipient-number" formControlName="dateOfTravel">
+                <span class="text-danger "
+                    *ngIf="(travelDateRequiredError == true && submitUtilityForm == true) ">
+                    Date Of Travel is required</span>
+            </div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" mat-dialog-close>Close</button>

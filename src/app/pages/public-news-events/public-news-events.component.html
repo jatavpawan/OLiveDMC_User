@@ -156,12 +156,13 @@
           <ng-container *ngFor="let news of newses;let i = index">
             <div class="mb-5" [ngClass]="{'col-md-8': i == 0, 'col-md-4': i >= 1 }">
               <div class="interview-video-main wow" [ngClass]="{'fadeInLeft': i==0, 'fadeInRight': i==1, 'fadeInUp': i>1 }" [attr.data-wow-delay]="news?.dataWowDelay" data-wow-duration="1500ms">
-                <div class="interview-video" [routerLink]="['/news-detail', news?.id]"><img [src]="newsImgsrcPath+news?.featuredImage" alt=""></div>
+                <div class="interview-video"><img [src]="newsImgsrcPath+news?.featuredImage" alt=""></div>
                 <div class="interview-video-cnt">
                   <h3 [routerLink]="['/news-detail', news?.id]">{{news?.title}}</h3>
-                  <p [innerHTML]="news?.description|safeHtml"></p>
+                  <!-- <p [innerHTML]="news?.description|safeHtml"></p> -->
+                  <p>{{news?.shortDescription}}</p>
                 </div>
-                <div class="hero-video" data-wow-delay="0.5s" *ngIf="news?.video != '' && news?.video != null ">
+                <div class="hero-video" data-wow-delay="0.5s" *ngIf="(news?.video != '' && news?.video != null) && news?.videoShowInFront == true">
                   <span type="button" (click)="openDialog(newsVideosrcPath+news?.video)">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
                 </div>
               </div>
@@ -295,12 +296,13 @@
             <div class="mb-5" [ngClass]="{'col-md-4': i <= 2 || i == 5 || (i >=7 && i <=9), 'col-md-6': i == 3 || i == 4, 'col-md-8': i == 6 }">
               <div class="evnts-video-main wow" [ngClass]="{'fadeInLeft': i == 3 || i == 5, 'fadeInRight':i == 4 || i == 6, 'fadeInUp': i <= 2 || (i >=7 && i <=9) }" [attr.data-wow-delay]="event.dataWowDelay" data-wow-duration="1500ms">
                 <!-- <div class="events-video-1"><img [src]="eventImgsrcpath+event?.featuredImage" alt=""></div> -->
-                <div [class]="event.class" [routerLink]="['/event-detail', event?.id]"><img [src]="eventImgsrcpath+event?.featuredImage" alt=""></div>
+                <div [class]="event.class"><img [src]="eventImgsrcpath+event?.featuredImage" alt=""></div>
                 <div class="events-video-cnt">
                   <h3 [routerLink]="['/event-detail', event?.id]">{{event?.title}}</h3>
-                  <p [innerHTML]="event?.description|safeHtml"></p>
+                  <!-- <p [innerHTML]="event?.description|safeHtml"></p> -->
+                  <p>{{event?.shortDescription}}</p>
                 </div>
-                <div class="hero-video" data-wow-delay="0.5s" *ngIf="event?.video != '' && event?.video != null ">
+                <div class="hero-video" data-wow-delay="0.5s" *ngIf="(event?.video != '' && event?.video != null ) && event?.videoShowInFront == true">
                   <span type="button"  (click)="openDialog(eventVideosrcpath+event?.video)">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
                 </div>
               </div>
@@ -329,12 +331,12 @@
         <ng-container *ngFor="let festival of festivals;let i = index">
           <div class="col-md-6">
             <div class="festival-main">
-              <div [class]="festival.class"><img [routerLink]="['/festival-detail', festival?.id]" [src]="festivalImgsrcPath+festival?.featuredImage" alt=""></div>
+              <div [class]="festival.class"><img [src]="festivalImgsrcPath+festival?.featuredImage" alt=""></div>
               <div class="festival-cnt">
                 <h3 [routerLink]="['/festival-detail', festival?.id]"># {{festival.title}}</h3>
                 <p >{{festival.shortDescription}}</p>
               </div>
-              <div class="hero-video" data-wow-delay="0.5s"  *ngIf="festival?.video != '' && festival?.video != null ">
+              <div class="hero-video" data-wow-delay="0.5s"  *ngIf="(festival?.video != '' && festival?.video != null) && festival?.videoShowInFront == true">
                 <span type="button"  (click)="openDialog(festivalImgsrcPath+festival?.video)">&nbsp;<img src="../assets/PublicAssets/images/play-btn.svg" alt=""></span>
               </div>
             </div>
@@ -434,3 +436,6 @@
     </div>
   </div>
   <!--Video Modal End-->
+
+
+ 

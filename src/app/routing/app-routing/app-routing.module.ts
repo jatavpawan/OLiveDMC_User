@@ -38,6 +38,14 @@ import { NewDestinationInWhatsNewDetailComponent } from 'src/app/pages/new-desti
 import { DestinationVideosDetailComponent } from 'src/app/pages/destination-videos-detail/destination-videos-detail.component';
 import { FestivalDetailComponent } from 'src/app/pages/festival-detail/festival-detail.component';
 import { TravelUtilityDetailComponent } from 'src/app/pages/travel-utility-detail/travel-utility-detail.component';
+import { GoSocialComponent } from 'src/app/pages/social-media/go-social/go-social.component';
+import { BuzzWallComponent } from 'src/app/pages/social-media/buzz-wall/buzz-wall.component';
+import { MyPostComponent } from 'src/app/pages/social-media/my-post/my-post.component';
+import { GalleryComponent } from 'src/app/pages/social-media/gallery/gallery.component';
+import { SocialBlogsComponent } from 'src/app/pages/social-media/social-blogs/social-blogs.component';
+import { NetworkComponent } from 'src/app/pages/social-media/network/network.component';
+import { ScrapBookComponent } from 'src/app/pages/social-media/scrap-book/scrap-book.component';
+import { UserVisitProfileComponent } from 'src/app/pages/user-visit-profile/user-visit-profile.component';
 
 const routes: Routes = [
   {
@@ -132,12 +140,49 @@ const routes: Routes = [
 
   },
   {
+    path: 'go-social',
+    component: GoSocialComponent,
+    canActivate: [AuthGuard]
+  },
+  // {
+  //   path: 'buzzwall',
+  //   component: BuzzWallComponent,
+  //   canActivate: [AuthGuard]
+  
+  // },
+  // {
+  //   path: 'mypost',
+  //   component: MyPostComponent,
+  //   canActivate: [AuthGuard]
+  
+  // },
+  // {
+  //   path: 'gallery',
+  //   component: GalleryComponent,
+  //   canActivate: [AuthGuard]
+  
+  // },
+  // {
+  //   path: 'social-blogs',
+  //   component: SocialBlogsComponent,
+  //   canActivate: [AuthGuard]
+  
+  // },
+  // {
+  //   path: 'network',
+  //   component: NetworkComponent,
+  //   canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'scrap-book',
+  //   component: ScrapBookComponent,
+  //   canActivate: [AuthGuard]
+  
+  // },
+
+  {
     path: 'travel-details',
     component: PublicTravelDetailsComponent,
-  },
-  {
-    path: 'social-media',
-    component: PublicSocialMediaComponent,
   },
   {
     path: 'travel-utility',
@@ -198,6 +243,11 @@ const routes: Routes = [
   {
     path: 'travelUtility-detail/:utilityType',
     component: TravelUtilityDetailComponent,
+  },
+  {
+    path: 'visit-profile/:userId',
+    component: UserVisitProfileComponent,
+    canActivate: [AuthGuard]
   },
 ]
 

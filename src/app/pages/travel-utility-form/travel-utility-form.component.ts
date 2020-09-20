@@ -15,6 +15,9 @@ export class TravelUtilityFormComponent implements OnInit {
 
   utilityForm: FormGroup;
   submitUtilityForm: boolean = false;
+  travelDateRequiredError: boolean = false;
+  utilityType: string = '';
+  utilityId: number = 0;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,15 +27,23 @@ export class TravelUtilityFormComponent implements OnInit {
     public dialogRef: MatDialogRef<TravelUtilityFormComponent>
 
   ) {
+    debugger;
     this.utilityForm = this.formBuilder.group({
+      travelUtilityTypeId: [''],
       name: ['', Validators.required],
       email: ['', Validators.required],
       mobile: ['', Validators.required],
-      message: ['', Validators.required],
-      travelUtilityType: [''],
+      startCountry: ['', Validators.required],
+      destinationCountry: ['', Validators.required],
+      dateOfTravel: [''],
     })
 
-    this.utilityForm.get('travelUtilityType').setValue(data);
+    if(this.data != undefined ){
+      this.utilityForm.get('travelUtilityTypeId').setValue(this.data.id);
+      this.utilityType = this.data.utilityType; 
+      this.utilityId = this.data.id; 
+    }
+
   }
 
   ngOnInit(): void {
@@ -43,15 +54,22 @@ export class TravelUtilityFormComponent implements OnInit {
     debugger;
     this.submitUtilityForm = false;
 
-    if (this.utilityForm.valid) {
+    
+    if(this.data != undefined && (this.data.id == 8 || this.data.id == 1) && this.utilityForm.get('dateOfTravel').value == ''  ){
+      this.travelDateRequiredError = true;
+    }
+    else{
+      this.travelDateRequiredError = false;
+    }
+
+    if (this.utilityForm.valid && this.travelDateRequiredError == false) {
       console.log("this.utilityForm.value", this.utilityForm.value);
 
-      this.closeDialog();
       this.spinner.show();
       this.travelUtilityService.AddUpdateTravelUtilityQuery(this.utilityForm.value).subscribe(resp => {
         this.spinner.hide();
         if (resp.status == Status.Success) {
-          Swal.fire('', resp.message,'success');
+          Swal.fire('Submit', "Our Representative Will Contact You Soon",'success');
         }
         else {
           Swal.fire('Oops...', resp.message, 'warning');

@@ -46,4 +46,14 @@ export class BannerService {
     return <Observable<ResponseModel>> this.dataService.getData('Banner/GetBannerDetailByPageId?Id='+pageId);
   }
 
+  GetBannerAtHome()
+  {
+    return <Observable<ResponseModel>> this.dataService.getData('Banner/GetBannerAtHome');
+  }
+
 }
+
+
+
+
+

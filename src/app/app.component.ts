@@ -3,6 +3,11 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './providers/authentication/authentication.service';
 import * as $ from 'jquery';
 import { ShareService } from './providers/sharedService/share.service';
+import { UserPersonalInfoService } from './providers/UserPersonalInfoService/user-personal-info.service';
+import { environment } from 'src/environments/environment';
+import { Status } from './model/ResponseModel';
+import Swal from 'sweetalert2'
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var $: any;
 
@@ -16,13 +21,22 @@ export class AppComponent implements OnInit {
   userLogin: boolean = false;
   hideHeaderFooterTag: boolean = false;
   hideSocialBtn: boolean = true;
+  userLoggedinInfo: any;
+  profileImgsrcpath: string = "";
+  apiendpoint: string = environment.apiendpoint;
+  userPersonalInfo: any;
+  profileImageUrl: string;
 
   constructor(
     private router: Router,
     private authService: AuthenticationService,
     private shareService: ShareService,
-
+    private userPersonalInfoService: UserPersonalInfoService,
+    private spinner: NgxSpinnerService,
   ) {
+
+    this.profileImgsrcpath = this.apiendpoint + 'Uploads/SocialMedia/UserProfilePic/image/';
+
     this.shareService.hideHeaderFooter.subscribe((res: any) => {
       this.hideHeaderFooterTag = res;
     });
@@ -30,11 +44,22 @@ export class AppComponent implements OnInit {
     
     this.shareService.userLOggedIn.subscribe((res: any) => {
       this.userLogin = res;
+      if(this.userLogin == true){
+        this.userLoggedinInfo = JSON.parse(this.authService.getUserdata());
+        this.GetUserPersonalInfoByUserId(this.userLoggedinInfo.id);
+      }
     });
     
     this.shareService.hideSocialMediaBtn.subscribe((res: any) => {
       this.hideSocialBtn = res;
     });
+
+    if (this.authService.isLoggedIn()) {
+      debugger;
+      this.userLoggedinInfo = JSON.parse(this.authService.getUserdata());
+      this.GetUserPersonalInfoByUserId(this.userLoggedinInfo.id);
+    }
+
 
     
   }
@@ -83,7 +108,41 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
+    this.profileImageUrl = undefined;
     this.userLogin = false;
     this.authService.logout();
   }
+
+  GetUserPersonalInfoByUserId(userId) {
+    debugger;
+    this.userPersonalInfoService.GetUserPersonalInfoByUserId(userId).subscribe(resp => {
+      if (resp.status == Status.Success) {
+        this.userPersonalInfo = resp.data;
+
+        if (this.userPersonalInfo.profileImg != undefined) {
+          this.profileImageUrl = this.profileImgsrcpath + this.userPersonalInfo.profileImg;
+        }
+      }
+      else {
+        Swal.fire('Oops...', resp.message, 'error');
+      }
+      this.spinner.hide();
+    })
+  
+
+  }
+
+  menuClick(){
+    $('.closeIcn > span, .overlay ').click(function () {
+      $('body').removeClass('open-menu');
+    });
+
+
+    $('.mobile-nav ').click(function () {
+      $('body').toggleClass('open-menu');
+    });
+  }
+
 }
+
+

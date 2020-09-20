@@ -35,6 +35,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
    max-height: none;
  }
 
-/* .my-centered-dialog .mat-dialog-container{
-     max-width: none;
- } */
+ .cdk-global-overlay-wrapper {
+   display: flex;
+   position: absolute;
+   z-index: 1000;
+   overflow: auto;
+   pointer-events: auto;  
+ }

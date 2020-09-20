@@ -1,0 +1,1050 @@
+<div class="overlay"></div>
+
+<!-- banner section START -->
+<section class="social-banner">
+  <div class="container">
+    <div class="social-media-banner d-flex flex-wrap justify-content-center">
+      <div class="banner-img">
+        <img *ngIf="coverImageUploaded == false && coverImageUrl == undefined"
+          src="../../../assets/PublicAssets/images/social-media-banner.jpg" alt="">
+        <img *ngIf="coverImageUploaded == true || coverImageUrl != undefined" [src]="coverImageUrl" alt="">
+        <div class="edit-profile">
+          <label for="coverImg"><a><i class="fa fa-camera"></i></a></label>
+          <input type="file" id="coverImg" #coverImgfile (change)="uploadCoverImage(coverImgfile)">
+        </div>
+      </div>
+      <div class="user-social-profile">
+        <img *ngIf="profileImageUploaded == false && profileImageUrl == undefined"
+          src="../../../assets/PublicAssets/images/social-profile.jpg" alt="">
+        <img *ngIf="profileImageUploaded == true || profileImageUrl != undefined" [src]="profileImageUrl" alt="">
+        <div class="edit-profile">
+          <label for="profileImg"><a><i class="fa fa-camera"></i></a></label>
+          <input type="file" id="profileImg" #profileImgfile (change)="uploadProfileImage(profileImgfile)">
+        </div>
+      </div>
+      <div class="user-name">
+        <!-- <h3> {{ userPersonalInfo?.name}}</h3> -->
+        <h3> {{ userPersonalInfo?.firstName + ' '+ userPersonalInfo?.lastName  }}</h3>
+        <h5 *ngIf="userLoggedinInfo.category == 1">Travel Guru</h5>
+        <h5 *ngIf="userLoggedinInfo.category == 2">Expert Traveller</h5>
+      </div>
+      <div class="add-friend">
+        <a href="JavaScript:void(0)" class="purpel-btn">add friend +</a>
+        <a href="JavaScript:void(0)" class="purpel-btn">Message</a>
+      </div>
+      <div class="d-flex flex-wrap align-items-center justify-content-between social-bottom">
+        <div class="post-numbers">
+          <ul>
+            <li>{{userPostCount}} <br><span> post</span></li>
+            <li>{{userFriendCount}} <br><span> Friends</span></li>
+            <li>2.5K <br><span> visit</span></li>
+          </ul>
+        </div>
+        <div class="social-icons-of-social ">
+          <ul>
+            <li>
+              <a href="JavaScript:void(0)"><img src="../../../assets/PublicAssets/images/facebook.png" alt=""></a>
+            </li>
+            <li>
+              <a href="JavaScript:void(0)"><img src="../../../assets/PublicAssets/images/twitter.png" alt=""></a>
+            </li>
+            <li>
+              <a href="JavaScript:void(0)"><img src="../../../assets/PublicAssets/images/googel-plus.png" alt=""></a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- banner section END -->
+
+<section class="tabing-space">
+  <div class="container">
+    <div class="comon-tabs-links">
+      <ul class="nav nav-pills" id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+            aria-controls="pills-home" aria-selected="true">
+            <div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-profille-icon.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-profille-icon-color.png" class="img-top" alt="">
+            </div>
+            <span>Buzz Wall</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="user-post-tab" data-toggle="pill" href="#pills-user-post" role="tab"
+            aria-controls="pills-contact" aria-selected="true">
+            <div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-image.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-image-color.png" class="img-top" alt="">
+            </div>
+            <span>My Post</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" id="video-tab" data-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-profile" aria-selected="false"><div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-video.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-video-color.png" class="img-top" alt="">
+            </div>
+            <span>Videos</span>
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" id="images-tab" data-toggle="pill" href="#pills-images" role="tab"
+            aria-controls="pills-contact" aria-selected="false">
+            <div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-image.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-image-color.png" class="img-top" alt="">
+            </div>
+            <span>Gallery</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="blogs-tab" data-toggle="pill" href="#pills-blogs" role="tab"
+            aria-controls="pills-contact" aria-selected="false">
+            <div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-blog.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-blog-color.png" class="img-top" alt="">
+            </div>
+            <span>blogs</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="scrapbook-tab" data-toggle="pill" href="#pills-scrapbook" role="tab"
+            aria-controls="pills-contact" aria-selected="false">
+            <div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-book.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-book-color.png" class="img-top" alt="">
+            </div>
+            <span>Scrap books</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="friends-request-tab" data-toggle="pill" href="#pills-friends-request" role="tab"
+            aria-controls="pills-contact" aria-selected="false">
+            <div class="user-icon">
+              <img src="../../../assets/PublicAssets/images/user-network.png" alt="">
+              <img src="../../../assets/PublicAssets/images/user-network-color.png" class="img-top" alt="">
+            </div>
+            <span>network</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="social-space">
+
+  <div class="my-profile-main">
+    <div class="tab-content" id="pills-tabContent">
+      <!-- tab-1 START -->
+      <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
+        <app-buzz-wall></app-buzz-wall>
+      </div>
+      <!-- tab-1 END -->
+
+
+      <!-- tab-2 START User-Post-Tab-->
+      <div class="tab-pane fade" id="pills-user-post" role="tabpanel" aria-labelledby="user-post-tab">
+       <app-my-post></app-my-post>
+      </div>
+      <!-- tab-2 END User-Post-Tab-->
+
+      <!-- tab-2 start -->
+      <!-- <div class="tab-pane fade" id="pills-video" role="tabpanel" aria-labelledby="video-tab">
+            <div class="video-tab-main">
+            <div class="container">
+              <div class="search-box-top">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <div class="col-md-8">
+                    <div class="search-blk">
+                      <i class="fa fa-search"></i>
+                      <input type="text" name="" placeholder="search videos...">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                  <div class="add-video text-right">
+                    <a href="javscriptscript:void(0)" class="purpel-btn" data-toggle="modal" data-target="#upload-video">add video +</a>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class="list-top-videos d-flex flex-wrap">
+               <div class="col-md-3 mb-5">
+                 <div class="events-main">
+                  <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+                  <div class="events-cnt">
+                    <h3>October 31, 2021</h3>
+                    <h4>Vibra Mahou Fest</h4>
+                    <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                  </div>
+                  <div class="hero-video" data-wow-delay="0.5s" >
+                    <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                  </div>
+                  <div class="crud">
+                    <ul>
+                      <li class="delete-video"><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li data-toggle="modal" data-target="#upload-video"><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-5">
+               <div class="events-main">
+                <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+                <div class="events-cnt">
+                  <h3>October 31, 2021</h3>
+                  <h4>Vibra Mahou Fest</h4>
+                  <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                </div>
+                <div class="hero-video" data-wow-delay="0.5s" >
+                  <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                </div>
+                <div class="crud">
+                    <ul>
+                      <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-5">
+             <div class="events-main">
+              <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+              <div class="events-cnt">
+                <h3>October 31, 2021</h3>
+                <h4>Vibra Mahou Fest</h4>
+                <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+              <div class="crud">
+                <ul>
+                  <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                  <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-5">
+           <div class="events-main">
+            <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+            <div class="events-cnt">
+              <h3>October 31, 2021</h3>
+              <h4>Vibra Mahou Fest</h4>
+              <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-5">
+                 <div class="events-main">
+                  <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+                  <div class="events-cnt">
+                    <h3>October 31, 2021</h3>
+                    <h4>Vibra Mahou Fest</h4>
+                    <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                  </div>
+                  <div class="hero-video" data-wow-delay="0.5s" >
+                    <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                  </div>
+                  <div class="crud">
+                    <ul>
+                      <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-5">
+               <div class="events-main ">
+                <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+                <div class="events-cnt">
+                  <h3>October 31, 2021</h3>
+                  <h4>Vibra Mahou Fest</h4>
+                  <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+                </div>
+                <div class="hero-video" data-wow-delay="0.5s" >
+                  <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+                </div>
+                <div class="crud">
+                    <ul>
+                      <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                      <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-5">
+             <div class="events-main ">
+              <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+              <div class="events-cnt">
+                <h3>October 31, 2021</h3>
+                <h4>Vibra Mahou Fest</h4>
+                <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+              </div>
+              <div class="hero-video" data-wow-delay="0.5s" >
+                <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+              </div>
+              <div class="crud">
+                <ul>
+                  <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                  <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-5">
+           <div class="events-main ">
+            <div class="events-img"><img src="../../../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+            <div class="events-cnt">
+              <h3>October 31, 2021</h3>
+              <h4>Vibra Mahou Fest</h4>
+              <h5><i class="fa fa-map-marker"></i>Green Park Chicago</h5>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="comn-heading">
+          <h2>My Recorded Videos</h2>
+          <h3 class="heading-before">Recorded Videos</h3>
+        </div>
+      </div>
+
+      <div class="container">
+    <div class="d-flex flex-wrap">
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-1.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                 <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                 <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-2.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-3.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-4.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="interview-video-main">
+            <div class="interview-video"><img src="../../../assets/PublicAssets/images/interview-5.jpg" alt=""></div>
+            <div class="interview-video-cnt">
+              <h3>Eva Stuard</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+            <div class="hero-video" data-wow-delay="0.5s" >
+              <span type="button" data-toggle="modal" data-target="#HeroVideo">&nbsp;<img src="../../../assets/PublicAssets/images/play-btn.svg" alt=""></span>
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+          </div> -->
+      <!-- tab-2 END -->
+
+      <!-- tab-3 START -->
+      <div class="tab-pane fade" id="pills-images" role="tabpanel" aria-labelledby="images-tab">
+        <app-gallery></app-gallery>
+      </div>
+      <!-- tab-3 END -->
+
+      <!-- tab-4 START -->
+      <div class="tab-pane fade" id="pills-blogs" role="tabpanel" aria-labelledby="blogs-tab">
+      <app-social-blogs></app-social-blogs>
+
+      </div>
+      <!-- tab-4 END -->
+
+      <!-- tab-5 START -->
+      <div class="tab-pane fade" id="pills-scrapbook" role="tabpanel" aria-labelledby="scrapbook-tab">
+       <app-scrap-book></app-scrap-book>
+      </div>
+      <!-- tab-5 END -->
+
+      <!-- tab-6 START -->
+      <div class="tab-pane fade" id="pills-friends-request" role="tabpanel" aria-labelledby="friends-request-tab">
+      <app-network></app-network>
+
+      </div>
+      <!-- tab-6 END -->
+
+    </div>
+  </div>
+
+</section>
+
+
+<!--Video Modal Start-->
+<!-- <div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <video controls autoplay loop id="video1">
+          <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+<!--Video Modal End-->
+
+<!-- about me Modal start-->
+<!-- <div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">About Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="aboutMeForm">
+        <div class="modal-body about-popup">
+          <div class="form-group">
+            <label>Describe</label>
+            <textarea placeholder="About Me..." formControlName="aboutDescription"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="purpel-btn" (click)="AddUpdateUserAboutDescription()">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+<!-- about me Modal end-->
+
+<!-- Personal-Info Modal start-->
+<!-- <div class="modal fade" id="personal-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">About Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body personal-info-main">
+        <form [formGroup]="userPersonalInfoForm">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="" formControlName="firstName">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="" formControlName="lastName">
+          </div>
+          <div class="form-group">
+            <label>email</label>
+            <input type="email" name="" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label>mobile</label>
+            <input type="tel" name="" formControlName="mobile">
+          </div>
+          <div class="form-group">
+            <label>Birthday</label>
+            <input type="date" name="date" placeholder="dd-mm-yyyy" formControlName="birthday">
+          </div>
+          <div class="form-group">
+            <label>Occupation</label>
+            <input type="text" name="" formControlName="occupation">
+          </div>
+          <div class="form-group">
+            <label>country</label>
+            <input type="text" name="" formControlName="country">
+          </div>
+          <div class="form-group">
+            <label>state</label>
+            <input type="text" name="" formControlName="state">
+          </div>
+          <div class="form-group">
+            <label>city</label>
+            <input type="text" name="" formControlName="city">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="purpel-btn" (click)="submitUserPersonalInfo()">Save changes</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+<!-- Personal-Info Modal end-->
+
+<!-- social-post Modal start-->
+<!-- <div class="modal fade" id="social-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload New Post Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body social-post-main">
+        <div class="top-status">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="update-status-tab" data-toggle="tab" href="#update-status" role="tab"
+                aria-controls="home" aria-selected="true"><i class="fa fa-edit"></i>update status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="add-photo-video-tab" data-toggle="tab" href="#add-photo-video" role="tab"
+                aria-controls="profile" aria-selected="false"><i class="fa fa-image"></i>Add photos/video</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="update-status" role="tabpanel"
+              aria-labelledby="update-status-tab">
+              <div class="form-group">
+                <label>Status</label>
+                <textarea placeholder="what's on your mind..."></textarea>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="add-photo-video" role="tabpanel" aria-labelledby="add-photo-video-tab">
+              <div class="form-group">
+                <label>upload photos</label>
+                <input type="file" name="">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">Post</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- social-post Modal end-->
+
+
+<!-- profile social-post Modal start-->
+<!-- <div class="modal fade" id="profile-social-post" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload New Post Yourself</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body social-post-main upload-video-post-main">
+        <div class="top-status">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link" [class.active]="currentAddPostTab == 'update-status-tab'"
+                (click)="currentAddPostTab = 'update-status-tab'" id="update-status-tab" data-toggle="tab" role="tab"
+                aria-controls="home" aria-selected="true"><i class="fa fa-edit"></i>update status</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [class.active]="currentAddPostTab == 'add-photo-video-tab'"
+                (click)="currentAddPostTab = 'add-photo-video-tab'" id="add-photo-video-tab" data-toggle="tab"
+                role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-image"></i>Add photos/video</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade " [ngClass]="{'show active': currentAddPostTab == 'update-status-tab'}"
+              *ngIf="currentAddPostTab == 'update-status-tab'" id="update-status" role="tabpanel"
+              aria-labelledby="update-status-tab">
+              <div class="form-group">
+                <label>Status</label>
+                <textarea placeholder="what's on your mind..."></textarea>
+              </div>
+            </div>
+            <div class="tab-pane fade" [ngClass]="{'show active': currentAddPostTab == 'add-photo-video-tab'}"
+              *ngIf="currentAddPostTab == 'add-photo-video-tab'" id="add-photo-video-new" role="tabpanel"
+              aria-labelledby="add-photo-video-tab">
+              <div class="form-group">
+                <label>upload photos</label>
+                <input type="file" name="">
+                <div class="drop-image"><img src="../../../assets/PublicAssets/images/drop-attachment.png"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">Post</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- profile social-post Modal end-->
+
+
+<!-- upload video Modal start-->
+<!-- <div class="modal fade" id="upload-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload videos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body upload-video-post-main">
+        <div class="form-group">
+          <label>upload photos</label>
+          <input type="file" name="">
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">upload</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- upload video Modal end-->
+
+<!-- upload photos Modal start-->
+<!-- <div class="modal fade" data-backdrop="false" id="upload-photos" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload photos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="uploadPhotosCloseDialog()">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="photoGalleryForm">
+        <div class="modal-body upload-video-post-main">
+          <div class="form-group">
+            <label>upload photos</label>
+            <input type="file" name="" multiple #galleryFile (change)="uploadPhotos(galleryFile)"
+              formControlName="gallery">
+            <div class="drop-image"><img src="../../../assets/PublicAssets/images/drop-attachment.png"></div>
+          </div>
+          <div class="upload-pictures">
+            <ul *ngIf="uploadFileUrls.length != 0">
+              <li *ngFor="let uploadFileUrl of uploadFileUrls">
+                <div class="user-img-list"><img [src]="uploadFileUrl"><i class="fa fa-time"></i></div>
+              </li>
+            </ul>
+            <ul *ngIf="uploadFileUrls.length == 0 && editGalleryAction == true">
+              <div class="user-img-list"><img [src]="galleryImgsrcpath+editGalleryImg"><i class="fa fa-time"></i></div>
+            </ul>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close"
+            (click)="addUpdateGallery()">upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+<!-- upload photos Modal end-->
+
+<!-- upload videos Modal start-->
+<!-- <div class="modal fade" id="upload-videos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload videos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body upload-video-post-main">
+        <div class="form-group">
+          <label>upload videos</label>
+          <input type="file" name="">
+          <div class="drop-image"><img src="../../../assets/PublicAssets/images/drop-attachment.png"></div>
+        </div>
+        <div class="upload-pictures">
+          <ul>
+            <li>
+              <div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-2.jpg"><i
+                  class="fa fa-time"></i></div>
+            </li>
+            <li>
+              <div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-1.jpg"><i
+                  class="fa fa-times"></i></div>
+            </li>
+            <li>
+              <div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-2.jpg"><i
+                  class="fa fa-times"></i></div>
+            </li>
+            <li>
+              <div class="user-img-list"><img src="../../../assets/PublicAssets/images/People-1.jpg"><i
+                  class="fa fa-times"></i></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="purpel-btn" data-dismiss="modal" aria-label="Close">upload</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- upload videos Modal end-->
+
+
+<!-- gallery box Modal start-->
+<!-- <div class="gallery-box-main">
+  <div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body gallery-box-modal">
+          <div class="container">
+            <div class="d-flex flex-wrap">
+              <div class="col-md-6">
+                <div class="gallery-left-img"><img [src]="galleryImgsrcpath+galleryDetail?.gallery"></div>
+              </div>
+              <div class="col-md-6">
+                <div class="gallery-right-cnt">
+                  <div class="article-head d-flex align-items-center">
+                    <div class="post-avatar ic-avatar avatar big">
+                      <a href="">
+                        <small class="post-avatar-placeholder">S</small>
+                        <span>{{galleryDetail?.title}}</span>
+                      </a>
+                    </div>
+                    <div class="article-options ml-auto d-flex align-items-center">
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown">
+                          <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                        </span>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Go to post</a>
+                          <a class="dropdown-item" href="#" data-dismiss="modal" aria-label="Close">Delete Post</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="user-comments-list" *ngIf="galleryDetail?.commentcount >= 1 ">
+                    <div class="coment-lisitng">
+                      <ul class="lisitng-start">
+                        <ng-container *ngFor="let comment of galleryDetail?.commentList; let i = index;">
+                          <li>
+                            <div class="d-flex flex-wrap">
+                              <div class="">
+                                <div class="user-circel-img">
+                                  <img
+                                    *ngIf="comment?.commentUserProfileImg != undefined && comment?.commentUserProfileImg != null"
+                                    [src]="profileImgsrcpath+comment?.commentUserProfileImg">
+                                </div>
+                                <small class="post-comment-avatar-placeholder"
+                                  *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{comment?.shortUserName}}</small>
+                              </div>
+                              <div class="">
+                                <div class="user-comments">
+                                  <p><span>{{comment?.commentUserFirstName + ' '+ comment?.commentUserLastName }}:
+                                    </span> {{comment?.comment}}</p>
+                                </div>
+                                <div class="user-reaction">
+                                  <ul class="reaction-line">
+                                    <li (click)="reactOnGalleryComment(comment,1)"
+                                      *ngIf="comment?.userCommentReactionStatus !=  true"> Like</li>
+                                    <li (click)="reactOnGalleryComment(comment,0)"
+                                      *ngIf="comment?.userCommentReactionStatus ==  true"> UnLike</li>
+                                    <li *ngIf="comment?.reactionCount != 0"><img
+                                        src="../../../assets/PublicAssets/images/like.jpg">{{comment?.reactionCount}}
+                                    </li>
+                                    <li class="comment-post-time">{{comment?.postTimeFromNow}}</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ng-container>
+
+
+                     </ul>
+                    </div>
+                  </div>
+
+                  <div class="load-more-text" *ngIf="galleryDetail?.commentcount >= 2"
+                    (click)="initialLoadCommentOnGallery(galleryDetail)">Load more comments</div>
+
+                  <div class="comment-box">
+                    <form [formGroup]="galleryCommentForm">
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Comment" #comment
+                          (keyup.enter)="userCommentOnGallery(galleryDetail, comment)" formControlName="comment">
+                        <div class="input-group-append">
+                          <span class="input-group-text" id="basic-addon2"
+                            ><i class="fa fa-send"></i></span>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- gallery box Modal end-->
+
+
+
+<!-- gallery box video Modal start-->
+<!-- <div class="gallery-box-main">
+  <div class="modal fade" id="gallery-modal-video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body gallery-box-modal">
+          <div class="container">
+            <div class="d-flex flex-wrap">
+              <div class="col-md-6">
+                <div class="gallery-left-video">
+                  <video controls width="100%"
+                    poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217">
+                    <source src="../../../assets/PublicAssets/video/AWP.mp4">
+                    <source src="../../../assets/PublicAssets/video/AWP.ogg">
+                    Sorry, your browser doesn't support embedded videos.
+                  </video>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="gallery-right-cnt">
+                  <div class="article-head d-flex align-items-center">
+                    <div class="post-avatar ic-avatar avatar big">
+                      <a href="">
+                        <small class="post-avatar-placeholder">S</small>
+                        <span>Sidehustle</span>
+                      </a>
+                    </div>
+                    <div class="article-options ml-auto d-flex align-items-center">
+                      <div class="dropdown">
+                        <span class="dropdown-toggle" data-toggle="dropdown">
+                          <img src="../../../assets/PublicAssets/images/ic-bar.svg" alt="">
+                        </span>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Go to post</a>
+                          <a class="dropdown-item" href="#" data-dismiss="modal" aria-label="Close">Delete Post</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="user-comments-list">
+                    <div class="coment-lisitng">
+                      <ul class="lisitng-start">
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="">
+                              <div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png">
+                              </div>
+                            </div>
+                            <div class="">
+                              <div class="user-comments">
+                                <p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we
+                                  have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2">
+                              <div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png">
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="user-comments">
+                                <p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we
+                                  have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="d-flex flex-wrap">
+                            <div class="col-md-2">
+                              <div class="user-circel-img"><img src="../../../assets/PublicAssets/images/iIMAGE.png">
+                              </div>
+                            </div>
+                            <div class="col-md-10">
+                              <div class="user-comments">
+                                <p><span>Neko BebopIt's :</span> always a pleasure to do this streams with you! If we
+                                  have at least half the fun than last time it will be an incredible success!</p>
+                              </div>
+                              <div class="user-reaction">
+                                <ul class="reaction-line">
+                                  <li><img src="../../../assets/PublicAssets/images/like.jpg"></li>
+                                  <li>react</li>
+                                  <li>29 min ago</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="load-more-text">Load more comments <span>9+</span></div>
+
+                  <div class="comment-box">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Comment">
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"><i class="fa fa-send"></i></span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- gallery box video Modal end-->

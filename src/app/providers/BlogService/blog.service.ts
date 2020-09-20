@@ -65,4 +65,29 @@ export class BlogService {
     return <Observable<ResponseModel>> this.dataService.getData('Blog/AllBlogInUserPanel?pageNo='+pageNo);
   }
   
+  RandomBlogList()
+  {
+    return <Observable<ResponseModel>> this.dataService.getData('Blog/RandomBlogList');
+  }
+
+  BlogListByCategoryId(data)
+  {
+    return <Observable<ResponseModel>> this.dataService.postData('Blog/BlogListByCategoryId', data);
+  }
+
+  userPostBlog(data)
+  {
+    return <Observable<ResponseModel>> this.dataService.postData('Blog/userPostBlog', data);
+  }
+
+  userReactOnBlog(data)
+  {
+    return <Observable<ResponseModel>> this.dataService.postData('Blog/userReactOnBlog', data);
+  }
+  
+  getPopularTag()
+  {
+    return <Observable<ResponseModel>> this.dataService.getData('Blog/getPopularTag');
+  }
+  
 }

@@ -98,16 +98,16 @@
     <div class="d-flex flex-wrap">
      
     <ng-container *ngFor="let utility of utilities;let i = index">
-      <div class="col-md-3 mb-5">
-        <div *ngIf="utility?.utilityType != 'VIP Lounge' && utility?.utilityType != 'Forex' && utility?.utilityType != 'Travel Insurance' " class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms">
+      <div class="col-md-3 mb-5" *ngIf="utility?.id != 5 && utility?.id != 4">
+        <div *ngIf="utility?.id == 3 || utility?.id == 6 " class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms">
           <div class="utility-img" [routerLink]="['/travelUtility-detail', utility?.utilityType]"><img [src]="utilityImgsrcPath+utility?.image"></div>
           <div class="utility-h" [routerLink]="['/travelUtility-detail', utility?.utilityType]"><h3>{{utility?.utilityType}}</h3></div>
         </div>
         <!-- <div *ngIf="utility?.utilityType == 'VIP Lounge' || utility?.utilityType == 'Forex' || utility?.utilityType == 'Travel Insurance'"
          class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms" data-toggle="modal" 
          data-target="#exampleModalCenter"> -->
-        <div *ngIf="utility?.utilityType == 'VIP Lounge' || utility?.utilityType == 'Forex' || utility?.utilityType == 'Travel Insurance'"
-         class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms" (click)="openDialog(utility?.utilityType)"  >
+        <div *ngIf="utility?.id == 1 || utility?.id == 2 || utility?.id == 7 || utility?.id == 8"
+         class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms" (click)="openDialog(utility)"  >
           <div class="utility-img"><img [src]="utilityImgsrcPath+utility?.image"></div>
           <div class="utility-h"><h3>{{utility?.utilityType}}</h3></div>
         </div>

@@ -69,7 +69,8 @@
               <div *ngFor="let leftFaq of leftFaqs;let i = index" class="panel panel-default wow fadeInLeft" [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms">
                 <div class="panel-heading" role="tab" [id]="'heading'+leftFaq.id">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#'+leftFaq.id" aria-expanded="true" aria-controls="{{leftFaq.id}}">
+                    <!-- <a role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#'+leftFaq.id" aria-expanded="true" aria-controls="{{leftFaq.id}}"> -->
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" [href]="'#'+leftFaq.id" aria-expanded="true">
                       <i class="more-less fa fa-plus"></i>
                       {{leftFaq.title}}
                     </a>

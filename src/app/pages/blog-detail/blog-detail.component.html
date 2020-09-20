@@ -70,10 +70,11 @@
   
           <div class="col-md-4">
             <div class="travel-detail-ad">
-              <ul>
-                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-1.jpg"></a></li>
+              <ul *ngIf="offerAdsList.length != 0">
+                <li *ngFor="let offerAds of offerAdsList"><a><img [src]="offerAdsImgSrcPath+offerAds.image"></a></li>
+                <!-- <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-1.jpg"></a></li>
                 <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-2.jpg"></a></li>
-                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-3.jpg"></a></li>
+                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-3.jpg"></a></li> -->
               </ul>
             </div>
           </div>

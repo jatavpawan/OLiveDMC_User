@@ -1,0 +1,453 @@
+<div class="container">
+    <div class="search-box-top">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div class="col-md-8">
+          <div class="search-blk">
+            <i class="fa fa-search"></i>
+            <input type="text" name="" placeholder="search blogs...">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="add-video text-right">
+            <a href="javscriptscript:void(0)" class="purpel-btn add-blogs-hide">add blogs +</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="blogs-tab-main">
+      <div class="d-flex flex-wrap">
+
+        <ng-container *ngIf="blogLoader == false && blogList != undefined   && blogList.length != 0 ">
+          <div class="col-md-4" *ngFor="let blog of blogList">
+            <div class="blog-block">
+              <div class="blog-main-img">
+                <img [src]="blogimgsrcpath+blog?.featuredImage" alt="">
+              </div>
+              <div class="crud">
+                <ul>
+                  <li class="add-blogs" (click)="openConfirmDialog(blog.id)"><a href="javscript:void(0)"><i
+                        class="fa fa-trash"></i></a></li>
+                  <li (click)="editBlog(blog)"><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+                </ul>
+              </div>
+
+              <div class="blog-outer-cnt d-flex justify-content-between">
+
+                <div class="icons-left">
+                  <ul>
+                    <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                    <li *ngIf="blog?.likecount != 0"><img src="../../../assets/PublicAssets/images/like.jpg"
+                        alt="">{{blog?.likecount}}</li>
+                    <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                  </ul>
+                </div>
+                <div class="commnts-rgt">
+                  <ul>
+                    <li>
+                      <h6 (click)="UserReactionOnBlog(blog, 1)" *ngIf="blog?.reactionStatus !=  true">Like</h6>
+                      <h6 (click)="UserReactionOnBlog(blog, 0)" *ngIf="blog?.reactionStatus ==  true">UnLike</h6>
+                    </li>
+                    <li>
+                      <h6>9 comments</h6>
+                    </li>
+                    <li>
+                      <h6>0 share</h6>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="blog-details">
+                <h6>{{blog?.createdDate|date:'dd MMM yyyy'}}</h6>
+                <h4 [routerLink]="['/blog-detail',blog?.id]">{{blog?.title}}</h4>
+                <p>{{blog?.shortDescription}}</p>
+                <a [routerLink]="['/blog-detail',blog?.id]">Read More</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="col-md-12 load-more-blogs" *ngIf="blogLoader == false &&  infiniteLoader == true" (click)="userPostBlog()">
+          <a>Load More</a>
+        </div>
+
+        <ng-container *ngIf="blogLoader == false && (blogList == undefined || blogList.length == 0) ">
+          <div class="col-md-12 no-found-containt ">
+            There Is No Blog Found Please Add Blog
+          </div>
+        </ng-container>
+
+        <div class="col-md-12" *ngIf="blogLoader == true">
+          <div class="loader-bars">
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+            <div class="loader-bar"></div>
+          </div>
+        </div>
+        <!-- <div class="col-md-4">
+          <div class="blog-block">
+            <div class="blog-main-img">
+              <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+            </div>
+            <div class="crud">
+              <ul>
+                <li class="add-blogs"><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+
+            <div class="blog-outer-cnt d-flex justify-content-between">
+
+              <div class="icons-left">
+                <ul>
+                  <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                </ul>
+              </div>
+              <div class="commnts-rgt">
+                <ul>
+                  <li>
+                    <h6>9 comments</h6>
+                  </li>
+                  <li>
+                    <h6>0 share</h6>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="blog-details">
+              <h6>24 Aug 2020</h6>
+              <h4>Eirmod diam amet diam clita</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.</p>
+              <a href="javascript:void(0)">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-block">
+            <div class="blog-main-img">
+              <img src="../../../assets/PublicAssets/images/blog-main-3.jpg" alt="">
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+            <div class="blog-outer-cnt d-flex justify-content-between">
+
+              <div class="icons-left">
+                <ul>
+                  <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                </ul>
+              </div>
+              <div class="commnts-rgt">
+                <ul>
+                  <li>
+                    <h6>9 comments</h6>
+                  </li>
+                  <li>
+                    <h6>0 share</h6>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="blog-details">
+              <h6>24 Aug 2020</h6>
+              <h4>Eirmod diam amet diam clita</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.</p>
+              <a href="javascript:void(0)">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-block">
+            <div class="blog-main-img">
+              <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+            <div class="blog-outer-cnt d-flex justify-content-between">
+
+              <div class="icons-left">
+                <ul>
+                  <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                </ul>
+              </div>
+              <div class="commnts-rgt">
+                <ul>
+                  <li>
+                    <h6>9 comments</h6>
+                  </li>
+                  <li>
+                    <h6>0 share</h6>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="blog-details">
+              <h6>24 Aug 2020</h6>
+              <h4>Eirmod diam amet diam clita</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.</p>
+              <a href="javascript:void(0)">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-block">
+            <div class="blog-main-img">
+              <img src="../../../assets/PublicAssets/images/blog-main-3.jpg" alt="">
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+            <div class="blog-outer-cnt d-flex justify-content-between">
+
+              <div class="icons-left">
+                <ul>
+                  <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                </ul>
+              </div>
+              <div class="commnts-rgt">
+                <ul>
+                  <li>
+                    <h6>9 comments</h6>
+                  </li>
+                  <li>
+                    <h6>0 share</h6>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="blog-details">
+              <h6>24 Aug 2020</h6>
+              <h4>Eirmod diam amet diam clita</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.</p>
+              <a href="javascript:void(0)">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-block">
+            <div class="blog-main-img">
+              <img src="../../../assets/PublicAssets/images/blog-main-1.jpg" alt="">
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+            <div class="blog-outer-cnt d-flex justify-content-between">
+
+              <div class="icons-left">
+                <ul>
+                  <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                </ul>
+              </div>
+              <div class="commnts-rgt">
+                <ul>
+                  <li>
+                    <h6>9 comments</h6>
+                  </li>
+                  <li>
+                    <h6>0 share</h6>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="blog-details">
+              <h6>24 Aug 2020</h6>
+              <h4>Eirmod diam amet diam clita</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.</p>
+              <a href="javascript:void(0)">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="blog-block">
+            <div class="blog-main-img">
+              <img src="../../../assets/PublicAssets/images/blog-main-3.jpg" alt="">
+            </div>
+            <div class="crud">
+              <ul>
+                <li><a href="javscript:void(0)"><i class="fa fa-trash"></i></a></li>
+                <li><a href="javscript:void(0)"><i class="fa fa-pencil"></i></a></li>
+              </ul>
+            </div>
+            <div class="blog-outer-cnt d-flex justify-content-between">
+
+              <div class="icons-left">
+                <ul>
+                  <li><img src="../../../assets/PublicAssets/images/heart.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/like.jpg" alt=""></li>
+                  <li><img src="../../../assets/PublicAssets/images/emoji.jpg" alt=""></li>
+                </ul>
+              </div>
+              <div class="commnts-rgt">
+                <ul>
+                  <li>
+                    <h6>9 comments</h6>
+                  </li>
+                  <li>
+                    <h6>0 share</h6>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="blog-details">
+              <h6>24 Aug 2020</h6>
+              <h4>Eirmod diam amet diam clita</h4>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s.</p>
+              <a href="javascript:void(0)">Read More</a>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="create-own-blog-main">
+      <div class="create-main">
+        <div class="create-head">
+          <h3>Create Your Blog</h3>
+        </div>
+        <div class="blog-form">
+          <div class="d-flex flex-wrap align-items-center justify-content-around upload-form-blk">
+            <form [formGroup]="blogForm">
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <input type="text" name="" placeholder="Blog Title" formControlName="title">
+                  <i class="fa fa-bars"></i>
+                  <span class="text-danger "
+                    *ngIf="(blogForm.get('title').touched && blogForm.get('title').hasError('required')) || (blogForm.get('title').untouched && submitBlogForm == true) ">
+                    Blog Title is required</span>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <select name="" id="" formControlName="category">
+                    <option value="0">Select Category</option>
+                    <option *ngFor="let category of categories" [value]="category.id">{{category.categoryName}}
+                    </option>
+                  </select>
+                  <span class="text-danger "
+                    *ngIf="(blogForm.get('category').touched && blogForm.get('category').hasError('required')) || (blogForm.get('category').untouched && submitBlogForm == true) ">
+                    Blog Category is required</span>
+                </div>
+
+              </div>
+              <div class="form-row write-blog">
+                <div class="form-group col-md-8 blog-description">
+                  <textarea class="blog-short-description" placeholder="write blog short description..." rows="2"
+                    formControlName="shortDescription"
+                    (input)="shortDescriptionCharacterCount($event)"></textarea>
+
+                  <div class="blog-description-error">
+                    <div class="character-count">count {{characterCount}}/200</div>
+                    <div class="text-danger description-err"
+                      *ngIf="(blogForm.get('shortDescription').touched && blogForm.get('shortDescription').hasError('required')) || (blogForm.get('shortDescription').untouched && submitBlogForm == true) ">
+                      Blog Short Description is required</div>
+                  </div>
+                </div>
+
+
+                <div class="form-group col-md-4">
+                  <input type="file" name="" formControlName="featuredImage" #files (change)="preview(files)">
+                  <!-- <input type="file" name="" formControlName="featuredImage" #files (change)="preview(files)" > -->
+                  <div class="upload-img blog-upload-img">
+                    <img *ngIf="BlogFileUploaded == false || edit_blog == false"
+                      src="../../../assets/PublicAssets/images/upload-photo.png" alt="">
+                    <img *ngIf="BlogFileUploaded == true || edit_blog == true" [src]="previewUrl" alt="">
+                    <div class="text-danger upload-img-err"
+                      *ngIf="(blogForm.get('featuredImage').touched && blogForm.get('featuredImage').hasError('required')) || (blogForm.get('featuredImage').untouched && submitBlogForm == true) ">
+                      Blog Image is required</div>
+                  </div>
+
+
+                </div>
+                <div class="form-group col-md-8">
+                  <!-- <textarea class="blog-description" placeholder="Write Blog Description..." disabled formControlName="description" *ngIf="userLoggedIn == false"></textarea>
+                  <textarea class="blog-description" placeholder="Write Blog Description..." formControlName="description" *ngIf="userLoggedIn == true"></textarea> -->
+                  <label for="">Blog Description</label>
+                  <editor class="blog-description" apiKey="byg3blvrvimc75hw1cb3hwo9su10wod4ogt2oi6p3nmaukek"
+                    formControlName="description" [init]="tinymceConfig"></editor>
+                  <span class="text-danger "
+                    *ngIf="(blogForm.get('description').touched && blogForm.get('description').hasError('required')) || (blogForm.get('description').untouched && submitBlogForm == true) ">
+                    Blog Description is required</span>
+                </div>
+              </div>
+
+
+
+
+              <div class="form-row">
+                <a href="javascript:void(0)" type="submit" class="purpel-btn" (click)="submitBlogData()">post</a>
+              </div>
+            </form>
+            <!-- <form>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <input type="text" name="" placeholder="Full Name">
+                  <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group col-md-4">
+                  <input type="text" name="" placeholder="Email">
+                  <i class="fa fa-envelope"></i>
+                </div>
+                <div class="form-group col-md-4">
+                  <input type="text" name="" placeholder="Blog Title">
+                  <i class="fa fa-bars"></i>
+                </div>
+              </div>
+              <div class="form-row write-blog">
+                <div class="form-group col-md-8">
+                  <textarea placeholder="write blog..."></textarea>
+                </div>
+                <div class="form-group col-md-4">
+                  <input type="file" name="">
+                  <div class="upload-img"><img src="../../../assets/PublicAssets/images/upload-photo.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <a href="javascript:void(0)" class="purpel-btn">post</a>
+              </div>
+            </form> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

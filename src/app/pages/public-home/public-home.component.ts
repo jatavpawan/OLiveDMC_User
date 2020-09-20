@@ -15,6 +15,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { OpenVideoComponent } from '../../shared/open-video/open-video.component';
 import { LatestEventService } from 'src/app/providers/LatestEventService/latest-event.service';
 import { ShareService } from 'src/app/providers/sharedService/share.service';
+import { BannerService } from 'src/app/providers/BannerService/banner.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 declare var $: any;
 
@@ -58,6 +60,27 @@ export class PublicHomeComponent implements OnInit {
       },
       1200: {
         items: 3
+      }
+    }
+
+   };
+   bannerSlideOptions = { 
+    loop: true,
+    margin: 20,
+    dots:false,
+    nav: false,
+    autoplay: true,
+    animateOut: 'fadeOut',
+    autoplaySpeed:2000,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 1
+      },
+      1000: {
+        items: 1
       }
     }
 
@@ -109,6 +132,8 @@ export class PublicHomeComponent implements OnInit {
   latestEvents: Array<any> = [];
   latestEventImgsrcPath: string = "";
   videosrcPath: string = "";
+  homeBannerList: Array<any> = [];
+  bannerImgsrcpath: string = '';
 
 
 
@@ -122,7 +147,8 @@ export class PublicHomeComponent implements OnInit {
     private interviewService: InterviewService,
     private latestEventService: LatestEventService,
     private  shareService: ShareService,
-    // private spinner: NgxSpinnerService,
+    private  bannerService: BannerService,
+    private spinner: NgxSpinnerService,
     private dialog: MatDialog
 
   ) {
@@ -139,6 +165,23 @@ export class PublicHomeComponent implements OnInit {
     this.destinationVideosVideosrcpath = this.apiendpoint + 'Uploads/Home/DestinationVideos/Video/';
     this.interviewImgsrcpath = this.apiendpoint + 'Uploads/Home/Interview/image/';
     this.interviewVideosrcpath = this.apiendpoint + 'Uploads/Home/Interview/Video/';
+    this.bannerImgsrcpath = this.apiendpoint + 'Uploads/Banner/image/';
+
+
+    this.GetBannerAtHome();
+  }
+
+  GetBannerAtHome(){
+    debugger;
+    this.bannerService.GetBannerAtHome().subscribe(resp=>{
+      if(resp.status == Status.Success){
+        this.homeBannerList = resp.data;
+      } 
+      else{
+        Swal.fire('Oops...', resp.message, 'error');
+      }
+      this.spinner.hide();
+    })    
   }
 
 
@@ -197,26 +240,26 @@ export class PublicHomeComponent implements OnInit {
 
 
     //for home page banner slider START
-$('#banner-slider').owlCarousel({
-  loop: true,
-  margin: 20,
-  dots:false,
-  nav: false,
-  autoplay: true,
-  animateOut: 'fadeOut',
-  autoplaySpeed:2000,
-  responsive: {
-    0: {
-      items: 1
-    },
-    600: {
-      items: 1
-    },
-    1000: {
-      items: 1
-    }
-  }
-});
+// $('#banner-slider').owlCarousel({
+//   loop: true,
+//   margin: 20,
+//   dots:false,
+//   nav: false,
+//   autoplay: true,
+//   animateOut: 'fadeOut',
+//   autoplaySpeed:2000,
+//   responsive: {
+//     0: {
+//       items: 1
+//     },
+//     600: {
+//       items: 1
+//     },
+//     1000: {
+//       items: 1
+//     }
+//   }
+// });
 //for home page banner slider END
 
     this.getBlogPriorityList();

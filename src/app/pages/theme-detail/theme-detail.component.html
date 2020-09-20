@@ -1,77 +1,79 @@
+<div class="overlay"></div>
 
-
-  
-  <div class="overlay"></div>
-  
-  <!-- fixed social media start-->
-  <div id="fixed-social">
-    <div>
-      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
-    </div>
+<!-- fixed social media start-->
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
   </div>
-  <!-- fixed social media end -->
-  <!-- slider section html START -->
-  
-  
-  <!-- utility details section START -->
-  <section class="comon-space detail-comon-space">
-    <div class="container">
-      <div class="d-flex flex-wrap">
-          <!-- <div class="col-md-12">
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+  </div>
+</div>
+<!-- fixed social media end -->
+<!-- slider section html START -->
+
+
+<!-- utility details section START -->
+<section class="comon-space detail-comon-space">
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <!-- <div class="col-md-12">
             <div class="utility-detail-banner"><img [src]="themeImgSrcPath+themeDetail?.featuredImage" alt=""></div>
           </div> -->
-        
-          <div class="col-md-8">
-            <div class="utility-detail">
-            <div class="utility-detail-banner"><img [src]="themeImgSrcPath+themeDetail?.featuredImage" alt=""></div>
-              <div class="date-details">
-                <div class="d-flex flex-wrap justify-content-between">
-                  <div class="col-md-2">
-                    <div class="date-box">
-                      <h3>{{themeDetail?.createdDate|date:'dd'}}</h3>
-                      <h4>{{themeDetail?.createdDate|date:'MMMM'}}</h4>
-                    </div>
+
+      <div class="col-md-8">
+        <div class="utility-detail">
+          <div class="utility-detail-banner"><img [src]="themeImgSrcPath+themeDetail?.featuredImage" alt=""></div>
+          <div class="date-details">
+            <div class="d-flex flex-wrap justify-content-between">
+              <div class="col-md-2">
+                <div class="date-box">
+                  <h3>{{themeDetail?.createdDate|date:'dd'}}</h3>
+                  <h4>{{themeDetail?.createdDate|date:'MMMM'}}</h4>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="date-heading">
+                  <div class="date-h">
+                    <h3>{{themeDetail?.themeName}}</h3>
                   </div>
-                  <div class="col-md-10">
-                    <div class="date-heading">
-                      <div class="date-h"><h3>{{themeDetail?.themeName}}</h3></div>
-                      <div class="place-time">
-                        <!-- <h4><i class="fa fa-map-marker"></i>Posted By: {{themeDetail?.firstName+' '+ themeDetail?.lastName}}</h4> -->
-                        <h4><i class="fa fa-clock-o"></i>Posted Date: {{themeDetail?.createdDate|date:'dd MMM yyyy, hh:mm aaa'}}</h4>
-                      </div>
-                    </div>
+                  <div class="place-time">
+                    <!-- <h4><i class="fa fa-map-marker"></i>Posted By: {{themeDetail?.firstName+' '+ themeDetail?.lastName}}</h4> -->
+                    <h4><i class="fa fa-clock-o"></i>Posted Date:
+                      {{themeDetail?.createdDate|date:'dd MMM yyyy, hh:mm aaa'}}</h4>
                   </div>
                 </div>
               </div>
-              <div class="utility-held-detail">
-               <p [innerHTML]="themeDetail?.description|safeHtml"></p>
-              </div>
             </div>
           </div>
-  
-          <div class="col-md-4">
-            <div class="travel-detail-ad">
-              <ul>
-                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-1.jpg"></a></li>
-                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-2.jpg"></a></li>
-                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-3.jpg"></a></li>
-              </ul>
-            </div>
+          <div class="utility-held-detail">
+            <p [innerHTML]="themeDetail?.description|safeHtml"></p>
           </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="travel-detail-ad">
+          <!-- <ul>
+            <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-1.jpg"></a></li>
+            <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-2.jpg"></a></li>
+            <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-3.jpg"></a></li>
+          </ul> -->
+          <ul *ngIf="offerAdsList.length != 0">
+            <li *ngFor="let offerAds of offerAdsList"><a><img [src]="offerAdsImgSrcPath+offerAds.image"></a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </section>
-  <!-- utility details section END -->
-  
+  </div>
+</section>
+<!-- utility details section END -->
