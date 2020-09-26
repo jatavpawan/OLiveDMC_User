@@ -1,0 +1,11 @@
+{
+    "/api" : {
+        "target" : "https://www.packngoholidays.com",
+        "secure": true,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+          }
+
+    }
+}
