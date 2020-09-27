@@ -98,6 +98,28 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { UserVisitProfileComponent } from './pages/user-visit-profile/user-visit-profile.component';
 import { GalleryVideoModalComponent } from './pages/gallery-video-modal/gallery-video-modal.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import { BookingService } from './providers/BookingService/booking.service';
+import { SkillService } from './providers/SkillService/skill.service';
+import { AreaofexpertiseService } from './providers/AreaOfExpertiseService/areaofexpertise.service';
+import { StudentCareerService } from './providers/StudentCareerService/student-career.service';
+import { ProfessionalCareerService } from './providers/ProfessionalCareerService/professional-career.service';
+import { FresherCareerService } from './providers/FresherCareerService/fresher-career.service';
+
+// export const MY_FORMATS = {
+//   parse: {
+//     dateInput: 'LL',
+//   },
+//   display: {
+//     dateInput: 'DD-MM-YYYY',
+//     monthYearLabel: 'YYYY',
+//     dateA11yLabel: 'LL',
+//     monthYearA11yLabel: 'YYYY',
+//   },
+// };
 
 @NgModule({
   declarations: [
@@ -176,6 +198,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatDialogModule,
     EditorModule,
     MatTooltipModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
+    MatInputModule, 
 
     // ShareButtonsModule,
     // ShareButtonsModule.withConfig({
@@ -185,6 +211,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     // FontAwesomeModule,
   ],
   providers: [
+    MatDatepickerModule,
     DataService,
     ShareService,
     AuthGuard,
@@ -218,6 +245,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     UserPostService,
     BlogCategoryService,
     UserNetworkService,
+    BookingService,
+    SkillService,
+    AreaofexpertiseService,
+    StudentCareerService,
+    ProfessionalCareerService,
+    FresherCareerService,
+    // {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
   bootstrap: [AppComponent],
   entryComponents: [

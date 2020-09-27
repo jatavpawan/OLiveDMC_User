@@ -1,314 +1,789 @@
+<div class="overlay"></div>
 
+<!-- fixed social media start-->
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+  </div>
+</div>
+<!-- fixed social media end -->
+<!-- slider section html START -->
 
-  
-  <div class="overlay"></div>
-  
-  <!-- fixed social media start-->
-  <div id="fixed-social">
-    <div>
-      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+<!-- inner banner section html START -->
+
+<section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner"
+  style="background-image: url(../assets/PublicAssets/images/flight-banner.jpg)">
+  <div class="baner-cnt">
+    <h2>Flights</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Flights</span>
     </div>
   </div>
-  <!-- fixed social media end -->
-  <!-- slider section html START -->
-  
-  
-  <!-- inner banner section html START -->
-  
-  <section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../assets/PublicAssets/images/flight-banner.jpg)">
-  
-      <div class="baner-cnt">
-        <h2>Flights</h2>
-        <div class="breadcrumbs">
-          <a href="home.html">Home</a><span class=""> / </span><span class="current">Flights</span>
+</section>
+
+<section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{
+    'background-image':
+      'url(' + bannerImgsrcpath + bannerDetail?.imagePath + ')'
+  }">
+  <div class="baner-cnt">
+    <h2>{{ bannerDetail?.title }}</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Flights</span>
+    </div>
+  </div>
+</section>
+
+<!-- inner banner section html END -->
+
+<!-- flight section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Book Flight</h2>
+      <h3 class="heading-before">FLight</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- <div>
+        <nav role="navigation" class="transformer-tabs">
+          <ul>
+          <li><a href="#Flights" class="active">Flights</a></li>
+          <li><a href="#Holidays" class="">Holidays</a></li>
+          <li><a href="#Hotels" class="">Hotels</a></li>
+          <li><a href="#Transfers" class="">Transfers</a></li>
+          <li><a href="#Activities" class="">Activities</a></li>
+          </ul>
+          </nav>
+      </div> -->
+    <div class="d-flex flex-wrap justify-content-between">
+      <!-- <div class="booking-form"> -->
+      <div class="flight-form">
+
+        <div class="booking-type">
+          <div class="form-group">
+            <input type="radio" id="oneway" class="travel-type" value="oneway" [(ngModel)]="travelType"
+              (change)="changeInTravelType()" />
+            <label for="oneway">One Way</label>
+          </div>
+          <div class="form-group">
+            <input type="radio" id="roundtrip" class="travel-type" value="roundtrip" [(ngModel)]="travelType"
+              (change)="changeInTravelType()" />
+            <label for="roundtrip">Round Trip</label>
+          </div>
+          <!-- <div class="form-group">
+            <input type="radio" id="multicity" class="travel-type" value="multicity" [(ngModel)]="travelType"
+              (change)="changeInTravelType()" />
+            <label for="multicity">Multicity</label>
+          </div> -->
         </div>
-      </div>
-  
-  </section>
-  
-  <section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
-    <div class="baner-cnt">
-      <h2>{{bannerDetail?.title}}</h2>
-      <div class="breadcrumbs">
-        <a href="home.html">Home</a><span class=""> / </span><span class="current">Flights</span>
-      </div>
-    </div>
-  </section>
-  
-  
-  <!-- inner banner section html END -->
-  
-  
-  <!-- flight section START -->
-  <section class="comon-space">
-    <div class="container">
-      <div class="comn-heading">
-        <h2>Book Flight</h2>
-        <h3 class="heading-before">FLight</h3>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-      </div>
-    </div>
-  
-    <div class="container">
-      <div class="d-flex flex-wrap justify-content-between">
-        <div class="booking-form">
-          <form>
-            <div class="form-group">
-              <label>From<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
+        <form [formGroup]="flightForm" *ngIf="travelType == 'oneway' || travelType == 'roundtrip'">
+          <div class="booking-info">
+            <div class="form-group  leavingfrom-input">
+              <label>Leaving From<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Leaving From" [matAutocomplete]="leavingFrom"
+                formControlName="leavingFrom" [class.is-invalid]="(flightForm.get('leavingFrom').touched && flightForm.get('leavingFrom').hasError('required')) 
+              || (flightForm.get('leavingFrom').untouched && submitFlightForm == true) " />
+              <a class="leaving-close" *ngIf="!flightForm.get('leavingFrom').hasError('required')"
+                (click)="resetLeavingFrom()">ⓧ</a>
+              <mat-autocomplete #leavingFrom="matAutocomplete">
+                <mat-option *ngFor="let airport of leavingFromAirports | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <div class="invalid-feedback" *ngIf="(flightForm.get('leavingFrom').touched && flightForm.get('leavingFrom').hasError('required')) || (flightForm.get('leavingFrom').untouched && submitFlightForm == true) ">
+                Please Enter Leaving From.
+              </div> -->
             </div>
-            <div class="form-group">
-              <label>To<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
+            <div class="form-group  goingto-input">
+              <label>Going To<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Going To" [matAutocomplete]="goingTo"
+                formControlName="goingTo" [class.is-invalid]="(flightForm.get('goingTo').touched && flightForm.get('goingTo').hasError('required')) 
+                || (flightForm.get('goingTo').untouched && submitFlightForm == true) " />
+              <a class="goingto-close" *ngIf="!flightForm.get('goingTo').hasError('required')"
+                (click)="resetGoingTo()">ⓧ</a>
+              <mat-autocomplete #goingTo="matAutocomplete">
+                <mat-option *ngFor="let airport of goingToAirports | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <div class="invalid-feedback" *ngIf="(flightForm.get('goingTo').touched && flightForm.get('goingTo').hasError('required')) || (flightForm.get('goingTo').untouched && submitFlightForm == true) ">
+                Please Enter Going To.
+              </div> -->
             </div>
-            <div class="form-group">
-              <label>Departure Time<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
+            <div class="form-group daparture-date">
+              <label>Departure Date<span class="compulsary-star">*</span></label>
+              <input matInput class="form-control daparture-input" placeholder="Departure Date" [min]="minDepartureDate"
+                [max]="maxDepartureDate" [matDatepicker]="departurePicker" formControlName="departureDate"
+                (dateChange)="changeInDepartureDate()" [class.is-invalid]="(flightForm.get('departureDate').touched && flightForm.get('departureDate').hasError('required')) 
+              || (flightForm.get('departureDate').untouched && submitFlightForm == true) " />
+              <mat-datepicker-toggle class="daparture-datepicker" matSuffix [for]="departurePicker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #departurePicker></mat-datepicker>
+              <!-- <div class="invalid-feedback" *ngIf="(flightForm.get('departureDate').touched && flightForm.get('departureDate').hasError('required')) || (flightForm.get('departureDate').untouched && submitFlightForm == true) ">
+                Please Enter Departure Date.
+              </div> -->
             </div>
-            <div class="form-group">
+            <div class="form-group return-date">
               <label>Return Date<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
+              <input type="text" class="form-control return-input" placeholder="Return Date" [min]="minReturnDate"
+                [max]="maxReturnDate" [matDatepicker]="returnPicker" formControlName="returnDate" [class.is-invalid]="travelType == 'roundtrip' && ( (flightForm.get('returnDate').touched && flightForm.get('returnDate').hasError('required')) 
+              || (flightForm.get('returnDate').untouched && submitFlightForm == true) )" />
+              <mat-datepicker-toggle class="return-datepicker" matSuffix [for]="returnPicker"></mat-datepicker-toggle>
+              <mat-datepicker #returnPicker></mat-datepicker>
+              <!-- <div class="invalid-feedback" *ngIf="(flightForm.get('returnDate').touched && flightForm.get('returnDate').hasError('required')) || (flightForm.get('returnDate').untouched && submitFlightForm == true) ">
+                Please Enter Return Date.
+              </div> -->
             </div>
-            <div class="form-group">
-              <label>Travel & Class<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
+
+            <div class="traveller-info">
+              <div class="form-group">
+                <label>Travel & Class<span class="compulsary-star">*</span></label>
+                <input type="text" class="form-control" placeholder="1Adult, Economy" (click)="formpopup = true"
+                  formControlName="travelInfo" />
+              </div>
+              <div class="formpopup divflightpax" [style.display]="formpopup == false ? 'none' : 'block'">
+                <div class="ArrowSelectionUp2"><span>▲</span></div>
+                <div class="formpopupcontent">
+                  <div class="addroombox">
+                    <div class="formpopupheading">
+                      Travellers
+                      <button type="button" class="agentloginbtn closeflightpax" (click)="formpopup = false">X</button>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Adults</span> 12+
+                          Years</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="Adults" formControlName="adults"
+                          (change)="formPopupValueChange()">
+                          <option value="1" selected="true">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Child</span> 2-11
+                          Years</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="Childs" formControlName="childs"
+                          (change)="formPopupValueChange()">
+                          <option selected="true" value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Infant</span> 0-2
+                          Years</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="Infants" formControlName="infants"
+                          (change)="formPopupValueChange()">
+                          <option selected="true" value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;">Class of Travels</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="cabinclass" formControlName="travelClass"
+                          (change)="formPopupValueChange()">
+                          <option value="Economy">Economy</option>
+                          <option value="Business">Business</option>
+                          <option value="First">First</option>
+                          <option value="PremiumEconomy">Premium Economy</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="display: block; margin-bottom: 10px;">
+                      <div class="col-xs-12" style="display: block">
+                        <div class="form-group text-right">
+                          <!-- <button class="btn" type="button" onclick="return getsearchbuttonclicked();">
+                Done</button> -->
+                          <a class="purpel-btn form-popupbtn" (click)="formpopup = false">Done</a>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <a href="javascript:void(0)" class="purpel-btn">Search</a>
-            </div>
-          </form>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-  <!-- flight section END -->
-  
-  <!-- Flight Experience section START -->
-  
-  <section class="blue-bg">
-    <div class="container">
-      <div class="comn-heading">
-        <h2>Flight Experience</h2>
-        <h3 class="heading-before">Experience</h3>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-      </div>
-    </div>
-  
-    <div class="container">
-        <div class="d-flex flex-wrap">
-          <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Vibra Mahou Fest</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+
+
+
+            <div class="form-group flight-search">
+              <a href="javascript:void(0)" class="purpel-btn" (click)="flightInfoSubmit()">Search</a>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Kenny G</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </form>
+        <form [formGroup]="multiCityFlightForm" *ngIf="travelType == 'multicity'">
+          <div class="multicity-booking">
+            <div class="form-group  leavingfrom-input">
+              <label>Leaving From<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Leaving From" [matAutocomplete]="leavingFrom1"
+                formControlName="leavingFrom1" [class.is-invalid]="(multiCityFlightForm.get('leavingFrom1').touched && multiCityFlightForm.get('leavingFrom1').hasError('required')) 
+              || (multiCityFlightForm.get('leavingFrom1').untouched && submitFlightForm == true) " />
+              <a class="leaving-close" *ngIf="!multiCityFlightForm.get('leavingFrom1').hasError('required')"
+                (click)="resetLeavingFrom()">ⓧ</a>
+              <mat-autocomplete #leavingFrom1="matAutocomplete">
+                <mat-option *ngFor="let airport of leavingFromAirports1 | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="form-group  goingto-input">
+              <label>Going To<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Going To" [matAutocomplete]="goingTo1"
+                formControlName="goingTo1" [class.is-invalid]="(multiCityFlightForm.get('goingTo1').touched && multiCityFlightForm.get('goingTo1').hasError('required')) 
+                || (multiCityFlightForm.get('goingTo1').untouched && submitFlightForm == true) " />
+              <a class="goingto-close" *ngIf="!multiCityFlightForm.get('goingTo1').hasError('required')"
+                (click)="resetGoingTo()">ⓧ</a>
+              <mat-autocomplete #goingTo1="matAutocomplete">
+                <mat-option *ngFor="let airport of goingToAirports1 | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="form-group daparture-date">
+              <label>Departure Date<span class="compulsary-star">*</span></label>
+              <input matInput class="form-control daparture-input" placeholder="Departure Date" [min]="minDate"
+                [max]="maxDate" [matDatepicker]="departureDate1" formControlName="departureDate1" [class.is-invalid]="(multiCityFlightForm.get('departureDate1').touched && multiCityFlightForm.get('departureDate1').hasError('required')) 
+              || (multiCityFlightForm.get('departureDate1').untouched && submitFlightForm == true) " />
+              <mat-datepicker-toggle class="daparture-datepicker" matSuffix [for]="departureDate1">
+              </mat-datepicker-toggle>
+              <mat-datepicker #departureDate1></mat-datepicker>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <div class="multicity-booking">
+            <div class="form-group  leavingfrom-input">
+              <label>Leaving From<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Leaving From" [matAutocomplete]="leavingFrom2"
+                formControlName="leavingFrom2" [class.is-invalid]="(multiCityFlightForm.get('leavingFrom2').touched && multiCityFlightForm.get('leavingFrom2').hasError('required')) 
+              || (multiCityFlightForm.get('leavingFrom2').untouched && submitFlightForm == true) " />
+              <a class="leaving-close" *ngIf="!multiCityFlightForm.get('leavingFrom2').hasError('required')"
+                (click)="resetLeavingFrom()">ⓧ</a>
+              <mat-autocomplete #leavingFrom2="matAutocomplete">
+                <mat-option *ngFor="let airport of leavingFromAirports2 | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="form-group  goingto-input">
+              <label>Going To<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Going To" [matAutocomplete]="goingTo2"
+                formControlName="goingTo2" [class.is-invalid]="(multiCityFlightForm.get('goingTo2').touched && multiCityFlightForm.get('goingTo2').hasError('required')) 
+                || (multiCityFlightForm.get('goingTo2').untouched && submitFlightForm == true) " />
+              <a class="goingto-close" *ngIf="!multiCityFlightForm.get('goingTo2').hasError('required')"
+                (click)="resetGoingTo()">ⓧ</a>
+              <mat-autocomplete #goingTo2="matAutocomplete">
+                <mat-option *ngFor="let airport of goingToAirports2 | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="form-group daparture-date">
+              <label>Departure Date<span class="compulsary-star">*</span></label>
+              <input matInput class="form-control daparture-input" placeholder="Departure Date" [min]="minDate"
+                [max]="maxDate" [matDatepicker]="departureDate2" formControlName="departureDate2" [class.is-invalid]="(multiCityFlightForm.get('departureDate2').touched && multiCityFlightForm.get('departureDate2').hasError('required')) 
+              || (multiCityFlightForm.get('departureDate2').untouched && submitFlightForm == true) " />
+              <mat-datepicker-toggle class="daparture-datepicker" matSuffix [for]="departureDate2">
+              </mat-datepicker-toggle>
+              <mat-datepicker #departureDate2></mat-datepicker>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Peetercen Ballet</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          <!-- <div class="multicity-booking">
+            <div class="form-group  leavingfrom-input">
+              <label>Leaving From<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Leaving From" [matAutocomplete]="leavingFrom"
+                formControlName="leavingFrom" [class.is-invalid]="(flightForm.get('leavingFrom').touched && flightForm.get('leavingFrom').hasError('required')) 
+              || (flightForm.get('leavingFrom').untouched && submitFlightForm == true) " />
+              <a class="leaving-close" *ngIf="!flightForm.get('leavingFrom').hasError('required')"
+                (click)="resetLeavingFrom()">ⓧ</a>
+              <mat-autocomplete #leavingFrom="matAutocomplete">
+                <mat-option *ngFor="let airport of leavingFromAirports | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="form-group  goingto-input">
+              <label>Going To<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Going To" [matAutocomplete]="goingTo"
+                formControlName="goingTo" [class.is-invalid]="(flightForm.get('goingTo').touched && flightForm.get('goingTo').hasError('required')) 
+                || (flightForm.get('goingTo').untouched && submitFlightForm == true) " />
+              <a class="goingto-close" *ngIf="!flightForm.get('goingTo').hasError('required')"
+                (click)="resetGoingTo()">ⓧ</a>
+              <mat-autocomplete #goingTo="matAutocomplete">
+                <mat-option *ngFor="let airport of goingToAirports | async" [value]="airport">
+                  {{airport}}
+                </mat-option>
+              </mat-autocomplete>
+            </div>
+            <div class="form-group daparture-date">
+              <label>Departure Date<span class="compulsary-star">*</span></label>
+              <input matInput class="form-control daparture-input" placeholder="Departure Date" [min]="minDate"
+                [max]="maxDate" [matDatepicker]="departurePicker" formControlName="departureDate" [class.is-invalid]="(flightForm.get('departureDate').touched && flightForm.get('departureDate').hasError('required')) 
+              || (flightForm.get('departureDate').untouched && submitFlightForm == true) " />
+              <mat-datepicker-toggle class="daparture-datepicker" matSuffix [for]="departurePicker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #departurePicker></mat-datepicker>
+            </div>
+          </div> -->
+
+          <div class="flight-add-remove">
+            <button class="addroombtn" style="margin-left: 1px;" type="button"
+              (click)="AddRoomsInDiv()">
+              <i class="fa fa-plus"></i>Add City</button>&nbsp;
+            <button class="addroombtn" id="btnremove" type="button" (click)="RemoveRoomsInDiv()"style="">
+              <i class="fa fa-minus"></i>Remove City</button>
+          </div>
+
+          <div class="multicity-travel-class">
+            <div class="traveller-info">
+              <div class="form-group">
+                <label>Travel & Class<span class="compulsary-star">*</span></label>
+                <input type="text" class="form-control" placeholder="1Adult, Economy" (click)="formpopup = true"
+                  formControlName="travelInfo" />
+              </div>
+              <div class="formpopup divflightpax" [style.display]="formpopup == false ? 'none' : 'block'">
+                <div class="ArrowSelectionUp2"><span>▲</span></div>
+                <div class="formpopupcontent">
+                  <div class="addroombox">
+                    <div class="formpopupheading">
+                      Travellers
+                      <button type="button" class="agentloginbtn closeflightpax" (click)="formpopup = false">X</button>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Adults</span> 12+
+                          Years</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="Adults" formControlName="adults"
+                          (change)="formPopupValueChange()">
+                          <option value="1" selected="true">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Child</span> 2-11
+                          Years</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="Childs" formControlName="childs"
+                          (change)="formPopupValueChange()">
+                          <option selected="true" value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Infant</span> 0-2
+                          Years</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="Infants" formControlName="infants"
+                          (change)="formPopupValueChange()">
+                          <option selected="true" value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-6">
+                        <div class="textgray13" style="margin-top: 12px;">Class of Travels</div>
+                      </div>
+                      <div class="col-md-6">
+                        <select class="form-controlselect" id="cabinclass" formControlName="travelClass"
+                          (change)="formPopupValueChange()">
+                          <option value="Economy">Economy</option>
+                          <option value="Business">Business</option>
+                          <option value="First">First</option>
+                          <option value="PremiumEconomy">Premium Economy</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row" style="display: block; margin-bottom: 10px;">
+                      <div class="col-xs-12" style="display: block">
+                        <div class="form-group text-right">
+                          <a class="purpel-btn form-popupbtn" (click)="formpopup = false">Done</a>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group flight-search">
+              <a href="javascript:void(0)" class="purpel-btn" (click)="flightInfoSubmit()">Search</a>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-  
-  </section>
-  
-  <!-- Flight Experience section END -->
-  
-  
-  <!-- Flight Discounts For You section START -->
-  <section class="comon-space">
-    <div class="container">
-      <div class="comn-heading">
-        <h2>Flight Discounts For You</h2>
-        <h3 class="heading-before">Flight Discounts</h3>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-      </div>
-    </div>
-  
-    <div class="container">
-      <div class="d-flex flex-wrap">
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-      </div>
-    </div>
-  
-  </section>
-  <!-- Flight Discounts For You section END -->
-   <!--Video Modal Start-->
-  <div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-         </button>
-         <video controls autoplay loop id="video1">
-              <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-        </div>
-        
+
+        </form>
+
+
       </div>
     </div>
   </div>
-  <!--Video Modal End-->
+</section>
+<!-- flight section END -->
+
+<!-- Flight Experience section START -->
+
+<section class="blue-bg">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Flight Experience</h2>
+      <h3 class="heading-before">Experience</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-1.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Vibra Mahou Fest</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-2.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Kenny G</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-3.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-4.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Peetercen Ballet</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-2.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-1.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-4.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img">
+            <img src="../assets/PublicAssets/images/destination-3.jpg" alt="" />
+          </div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>
+              Lorem Ipsum is simply dummy text the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Flight Experience section END -->
+
+<!-- Flight Discounts For You section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Flight Discounts For You</h2>
+      <h3 class="heading-before">Flight Discounts</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+        voluptua. At vero eos et accusam et
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg" />
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Flight Discounts For You section END -->
+<!--Video Modal Start-->
+<div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <video controls autoplay loop id="video1">
+          <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Video Modal End-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

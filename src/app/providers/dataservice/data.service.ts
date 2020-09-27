@@ -27,4 +27,15 @@ export class DataService {
     // return this.http.post(this.apiendpoint+url, value, { headers : new HttpHeaders ({ "Content-type": "application/x-www-form-urlencoded" }) });
     return this.http.post(this.apiendpoint+url, value);
   }
+
+  bookingPostData(url, value){
+    debugger;
+    return this.http.post(url, JSON.stringify(value), { headers : new HttpHeaders ({ "Content-type": "application/json; charset=UTF-8" }) });
+  }
+
+  bookingGetData(url){
+    return this.http.get(url);
+  }
+
+
 }

@@ -1,0 +1,194 @@
+.hotel-search {
+    margin-bottom: 0px;
+    margin-top: 4px;
+  }
+  .booking-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .hotel-form {
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 17px 0px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .formpopup {
+    background-color: #fff;
+    position: absolute;
+    z-index: 11;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
+    width: 290px;
+    border-radius: 5px;
+    margin-top: 1px;
+    right: 0;
+  }
+  
+  .ArrowSelectionUp2 {
+    width: 0;
+    height: 0;
+    margin-top: -15px;
+    margin-left: 0;
+    position: absolute;
+    z-index: -99999;
+    right: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .ArrowSelectionUp2 span {
+    display: inline-block;
+    transform: scaleX(2);
+    color: #fff;
+    text-shadow: 0 -2px 3px rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+  }
+  
+  .formpopupcontent {
+    margin: 15px;
+  }
+  
+  .addroombox {
+    margin-bottom: 10px;
+  }
+  
+  .formpopupheading {
+    font-size: 16px;
+    color: #2b2f2b;
+    line-height: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #cbcbcb;
+  }
+  
+  .textgray13 {
+    font-size: 13px;
+    color: #727272;
+    line-height: 18px;
+  }
+  
+  .textblack13 {
+    font-size: 13px;
+    color: #403d3d;
+    line-height: 18px;
+  }
+  
+  .form-controlselect {
+    padding: 0 10px;
+    font-size: 13px;
+    color: #3b3b3b;
+    width: 100%;
+    border: solid 1px #e0e0e0;
+    /* background: #fff url(../img/selectarrow1.png) no-repeat right center!important; */
+    height: 40px;
+  }
+  
+  .traveller-info {
+    position: relative;
+  }
+  
+  .form-popupbtn {
+    color: #fff !important;
+    margin-right: 12px;
+  }
+  
+  .agentloginbtn.closeflightpax {
+    float: right;
+    padding: 3px;
+    width: 24px;
+    height: 25px;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .checkin-datepicker,
+  .checkout-datepicker {
+    position: absolute;
+    top: 38%;
+    right: 2%;
+  }
+  
+  .checkin-date,
+  .checkout-date {
+    position: relative;
+  }
+  
+  .checkin-input,
+  .checkout-input {
+    padding-right: 38px;
+  }
+  
+  .form-popupbtn:hover,
+  .form-popupbtn:active,
+  .form-popupbtn:focus {
+    background-color: #ffffff;
+    color: #5758e0 !important;
+    border: 2px solid #5758e0;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .hotel-form .booking-info {
+      display: block !important;
+    }
+  }
+  
+  .nationality-input,
+  .destination-input {
+    position: relative;
+  }
+  
+  .nationality-input:hover .nationality-close,
+  .destination-input:hover .destination-close {
+    display: block;
+  }
+  
+  .nationality-close,
+  .destination-close {
+    display: none;
+    position: absolute;
+    top: 57%;
+    right: 4%;
+    color: #5758e0 !important;
+  }
+
+  .addroombtn {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-transform: uppercase;
+    background-color: #5758E0;
+    border: 2px solid #5758E0;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.addroombtn:hover,
+.addroombtn:active,
+.addroombtn:focus {
+  background-color: #ffffff;
+  color: #5758e0 !important;
+  border: 2px solid #5758e0;
+}
+
+.addroombtn .fa-plus, .addroombtn .fa-minus{
+  margin-right: 5px;
+}
+
+.room-heading{
+  font-size: 16px;
+  color: #2b2f2b;
+  line-height: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.addroombox .RoomDiv{
+  margin-bottom: 10px;
+}

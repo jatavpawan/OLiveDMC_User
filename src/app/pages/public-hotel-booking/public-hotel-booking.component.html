@@ -1,316 +1,706 @@
+<div class="overlay"></div>
+
+<!-- fixed social media start-->
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+  </div>
+</div>
+<!-- fixed social media end -->
+<!-- slider section html START -->
 
 
-  
-  <div class="overlay"></div>
-  
-  <!-- fixed social media start-->
-  <div id="fixed-social">
-    <div>
-      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+<!-- inner banner section html START -->
+
+<section *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner"
+  style="background-image: url(../assets/PublicAssets/images/flight-banner.jpg)">
+
+  <div class="baner-cnt">
+    <h2>Hotel</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Hotel</span>
     </div>
   </div>
-  <!-- fixed social media end -->
-  <!-- slider section html START -->
+
+</section>
+<section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner"
+  [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
+  <div class="baner-cnt">
+    <h2>{{bannerDetail?.title}}</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Hotel</span>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- inner banner section html END -->
+
+
+<!-- Hotel section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Book Hotel</h2>
+      <h3 class="heading-before">FLight</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between">
+      <!-- <div class="booking-form"> -->
+      <div class="hotel-form">
+        <form [formGroup]="hotelForm">
+          <div class="booking-info">
+            <div class="form-group  nationality-input">
+              <label>Select Nationality<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Select Nationality" [matAutocomplete]="nationality"
+                formControlName="nationality" [class.is-invalid]="(hotelForm.get('nationality').touched && hotelForm.get('nationality').hasError('required')) 
+                || (hotelForm.get('nationality').untouched && submitHotelForm == true) " />
+              <a class="nationality-close" *ngIf="!hotelForm.get('nationality').hasError('required')"
+                (click)="resetNationality()">ⓧ</a>
+              <mat-autocomplete #nationality="matAutocomplete" [displayWith]="displayNationalityProperty">
+                <mat-option *ngFor="let nationality of nationalities | async" [value]="nationality">
+                  {{nationality.split('-')[0]}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <div class="invalid-feedback" *ngIf="(hotelForm.get('nationality').touched && hotelForm.get('nationality').hasError('required')) || (hotelForm.get('nationality').untouched && submitHotelForm == true) ">
+                  Please Enter Leaving From.
+                </div> -->
+            </div>
+            <div class="form-group  destination-input">
+              <label>Select Destination<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control" placeholder="Select Destination" [matAutocomplete]="destination"
+                formControlName="destination" [class.is-invalid]="(hotelForm.get('destination').touched && hotelForm.get('destination').hasError('required')) 
+                  || (hotelForm.get('destination').untouched && submitHotelForm == true) " />
+              <a class="destination-close" *ngIf="!hotelForm.get('destination').hasError('required')"
+                (click)="resetDestination()">ⓧ</a>
+              <mat-autocomplete #destination="matAutocomplete" [displayWith]="displayDestinationProperty">
+                <mat-option *ngFor="let destination of destinations | async" [value]="destination">
+                  {{destination.split('-')[0]}}
+                </mat-option>
+              </mat-autocomplete>
+              <!-- <div class="invalid-feedback" *ngIf="(hotelForm.get('destination').touched && hotelForm.get('destination').hasError('required')) || (hotelForm.get('destination').untouched && submitHotelForm == true) ">
+                  Please Enter Going To.
+                </div> -->
+            </div>
+            <div class="form-group checkin-date">
+              <label>Check In<span class="compulsary-star">*</span></label>
+              <input matInput class="form-control checkin-input" placeholder="Check In" [min]="minCheckinDate" [max]="maxCheckinDate"
+                [matDatepicker]="checkinPicker" formControlName="checkin" [class.is-invalid]="(hotelForm.get('checkin').touched && hotelForm.get('checkin').hasError('required')) 
+                || (hotelForm.get('checkin').untouched && submitHotelForm == true) " (dateChange)="changeInCheckinDate()" />
+              <mat-datepicker-toggle class="checkin-datepicker" matSuffix [for]="checkinPicker"></mat-datepicker-toggle>
+              <mat-datepicker #checkinPicker></mat-datepicker>
+              <!-- <div class="invalid-feedback" *ngIf="(hotelForm.get('checkin').touched && hotelForm.get('checkin').hasError('required')) || (hotelForm.get('checkin').untouched && submitHotelForm == true) ">
+                  Please Enter Departure Date.
+                </div> -->
+            </div>
+            <div class="form-group checkout-date">
+              <label>Check Out<span class="compulsary-star">*</span></label>
+              <input type="text" class="form-control checkout-input" placeholder="Check Out" [min]="minCheckoutDate"
+                [max]="maxCheckoutDate" [matDatepicker]="checkoutPicker" formControlName="checkout" [class.is-invalid]="(hotelForm.get('checkout').touched && hotelForm.get('checkout').hasError('required')) 
+                || (hotelForm.get('checkout').untouched && submitHotelForm == true) " />
+              <mat-datepicker-toggle class="checkout-datepicker" matSuffix [for]="checkoutPicker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #checkoutPicker></mat-datepicker>
+              <!-- <div class="invalid-feedback" *ngIf="(hotelForm.get('checkout').touched && hotelForm.get('checkout').hasError('required')) || (hotelForm.get('checkout').untouched && submitHotelForm == true) ">
+                  Please Enter Return Date.
+                </div> -->
+            </div>
+
+            <div class="traveller-info">
+              <div class="form-group">
+                <label>Room & Member<span class="compulsary-star">*</span></label>
+                <input type="text" class="form-control" placeholder="1Adult, Economy" (click)="formpopup = true"
+                  formControlName="roomMemberInfo" />
+              </div>
+              <div class="formpopup divflightpax" [style.display]="formpopup == false ? 'none' : 'block'">
+                <div class="ArrowSelectionUp2"><span>▲</span></div>
+                <div class="formpopupcontent">
+                  <div class="addroombox">
+                    <div class="formpopupheading">
+                      Room 1
+                      <button type="button" class="agentloginbtn closeflightpax" (click)="formpopup = false">X</button>
+                    </div>
+                    <div id="mainRoomDiv">
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Adults</span> 12+
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Adults" formControlName="room1_adults"
+                            (change)="formPopupValueChange()">
+                            <option value="1" selected="true">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Children</span> 2-11
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Childs" formControlName="room1_childs"
+                            (change)="formPopupValueChange()">
+                            <option selected="true" value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="AgesDiv" style="display: block;" *ngIf="hotelForm.get('room1_childs').value == '1' || hotelForm.get('room1_childs').value == '2'">
+                        <div class="textblack13" style="margin-bottom: 10px;">
+                          Age(s) of Children
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4 AgeDiv1" style="display: block;" *ngIf="hotelForm.get('room1_childs').value == '1' || hotelForm.get('room1_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges1" class="form-controlselect CHAge" type="" formControlName="room1_child1_age" >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4 AgeDiv2" style="display: block;" *ngIf="hotelForm.get('room1_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges2" class="form-controlselect CHAge" type="" formControlName="room1_child2_age">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
   
-  
-  <!-- inner banner section html START -->
-  
-  <section  *ngIf="bannerDetail == undefined || bannerDetail == null" class="inner-banner" style="background-image: url(../assets/PublicAssets/images/flight-banner.jpg)">
-  
-      <div class="baner-cnt">
-        <h2>Hotel</h2>
-        <div class="breadcrumbs">
-          <a href="home.html">Home</a><span class=""> / </span><span class="current">Hotel</span>
-        </div>
-      </div>
-  
-  </section>
-  <section *ngIf="bannerDetail != undefined && bannerDetail != null" class="inner-banner" [ngStyle]="{'background-image': 'url(' + bannerImgsrcpath+bannerDetail?.imagePath + ')'}">
-    <div class="baner-cnt">
-      <h2>{{bannerDetail?.title}}</h2>
-      <div class="breadcrumbs">
-        <a href="home.html">Home</a><span class=""> / </span><span class="current">Hotel</span>
+                    </div>
+                    <div class="RoomDiv" *ngIf="extraRoom >= 1">
+                      <div class="room-heading">
+                        Room 2
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Adults</span> 12+
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Adults" formControlName="room2_adults"
+                            >
+                            <option value="1" selected="true">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Children</span> 2-11
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Childs" formControlName="room2_childs"
+                            >
+                            <option selected="true" value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="AgesDiv" style="display: block;" *ngIf="hotelForm.get('room2_childs').value == '1' || hotelForm.get('room2_childs').value == '2'">
+                        <div class="textblack13" style="margin-bottom: 10px;">
+                          Age(s) of Children
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4 AgeDiv1" style="display: block;" *ngIf="hotelForm.get('room2_childs').value == '1' || hotelForm.get('room2_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges1" class="form-controlselect CHAge" type="" formControlName="room2_child1_age">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4 AgeDiv2" style="display: block;" *ngIf="hotelForm.get('room2_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges2" class="form-controlselect CHAge" type="" formControlName="room2_child2_age">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="RoomDiv" *ngIf="extraRoom >= 2">
+                      <div class="room-heading">
+                        Room 3
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Adults</span> 12+
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Adults" formControlName="room3_adults"
+                            >
+                            <option value="1" selected="true">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Children</span> 2-11
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Childs" formControlName="room3_childs"
+                            >
+                            <option selected="true" value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="AgesDiv" style="display: block;" *ngIf="hotelForm.get('room3_childs').value == '1' || hotelForm.get('room3_childs').value == '2'">
+                        <div class="textblack13" style="margin-bottom: 10px;">
+                          Age(s) of Children
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4 AgeDiv1" style="display: block;" *ngIf="hotelForm.get('room3_childs').value == '1' || hotelForm.get('room3_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges1" class="form-controlselect CHAge" type="" formControlName="room3_child1_age">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4 AgeDiv2" style="display: block;" *ngIf="hotelForm.get('room3_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges2" class="form-controlselect CHAge" type="" formControlName="room3_child2_age">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="RoomDiv" *ngIf="extraRoom == 3">
+                      <div class="room-heading">
+                        Room 4
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Adults</span> 12+
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Adults" formControlName="room4_adults"
+                            >
+                            <option value="1" selected="true">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-md-6">
+                          <div class="textgray13" style="margin-top: 12px;"><span class="textblack13">Children</span> 2-11
+                            Years</div>
+                        </div>
+                        <div class="col-md-6">
+                          <select class="form-controlselect" id="Childs" formControlName="room4_childs"
+                            >
+                            <option selected="true" value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="AgesDiv" style="display: block;" *ngIf="hotelForm.get('room4_childs').value == '1' || hotelForm.get('room4_childs').value == '2'">
+                        <div class="textblack13" style="margin-bottom: 10px;">
+                          Age(s) of Children
+                        </div>
+                        <div class="row">
+                          <div class="col-md-4 AgeDiv1" style="display: block;" *ngIf="hotelForm.get('room4_childs').value == '1' || hotelForm.get('room4_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges1" class="form-controlselect CHAge" type="" formControlName="room4_child1_age">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-4 AgeDiv2" style="display: block;" *ngIf="hotelForm.get('room4_childs').value == '2'">
+                            <div class="form-group">
+                              <select id="" name="snAges2" class="form-controlselect CHAge" type="" formControlName="room4_child2_age">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <button *ngIf="extraRoom < 3" class="addroombtn" style="margin-left: 1px;" type="button"
+                        (click)="AddRoomsInDiv()">
+                        <i class="fa fa-plus"></i>Add Room</button>&nbsp;
+                      <button *ngIf="extraRoom >= 1" class="addroombtn" id="btnremove" type="button" (click)="RemoveRoomsInDiv()"style="">
+                        <i class="fa fa-minus"></i>Remove Room</button>
+                    </div>
+                    <hr>
+                    <div class="row" style="display: block; margin-bottom: 10px;">
+                      <div class="col-md-12" style="display: block">
+                        <div class="form-group text-right">
+                          <!-- <button class="btn" type="button" onclick="return getsearchbuttonclicked();">
+                  Done</button> -->
+                          <a class="purpel-btn form-popupbtn" (click)=" formPopupSubmit()">Done</a>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="form-group hotel-search">
+              <a href="javascript:void(0)" class="purpel-btn" (click)="hotelInfoSubmit()">Search</a>
+            </div>
+          </div>
+
+          <!-- </div>
+            </div>  -->
+        </form>
       </div>
     </div>
-  </section>
-  
- 
-  
-  <!-- inner banner section html END -->
-  
-  
-  <!-- flight section START -->
-  <section class="comon-space">
-    <div class="container">
-      <div class="comn-heading">
-        <h2>Book Flight</h2>
-        <h3 class="heading-before">FLight</h3>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-      </div>
+  </div>
+</section>
+<!-- Hotel section END -->
+
+<!-- Hotel Experience section START -->
+
+<section class="blue-bg">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Hotel Experience</h2>
+      <h3 class="heading-before">Experience</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
     </div>
-  
-    <div class="container">
-      <div class="d-flex flex-wrap justify-content-between">
-        <div class="booking-form">
-          <form>
-            <div class="form-group">
-              <label>From<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
-            </div>
-            <div class="form-group">
-              <label>To<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
-            </div>
-            <div class="form-group">
-              <label>Departure Time<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
-            </div>
-            <div class="form-group">
-              <label>Return Date<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
-            </div>
-            <div class="form-group">
-              <label>Travel & Class<span class="compulsary-star">*</span></label>
-              <input type="text" class="form-control" placeholder="John Deo">
-            </div>
-            <div class="form-group">
-              <a href="javascript:void(0)" class="purpel-btn">Search</a>
-            </div>
-          </form>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-  <!-- flight section END -->
-  
-  <!-- Flight Experience section START -->
-  
-  <section class="blue-bg">
-    <div class="container">
-      <div class="comn-heading">
-        <h2>Flight Experience</h2>
-        <h3 class="heading-before">Experience</h3>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-      </div>
-    </div>
-  
-    <div class="container">
-        <div class="d-flex flex-wrap">
-          <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Vibra Mahou Fest</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Vibra Mahou Fest</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Kenny G</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Peetercen Ballet</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
-          <div class="events-main">
-            <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
-            <div class="destination-cnt">
-              <h3>Seems Street Live</h3>
-              <h4>Green Park Chicago</h4>
-              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-          </div>
-        </div>
         </div>
       </div>
-  
-  </section>
-  
-  <!-- Flight Experience section END -->
-  
-  
-  <!-- Flight Discounts For You section START -->
-  <section class="comon-space">
-    <div class="container">
-      <div class="comn-heading">
-        <h2>Flight Discounts For You</h2>
-        <h3 class="heading-before">Flight Discounts</h3>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Kenny G</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  
-    <div class="container">
-      <div class="d-flex flex-wrap">
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
           </div>
         </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Peetercen Ballet</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
           </div>
         </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-2.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
           </div>
         </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-1.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
           </div>
         </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-4.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
           </div>
         </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
-          </div>
-        </div>
-        <div class="col-md-3 mb-5">
-          <div class="booking-ads">
-            <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+      </div>
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-5">
+        <div class="events-main">
+          <div class="events-img"><img src="../assets/PublicAssets/images/destination-3.jpg" alt=""></div>
+          <div class="destination-cnt">
+            <h3>Seems Street Live</h3>
+            <h4>Green Park Chicago</h4>
+            <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s.</p>
           </div>
         </div>
       </div>
     </div>
-  
-  </section>
-  <!-- Flight Discounts For You section END -->
-  
-   <!--Video Modal Start-->
-  <div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
+  </div>
+
+</section>
+
+<!-- Flight Experience section END -->
+
+
+<!-- Hotel Discounts For You section START -->
+<section class="comon-space">
+  <div class="container">
+    <div class="comn-heading">
+      <h2>Hotel Discounts For You</h2>
+      <h3 class="heading-before">Flight Discounts</h3>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-2.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-3.jpg">
+        </div>
+      </div>
+      <div class="col-md-3 mb-5">
+        <div class="booking-ads">
+          <img src="../assets/PublicAssets/images/ad-Image-1.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- Flight Discounts For You section END -->
+
+<!--Video Modal Start-->
+<div class="modal fade" id="HeroVideo" tabindex="-1" role="dialog" aria-labelledby="HeroVideo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-         </button>
-         <video controls autoplay loop id="video1">
-              <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
-        </div>
-        
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <video controls autoplay loop id="video1">
+          <source src="../../../assets/PublicAssets/video/AWP.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
+
     </div>
   </div>
-  <!--Video Modal End-->
-  
+</div>
+<!--Video Modal End-->
