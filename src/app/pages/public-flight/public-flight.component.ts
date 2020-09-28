@@ -202,9 +202,12 @@ export class PublicFlightComponent implements OnInit {
 
   filter(val: string): Observable<any[]> { // its working 
     // call the service which makes the http-request
-    return this.bookingService.GetCityandAirportDetails({'prefixText':val, 'count': 20})
+    return this.bookingService.GetLocationList({'prefixText':val, 'count': 20,Listfor:'CityForFlight' })
      .pipe(
-       map(response => response['d'])
+       map(response =>
+         response.data
+        
+         )
      )
    }  
   
@@ -248,15 +251,7 @@ export class PublicFlightComponent implements OnInit {
   flightInfoSubmit() {
     debugger;
 
-
-     // https://www.packngoholidays.com/DomesticOneWayMain.aspx?
-  // from=DEL&to=IDR&departure_date=26/09/2020&adults=1&childs=2&infants=1&class=Economy
-
-  /*   https://www.packngoholidays.com/DomesticReturnMain.aspx?
-  from=DEL&to=IDR&departure_date=24/09/2020&return_date=25/09/2020&adults=1&childs=2&infants=1&class=Economy */
-    
-   
-
+ 
     if (this.flightForm.valid) {
       let travelType = this.travelType;
       let leavingFrom = this.flightForm.get('leavingFrom').value;

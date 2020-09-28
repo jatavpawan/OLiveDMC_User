@@ -133,10 +133,10 @@ export class PublicHotelBookingComponent implements OnInit {
     // its working
     // call the service which makes the http-request
     return this.bookingService
-      .GetHotelCountryDetails({ prefixText: val, count: 20 })
+      .GetLocationList({ prefixText: val, count: 20,Listfor:'CountryForHotel' })
       .pipe(
         map((response) => {
-          return response["d"];
+          return response.data;
         })
       );
   }
@@ -145,10 +145,10 @@ export class PublicHotelBookingComponent implements OnInit {
     // its working
     // call the service which makes the http-request
     return this.bookingService
-      .GetHotelCityDetails({ prefixText: val, count: 20 })
+      .GetLocationList({ prefixText: val, count: 20 ,Listfor:'CityForHotel' })
       .pipe(
         map((response) => {
-          return response["d"];
+          return response.data;
         })
       );
   }
