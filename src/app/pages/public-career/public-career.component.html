@@ -25,12 +25,12 @@
 <!-- inner banner section html START -->
 
 <section class="inner-banner" style="background-image: url(../../../assets/PublicAssets/images/career-bg.jpg)">
-    <div class="baner-cnt">
-      <h2>careers</h2>
-      <div class="breadcrumbs">
-        <a href="home.html">Home</a><span class=""> / </span><span class="current">Careers</span>
-      </div>
+  <div class="baner-cnt">
+    <h2>careers</h2>
+    <div class="breadcrumbs">
+      <a href="home.html">Home</a><span class=""> / </span><span class="current">Careers</span>
     </div>
+  </div>
 
 </section>
 
@@ -43,187 +43,280 @@
     <div class="comn-heading">
       <h2>careers</h2>
       <h3 class="heading-before">careers</h3>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
     </div>
   </div>
 
   <div class="container">
     <div class="career-main">
       <div class="collage-student">
-        <div class="personal-information"><h4>Personal Infomation</h4></div>
-          <div class="comon-fix-top">
-            <form>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label>i am a</label>
-                  <select (change)="changePersonIdentity(selectPerson)" #selectPerson>
-                    <option class="select-collage" value="student">Collage student</option>
-                    <option class="select-fresher" value="fresher">Freshers</option>
-                    <option class="select-experince" value="experince">Experienced Professionals</option>
-                  </select>
+        <div class="personal-information">
+          <h4>Personal Infomation</h4>
+        </div>
+        <div class="comon-fix-top">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>i am a</label>
+                <select (change)="changePersonIdentity(selectPerson)" #selectPerson>
+                  <option class="select-collage" value="student">Collage student</option>
+                  <option class="select-fresher" value="fresher">Freshers</option>
+                  <option class="select-experince" value="experince">Experienced Professionals</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- collage tab start -->
+        <div class="bottom-filed collage-tab" *ngIf="careerPerson ==  'student'">
+          <form>
+            <div class="form-row heading-label">
+              <div class="form-group">
+                <label>Apply for</label>
+              </div>
+            </div>
+            <div class="form-row apply-for">
+              <div class="form-group">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Apply for an online internship programme</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Apply for a certificate project</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <div class="submit-button">
+                  <a href="javascript:void(0)" class="purpel-btn">Submit</a>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
+        </div>
+        <!-- collage tab end -->
 
-          <!-- collage tab start -->
-          <div class="bottom-filed collage-tab" *ngIf="careerPerson ==  'student'">
-            <form>
-              <div class="form-row heading-label">
-                <div class="form-group">
-                  <label>Apply for</label>
+        <!-- fresher tab start -->
+        <div class="bottom-filed fresher-tab" *ngIf="careerPerson ==  'fresher'">
+          <form class="fresher-tab" [formGroup]="fresherForm">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Your location</label>
+                <input type="text" name="" placeholder="Your Location" formControlName="location">
+                <span class="text-danger "
+                  *ngIf="(fresherForm.get('location').touched && fresherForm.get('location').hasError('required')) || (fresherForm.get('location').untouched && submitFresherForm == true) ">
+                  Your location is required</span>
+                <!-- <select>
+                  <option>India</option>
+                  <option>south africa</option>
+                  <option>korean</option>
+                </select> -->
+              </div>
+              <div class="form-group col-md-4">
+                <label>Skills</label>
+                <!-- <input type="text" name="" placeholder="Developer, architect"> -->
+                <mat-select formControlName="skillId" multiple class="form-control" placeholder="Choose Skills">
+                  <mat-option *ngFor="let skill of skills" [value]="skill.id">{{skill.skillName}}</mat-option>
+                </mat-select>
+                <span class="text-danger "
+                  *ngIf="(fresherForm.get('skillId').touched && fresherForm.get('skillId').hasError('required')) || (fresherForm.get('skillId').untouched && submitFresherForm == true) ">
+                  Skills is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>Social media profile on LT</label>
+                <input type="text" name="" placeholder="john deo" formControlName="socialMediaProfile">
+                <span class="text-danger "
+                  *ngIf="(fresherForm.get('socialMediaProfile').touched && fresherForm.get('socialMediaProfile').hasError('required')) || (fresherForm.get('socialMediaProfile').untouched && submitFresherForm == true) ">
+                  Social media profile on LT is required</span>
+
+              </div>
+            </div>
+
+            <div class="form-row line-two">
+              <div class="form-group col-md-4">
+                <label>About me</label>
+                <textarea placeholder="write here..." formControlName="aboutMe"></textarea>
+                <span class="text-danger "
+                  *ngIf="(fresherForm.get('aboutMe').touched && fresherForm.get('aboutMe').hasError('required')) || (fresherForm.get('aboutMe').untouched && submitFresherForm == true) ">
+                  About me is required</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label>upload resume</label>
+                <input type="file" name="" formControlName="uploadResume" #uploadresume
+                  (change)="FresherUploadResumeFile(uploadresume)">
+                <div class="drop-img"><img src="../../../assets/PublicAssets/images/drop-attachment.png" alt=""></div>
+                <div class="file-name" *ngIf="fresherResumeUploaded == true">{{fresherResumeFileName}} <span
+                    (click)="removeFresherResume()">x</span></div>
+                <span class="text-danger "
+                  *ngIf="(fresherForm.get('uploadResume').touched && fresherForm.get('uploadResume').hasError('required')) || (fresherForm.get('uploadResume').untouched && submitFresherForm == true) ">
+                  upload resume is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>upload project</label>
+                <input type="file" name="" formControlName="uploadProject" #uploadproject
+                  (change)="FresherUploadProjectFile(uploadproject)">
+                <div class="drop-img"><img src="../../../assets/PublicAssets/images/drop-attachment.png" alt=""></div>
+                <div class="file-name" *ngIf="fresherProjectUploaded == true">{{fresherProjectFileName}} <span
+                    (click)="removeFresherProject()"> x</span></div>
+                <span class="text-danger "
+                  *ngIf="(fresherForm.get('uploadProject').touched && fresherForm.get('uploadProject').hasError('required')) || (fresherForm.get('uploadProject').untouched && submitFresherForm == true) ">
+                  upload project is required</span>
+
+              </div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group">
+                <div class="submit-button">
+                  <a href="javascript:void(0)" class="purpel-btn" (click)="submitFresherData()">Submit</a>
                 </div>
               </div>
-              <div class="form-row apply-for">
-                <div class="form-group">
-                 <input type="radio" id="male" name="gender" value="male">
-                 <label for="male">Apply for an online internship programme</label>
-                 <input type="radio" id="female" name="gender" value="female">
-                 <label for="female">Apply for a certificate project</label>
+            </div>
+          </form>
+        </div>
+        <!-- fresher tab end -->
+
+        <!-- experince tab start -->
+        <div class="bottom-filed experince-tab" *ngIf="careerPerson ==  'experince'">
+          <form class="fresher-tab" [formGroup]="professionalForm">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Total Years of Experience</label>
+                <input type="text" name="" placeholder="john deo" formControlName="totalExperience">
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('totalExperience').touched && professionalForm.get('totalExperience').hasError('required')) || (professionalForm.get('totalExperience').untouched && submitProfessionalForm == true) ">
+                  Total Years of Experience is required</span>
+
+                <!-- <select>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select> -->
+              </div>
+              <div class="form-group col-md-4">
+                <label>Highest Qualification</label>
+                <input type="text" name="" placeholder="B.E.(graducation)" formControlName="highestQualification">
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('highestQualification').touched && professionalForm.get('highestQualification').hasError('required')) || (professionalForm.get('highestQualification').untouched && submitProfessionalForm == true) ">
+                  Highest Qualification is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>Current Company</label>
+                <input type="text" name="" placeholder="john deo" formControlName="currentCompany">
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('currentCompany').touched && professionalForm.get('currentCompany').hasError('required')) || (professionalForm.get('currentCompany').untouched && submitProfessionalForm == true) ">
+                  Current Company is required</span>
+
+              </div>
+            </div>
+
+            <div class="form-row line-three">
+              <div class="form-group col-md-4">
+                <label>Current location</label>
+                <input type="text" name="" placeholder="john deo" formControlName="currentLocation">
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('currentLocation').touched && professionalForm.get('currentLocation').hasError('required')) || (professionalForm.get('currentLocation').untouched && submitProfessionalForm == true) ">
+                  Current location is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>Current CTC</label>
+                <input type="text" name="" placeholder="john deo" formControlName="currentCtc">
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('currentCtc').touched && professionalForm.get('currentCtc').hasError('required')) || (professionalForm.get('currentCtc').untouched && submitProfessionalForm == true) ">
+                  Current CTC is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>Expected CTC</label>
+                <input type="text" name="" placeholder="john deo" formControlName="expectedCtc">
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('expectedCtc').touched && professionalForm.get('expectedCtc').hasError('required')) || (professionalForm.get('expectedCtc').untouched && submitProfessionalForm == true) ">
+                  Expected CTC is required</span>
+
+              </div>
+            </div>
+
+            <div class="form-row line-three">
+              <div class="form-group col-md-4">
+                <label>Skills</label>
+                <!-- <input type="text" name="" placeholder="john deo"> -->
+                <mat-select formControlName="skillId" multiple class="form-control" placeholder="Choose Skills">
+                  <mat-option *ngFor="let skill of skills" [value]="skill.id">{{skill.skillName}}</mat-option>
+                </mat-select>
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('skillId').touched && professionalForm.get('skillId').hasError('required')) || (professionalForm.get('skillId').untouched && submitProfessionalForm == true) ">
+                  Skills is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>Area of Expertise</label>
+                <!-- <input type="text" name="" placeholder="john deo"> -->
+                <mat-select formControlName="areaOfExpertise" multiple class="form-control" placeholder="Choose Area">
+                  <mat-option *ngFor="let area of areaExperties" [value]="area.id">{{area.name}}</mat-option>
+                </mat-select>
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('areaOfExpertise').touched && professionalForm.get('areaOfExpertise').hasError('required')) || (professionalForm.get('areaOfExpertise').untouched && submitProfessionalForm == true) ">
+                  Area of Expertise is required</span>
+
+              </div>
+            </div>
+
+            <div class="form-row line-two">
+              <div class="form-group col-md-4">
+                <label>About me</label>
+                <textarea placeholder="write here..." formControlName="aboutMe"></textarea>
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('aboutMe').touched && professionalForm.get('aboutMe').hasError('required')) || (professionalForm.get('aboutMe').untouched && submitProfessionalForm == true) ">
+                  About me is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>upload resume</label>
+                <input type="file" name="" formControlName="uploadResume" #professionalUploadResume
+                  (change)="ProfessionalUploadResumeFile(professionalUploadResume)">
+                <div class="drop-img"><img
+                    src="../../../assets/PublicAssets/../../../assets/PublicAssets/images/drop-attachment.png" alt="">
+                </div>
+                <div class="file-name" *ngIf="professionalResumeUploaded == true">{{professionalResumeFileName}} <span
+                    (click)="removeProfessionalResume()">x</span></div>
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('uploadResume').touched && professionalForm.get('uploadResume').hasError('required')) || (professionalForm.get('uploadResume').untouched && submitProfessionalForm == true) ">
+                  upload resume is required</span>
+
+              </div>
+              <div class="form-group col-md-4">
+                <label>upload project</label>
+                <input type="file" name="" formControlName="uploadProject" #professionalUploadProject
+                  (change)="ProfessionalUploadProjectFile(professionalUploadProject)">
+                <div class="drop-img"><img src="../../../assets/PublicAssets/images/drop-attachment.png" alt=""></div>
+                <div class="file-name" *ngIf="professionalProjectUploaded == true">{{professionalProjectFileName}} <span
+                    (click)="removeProfessionalProject()">x</span></div>
+                <span class="text-danger "
+                  *ngIf="(professionalForm.get('uploadProject').touched && professionalForm.get('uploadProject').hasError('required')) || (professionalForm.get('uploadProject').untouched && submitProfessionalForm == true) ">
+                  upload project is required</span>
+
+              </div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group">
+                <div class="submit-button">
+                  <a href="javascript:void(0)" class="purpel-btn" (click)="submitProfessionalData()">Submit</a>
                 </div>
               </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <div class="submit-button">
-                    <a href="javascript:void(0)" class="purpel-btn">Submit</a>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>      
-          <!-- collage tab end --> 
-
-          <!-- fresher tab start -->
-          <div class="bottom-filed fresher-tab" *ngIf="careerPerson ==  'fresher'">
-            <form class="fresher-tab">
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label>Your location</label>
-                  <select>
-                    <option>India</option>
-                    <option>south africa</option>
-                    <option>korean</option>
-                  </select>
-                </div>
-                 <div class="form-group col-md-4">
-                  <label>Skills</label>
-                  <input type="text" name="" placeholder="Developer, architect">
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Social media profile on LT</label>
-                  <input type="text" name="" placeholder="john deo">
-                </div>
-              </div>
-
-              <div class="form-row line-two">
-                <div class="form-group col-md-4">
-                  <label>About me</label>
-                  <textarea placeholder="write here..."></textarea>
-                </div>
-                <div class="form-group col-md-4">
-                  <label>upload resume</label>
-                  <input type="file" name="">
-                  <div class="drop-img"><img src="../../../assets/PublicAssets/images/drop-attachment.png" alt=""></div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label>upload project</label>
-                  <input type="file" name="">
-                  <div class="drop-img"><img src="../../../assets/PublicAssets/images/drop-attachment.png" alt=""></div>
-                </div>
-              </div>
-
-
-              <div class="form-row">
-                <div class="form-group">
-                  <div class="submit-button">
-                    <a href="javascript:void(0)" class="purpel-btn">Submit</a>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>  
-          <!-- fresher tab end -->
-
-          <!-- experince tab start -->
-          <div class="bottom-filed experince-tab" *ngIf="careerPerson ==  'experince'">
-            <form class="fresher-tab">
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label>Total Years of Experience</label>
-                  <select>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                 <div class="form-group col-md-4">
-                  <label>Highest Qualification</label>
-                  <input type="text" name="" placeholder="B.E.(graducation)">
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Current Company</label>
-                  <input type="text" name="" placeholder="john deo">
-                </div>
-              </div>
-
-              <div class="form-row line-three">
-                <div class="form-group col-md-4">
-                  <label>Current location</label>
-                  <input type="text" name="" placeholder="john deo">
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Current CTC</label>
-                 <input type="text" name="" placeholder="john deo">
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Expected CTC</label>
-                  <input type="text" name="" placeholder="john deo">
-                </div>
-              </div>
-
-              <div class="form-row line-three">
-                <div class="form-group col-md-4">
-                  <label>Skills</label>
-                  <input type="text" name="" placeholder="john deo">
-                </div>
-                <div class="form-group col-md-4">
-                  <label>Area of Expertise</label>
-                 <input type="text" name="" placeholder="john deo">
-                </div>
-              </div>
-
-              <div class="form-row line-two">
-                <div class="form-group col-md-4">
-                  <label>About me</label>
-                  <textarea placeholder="write here..."></textarea>
-                </div>
-                <div class="form-group col-md-4">
-                  <label>upload resume</label>
-                  <input type="file" name="">
-                  <div class="drop-img"><img src="../../../assets/PublicAssets/../../../assets/PublicAssets/images/drop-attachment.png" alt=""></div>
-                </div>
-                <div class="form-group col-md-4">
-                  <label>upload project</label>
-                  <input type="file" name="">
-                  <div class="drop-img"><img src="../../../assets/PublicAssets/images/drop-attachment.png" alt=""></div>
-                </div>
-              </div>
-
-
-              <div class="form-row">
-                <div class="form-group">
-                  <div class="submit-button">
-                    <a href="javascript:void(0)" class="purpel-btn">Submit</a>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>  
-          <!-- experince tab end -->
+            </div>
+          </form>
+        </div>
+        <!-- experince tab end -->
       </div>
     </div>
   </div>
 </section>
 <!-- Collage student section END -->
-

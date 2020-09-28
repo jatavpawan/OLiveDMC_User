@@ -108,6 +108,7 @@ import { AreaofexpertiseService } from './providers/AreaOfExpertiseService/areao
 import { StudentCareerService } from './providers/StudentCareerService/student-career.service';
 import { ProfessionalCareerService } from './providers/ProfessionalCareerService/professional-career.service';
 import { FresherCareerService } from './providers/FresherCareerService/fresher-career.service';
+import {MatSelectModule} from '@angular/material/select';
 
 // export const MY_FORMATS = {
 //   parse: {
@@ -202,7 +203,7 @@ import { FresherCareerService } from './providers/FresherCareerService/fresher-c
     MatDatepickerModule,
     MatNativeDateModule, 
     MatInputModule, 
-
+    MatSelectModule
     // ShareButtonsModule,
     // ShareButtonsModule.withConfig({
     //   debug: true
