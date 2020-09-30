@@ -69,6 +69,11 @@ export class BlogService {
   {
     return <Observable<ResponseModel>> this.dataService.getData('Blog/RandomBlogList');
   }
+  
+  RandomBlogListInDetail()
+  {
+    return <Observable<ResponseModel>> this.dataService.getData('Blog/RandomBlogListInDetail');
+  }
 
   BlogListByCategoryId(data)
   {
@@ -89,5 +94,9 @@ export class BlogService {
   {
     return <Observable<ResponseModel>> this.dataService.getData('Blog/getPopularTag');
   }
+
   
 }
+
+
+

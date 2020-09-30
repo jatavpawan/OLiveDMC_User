@@ -58,6 +58,8 @@ export class PublicCareerComponent implements OnInit {
     });
 
     this.professionalForm = this.formBuilder.group({
+      expYear: ["", [ Validators.min(0) , Validators.max(50)]],
+      expMonth: ["", [ Validators.min(0) , Validators.max(12)]],
       totalExperience: ["", Validators.required],
       highestQualification: ["", Validators.required],
       currentCompany: ["", Validators.required],
@@ -116,57 +118,65 @@ export class PublicCareerComponent implements OnInit {
   FresherUploadResumeFile(uploadresume) {
     debugger;
     let files = uploadresume.files[0];
-    var mimeType = files.type;
     this.fresherResumeFileName = files.name;
 
-    // if (mimeType.match(/image\/*/) == null) {
-    //   return;
-    // }
+    let ext = files.name.split('.').pop();
+    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+      this.fresherResumeFile = files;
+      this.fresherResumeUploaded = true;
+    } else{
+      Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
+    }
 
-    this.fresherResumeFile = files;
-    this.fresherResumeUploaded = true;
+    
   }
 
   FresherUploadProjectFile(uploadproject) {
     debugger;
     let files = uploadproject.files[0];
-    var mimeType = files.type;
     this.fresherProjectFileName = files.name;
 
-    // if (mimeType.match(/image\/*/) == null) {
-    //   return;
-    // }
-
-    this.fresherProjectFile = files;
+    let ext = files.name.split('.').pop();
+    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+      this.fresherProjectFile = files;
     this.fresherProjectUploaded = true;
+    } else{
+      Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
+    }
+
+   
   }
 
   ProfessionalUploadResumeFile(uploadresume) {
     debugger;
     let files = uploadresume.files[0];
-    var mimeType = files.type;
     this.professionalResumeFileName = files.name;
+    
+    let ext = files.name.split('.').pop();
+    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+      this.professionalResumeFile = files;
+      this.professionalResumeUploaded = true;
+    } else{
+      Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
+    }
 
-    // if (mimeType.match(/image\/*/) == null) {
-    //   return;
-    // }
-
-    this.professionalResumeFile = files;
-    this.professionalResumeUploaded = true;
+  
   }
 
   ProfessionalUploadProjectFile(uploadproject) {
     debugger;
     let files = uploadproject.files[0];
-    var mimeType = files.type;
     this.professionalProjectFileName = files.name;
 
-    // if (mimeType.match(/image\/*/) == null) {
-    //   return;
-    // }
+    let ext = files.name.split('.').pop();
+    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+      this.professionalProjectFile = files;
+      this.professionalProjectUploaded = true;
+    } else{
+      Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
+    }
 
-    this.professionalProjectFile = files;
-    this.professionalProjectUploaded = true;
+  
   }
 
   submitFresherData() {
@@ -212,7 +222,15 @@ export class PublicCareerComponent implements OnInit {
   submitProfessionalData() {
     debugger;
     this.submitProfessionalForm = false;
+
+    let year = this.professionalForm.get("expYear").value;
+    let month = this.professionalForm.get("expMonth").value;
+    if((parseInt(year) > 0  && parseInt(year) <= 50)  || (parseInt(month) > 0  && parseInt(year) <= 12)  ){
+      let exp = year*12 + month;
+      this.professionalForm.get("totalExperience").setValue(exp)
+    }
     if (this.professionalForm.valid) {
+
 
        let skillIds: string =  this.professionalForm.get("skillId").value.toString();
        let areaIds: string =  this.professionalForm.get("areaOfExpertise").value.toString();
@@ -314,7 +332,7 @@ export class PublicCareerComponent implements OnInit {
   removeFresherProject() {
     this.fresherProjectFile =  undefined;
     this.fresherProjectUploaded = false;
-    this.fresherForm.get('uploadProject').setValue('uploadResume');
+    this.fresherForm.get('uploadProject').setValue('');
     this.fresherProjectFileName = "";
 
   }
@@ -335,3 +353,12 @@ export class PublicCareerComponent implements OnInit {
 
   }
 }
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -164,3 +164,7 @@ bottom: -6%;
 .gallery-box .gallery-video{
   height: 100%;
 }
+
+.social-icons-of-social > ul li , .edit-profile a, .input-group-append{
+  cursor: pointer;
+}

@@ -1,13 +1,22 @@
-.file-name{
+.file-name {
     border: 1px solid #5758e0;
     border-radius: 16px;
     display: inline-block;
     padding: 8px;
     margin-top: 6px;
     color: #5758e0;
+    width: 100%;
 }
 
-.file-name span{
+.file-name .display-filename{
+    float: left;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-name .remove-file{
     margin-left: 7px;
     font-size: 12px;
     border-radius: 9px;
@@ -15,8 +24,34 @@
     padding: 0px 4px;
     color: red;
     cursor: pointer;
+    float: right;
 }
 
 span.text-danger{
     text-transform: capitalize;
 }
+
+.person-type{
+    margin-bottom: 20px;
+}
+
+.career-person{
+    margin-right: 8px;
+}
+
+.total-Exp{
+    display: flex;
+}
+
+.apply-for .gender-label{
+    margin: 0 20px;
+}
+
+.career-type .col-md-4{
+    cursor: pointer;
+}
+
+/* white-space: nowrap;
+     width: 70px; 
+    overflow: hidden;
+    text-overflow: ellipsis; */

@@ -55,8 +55,8 @@
         </div> -->
         <div class="social-icons-of-social ">
           <ul>
-            <li [routerLink]="['/flight']">
-              <a data-toggle="tooltip" data-placement="top" title="Hooray! \n sghag \asagjh \shkajsha \skahs "><i class="fa fa-plane"></i></a>
+            <li matTooltip="Flight Booking" [routerLink]="['/flight']">
+              <a href="JavaScript:void(0)"><i class="fa fa-plane"></i></a>
             </li>
             <!-- <li  matTooltip="Flight Booking" [routerLink]="['/flight']">
               <a href="JavaScript:void(0)"><i class="fa fa-plane"></i></a>
@@ -1493,7 +1493,7 @@
                               *ngIf="blog?.reactionStatus ==  true">UnLike</h6>
                           </li>
                           <li>
-                            <h6>9 comments</h6>
+                            <h6>{{blog?.commentcount}} comments</h6>
                           </li>
                           <li>
                             <h6>0 share</h6>
@@ -3003,6 +3003,10 @@
       </div>
 
       <div class="modal-body upload-video-post-main">
+        <div class="form-group">
+          <label>Album Title</label>
+          <input type="text" name="">
+        </div>
         <div class="form-group">
           <label>upload videos</label>
           <input type="file" name="">

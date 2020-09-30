@@ -37,7 +37,7 @@ export class BookingService {
   }
 
   GetLocationList(data) {
-    return <Observable<ResponseModel>> this.dataService.postFormData('Booking/GetLocationList', data);
+    return <Observable<ResponseModel>> this.dataService.postData('Booking/GetLocationList', data);
     // return this.countries.length
     //   ? of(this.countries)
     //   : this.http

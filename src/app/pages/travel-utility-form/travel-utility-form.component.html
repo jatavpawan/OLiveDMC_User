@@ -34,26 +34,51 @@
                     Mobile is required</span>
 
             </div>
-            <div class="form-group">
+            <div class="form-group start-country">
                 <label for="recipient-number" class="col-form-label">Start Country:</label>
-                <input type="text" class="form-control" id="recipient-number" formControlName="startCountry">
+                <!-- <input type="text" class="form-control" id="recipient-number" formControlName="startCountry"> -->
+                  <!-- <label>Select Nationality<span class="compulsary-star">*</span></label> -->
+                  <input type="text" class="form-control" placeholder="Start Country" [matAutocomplete]="startcountry"
+                    formControlName="startCountry"/>
+                  <a class="startcountry-close" *ngIf="!utilityForm.get('startCountry').hasError('required')"
+                    (click)="resetStartCountry()">ⓧ</a>
+                  <mat-autocomplete #startcountry="matAutocomplete" [displayWith]="displayNationalityProperty">
+                    <mat-option *ngFor="let startCountry of startCountries | async" [value]="startCountry">
+                      {{startCountry.split('-')[0]}}
+                    </mat-option>
+                  </mat-autocomplete>
                 <span class="text-danger "
                     *ngIf="(utilityForm.get('startCountry').touched && utilityForm.get('startCountry').hasError('required')) || (utilityForm.get('startCountry').untouched && submitUtilityForm == true) ">
                     Start Country is required</span>
 
             </div>
-            <div class="form-group">
+            <div class="form-group destination-country">
                 <label for="recipient-number" class="col-form-label">Destination Country:</label>
-                <input type="text" class="form-control" id="recipient-number" formControlName="destinationCountry">
+                <!-- <input type="text" class="form-control" id="recipient-number" formControlName="destinationCountry"> -->
+                <input type="text" class="form-control" placeholder="Destination Country" [matAutocomplete]="destinationcountry"
+                formControlName="destinationCountry" />
+              <a class="destinationcountry-close" *ngIf="!utilityForm.get('destinationCountry').hasError('required')"
+                (click)="resetDestinationCountry()">ⓧ</a>
+              <mat-autocomplete #destinationcountry="matAutocomplete" [displayWith]="displayNationalityProperty">
+                <mat-option *ngFor="let destinationCountry of destinationCountries | async" [value]="destinationCountry">
+                  {{destinationCountry.split('-')[0]}}
+                </mat-option>
+              </mat-autocomplete>
                 <span class="text-danger "
                     *ngIf="(utilityForm.get('destinationCountry').touched && utilityForm.get('destinationCountry').hasError('required')) || (utilityForm.get('destinationCountry').untouched && submitUtilityForm == true) ">
                     Destination Country is required</span>
 
             </div>
-            <div class="form-group" *ngIf="utilityId == 1 || utilityId == 8">
+            <div class="form-group travel-datebox" *ngIf="utilityId == 1 || utilityId == 8">
                 <label for="recipient-number" class="col-form-label">Date Of Travel:</label>
-                <input type="date" class="form-control" id="recipient-number" formControlName="dateOfTravel">
-                <span class="text-danger "
+                <!-- <input type="date" class="form-control" id="recipient-number" formControlName="dateOfTravel"> -->
+               
+                <input matInput id="recipient-number" class="form-control travel-date" placeholder="Date Of Travel" [min]="minDate" [max]="maxDate"
+                [matDatepicker]="travelDatePicker" formControlName="dateOfTravel" />
+              <mat-datepicker-toggle class="travel-datepicker" matSuffix [for]="travelDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #travelDatePicker></mat-datepicker>
+              
+              <span class="text-danger "
                     *ngIf="(travelDateRequiredError == true && submitUtilityForm == true) ">
                     Date Of Travel is required</span>
             </div>

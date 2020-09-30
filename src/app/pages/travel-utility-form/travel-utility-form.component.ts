@@ -5,6 +5,9 @@ import { Status } from 'src/app/model/ResponseModel';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { TravelUtilityService } from 'src/app/providers/TravelUtilityService/travel-utility.service';
+import { Observable } from 'rxjs';
+import { debounceTime, map, startWith, switchMap } from 'rxjs/operators';
+import { BookingService } from 'src/app/providers/BookingService/booking.service';
 
 @Component({
   selector: 'app-travel-utility-form',
@@ -18,12 +21,17 @@ export class TravelUtilityFormComponent implements OnInit {
   travelDateRequiredError: boolean = false;
   utilityType: string = '';
   utilityId: number = 0;
+  startCountries: Observable<any[]>;
+  destinationCountries: Observable<any[]>;
+  minDate: Date;
+  maxDate: Date;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
     private travelUtilityService: TravelUtilityService,
+    private bookingService: BookingService,
     public dialogRef: MatDialogRef<TravelUtilityFormComponent>
 
   ) {
@@ -44,11 +52,58 @@ export class TravelUtilityFormComponent implements OnInit {
       this.utilityId = this.data.id; 
     }
 
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth();
+    let currentDate = new Date().getDate();
+
+    this.minDate = new Date();
+    this.maxDate = new Date(currentYear + 1, currentMonth, currentDate);
+
   }
 
   ngOnInit(): void {
+    this.startCountries = this.utilityForm.get("startCountry").valueChanges.pipe(
+      startWith(""),
+      debounceTime(400),
+      switchMap((val) => {
+        if (val.length >= 1 && val.length <= 12) {
+          return this.GetHotelCountryDetails(val || "");
+        } else {
+          return [];
+        }
+      })
+    );
+
+    this.destinationCountries = this.utilityForm.get("destinationCountry").valueChanges.pipe(
+      startWith(""),
+      debounceTime(400),
+      switchMap((val) => {
+        if (val.length >= 1 && val.length <= 12) {
+          return this.GetHotelCountryDetails(val || "");
+        } else {
+          return [];
+        }
+      })
+    );
   }
 
+  GetHotelCountryDetails(val: string): Observable<any[]> {
+    // its working
+    // call the service which makes the http-request
+    return this.bookingService
+      .GetLocationList({ prefixText: val, count: 20,Listfor:'CountryForHotel' })
+      .pipe(
+        map((response) => {
+          return response.data;
+        })
+      );
+  }
+
+  displayNationalityProperty(value) {
+    if (value) {
+      return value.split("-")[0];
+    }
+  }
 
   submitUtilityData() {
     debugger;
@@ -64,6 +119,12 @@ export class TravelUtilityFormComponent implements OnInit {
 
     if (this.utilityForm.valid && this.travelDateRequiredError == false) {
       console.log("this.utilityForm.value", this.utilityForm.value);
+      let startCountry =  this.utilityForm.get('startCountry').value;
+      let destinationCountry = this.utilityForm.get('destinationCountry').value;
+      startCountry = startCountry.split('-')[0];
+      destinationCountry = destinationCountry.split('-')[0];
+      this.utilityForm.get('startCountry').setValue(startCountry);
+      this.utilityForm.get('destinationCountry').setValue(destinationCountry);
 
       this.spinner.show();
       this.travelUtilityService.AddUpdateTravelUtilityQuery(this.utilityForm.value).subscribe(resp => {
@@ -84,6 +145,14 @@ export class TravelUtilityFormComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  resetStartCountry() {
+    this.utilityForm.get("startCountry").setValue("");
+  }
+
+  resetDestinationCountry() {
+    this.utilityForm.get("destinationCountry").setValue("");
   }
 
 

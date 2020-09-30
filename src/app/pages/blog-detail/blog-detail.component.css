@@ -1,0 +1,115 @@
+.comment-respond {
+  padding: 0 30px 30px;
+  margin: 80px 0;
+  border: 1px solid #eee;
+}
+
+.save-userinfo {
+  margin-right: 10px;
+}
+
+textarea.comment-box {
+  min-height: 150px;
+}
+
+#reply-title {
+  text-align: center;
+  margin: 19px 10px;
+  padding: 10px;
+}
+
+.user-comments-list {
+  padding: 20px;
+  border: 1px solid #ecedf0;
+}
+
+.comment-reply {
+  margin-left: 50px;
+  color: #999;
+  cursor: pointer;
+}
+
+.rblog-main {
+    overflow: hidden;
+    /* box-shadow: 0px 1px 17px 0px rgba(0, 0, 0, 0.05); */
+    box-shadow: none;
+}
+
+.rblog-img {
+    border: 1px solid transparent;
+    overflow: hidden;
+    /* border-radius: 15px 15px 0px 0px; */
+    width: 100%;
+    transition: all 0.5s ease;
+    height: 180px;
+    border-radius: 8px;
+}
+
+.rblog-img:hover {
+    transform: scale(1.04);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.rblog-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rblog-cnt {
+    background-color: #fff;
+    border: 10px;
+    padding: 10px 6px;
+}
+
+
+.rblog-cnt h3 {
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    /* color: #222222; */
+    color: #b3b1b1;
+}
+
+.blog-cnt h4 {
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+.rblog-title{
+    font-size: 18px;
+    padding: 10px 0;
+}
+
+.rblog-heading{
+    text-align: center;
+    margin-bottom: 42px;
+    position: relative;
+}
+
+.rblog-section{
+    margin: 80px 0 0;
+}
+
+.user-comments-list{
+    margin: 80px 0;
+}
+
+/* .name-input{
+} */
+.email-input, .name-input{
+    padding-right: 6px;
+    padding-left: 6px;
+
+}
+
+.rblog-title{
+    cursor: pointer;
+}
+
+
+
+
+
+

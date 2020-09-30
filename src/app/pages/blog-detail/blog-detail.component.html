@@ -1,85 +1,210 @@
+<div class="overlay"></div>
 
-
-  
-  <div class="overlay"></div>
-  
-  <!-- fixed social media start-->
-  <div id="fixed-social">
-    <div>
-      <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
-    </div>
-    <div>
-      <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
-    </div>
+<!-- fixed social media start-->
+<div id="fixed-social">
+  <div>
+    <a href="#" class="fixed-facebook" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
   </div>
-  <!-- fixed social media end -->
-  <!-- slider section html START -->
-  
-  
-  <!-- utility details section START -->
-  <section class="comon-space detail-comon-space">
-    <div class="container">
-      <div class="d-flex flex-wrap">
-          <!-- <div class="col-md-12">
+  <div>
+    <a href="#" class="fixed-twitter" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-gplus" target="_blank"><i class="fa fa-google"></i> <span>Google+</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-linkedin" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+  </div>
+  <div>
+    <a href="#" class="fixed-instagrem" target="_blank"><i class="fa fa-instagram"></i> <span>Instagram</span></a>
+  </div>
+</div>
+<!-- fixed social media end -->
+<!-- slider section html START -->
+
+
+<!-- utility details section START -->
+<section class="comon-space detail-comon-space">
+  <div class="container">
+    <div class="d-flex flex-wrap">
+      <!-- <div class="col-md-12">
             <div class="utility-detail-banner"><img [src]="blogImgSrcPath+blogDetail?.featuredImage" alt=""></div>
           </div> -->
-        
-          <div class="col-md-8">
-            <div class="utility-detail">
-              <div class="utility-detail-banner"><img [src]="blogImgSrcPath+blogDetail?.featuredImage" alt=""></div>
-              <!-- <div class="utility-detail-banner"><img src="../assets/PublicAssets/images/detail-img.jpg" alt=""></div> -->
-              <div class="date-details">
-                <div class="d-flex flex-wrap justify-content-between">
-                  <div class="col-md-2">
-                    <div class="date-box">
-                      <h3>{{blogDetail?.createdDate|date:'dd'}}</h3>
-                      <h4>{{blogDetail?.createdDate|date:'MMMM'}}</h4>
-                    </div>
+
+      <div class="col-md-8">
+        <div class="utility-detail">
+          <div class="utility-detail-banner"><img [src]="blogImgSrcPath+blogDetail?.featuredImage" alt=""></div>
+          <!-- <div class="utility-detail-banner"><img src="../assets/PublicAssets/images/detail-img.jpg" alt=""></div> -->
+          <div class="date-details">
+            <div class="d-flex flex-wrap justify-content-between">
+              <div class="col-md-2">
+                <div class="date-box">
+                  <h3>{{blogDetail?.createdDate|date:'dd'}}</h3>
+                  <h4>{{blogDetail?.createdDate|date:'MMMM'}}</h4>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="date-heading">
+                  <div class="date-h">
+                    <h3>{{blogDetail?.title}}</h3>
                   </div>
-                  <div class="col-md-10">
-                    <div class="date-heading">
-                      <div class="date-h"><h3>{{blogDetail?.title}}</h3></div>
-                      <div class="place-time">
-                        <!-- <h4><i class="fa fa-map-marker"></i>Brooklyn, NY 10036 new York united state</h4>
+                  <div class="place-time">
+                    <!-- <h4><i class="fa fa-map-marker"></i>Brooklyn, NY 10036 new York united state</h4>
                         <h4><i class="fa fa-clock-o"></i>08 : 00 pm to 11:pm onwords</h4> -->
-                        <h4><i class="fa fa-map-marker"></i>Posted By: {{blogDetail?.firstName+' '+ blogDetail?.lastName}}</h4>
-                        <h4><i class="fa fa-clock-o"></i>Posted Date: {{blogDetail?.createdDate|date:'dd MMM yyyy, hh:mm aaa'}}</h4>
-                      </div>
-                    </div>
+                    <h4><i class="fa fa-map-marker"></i>Posted By: {{blogDetail?.firstName+' '+ blogDetail?.lastName}}
+                    </h4>
+                    <h4><i class="fa fa-clock-o"></i>Posted Date:
+                      {{blogDetail?.createdDate|date:'dd MMM yyyy, hh:mm aaa'}}</h4>
                   </div>
                 </div>
               </div>
-              <div class="utility-held-detail">
-               <p [innerHTML]="blogDetail?.description|safeHtml"></p>
-               
-                <!-- <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dropdown-linkres et ea rebum. Stet clita kasd.</p> -->
-              </div>
             </div>
           </div>
-  
+          <div class="utility-held-detail">
+            <p [innerHTML]="blogDetail?.description|safeHtml"></p>
+
+            <!-- <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dropdown-linkres et ea rebum. Stet clita kasd.</p> -->
+          </div>
+        </div>
+
+        <div class="user-comments-list" *ngIf="blogCommentList.length >0">
+          <div class="coment-lisitng">
+            <ul class="lisitng-start">
+              <li *ngFor="let blogComment of blogCommentList">
+                <div class="d-flex flex-wrap">
+                  <div class="">
+                    <div class="user-circel-img">
+                      <!-- <img src="http://localhost:51306/Uploads/SocialMedia/UserProfilePic/image/202092846655_blog-main-2.jpg"> -->
+                      <img src="../../../assets/PublicAssets/images/user-default.png">
+                    </div>
+                    <!-- <small class="post-comment-avatar-placeholder">SG</small> -->
+
+                  </div>
+                  <div class="">
+                    <div class="user-comments">
+                      <p><span>{{blogComment.name}} :
+                        </span> {{blogComment.comment}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="respond" class="comment-respond">
+          <h5 id="reply-title" class="comment-reply-title">Leave a Comment</h5>
+          <form class="comment-form" [formGroup]="commentForm" (ngSubmit) = "saveComment()">
+
+            <div class="form-group">
+              <label>Comment<span class="compulsary-star">*</span></label>
+              <textarea class="form-control comment-box" formControlName="comment"></textarea>
+              <span class="text-danger "
+              *ngIf="(commentForm.get('comment').touched && commentForm.get('comment').hasError('required')) || (commentForm.get('comment').untouched && submitcommentForm == true) ">
+              Comment is required</span>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6 name-input">
+                <label>Name<span class="compulsary-star">*</span></label>
+                <input type="text" class="form-control" placeholder="John Deo" formControlName="name">
+                <span class="text-danger "
+                  *ngIf="(commentForm.get('name').touched && commentForm.get('name').hasError('required')) || (commentForm.get('name').untouched && submitcommentForm == true) ">
+                  Name is required</span>
+              </div>
+              <div class="form-group col-md-6 email-input">
+                <label>Email<span class="compulsary-star">*</span></label>
+                <input type="email" class="form-control" placeholder="Email@example.com" formControlName="email">
+                <!-- <span class="text-danger " *ngIf="(loginForm.get('email').touched && loginForm.get('email').hasError('required')) || (loginForm.get('email').untouched && submitLoginForm == true) "> Email Id is required</span> -->
+                <div *ngIf="commentForm.get('email').touched && commentForm.get('email').invalid" class="text-danger">
+                  <div *ngIf="commentForm.get('email').errors.required">Email is required.</div>
+                  <div *ngIf="commentForm.get('email').errors.pattern">Please, Enter Valid Email.</div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" class="save-userinfo" formControlName="isSaveUserInfo">Save my name, email in this browser for the next time
+                I comment.</label>
+            </div>
+            <div class="form-group">
+              <button class="purpel-btn"><span class="btn-main-text">Post Comment</span></button>
+            </div>
+          </form>
+        </div>
+
+        
+  <!-- <section class="comon-space">
+    <h3> Related Blogs</h3>
+    <div class="container">
+      <div class="d-flex flex-wrap">
           <div class="col-md-4">
-            <div class="travel-detail-ad">
-              <ul *ngIf="offerAdsList.length != 0">
-                <li *ngFor="let offerAds of offerAdsList"><a><img [src]="offerAdsImgSrcPath+offerAds.image"></a></li>
-                <!-- <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-1.jpg"></a></li>
-                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-2.jpg"></a></li>
-                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-3.jpg"></a></li> -->
-              </ul>
+            <div >
+              <div><img src="http://localhost:51306/Uploads/Blog/image/202091851252_JODHPUR.jpg" alt=""></div>
+            </div>
+            <div>
+              <h3>Jomsom Muktinath Trekking</h3>
+              <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
             </div>
           </div>
       </div>
     </div>
-  </section>
-  <!-- utility details section END -->
+  </section> -->
+
+  <section class="rblog-section">
+    <!-- <div class="container"> -->
+      <div class="rblog-heading">
+        <h4>Related Blogs</h4>
+      </div>
+    <!-- </div> -->
   
+    <!-- <div class="container"> -->
+      <div class="d-flex flex-wrap">
+        <div class="col-md-4 mb-4" *ngFor="let randomBlog of randomBlogs">
+          <div class="rblog-main">
+            <div class="rblog-img"><img [src]="blogImgSrcPath+randomBlog?.featuredImage" alt=""></div>
+            <div class="rblog-cnt">
+              <h3>{{randomBlog?.createdDate|date: 'dd MMM yyyy'}}</h3>
+              <h4 class="rblog-title" [routerLink]="['/blog-detail',randomBlog?.id]">{{ randomBlog?.title.length > 50 ?  (randomBlog?.title|slice:0:50) +'...' : randomBlog?.title  }}</h4>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-md-4 mb-4">
+          <div class="rblog-main">
+            <div class="rblog-img"><img src="http://localhost:51306/Uploads/Blog/image/202091851252_JODHPUR.jpg" alt=""></div>
+            <div class="rblog-cnt">
+              <h3>jun 23, 2020</h3>
+              <h4 class="rblog-title">Ghorepani Poonhill Trekking</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="rblog-main">
+            <div class="rblog-img"><img src="http://localhost:51306/Uploads/Blog/image/202091851252_JODHPUR.jpg" alt=""></div>
+            <div class="rblog-cnt">
+              <h3>jun 23, 2020</h3>
+              <h4 class="rblog-title">Ghorepani Poonhill Trekking</h4>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    <!-- </div> -->
+  </section>
+
+      </div>
+
+      <div class="col-md-4">
+        <div class="travel-detail-ad">
+          <ul *ngIf="offerAdsList.length != 0">
+            <li *ngFor="let offerAds of offerAdsList"><a><img [src]="offerAdsImgSrcPath+offerAds.image"></a></li>
+            <!-- <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-1.jpg"></a></li>
+                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-2.jpg"></a></li>
+                <li><a href="javascript:void(0)"><img src="../assets/PublicAssets/images/ad-Image-3.jpg"></a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- utility details section END -->

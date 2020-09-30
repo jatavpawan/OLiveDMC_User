@@ -29,8 +29,9 @@
                   Status Description is required</span>
                 </div>
               </div>
-              <div class="tab-pane fade" [ngClass]="{'show active': currentAddPostTab == 'add-photo-video-tab'}" *ngIf="currentAddPostTab == 'add-photo-video-tab'" id="add-photo-video-new" role="tabpanel" aria-labelledby="add-photo-video-tab">
-                <div class="form-group">
+              <div class="tab-pane fade" [ngClass]="{'show active': currentAddPostTab == 'add-photo-video-tab'}" *ngIf="currentAddPostTab == 'add-photo-video-tab'"
+               id="add-photo-video-new" role="tabpanel" aria-labelledby="add-photo-video-tab">
+                <div class="form-group select-photo">
                   <label>upload photos</label>
                   <input type="file" name="" #files (change)="uploadFile(files)">
                   <div class="drop-image" *ngIf="fileUploaded == false && editUserPost == false"><img src="../../../assets/PublicAssets/images/drop-attachment.png"></div>

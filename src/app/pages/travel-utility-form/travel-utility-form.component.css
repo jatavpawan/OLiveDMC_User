@@ -1,0 +1,34 @@
+.startcountry-close,
+.destinationcountry-close {
+  display: none;
+  position: absolute;
+  top: 64%;
+  right: 2%;
+  color: #5758e0 !important;
+}
+
+.start-country:hover .startcountry-close,
+.destination-country:hover .destinationcountry-close {
+  display: block;
+}
+
+.start-country,
+  .destination-country {
+    position: relative;
+  }
+
+  .travel-date
+  {
+    padding-right: 38px;
+  }
+  
+  .travel-datepicker{
+    position: absolute;
+    top: 45%;
+    right: 2%;
+  }
+  
+  .travel-datebox {
+    position: relative;
+  }
+  

@@ -109,6 +109,7 @@ import { StudentCareerService } from './providers/StudentCareerService/student-c
 import { ProfessionalCareerService } from './providers/ProfessionalCareerService/professional-career.service';
 import { FresherCareerService } from './providers/FresherCareerService/fresher-career.service';
 import {MatSelectModule} from '@angular/material/select';
+import { BlogCommentService } from './providers/BlogCommentService/blog-comment.service';
 
 // export const MY_FORMATS = {
 //   parse: {
@@ -252,6 +253,7 @@ import {MatSelectModule} from '@angular/material/select';
     StudentCareerService,
     ProfessionalCareerService,
     FresherCareerService,
+    BlogCommentService,
     // {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
   bootstrap: [AppComponent],
