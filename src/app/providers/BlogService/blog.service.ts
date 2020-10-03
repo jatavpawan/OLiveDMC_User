@@ -94,6 +94,13 @@ export class BlogService {
   {
     return <Observable<ResponseModel>> this.dataService.getData('Blog/getPopularTag');
   }
+  
+  searchBlogByText(data)
+  {
+    return <Observable<ResponseModel>> this.dataService.postData('Blog/searchBlog', data);
+  }
+
+  
 
   
 }

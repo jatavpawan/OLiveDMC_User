@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './routing/app-routing/app-routing.module';
@@ -110,6 +110,9 @@ import { ProfessionalCareerService } from './providers/ProfessionalCareerService
 import { FresherCareerService } from './providers/FresherCareerService/fresher-career.service';
 import {MatSelectModule} from '@angular/material/select';
 import { BlogCommentService } from './providers/BlogCommentService/blog-comment.service';
+import { DummyComponentComponent } from './pages/dummy-component/dummy-component.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { UtilityFilterPipe } from './pipe/utility-filter.pipe';
 
 // export const MY_FORMATS = {
 //   parse: {
@@ -185,6 +188,8 @@ import { BlogCommentService } from './providers/BlogCommentService/blog-comment.
     FilterPipe,
     UserVisitProfileComponent,
     GalleryVideoModalComponent,
+    DummyComponentComponent,
+    UtilityFilterPipe,
   ],
  
   imports: [
@@ -204,7 +209,8 @@ import { BlogCommentService } from './providers/BlogCommentService/blog-comment.
     MatDatepickerModule,
     MatNativeDateModule, 
     MatInputModule, 
-    MatSelectModule
+    MatSelectModule,
+    NgxIntlTelInputModule
     // ShareButtonsModule,
     // ShareButtonsModule.withConfig({
     //   debug: true
@@ -264,5 +270,6 @@ import { BlogCommentService } from './providers/BlogCommentService/blog-comment.
     ShareSocialMediaComponent,
     GalleryVideoModalComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

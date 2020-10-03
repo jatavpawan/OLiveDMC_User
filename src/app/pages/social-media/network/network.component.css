@@ -121,3 +121,21 @@ bottom: -6%;
 .phto-galry .drop-image{
   top: 70px !important;
 }
+
+
+.search-blk{
+  position: relative;
+}
+
+.user-close{
+  display: none;
+  position: absolute;
+  top: 38%;
+  right: 2%;
+  color: #5758e0 !important;
+}
+
+.search-blk:hover .user-close {
+  display: block;
+}
+

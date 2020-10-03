@@ -63,10 +63,23 @@
   <div class="d-flex flex-wrap blogs-main">
    <div class="col-md-4">
      <div class="blog-main-left">
-       <div class="search-blk">
+       <form [formGroup]="searchBlogForm">
+        <div class="search-blk">
           <i class="fa fa-search"></i>
-         <input type="text" name="" placeholder="search blogger...">
+         <!-- <input type="text" name="" placeholder="search blogger..."> -->
+        <input type="text"  placeholder="search blogger..." [matAutocomplete]="inputSearchBlog"
+         formControlName="searchBlogger"/>
+       <a class="blog-close"*ngIf="searchBlogForm.get('searchBlogger').value != ''"
+         (click)="resetSearchBlog()">ⓧ</a>
+       <mat-autocomplete #inputSearchBlog="matAutocomplete" [displayWith]="displayBlogProperty" (optionSelected)="onSelectionChange($event)">
+         <mat-option *ngFor="let blog of searchBlogList | async" [value]="blog">
+           {{blog.title}}
+         </mat-option>
+       </mat-autocomplete>
+
        </div>
+       </form>
+       
        <div class="categories">
         <div class="b-head">Categories</div>
         <div class="b-listing">

@@ -3,10 +3,26 @@
       <div class="search-box-top">
         <div class="d-flex flex-wrap justify-content-between align-items-center">
           <div class="col-md-6">
-            <div class="search-blk">
-              <i class="fa fa-search"></i>
-              <input type="text" name="" placeholder="search...">
-            </div>
+            <form [formGroup]="userSearchForm">
+              <div class="search-blk">
+                <i class="fa fa-search"></i>
+                <!-- <input type="text" name="" placeholder="search..." > -->
+
+
+
+
+                <input type="text"  placeholder="search..." [matAutocomplete]="inputSearchUser"
+                formControlName="searchUser"/>
+              <a class="user-close"*ngIf="userSearchForm.get('searchUser').value != ''"
+                (click)="resetSearchUser()">ⓧ</a>
+              <mat-autocomplete #inputSearchUser="matAutocomplete" [displayWith]="displayUserProperty" (optionSelected)="onUserSelectionChange($event)">
+                <mat-option *ngFor="let user of searchUserList | async" [value]="user">
+                  {{user.name}}
+                </mat-option>
+              </mat-autocomplete>
+
+              </div>
+            </form>
           </div>
 
           <div class="col-md-6">

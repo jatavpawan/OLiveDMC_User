@@ -55,3 +55,21 @@ span.text-danger{
      width: 70px; 
     overflow: hidden;
     text-overflow: ellipsis; */
+
+
+    .userseach-form{
+        position: relative;
+    }
+    
+    .user-close{
+        display: none;
+        position: absolute;
+        top: 38%;
+        right: 2%;
+        color: #5758e0 !important;
+    }
+      
+      .social-Profile-input:hover .user-close {
+        display: block;
+      }
+      

@@ -46,6 +46,7 @@ import { SocialBlogsComponent } from 'src/app/pages/social-media/social-blogs/so
 import { NetworkComponent } from 'src/app/pages/social-media/network/network.component';
 import { ScrapBookComponent } from 'src/app/pages/social-media/scrap-book/scrap-book.component';
 import { UserVisitProfileComponent } from 'src/app/pages/user-visit-profile/user-visit-profile.component';
+import { DummyComponentComponent } from 'src/app/pages/dummy-component/dummy-component.component';
 
 const routes: Routes = [
   {
@@ -247,6 +248,11 @@ const routes: Routes = [
   {
     path: 'visit-profile/:userId',
     component: UserVisitProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dummy',
+    component: DummyComponentComponent,
     canActivate: [AuthGuard]
   },
 ]

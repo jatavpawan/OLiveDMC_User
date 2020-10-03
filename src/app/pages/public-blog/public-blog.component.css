@@ -87,3 +87,21 @@ textarea.blog-description{
     color: #ECEDF0 !important;
     background-color: #0a0b77 !important;
 }
+
+
+.search-blk{
+    position: relative;
+}
+
+.blog-close{
+    display: none;
+    position: absolute;
+    top: 38%;
+    right: 2%;
+    color: #5758e0 !important;
+}
+  
+  .search-blk:hover .blog-close {
+    display: block;
+  }
+  

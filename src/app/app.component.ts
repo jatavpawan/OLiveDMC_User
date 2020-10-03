@@ -35,6 +35,8 @@ export class AppComponent implements OnInit {
     private spinner: NgxSpinnerService,
   ) {
 
+    this.spinner.show();
+
     this.profileImgsrcpath = this.apiendpoint + 'Uploads/SocialMedia/UserProfilePic/image/';
 
     this.shareService.hideHeaderFooter.subscribe((res: any) => {

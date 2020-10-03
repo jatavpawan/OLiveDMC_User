@@ -25,7 +25,7 @@ export class BlogDetailComponent implements OnInit {
   offerAdsList: Array<any> = [];
   offerAdsImgSrcPath: string = '';
   commentForm: FormGroup;
-  submitCommentForm: boolean;
+  submitCommentForm: boolean = false;
   userLoggedinInfo: any;
   blogCommentList: Array<any> = [];
   blogCommentUserInfo: any;

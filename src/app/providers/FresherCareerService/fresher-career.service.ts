@@ -30,4 +30,9 @@ export class FresherCareerService {
     return <Observable<ResponseModel>> this.dataService.getData('FresherCareer/deleteFresherCareer?Id='+FresherCareerId);
   }
  
+  SearchSocialUserProfile(text)
+  {
+    return <Observable<ResponseModel>> this.dataService.getData('FresherCareer/SearchSocialUserProfile?text='+text);
+  }
+ 
 }

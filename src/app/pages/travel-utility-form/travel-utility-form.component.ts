@@ -8,6 +8,7 @@ import { TravelUtilityService } from 'src/app/providers/TravelUtilityService/tra
 import { Observable } from 'rxjs';
 import { debounceTime, map, startWith, switchMap } from 'rxjs/operators';
 import { BookingService } from 'src/app/providers/BookingService/booking.service';
+import { SearchCountryField, TooltipLabel, CountryISO } from 'ngx-intl-tel-input';
 
 @Component({
   selector: 'app-travel-utility-form',
@@ -25,6 +26,12 @@ export class TravelUtilityFormComponent implements OnInit {
   destinationCountries: Observable<any[]>;
   minDate: Date;
   maxDate: Date;
+
+  separateDialCode = true;
+	SearchCountryField = SearchCountryField;
+	TooltipLabel = TooltipLabel;
+	CountryISO = CountryISO;
+	preferredCountries: CountryISO[] = [CountryISO.India, CountryISO.UnitedStates, CountryISO.UnitedKingdom,CountryISO.Canada];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -118,13 +125,17 @@ export class TravelUtilityFormComponent implements OnInit {
     }
 
     if (this.utilityForm.valid && this.travelDateRequiredError == false) {
+
+
       console.log("this.utilityForm.value", this.utilityForm.value);
+      let mobileNo =  this.utilityForm.get('mobile').value.e164Number;
       let startCountry =  this.utilityForm.get('startCountry').value;
       let destinationCountry = this.utilityForm.get('destinationCountry').value;
       startCountry = startCountry.split('-')[0];
       destinationCountry = destinationCountry.split('-')[0];
       this.utilityForm.get('startCountry').setValue(startCountry);
       this.utilityForm.get('destinationCountry').setValue(destinationCountry);
+      this.utilityForm.get('mobile').setValue(mobileNo);
 
       this.spinner.show();
       this.travelUtilityService.AddUpdateTravelUtilityQuery(this.utilityForm.value).subscribe(resp => {

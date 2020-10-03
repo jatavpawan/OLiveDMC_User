@@ -21,6 +21,8 @@ import { BlogCategoryService } from 'src/app/providers/BlogCategoryService/blog-
 import { UserNetworkService } from 'src/app/providers/UserNetworkService/user-network.service';
 import { ShareSocialMediaComponent } from '../share-social-media/share-social-media.component';
 import { GalleryVideoModalComponent } from '../gallery-video-modal/gallery-video-modal.component';
+import { Observable } from 'rxjs';
+import { debounceTime, map, startWith, switchMap } from 'rxjs/operators';
 
 
 declare var $: any;
@@ -106,6 +108,8 @@ export class PublicSocialMediaComponent implements OnInit {
   videoUrlsInGallery: Array<any> = [];
   videoNameInGallery: Array<any> = [];
   galleryVideosrcpath: string = '';
+  userSearchForm: FormGroup;
+  searchUserList: Observable<any[]>;
 
   constructor(
     private shareService: ShareService,
@@ -147,7 +151,9 @@ export class PublicSocialMediaComponent implements OnInit {
       status: [false],
     })
 
-
+    this.userSearchForm = this.formBuilder.group({
+      searchUser  : [''],
+    });
 
     this.userPersonalInfoForm = this.formBuilder.group({
       id: [0],
@@ -198,6 +204,22 @@ export class PublicSocialMediaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+    this.searchUserList = this.userSearchForm.get("searchUser").valueChanges.pipe(
+      startWith(""),
+      debounceTime(400),
+      switchMap((val) => {
+        debugger;
+        if (val.length >= 1) {
+          return this.searchUserByText(val);
+        } else {
+          return [];
+        }
+      })
+    );
+
+    
     $(document).ready(function () {
       $(".delete-video, .delete-photos").click(function () {
         $(".events-main, .evnts-video-main").fadeOut("slow");
@@ -772,6 +794,9 @@ export class PublicSocialMediaComponent implements OnInit {
       this.getAddFriendRequestList();
       this.userFriendList();
       this.userPendingRequestList();
+    }
+    else if (tabValue == 'friends_suggestion') {
+      this.GetAllUserInNetwork();
     }
     else if (tabValue == 'friends_request') {
       this.getAddFriendRequestList();
@@ -1670,6 +1695,51 @@ export class PublicSocialMediaComponent implements OnInit {
     });
 
   }
+
+   
+resetSearchUser() {
+  this.userSearchForm.get('searchUser').setValue("")
+  this.GetAllUserInNetwork();
+}
+
+displayUserProperty(value) {
+  if (value) {
+    return value.firstName+' '+value.lastName;
+  }
+}
+
+onUserSelectionChange(event){
+  debugger;
+  console.log('onSelectionChange called', event.option.value);
+  if(event.option.value.id != 0){
+    this.userList =  [];
+    this.userList.push(event.option.value);
+  }
+}
+
+
+
+searchUserByText(val: string): Observable<any[]> {
+  debugger;
+  let obj = {
+    PageNo: 0,
+    Text: val,
+    UserId: this.userLoggedinInfo.id
+    
+  };
+
+  return this.userNetworkService.SearchUserByText(obj).pipe(
+    map((response) => {
+      if(response.data.length == 0){
+        return [ { id: 0 , firstName: "Matching Not Found", lastName: "" } ];
+      }
+      else{
+        return response.data;
+      }
+      
+    })
+  );
+}
 
   
 

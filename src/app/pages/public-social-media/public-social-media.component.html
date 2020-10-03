@@ -2126,10 +2126,23 @@
             <div class="search-box-top">
               <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <div class="col-md-6">
-                  <div class="search-blk">
+                  <form [formGroup]="userSearchForm">
+                  <div class="search-blk usersearch-blk">
                     <i class="fa fa-search"></i>
-                    <input type="text" name="" placeholder="search...">
+                    <!-- <input type="text" name="" placeholder="search..."> -->
+
+
+                    <input type="text"  placeholder="search..." [matAutocomplete]="inputSearchUser"
+                    formControlName="searchUser"/>
+                  <a class="user-close"*ngIf="userSearchForm.get('searchUser').value != ''"
+                    (click)="resetSearchUser()">ⓧ</a>
+                  <mat-autocomplete #inputSearchUser="matAutocomplete" [displayWith]="displayUserProperty" (optionSelected)="onUserSelectionChange($event)">
+                    <mat-option *ngFor="let user of searchUserList | async" [value]="user">
+                      {{user.firstName+' '+user.lastName }}
+                    </mat-option>
+                  </mat-autocomplete>
                   </div>
+                  </form>
                 </div>
 
                 <div class="col-md-6">
@@ -2138,7 +2151,7 @@
                       <li><span *ngIf="userList != undefined"> {{userList.length}}</span> <br><a class="nav-link active"
                           id="friend-suggestions-tab" data-toggle="pill" href="#friend-suggestions" role="tab"
                           aria-controls="pills-friend-suggestions" aria-selected="false"
-                          (click)="TabClicked('friends_request')">
+                          (click)="TabClicked('friends_suggestion')">
                           <span>Friend Suggestion</span>
                         </a>
                       </li>
@@ -2937,10 +2950,10 @@
       <form [formGroup]="photoGalleryForm">
         <!-- <div class="modal-body upload-video-post-main phto-galry"> -->
         <div class="modal-body upload-video-post-main">
-          <!-- <div class="form-group">
+          <div class="form-group">
           <label>Album</label>
           <input type="text"  placeholder="Album Name">
-        </div> -->
+        </div>
           <div class="form-group">
             <label>upload photos</label>
             <input type="file" name="" multiple #galleryFile (change)="uploadPhotos(galleryFile)"

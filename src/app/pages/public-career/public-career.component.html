@@ -136,14 +136,23 @@
                   Skills is required</span>
 
               </div>
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-4 userseach-form">
                 <label>Social media profile on LT</label>
-                <input type="text" name="" placeholder="Social media profile on LT"
-                  formControlName="socialMediaProfile">
-                <span class="text-danger "
-                  *ngIf="(fresherForm.get('socialMediaProfile').touched && fresherForm.get('socialMediaProfile').hasError('required')) || (fresherForm.get('socialMediaProfile').untouched && submitFresherForm == true) ">
-                  Social media profile on LT is required</span>
+                <!-- <input type="text" name="" placeholder="Social media profile on LT"
+                  formControlName="socialMediaProfile"> -->
+                  <input type="text" class="social-Profile-input"  placeholder="Search Social media profile on LT" [matAutocomplete]="inputSearchUser"
+                  formControlName="socialMediaProfile"/>
+                <a class="user-close"*ngIf="fresherForm.get('socialMediaProfile').value != ''"
+                  (click)="resetSearchUser()">ⓧ</a>
+                <mat-autocomplete #inputSearchUser="matAutocomplete" [displayWith]="displaySocialUserProperty" (optionSelected)="onSelectionChange($event)">
+                  <mat-option *ngFor="let user of socialUserList | async" [value]="user">
+                    {{user.firstName+" "+user.lastName}}
+                  </mat-option>
+                </mat-autocomplete>
 
+                <span class="text-danger "
+                  *ngIf="(fresherForm.get('socialMediaProfile').touched && fresherForm.get('socialMediaProfile').hasError('required')) || (fresherForm.get('socialMediaProfile').untouched && submitFresherForm == true) || (isSocialProfile == false && submitFresherForm == true) ">
+                  Social media profile on LT is required</span>
               </div>
             </div>
 

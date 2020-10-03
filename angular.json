@@ -31,7 +31,8 @@
               "src/assets/PublicAssets/css/style.css",
               "src/assets/PublicAssets/css/responsive.css",
               "src/assets/PublicAssets/css/owl.carousel.min.css",  
-              "src/assets/PublicAssets/css/animate.min.css"
+              "src/assets/PublicAssets/css/animate.min.css",
+              "node_modules/intl-tel-input/build/css/intlTelInput.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js", 

@@ -90,14 +90,14 @@
                   <div class="col-md-8">
                     <div class="search-blk">
                       <i class="fa fa-search"></i>
-                      <input type="text" name="" placeholder="search...">
+                      <input type="text" name="" placeholder="search..." [(ngModel)]="searchText">
                     </div>
                   </div>
                 </div>
               </div>
     <div class="d-flex flex-wrap">
      
-    <ng-container *ngFor="let utility of utilities;let i = index">
+    <ng-container *ngFor="let utility of utilities|utilityFilter : searchText;let i = index">
       <div class="col-md-3 mb-5" *ngIf="utility?.id != 5 && utility?.id != 4">
         <div *ngIf="utility?.id == 3 || utility?.id == 6 " class="utility-main wow fadeInUp"  [attr.data-wow-delay]="(i*200)+'ms'" data-wow-duration="1500ms">
           <div class="utility-img" [routerLink]="['/travelUtility-detail', utility?.utilityType]"><img [src]="utilityImgsrcPath+utility?.image"></div>

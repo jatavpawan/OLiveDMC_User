@@ -5,6 +5,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Status } from 'src/app/model/ResponseModel';
 import { AuthenticationService } from 'src/app/providers/authentication/authentication.service';
 import { UserNetworkService } from 'src/app/providers/UserNetworkService/user-network.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, map, startWith, switchMap } from 'rxjs/operators';
 
 declare var $: any;
 
@@ -31,12 +34,14 @@ export class NetworkComponent implements OnInit {
   friendRequestLoader: boolean = false;
   friendListLoader: boolean = false;
   coverImgsrcpath: string = '';
-
+  userSearchForm: FormGroup;
+  searchUserList: Observable<any[]>;
 
   constructor(
     private authService: AuthenticationService,
     private spinner: NgxSpinnerService,
     private userNetworkService: UserNetworkService,
+    private formBuilder: FormBuilder,
 
   ) {
 
@@ -47,14 +52,38 @@ export class NetworkComponent implements OnInit {
       debugger;
       this.userLoggedinInfo = JSON.parse(this.authService.getUserdata());
     }
+
+    this.userSearchForm = this.formBuilder.group({
+      searchUser  : [''],
+    });
+
   }
 
   ngOnInit(): void {
+
+    this.searchUserList = this.userSearchForm.get("searchUser").valueChanges.pipe(
+      startWith(""),
+      debounceTime(400),
+      switchMap((val) => {
+        debugger;
+        if (val.length >= 1) {
+          return this.searchUserByText(val);
+        } else {
+          return [];
+        }
+      })
+    );
+
+
+
+
     this.GetAllUserInNetwork();
     this.getAddFriendRequestList();
     this.userFriendList();
     this.userPendingRequestList();
   }
+
+
 
   TabClicked(tabValue) {
     debugger;
@@ -234,6 +263,51 @@ export class NetworkComponent implements OnInit {
       }
     })
   }
+
+  
+resetSearchUser() {
+  this.userSearchForm.get('searchUser').setValue("")
+  // this.allCategoryBlog();
+}
+
+displayUserProperty(value) {
+  if (value) {
+    return value.title;
+  }
+}
+
+onUserSelectionChange(event){
+  debugger;
+  console.log('onSelectionChange called', event.option.value);
+  // this.showBlogPriorityList =  [];
+  // this.showBlogPriorityList.push(event.option.value);
+  // this.infiniteLoader = false;
+}
+
+
+
+searchUserByText(val: string): Observable<any[]> {
+  debugger;
+  let obj = {
+    PageNo: 0,
+    Text: val,
+    UserId: this.userLoggedinInfo.id
+    
+  };
+
+  return this.userNetworkService.SearchUserByText(obj).pipe(
+    map((response) => {
+      if(response.data.length == 0){
+        return [ { id: 0 , title: "Matching Not Found"} ];
+      }
+      else{
+        return response.data;
+      }
+      
+    })
+  );
+}
+
 
 }
 

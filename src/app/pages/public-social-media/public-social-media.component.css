@@ -168,3 +168,19 @@ bottom: -6%;
 .social-icons-of-social > ul li , .edit-profile a, .input-group-append{
   cursor: pointer;
 }
+
+.usersearch-blk{
+  position: relative;
+}
+
+.user-close{
+  display: none;
+  position: absolute;
+  top: 34%;
+  right: 58%;
+  color: #5758e0 !important;
+}
+
+.usersearch-blk:hover .user-close {
+  display: block;
+}

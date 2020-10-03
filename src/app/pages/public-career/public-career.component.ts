@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable } from "rxjs";
+import { debounceTime, map, startWith, switchMap } from "rxjs/operators";
 // import { NgxSpinner } from 'ngx-spinner/lib/ngx-spinner.enum';
 import { Status } from "src/app/model/ResponseModel";
 import { AreaofexpertiseService } from "src/app/providers/AreaOfExpertiseService/areaofexpertise.service";
@@ -36,6 +38,10 @@ export class PublicCareerComponent implements OnInit {
   submitProfessionalForm: boolean = false;
   areaExperties: any;
 
+  socialUserList: Observable<any[]>;
+  isSocialProfile: boolean =  false;
+  // socialUserForm: FormGroup;
+
   constructor(
     private shareService: ShareService,
     // private  spinner: NgxSpinner,
@@ -48,6 +54,10 @@ export class PublicCareerComponent implements OnInit {
     this.shareService.hideHeaderFooterAction(false);
     this.shareService.hideSocialMediaBtnAction(true);
 
+    // this.socialUserForm = this.formBuilder.group({
+    //   socialUserProfile : [''],
+    // });
+
     this.fresherForm = this.formBuilder.group({
       location: ["", Validators.required],
       skillId: ["", Validators.required],
@@ -58,8 +68,8 @@ export class PublicCareerComponent implements OnInit {
     });
 
     this.professionalForm = this.formBuilder.group({
-      expYear: ["", [ Validators.min(0) , Validators.max(50)]],
-      expMonth: ["", [ Validators.min(0) , Validators.max(12)]],
+      expYear: ["", [Validators.min(0), Validators.max(50)]],
+      expMonth: ["", [Validators.min(0), Validators.max(12)]],
       totalExperience: ["", Validators.required],
       highestQualification: ["", Validators.required],
       currentCompany: ["", Validators.required],
@@ -84,6 +94,21 @@ export class PublicCareerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.socialUserList = this.fresherForm
+      .get("socialMediaProfile")
+      .valueChanges.pipe(
+        startWith(""),
+        debounceTime(400),
+        switchMap((val) => {
+          debugger;
+          if (val.length >= 1) {
+            return this.searchSocialUserProfile(val);
+          } else {
+            return [];
+          }
+        })
+      );
+
     this.GetAllSkill();
     this.GetAllAreaExpertise();
   }
@@ -120,15 +145,13 @@ export class PublicCareerComponent implements OnInit {
     let files = uploadresume.files[0];
     this.fresherResumeFileName = files.name;
 
-    let ext = files.name.split('.').pop();
-    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+    let ext = files.name.split(".").pop();
+    if (ext == "pdf" || ext == "docx" || ext == "doc") {
       this.fresherResumeFile = files;
       this.fresherResumeUploaded = true;
-    } else{
+    } else {
       Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
     }
-
-    
   }
 
   FresherUploadProjectFile(uploadproject) {
@@ -136,31 +159,27 @@ export class PublicCareerComponent implements OnInit {
     let files = uploadproject.files[0];
     this.fresherProjectFileName = files.name;
 
-    let ext = files.name.split('.').pop();
-    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+    let ext = files.name.split(".").pop();
+    if (ext == "pdf" || ext == "docx" || ext == "doc") {
       this.fresherProjectFile = files;
-    this.fresherProjectUploaded = true;
-    } else{
+      this.fresherProjectUploaded = true;
+    } else {
       Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
     }
-
-   
   }
 
   ProfessionalUploadResumeFile(uploadresume) {
     debugger;
     let files = uploadresume.files[0];
     this.professionalResumeFileName = files.name;
-    
-    let ext = files.name.split('.').pop();
-    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+
+    let ext = files.name.split(".").pop();
+    if (ext == "pdf" || ext == "docx" || ext == "doc") {
       this.professionalResumeFile = files;
       this.professionalResumeUploaded = true;
-    } else{
+    } else {
       Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
     }
-
-  
   }
 
   ProfessionalUploadProjectFile(uploadproject) {
@@ -168,23 +187,32 @@ export class PublicCareerComponent implements OnInit {
     let files = uploadproject.files[0];
     this.professionalProjectFileName = files.name;
 
-    let ext = files.name.split('.').pop();
-    if(ext=="pdf" || ext=="docx" || ext=="doc"){
+    let ext = files.name.split(".").pop();
+    if (ext == "pdf" || ext == "docx" || ext == "doc") {
       this.professionalProjectFile = files;
       this.professionalProjectUploaded = true;
-    } else{
+    } else {
       Swal.fire("Warning", "Only pdf and docs file is supported", "warning");
     }
-
-  
   }
 
   submitFresherData() {
+
     debugger;
     this.submitFresherForm = false;
-    if (this.fresherForm.valid) {
+    if(typeof(this.fresherForm.value.socialMediaProfile) == "object" && this.fresherForm.value.socialMediaProfile.id > 0){
+       this.isSocialProfile = true;
+       let user = this.fresherForm.value.socialMediaProfile;
+       this.fresherForm.get('socialMediaProfile').setValue(user.firstName+" "+user.lastName);
+    }
+    else{
+       this.isSocialProfile = false;
+    }
+    
+
+    if (this.fresherForm.valid && this.isSocialProfile == true) {
       // this.spinner.show();
-      let skillIds: string =  this.fresherForm.get("skillId").value.toString();
+      let skillIds: string = this.fresherForm.get("skillId").value.toString();
       let formData = new FormData();
       formData.append("Location", this.fresherForm.get("location").value);
       formData.append("SkillId", skillIds);
@@ -225,15 +253,20 @@ export class PublicCareerComponent implements OnInit {
 
     let year = this.professionalForm.get("expYear").value;
     let month = this.professionalForm.get("expMonth").value;
-    if((parseInt(year) > 0  && parseInt(year) <= 50)  || (parseInt(month) > 0  && parseInt(year) <= 12)  ){
-      let exp = year*12 + month;
-      this.professionalForm.get("totalExperience").setValue(exp)
+    if (
+      (parseInt(year) > 0 && parseInt(year) <= 50) ||
+      (parseInt(month) > 0 && parseInt(year) <= 12)
+    ) {
+      let exp = year * 12 + month;
+      this.professionalForm.get("totalExperience").setValue(exp);
     }
     if (this.professionalForm.valid) {
-
-
-       let skillIds: string =  this.professionalForm.get("skillId").value.toString();
-       let areaIds: string =  this.professionalForm.get("areaOfExpertise").value.toString();
+      let skillIds: string = this.professionalForm
+        .get("skillId")
+        .value.toString();
+      let areaIds: string = this.professionalForm
+        .get("areaOfExpertise")
+        .value.toString();
       // this.spinner.show();
       let formData = new FormData();
       formData.append(
@@ -261,7 +294,7 @@ export class PublicCareerComponent implements OnInit {
         this.professionalForm.get("expectedCtc").value
       );
       formData.append("SkillId", skillIds);
-      formData.append("AreaOfExpertise",areaIds);
+      formData.append("AreaOfExpertise", areaIds);
       formData.append("AboutMe", this.professionalForm.get("aboutMe").value);
       formData.append("UploadResume", this.professionalResumeFile);
       formData.append("UploadProject", this.professionalProjectFile);
@@ -292,7 +325,6 @@ export class PublicCareerComponent implements OnInit {
   }
 
   resetFresherForm() {
-
     this.fresherForm.reset();
     this.fresherForm.setValue({
       location: "",
@@ -322,43 +354,63 @@ export class PublicCareerComponent implements OnInit {
   }
 
   removeFresherResume() {
-    this.fresherResumeFile =  undefined;
+    this.fresherResumeFile = undefined;
     this.fresherResumeUploaded = false;
-    this.fresherForm.get('uploadResume').setValue('');
+    this.fresherForm.get("uploadResume").setValue("");
     this.fresherResumeFileName = "";
- 
   }
 
   removeFresherProject() {
-    this.fresherProjectFile =  undefined;
+    this.fresherProjectFile = undefined;
     this.fresherProjectUploaded = false;
-    this.fresherForm.get('uploadProject').setValue('');
+    this.fresherForm.get("uploadProject").setValue("");
     this.fresherProjectFileName = "";
-
   }
- 
+
   removeProfessionalResume() {
-    this.professionalResumeFile =  undefined;
+    this.professionalResumeFile = undefined;
     this.professionalResumeUploaded = false;
-    this.professionalForm.get('uploadResume').setValue('');
+    this.professionalForm.get("uploadResume").setValue("");
     this.professionalResumeFileName = "";
- 
   }
 
   removeProfessionalProject() {
-    this.professionalProjectFile =  undefined;
+    this.professionalProjectFile = undefined;
     this.professionalProjectUploaded = false;
-    this.professionalForm.get('uploadProject').setValue('');
+    this.professionalForm.get("uploadProject").setValue("");
     this.professionalProjectFileName = "";
-
   }
+
+  searchSocialUserProfile(val: string): Observable<any[]> {
+    debugger;
+
+    return this.fresherService.SearchSocialUserProfile(val).pipe(
+      map((response) => {
+        if (response.data.length == 0) {
+          return [{ id: 0, firstName: "Matching Not Found", lastName: "" }];
+        } else {
+          return response.data;
+        }
+      })
+    );
+  }
+
+  resetSearchUser() {
+    this.fresherForm.get("socialMediaProfile").setValue("");
+  }
+
+  displaySocialUserProperty(value) {
+    if (value) {
+      return value.firstName + " " + value.lastName;
+    }
+  }
+
+  onSelectionChange(event) {
+    debugger;
+    console.log("onSelectionChange called", event.option.value);
+    if (event.option.value.id == 0) {
+      this.fresherForm.get("socialMediaProfile").setValue('');
+    }
+  }
+
 }
-
-
- 
- 
- 
- 
- 
- 
- 

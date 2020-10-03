@@ -21,7 +21,7 @@ export class PublicTravelUtilityComponent implements OnInit {
   utilityImgsrcPath: string = "";
   bannerDetail: any;
   apiendpoint: string = environment.apiendpoint;
-
+  searchText: string = "";
  
   constructor( 
     private  shareService: ShareService,
@@ -52,7 +52,7 @@ export class PublicTravelUtilityComponent implements OnInit {
         hasBackdrop: false,
         data: utility,
         panelClass: 'my-centered-dialog',
-        width: '550px',
+        width: '850px',
         // maxWidth: 80vw;
         // maxWidth: '800px',
         // maxHeight: '95vh',

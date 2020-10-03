@@ -48,5 +48,9 @@ export class UserNetworkService {
     return <Observable<ResponseModel>> this.dataService.postData('UserNetwork/unfriend', data);
   }
 
+  SearchUserByText(data){
+    return <Observable<ResponseModel>> this.dataService.postData('UserNetwork/SearchUserByText', data);
+  }
+
 
 }

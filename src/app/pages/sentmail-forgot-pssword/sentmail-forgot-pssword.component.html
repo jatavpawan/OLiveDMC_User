@@ -49,9 +49,14 @@
                                 <div class="form-group">
                                     <label>Email<span class="compulsary-star">*</span></label>
                                     <input type="email" class="form-control" placeholder="johndeo@gmail.com" formControlName="email" >
-                                    <span class="text-danger "
+                                    <!-- <span class="text-danger "
                                     *ngIf="(forgotPasswordForm.get('email').touched && forgotPasswordForm.get('email').hasError('required')) || (forgotPasswordForm.get('email').untouched && submitForgotPasswordForm == true)">
-                                    Email is required</span>
+                                    Email is required</span> -->
+
+                                    <div *ngIf="forgotPasswordForm.get('email').touched && forgotPasswordForm.get('email').invalid" class="text-danger">
+                                        <div *ngIf="forgotPasswordForm.get('email').errors.required">Email is required.</div>
+                                        <div *ngIf="forgotPasswordForm.get('email').errors.pattern">Please, Enter Valid Email.</div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">

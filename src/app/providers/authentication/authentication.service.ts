@@ -88,5 +88,10 @@ export class AuthenticationService {
    return <Observable<ResponseModel>> this.dataService.getData('Login/UserEmailOTPVerificationBySendMail?userId='+userId);
  }
  
+ sendForgotPasswordMail(email)
+ {
+   return <Observable<ResponseModel>> this.dataService.getData('Login/sendForgotPasswordMail?email='+email);
+ }
+
  
 }
