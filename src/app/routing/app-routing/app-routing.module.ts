@@ -47,6 +47,8 @@ import { NetworkComponent } from 'src/app/pages/social-media/network/network.com
 import { ScrapBookComponent } from 'src/app/pages/social-media/scrap-book/scrap-book.component';
 import { UserVisitProfileComponent } from 'src/app/pages/user-visit-profile/user-visit-profile.component';
 import { DummyComponentComponent } from 'src/app/pages/dummy-component/dummy-component.component';
+import { DummyMapComponent } from 'src/app/pages/dummy-map/dummy-map.component';
+import { DummyMap2Component } from 'src/app/pages/dummy-map2/dummy-map2.component';
 
 const routes: Routes = [
   {
@@ -253,6 +255,16 @@ const routes: Routes = [
   {
     path: 'dummy',
     component: DummyComponentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dummy-map',
+    component: DummyMapComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dummy-map2',
+    component: DummyMap2Component,
     canActivate: [AuthGuard]
   },
 ]

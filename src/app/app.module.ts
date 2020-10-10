@@ -113,6 +113,9 @@ import { BlogCommentService } from './providers/BlogCommentService/blog-comment.
 import { DummyComponentComponent } from './pages/dummy-component/dummy-component.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { UtilityFilterPipe } from './pipe/utility-filter.pipe';
+import { DummyMapComponent } from './pages/dummy-map/dummy-map.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { DummyMap2Component } from './pages/dummy-map2/dummy-map2.component';
 
 // export const MY_FORMATS = {
 //   parse: {
@@ -190,6 +193,8 @@ import { UtilityFilterPipe } from './pipe/utility-filter.pipe';
     GalleryVideoModalComponent,
     DummyComponentComponent,
     UtilityFilterPipe,
+    DummyMapComponent,
+    DummyMap2Component,
   ],
  
   imports: [
@@ -210,7 +215,9 @@ import { UtilityFilterPipe } from './pipe/utility-filter.pipe';
     MatNativeDateModule, 
     MatInputModule, 
     MatSelectModule,
-    NgxIntlTelInputModule
+    NgxIntlTelInputModule,
+    HighchartsChartModule
+
     // ShareButtonsModule,
     // ShareButtonsModule.withConfig({
     //   debug: true
