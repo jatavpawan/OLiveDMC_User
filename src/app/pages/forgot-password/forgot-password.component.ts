@@ -47,15 +47,15 @@ export class ForgotPasswordComponent implements OnInit {
       
 
       this.changePasswordForm = this.formBuilder.group({
-        email: [''],
-        password: ['', Validators.required],
+        encrypPath: [''],
+        NewPassword: ['', Validators.required],
         confirmPassword: ['', Validators.required]
       })
 
 
-      this.activatedRoute.params.subscribe(params =>{
+      this.activatedRoute.queryParams.subscribe(params =>{
         debugger;
-        this.changePasswordForm.get('email').setValue(params.email);
+        this.changePasswordForm.get('encrypPath').setValue(params.reset);
       })
 
 
@@ -66,12 +66,13 @@ export class ForgotPasswordComponent implements OnInit {
 
   
   changePasswordSubmit(){
+    debugger;
     
     console.log("changePasswordSubmit Form");
     // this.changePasswordForm.get('email').setValue(this.forgotPasswordForm.get('email').value)
     if(this.changePasswordForm.valid){
       // this.spinner.show();
-      this.authService.changePassword(this.changePasswordForm.value).subscribe(resp=>{
+      this.authService.ResetPassword(this.changePasswordForm.value).subscribe(resp=>{
         
         // this.spinner.hide();
         if(resp.status ==  Status.Success){

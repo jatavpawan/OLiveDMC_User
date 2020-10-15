@@ -110,6 +110,11 @@ export class PublicSocialMediaComponent implements OnInit {
   galleryVideosrcpath: string = '';
   userSearchForm: FormGroup;
   searchUserList: Observable<any[]>;
+  buzzWallPageNo: number = 0;
+  totalBuzzWallRecord: number = 0;
+  buzzWallPageSize: number = 5;
+  buzzWallPostLoadMore: boolean =  false;
+  postLoadCommentSize: number =  2;
 
   constructor(
     private shareService: ShareService,
@@ -126,7 +131,6 @@ export class PublicSocialMediaComponent implements OnInit {
     private blogService: BlogService,
     private categoryService: BlogCategoryService,
     private userNetworkService: UserNetworkService,
-
   ) {
 
     this.shareService.hideHeaderFooterAction(false);
@@ -238,7 +242,8 @@ export class PublicSocialMediaComponent implements OnInit {
 
     this.getBannerDetail(2007);
     this.GetAllOfferAdsByPageId(2007);
-    this.GetAllUserPostByUserId();
+    // this.GetAllUserPostByUserId();
+    this.GetBuzzWallPost();
     // this.GetLoggedInUserFriendPost();
   }
 
@@ -674,6 +679,158 @@ export class PublicSocialMediaComponent implements OnInit {
     })
   }
 
+
+  GetBuzzWallPost() {
+    debugger;
+    this.spinner.show();
+    this.buzzWallLoader = true;
+    
+    /* PageNo 0 means starting record index  to (PageNo + pagesize) index    
+     * PageNo=0 and pagesize= 5   means starting record index is 0  and last record  index 4
+     * PageNo=1 and pagesize= 5   means starting record index is 5  and last record  index 9
+     */
+
+    let obj =  {
+      UserID: this.userLoggedinInfo.id,
+      PageNo: this.buzzWallPageNo,
+      PageSize: this.buzzWallPageSize  
+    }
+
+
+    this.userPostService.GetBuzzWallPost(obj).subscribe(resp => {
+      debugger;
+      this.spinner.hide();
+      this.buzzWallLoader =  false;
+      if (resp.status == Status.Success) {
+        this.allPost = [...this.allPost, ...resp.data.buzzWallList];
+        this.totalBuzzWallRecord = resp.data.totalRow;
+        if( (this.buzzWallPageNo+this.buzzWallPageSize) < this.totalBuzzWallRecord ){
+             this.buzzWallPageNo +=  this.buzzWallPageSize;
+             this.buzzWallPostLoadMore = true;
+        }
+        else{
+          this.buzzWallPostLoadMore  = false;
+        }
+
+        if (this.allPost != undefined && this.allPost.length != 0) {
+          this.allPost.map(post => {
+
+            if(post.profileImg != null){
+              console.log("post", post);
+              console.log("post.userFirstName[0] + post.userLastName[0]", post.userFirstName[0] + post.userLastName[0]);
+              post.shortUserName = post.userFirstName[0] + post.userLastName[0]     
+            }
+            if (post.updatedDate != null) {
+              post.postTimeFromNow = moment(post.updatedDate).fromNow();
+            }
+            else {
+              post.postTimeFromNow = moment(post.createdDate).fromNow();
+            }
+
+            // if(post.commentcount >= 1 ){
+            //   post.commentList.map(comment => {
+            //     if(comment?.commentUserProfileImg != null){
+            //       comment.shortUserName = comment.commentUserFirstName[0] + comment.commentUserLastName[0];     
+            //     }
+            //     if (comment.updatedDate != null) {
+            //       comment.postTimeFromNow = moment(comment.updatedDate).fromNow();
+            //     }
+            //     else {
+            //       comment.postTimeFromNow = moment(comment.createdDate).fromNow();
+            //     }
+    
+            //   })
+            // }
+            return post;
+          })
+        }
+      }
+      else {
+        Swal.fire('Oops...', resp.error, 'error');
+      }
+    })
+  }
+
+  GetPostLoadComment(post) {
+    debugger;
+    // this.spinner.show();
+    /* FromRow 0 means starting record index  to (FromRow + pagesize) index    
+     * FromRow=0 and pagesize= 5   means starting record index is 0  and last record  index 4
+     * FromRow=1 and pagesize= 5   means starting record index is 5  and last record  index 9
+     */
+
+    let obj =  {
+      PostID: post.id,
+      FromRow: post.fromRow != undefined ? post.fromRow : 0,
+      Size: this.postLoadCommentSize,  
+    }
+
+    this.userPostService.GetPostLoadComment(obj).subscribe(resp => {
+      debugger;
+      this.spinner.hide();
+      this.buzzWallLoader =  false;
+      if (resp.status == Status.Success) {
+
+        console.log(resp.data.postCommentList);
+        let postIndex = this.allPost.findIndex(post => post.id == 1);
+        if(this.allPost[postIndex].commentList != undefined && this.allPost[postIndex].commentList != null ){
+          this.allPost[postIndex].commentList = [...resp.data.postCommentList];
+        }
+        else{
+          this.allPost[postIndex].commentList = resp.data.postCommentList;
+          if((resp.data.fromRow+ this.postLoadCommentSize )< resp.data.totalRow ){
+            this.allPost[postIndex].fromRow =  resp.data.fromRow + this.postLoadCommentSize; 
+          }
+        }
+
+        // this.allPost = [...this.allPost, ...resp.data.buzzWallList];
+        // this.totalBuzzWallRecord = resp.data.totalRow;
+        // if( (this.buzzWallPageNo+this.buzzWallPageSize) < this.totalBuzzWallRecord ){
+        //      this.buzzWallPageNo +=  this.buzzWallPageSize;
+        //      this.buzzWallPostLoadMore = true;
+        // }
+        // else{
+        //   this.buzzWallPostLoadMore  = false;
+        // }
+
+        // if (this.allPost != undefined && this.allPost.length != 0) {
+        //   this.allPost.map(post => {
+
+        //     if(post.profileImg != null){
+        //       console.log("post", post);
+        //       console.log("post.userFirstName[0] + post.userLastName[0]", post.userFirstName[0] + post.userLastName[0]);
+        //       post.shortUserName = post.userFirstName[0] + post.userLastName[0]     
+        //     }
+        //     if (post.updatedDate != null) {
+        //       post.postTimeFromNow = moment(post.updatedDate).fromNow();
+        //     }
+        //     else {
+        //       post.postTimeFromNow = moment(post.createdDate).fromNow();
+        //     }
+
+        //     // if(post.commentcount >= 1 ){
+        //     //   post.commentList.map(comment => {
+        //     //     if(comment?.commentUserProfileImg != null){
+        //     //       comment.shortUserName = comment.commentUserFirstName[0] + comment.commentUserLastName[0];     
+        //     //     }
+        //     //     if (comment.updatedDate != null) {
+        //     //       comment.postTimeFromNow = moment(comment.updatedDate).fromNow();
+        //     //     }
+        //     //     else {
+        //     //       comment.postTimeFromNow = moment(comment.createdDate).fromNow();
+        //     //     }
+    
+        //     //   })
+        //     // }
+        //     return post;
+        //   })
+        // }
+      }
+      else {
+        Swal.fire('Oops...', resp.error, 'error');
+      }
+    })
+  }
 
   GetLoggedInUserFriendPost() {
     debugger;

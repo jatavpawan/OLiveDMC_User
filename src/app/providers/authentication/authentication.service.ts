@@ -93,5 +93,10 @@ export class AuthenticationService {
    return <Observable<ResponseModel>> this.dataService.getData('Login/sendForgotPasswordMail?email='+email);
  }
 
+ ResetPassword(data)
+ {
+   return <Observable<ResponseModel>> this.dataService.postData('Login/ResetPassword', data);
+ }
+
  
 }

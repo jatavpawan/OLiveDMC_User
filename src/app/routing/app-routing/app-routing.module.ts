@@ -49,6 +49,7 @@ import { UserVisitProfileComponent } from 'src/app/pages/user-visit-profile/user
 import { DummyComponentComponent } from 'src/app/pages/dummy-component/dummy-component.component';
 import { DummyMapComponent } from 'src/app/pages/dummy-map/dummy-map.component';
 import { DummyMap2Component } from 'src/app/pages/dummy-map2/dummy-map2.component';
+import { DummyScrollComponent } from 'src/app/pages/dummy-scroll/dummy-scroll.component';
 
 const routes: Routes = [
   {
@@ -77,7 +78,7 @@ const routes: Routes = [
     component: SentmailForgotPsswordComponent,
   },
   {
-    path: 'forgot-password/:email',
+    path: 'reset-password',
     component: ForgotPasswordComponent,
   },
   {
@@ -265,6 +266,11 @@ const routes: Routes = [
   {
     path: 'dummy-map2',
     component: DummyMap2Component,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dummy-scroll',
+    component: DummyScrollComponent,
     canActivate: [AuthGuard]
   },
 ]

@@ -561,15 +561,14 @@ ul.submenu li {
 
 /*home page banner slider css START*/
 .banner-img {
-    position: relative;
-    max-height: 520px;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 100%;
-    min-height: 740px;
-    height: 100vh;
+  position: relative;
+  max-height: 520px;
+  height: 520px;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
-
 .banner-img img {
 width: 100%;
 -o-object-fit: cover;
@@ -697,8 +696,6 @@ display: none !important;
     height: 355px;
 }
 .blog-blk .owl-carousel .owl-item img {
-    display: block;
-    width: 100%;
     height: 100%;
     object-fit: cover;
 }
@@ -905,9 +902,6 @@ display: none !important;
 .blog-cnt h4 {
     font-size: 20px;
     padding: 15px 0;
-}
-.blog-cnt h4:focus {
-    outline: none;
 }
 .blog-cnt > a {
     font-size: 18px;
@@ -1375,11 +1369,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 {
   margin-top: 10px;
 }
-.contact-main ul li>input {
+.contact-main ul li > input {
     padding: 5px 10px;
     width: 100%;
-    border-radius: 5px;
-    border: 0;
 }
 .contact-main ul li > input::-webkit-input-placeholder {
     font-size: 14px;
@@ -1395,9 +1387,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .contact-main ul li > input::placeholder {
     font-size: 14px;
-}
-.form-buttton {
-    padding: 0 15px;
 }
 /*footer section css END*/
 
@@ -1696,14 +1685,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 }
 .icons-left {
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     bottom: 50px;
     left: 10px;
 }
 .commnts-rgt {
     display: block;
     width: 100%;
-    position: absolute;
+    /* position: absolute; */
     bottom: 18px;
     left: 10px;
 }
@@ -2925,7 +2914,6 @@ section.social-space {
     -webkit-box-shadow: 0px 1px 17px 0px rgba(0, 0, 0, 0.05);
     box-shadow: 0px 1px 17px 0px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
-        margin-bottom: 20px;
 }
 .about-cnt, .personal-info-cnt{
     margin-top: 20px;
@@ -3224,6 +3212,7 @@ section.social-space {
 .user-comnt-cnt {
     padding: 30px 0;
     border-bottom: 1px solid #ECEDF0;
+    position: relative;
 }
 .user-comnt-cnt .icons-left > ul, .user-comnt-cnt .commnts-rgt > ul {
     display: -webkit-box;
@@ -3232,6 +3221,7 @@ section.social-space {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    position: absolute;
 }
 
 .user-comnt-cnt .icons-left > ul li {
@@ -3601,9 +3591,6 @@ section.social-space {
     text-shadow: inherit;
     opacity: 1;
 }
-.gallery-left-img {
-    height: 100%;
-}
 .gallery-left-img img {
     height: 100%;
     width: 100%;
@@ -3888,9 +3875,6 @@ section.social-space {
 ul.lisitng-start {
     position: relative;
 }
-.coment-lisitng {
-    padding: 0 20px;
-}
 
 /*fresher tab css END*/
 /*career page css END*/
@@ -3923,7 +3907,7 @@ ul.lisitng-start {
     top: 120px;
 }
 .user-comments-list {
-    height: 400px;
+    max-height: 400px;
     overflow-x: hidden;
     overflow-y: auto;
 }

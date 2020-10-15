@@ -31,5 +31,7 @@
   .travel-datebox {
     position: relative;
   }
-  
-  
+
+  .btn{
+    cursor: pointer;
+  }

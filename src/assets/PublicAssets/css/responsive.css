@@ -35,7 +35,7 @@
     .menus-nav {background-color: rgb(255 255 255 / 0.90); position: fixed; width: 250px; top: 0; left: -250px; height: 100%; z-index: 6; }
     header>.container {position: relative; }
     ul.top-nav-menu li a {padding: 15px 10px; display: block; border-bottom: 1px solid #ddd; }
-    .open-menu .menus-nav {left: 0px; overflow-x: hidden; overflow-y: auto;}
+    .open-menu .menus-nav {left: 0px; overflow-x: hidden; overflow-y: auto; height: 500px;}
     header .dropdown {margin-right: 45px; }
     .main ul.top-nav-menu li:hover ul.submenu {position: static; display: block; }
     ul.submenu {display: none; }
@@ -172,7 +172,7 @@
     /*social media page css END*/
     /*new banner css START*/
     .banner-cnt {
-    background-color: transparent;
+    background-color: rgb(57 57 57 / 0.60);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
@@ -262,6 +262,16 @@
     {
         padding: 80px 0;
     }
+
+    /* Shubham Responsiveness */
+
+    .flight-form .booking-info {
+        display: block !important;
+    }
+    .flight-form .booking-type {
+        display: inline !important;
+    }
+
 }
 @media screen and (min-width: 576px){
 .gallery-box-main .modal-dialog {

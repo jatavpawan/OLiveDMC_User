@@ -274,7 +274,9 @@ export class DummyMapComponent implements OnInit {
         point: {
           events: {
             click: (e) => {
-              console.log("shubham", e)
+              console.log("shubham", e.point.name)
+              alert("shubham : "+e.point.name);
+              
             }
           }
         }

@@ -72,7 +72,7 @@ import { ContactUsService } from './providers/ContactUsService/contact-us.servic
 import { PrivacyPolicyService } from './providers/PrivacyPolicyService/privacy-policy.service';
 import { OfferAdsService } from './providers/OfferAdsService/offer-ads.service';
 import { UserPersonalInfoService } from './providers/UserPersonalInfoService/user-personal-info.service';
-import { DatePipe } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { VerifyEmailOtpComponent } from './pages/verify-email-otp/verify-email-otp.component';
 import { UserGalleryService } from './providers/UserGalleryService/user-gallery.service';
 import { GalleryDialogComponent } from './pages/gallery-dialog/gallery-dialog.component';
@@ -116,6 +116,8 @@ import { UtilityFilterPipe } from './pipe/utility-filter.pipe';
 import { DummyMapComponent } from './pages/dummy-map/dummy-map.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { DummyMap2Component } from './pages/dummy-map2/dummy-map2.component';
+import { DummyScrollComponent } from './pages/dummy-scroll/dummy-scroll.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 // export const MY_FORMATS = {
 //   parse: {
@@ -195,6 +197,7 @@ import { DummyMap2Component } from './pages/dummy-map2/dummy-map2.component';
     UtilityFilterPipe,
     DummyMapComponent,
     DummyMap2Component,
+    DummyScrollComponent,
   ],
  
   imports: [
@@ -216,7 +219,8 @@ import { DummyMap2Component } from './pages/dummy-map2/dummy-map2.component';
     MatInputModule, 
     MatSelectModule,
     NgxIntlTelInputModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    ScrollingModule,
 
     // ShareButtonsModule,
     // ShareButtonsModule.withConfig({
@@ -267,6 +271,7 @@ import { DummyMap2Component } from './pages/dummy-map2/dummy-map2.component';
     ProfessionalCareerService,
     FresherCareerService,
     BlogCommentService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
     // {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
   bootstrap: [AppComponent],

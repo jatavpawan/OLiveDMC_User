@@ -184,3 +184,8 @@ bottom: -6%;
 .usersearch-blk:hover .user-close {
   display: block;
 }
+
+.buzzWall-LoadMore{
+  text-align: center;
+  margin: 60px 0;
+}

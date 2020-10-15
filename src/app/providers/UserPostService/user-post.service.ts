@@ -76,6 +76,16 @@ export class UserPostService {
   {
     return <Observable<ResponseModel>> this.dataService.postData('UserPost/reactOnPostComment',data);
   }
+ 
+  GetBuzzWallPost(data)
+  {
+    return <Observable<ResponseModel>> this.dataService.postData('UserPost/GetBuzzWallPost',data);
+  }
+ 
+  GetPostLoadComment(data)
+  {
+    return <Observable<ResponseModel>> this.dataService.postData('UserPost/GetPostLoadComment',data);
+  }
 
   
 }

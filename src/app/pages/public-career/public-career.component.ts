@@ -302,6 +302,7 @@ export class PublicCareerComponent implements OnInit {
       this.professionalService
         .AddUpdateProfessionalCareer(formData)
         .subscribe((resp) => {
+          console.log("career component response", resp)
           if (resp.status == Status.Success) {
             Swal.fire(
               "Saved!",
@@ -316,7 +317,8 @@ export class PublicCareerComponent implements OnInit {
             this.resetProfessionalForm();
           } else {
             // this.spinner.hide();
-            Swal.fire("Oops...", "Something went Wrong", "warning");
+            // Swal.fire("Oops...", "Something went Wrong", "warning");
+            
           }
         });
     } else {

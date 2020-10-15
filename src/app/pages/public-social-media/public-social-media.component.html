@@ -427,9 +427,32 @@
                     <div class="user-comments-list" *ngIf="post.commentcount >= 1 ">
                       <div class="coment-lisitng">
                         <ul class="lisitng-start">
-                          <ng-container *ngFor="let comment of post.commentList; let i = index;">
-                            <!-- <li *ngIf="(i < 1) || (i>1 && initLoadCommentInPost == post.id)"> -->
+                          <ng-container *ngIf="post?.commentList == null || post?.commentList == undefined ">
                             <li>
+                              <div class="d-flex flex-wrap">
+                                <div class="">
+                                  <div class="user-circel-img">
+                                    <img *ngIf="post?.commentUserProfileImg == null"
+                                      src="../../../assets/PublicAssets/images/user-default.png">
+                                    <img *ngIf="post?.commentUserProfileImg != null"
+                                      src="profileImgsrcpath+post?.commentUserProfileImg">
+                                  </div>
+                                  <!-- <small class="post-comment-avatar-placeholder"
+                                    *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{(comment?.commentUserFirstName[0] + ' '+ comment?.commentUserLastName[0])|uppercase}}</small> -->
+
+                                </div>
+                                <div class="">
+                                  <div class="user-comments">
+                                    <p><span>{{post?.postCommentUserName}} :
+                                    </span>{{post?.comment}} </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ng-container>
+                          <ng-container *ngIf="post?.commentList != null && post?.commentList != undefined ">
+                            <!-- <li *ngIf="(i < 1) || (i>1 && initLoadCommentInPost == post.id)"> -->
+                            <li *ngFor="let comment of post.commentList; let i = index;">
                               <div class="d-flex flex-wrap">
                                 <!-- <div class="col-md-2"> -->
                                 <div class="">
@@ -437,16 +460,19 @@
                                     <img
                                       *ngIf="comment?.commentUserProfileImg != undefined && comment?.commentUserProfileImg != null"
                                       [src]="profileImgsrcpath+comment?.commentUserProfileImg">
+                                    <img
+                                      *ngIf="comment?.commentUserProfileImg == undefined && comment?.commentUserProfileImg == null"
+                                      src="../../../assets/PublicAssets/images/user-default.png">
                                   </div>
-                                  <small class="post-comment-avatar-placeholder"
-                                    *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{(comment?.commentUserFirstName[0] + ' '+ comment?.commentUserLastName[0])|uppercase}}</small>
+                                  <!-- <small class="post-comment-avatar-placeholder"
+                                    *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{(comment?.commentUserName|uppercase}}</small> -->
 
                                 </div>
                                 <!-- <div class="col-md-10"> -->
                                 <div class="">
                                   <div class="user-comments">
                                     <!-- <p><span>{{comment?.commentUserName}} : </span>{{comment?.comment}} </p> -->
-                                    <p><span>{{comment?.commentUserFirstName + ' '+ comment?.commentUserLastName}} :
+                                    <p><span>{{comment?.commentUserName}} :
                                       </span>{{comment?.comment}} </p>
                                   </div>
                                   <!-- <div class="user-reaction">
@@ -537,7 +563,7 @@
                     </div>
 
                     <!-- <div class="load-more-text">Load more comments <span>9+</span></div> -->
-                    <div class="load-more-text" *ngIf="post.commentcount >= 2" (click)="initialLoadCommentOnPost(post)">
+                    <div class="load-more-text" *ngIf="(post?.fromRow == undefined && post.commentcount >= 2) || (post?.fromRow != undefined && (post?.fromRow+postLoadCommentSize) < post?.commentcount )" (click)="GetPostLoadComment(post)">
                       Load more comments</div>
 
                     <div class="comment-box">
@@ -577,6 +603,8 @@
                     <div class="loader-bar"></div>
                   </div>
                 </div>
+
+                 <div class="buzzWall-LoadMore" *ngIf="buzzWallPostLoadMore ==  true" (click)="GetBuzzWallPost()"> Load More Post </div>
 
               </div>
 
