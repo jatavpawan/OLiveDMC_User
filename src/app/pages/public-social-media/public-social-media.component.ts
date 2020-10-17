@@ -111,10 +111,14 @@ export class PublicSocialMediaComponent implements OnInit {
   userSearchForm: FormGroup;
   searchUserList: Observable<any[]>;
   buzzWallPageNo: number = 0;
+  myPostPageNo: number = 0;
   totalBuzzWallRecord: number = 0;
+  totalMyPostRecord: number = 0;
   buzzWallPageSize: number = 5;
+  myPostPageSize: number = 5;
   buzzWallPostLoadMore: boolean =  false;
-  postLoadCommentSize: number =  2;
+  myPostLoadMore: boolean =  false;
+  postLoadCommentSize: number = 5;
 
   constructor(
     private shareService: ShareService,
@@ -244,6 +248,7 @@ export class PublicSocialMediaComponent implements OnInit {
     this.GetAllOfferAdsByPageId(2007);
     // this.GetAllUserPostByUserId();
     this.GetBuzzWallPost();
+    // this.GetMyPost();
     // this.GetLoggedInUserFriendPost();
   }
 
@@ -296,7 +301,16 @@ export class PublicSocialMediaComponent implements OnInit {
           this.coverImageUrl = this.coverImgsrcpath + this.userPersonalInfo.coverImage;
         }
         if (this.userPersonalInfo.profileImg != undefined) {
-          this.profileImageUrl = this.profileImgsrcpath + this.userPersonalInfo.profileImg;
+
+          if(this.userPersonalInfo.profileImg.startsWith('https://') ){
+            this.profileImageUrl = this.userPersonalInfo.profileImg;
+          }
+          else{
+            this.profileImageUrl = this.profileImgsrcpath + this.userPersonalInfo.profileImg;
+          }
+        
+        
+        
         }
       }
       else {
@@ -682,83 +696,147 @@ export class PublicSocialMediaComponent implements OnInit {
 
   GetBuzzWallPost() {
     debugger;
-    this.spinner.show();
-    this.buzzWallLoader = true;
-    
-    /* PageNo 0 means starting record index  to (PageNo + pagesize) index    
-     * PageNo=0 and pagesize= 5   means starting record index is 0  and last record  index 4
-     * PageNo=1 and pagesize= 5   means starting record index is 5  and last record  index 9
-     */
-
-    let obj =  {
-      UserID: this.userLoggedinInfo.id,
-      PageNo: this.buzzWallPageNo,
-      PageSize: this.buzzWallPageSize  
-    }
-
-
-    this.userPostService.GetBuzzWallPost(obj).subscribe(resp => {
-      debugger;
-      this.spinner.hide();
-      this.buzzWallLoader =  false;
-      if (resp.status == Status.Success) {
-        this.allPost = [...this.allPost, ...resp.data.buzzWallList];
-        this.totalBuzzWallRecord = resp.data.totalRow;
-        if( (this.buzzWallPageNo+this.buzzWallPageSize) < this.totalBuzzWallRecord ){
-             this.buzzWallPageNo +=  this.buzzWallPageSize;
-             this.buzzWallPostLoadMore = true;
-        }
-        else{
-          this.buzzWallPostLoadMore  = false;
-        }
-
-        if (this.allPost != undefined && this.allPost.length != 0) {
-          this.allPost.map(post => {
-
-            if(post.profileImg != null){
-              console.log("post", post);
-              console.log("post.userFirstName[0] + post.userLastName[0]", post.userFirstName[0] + post.userLastName[0]);
-              post.shortUserName = post.userFirstName[0] + post.userLastName[0]     
-            }
-            if (post.updatedDate != null) {
-              post.postTimeFromNow = moment(post.updatedDate).fromNow();
-            }
-            else {
-              post.postTimeFromNow = moment(post.createdDate).fromNow();
-            }
-
-            // if(post.commentcount >= 1 ){
-            //   post.commentList.map(comment => {
-            //     if(comment?.commentUserProfileImg != null){
-            //       comment.shortUserName = comment.commentUserFirstName[0] + comment.commentUserLastName[0];     
-            //     }
-            //     if (comment.updatedDate != null) {
-            //       comment.postTimeFromNow = moment(comment.updatedDate).fromNow();
-            //     }
-            //     else {
-            //       comment.postTimeFromNow = moment(comment.createdDate).fromNow();
-            //     }
-    
-            //   })
-            // }
-            return post;
-          })
-        }
+   
+     if( this.totalBuzzWallRecord == 0  || this.allPost.length < this.totalBuzzWallRecord){
+      this.spinner.show();
+      this.buzzWallLoader = true;
+      
+      /* PageNo 0 means starting record index  to (PageNo + pagesize) index    
+       * PageNo=0 and pagesize= 5   means starting record index is 0  and last record  index 4
+       * PageNo=1 and pagesize= 5   means starting record index is 5  and last record  index 9
+       */
+      let obj =  {
+        UserID: this.userLoggedinInfo.id,
+        PageNo: this.buzzWallPageNo,
+        PageSize: this.buzzWallPageSize,
+        IsBuzzWall: true  
       }
-      else {
-        Swal.fire('Oops...', resp.error, 'error');
-      }
-    })
+  
+      this.userPostService.GetBuzzWallPost(obj).subscribe(resp => {
+        debugger;
+        this.spinner.hide();
+        this.buzzWallLoader =  false;
+        if (resp.status == Status.Success) {
+          this.allPost = [...this.allPost, ...resp.data.buzzWallList];
+          this.totalBuzzWallRecord = resp.data.totalRow;
+          if( (this.buzzWallPageNo+this.buzzWallPageSize) < this.totalBuzzWallRecord ){
+               this.buzzWallPageNo +=  this.buzzWallPageSize;
+               this.buzzWallPostLoadMore = true;
+          }
+          else{
+            this.buzzWallPostLoadMore  = false;
+          }
+  
+          if (this.allPost != undefined && this.allPost.length != 0) {
+            this.allPost.map(post => {
+  
+              if(post.profileImg != null){
+                console.log("post", post);
+                console.log("post.userFirstName[0] + post.userLastName[0]", post.userFirstName[0] + post.userLastName[0]);
+                post.shortUserName = post.userFirstName[0] + post.userLastName[0]     
+              }
+              if (post.updatedDate != null) {
+                post.postTimeFromNow = moment(post.updatedDate).fromNow();
+              }
+              else {
+                post.postTimeFromNow = moment(post.createdDate).fromNow();
+              }
+  
+              // if(post.commentcount >= 1 ){
+              //   post.commentList.map(comment => {
+              //     if(comment?.commentUserProfileImg != null){
+              //       comment.shortUserName = comment.commentUserFirstName[0] + comment.commentUserLastName[0];     
+              //     }
+              //     if (comment.updatedDate != null) {
+              //       comment.postTimeFromNow = moment(comment.updatedDate).fromNow();
+              //     }
+              //     else {
+              //       comment.postTimeFromNow = moment(comment.createdDate).fromNow();
+              //     }
+      
+              //   })
+              // }
+              return post;
+            })
+          }
+        }
+        else {
+          Swal.fire('Oops...', resp.error, 'error');
+        }
+      })
+     }
+    
   }
 
-  GetPostLoadComment(post) {
+  GetMyPost() {
+    debugger;
+   
+     if( this.totalMyPostRecord == 0  || this.LoggedInUserPosts.length < this.totalMyPostRecord){
+      this.spinner.show();
+      this.myPostLoader = true;
+      
+      /* PageNo 0 means starting record index  to (PageNo + pagesize) index    
+       * PageNo=0 and pagesize= 5   means starting record index is 0  and last record  index 4
+       * PageNo=1 and pagesize= 5   means starting record index is 5  and last record  index 9
+       */
+      let obj =  {
+        UserID: this.userLoggedinInfo.id,
+        PageNo: this.myPostPageNo,
+        PageSize: this.myPostPageSize,
+        IsBuzzWall: false    
+      }
+  
+      this.userPostService.GetBuzzWallPost(obj).subscribe(resp => {
+        debugger;
+        this.spinner.hide();
+        this.myPostLoader =  false;
+        if (resp.status == Status.Success) {
+          this.LoggedInUserPosts = [...this.LoggedInUserPosts, ...resp.data.buzzWallList];
+          this.totalMyPostRecord = resp.data.totalRow;
+          if( (this.myPostPageNo+this.myPostPageSize) < this.totalMyPostRecord ){
+               this.myPostPageNo +=  this.myPostPageSize;
+               this.myPostLoadMore = true;
+          }
+          else{
+            this.myPostLoadMore  = false;
+          }
+  
+          if (this.LoggedInUserPosts != undefined && this.LoggedInUserPosts.length != 0) {
+            this.LoggedInUserPosts.map(post => {
+  
+              if(post.profileImg != null){
+                console.log("post", post);
+                console.log("post.userFirstName[0] + post.userLastName[0]", post.userFirstName[0] + post.userLastName[0]);
+                post.shortUserName = post.userFirstName[0] + post.userLastName[0]     
+              }
+              if (post.updatedDate != null) {
+                post.postTimeFromNow = moment(post.updatedDate).fromNow();
+              }
+              else {
+                post.postTimeFromNow = moment(post.createdDate).fromNow();
+              }
+              return post;
+            })
+          }
+        }
+        else {
+          Swal.fire('Oops...', resp.error, 'error');
+        }
+      })
+     }
+    
+  }
+
+  GetBuzzWallPostLoadComment(post) {
     debugger;
     // this.spinner.show();
     /* FromRow 0 means starting record index  to (FromRow + pagesize) index    
      * FromRow=0 and pagesize= 5   means starting record index is 0  and last record  index 4
      * FromRow=1 and pagesize= 5   means starting record index is 5  and last record  index 9
      */
-
+    let postIndex = this.allPost.findIndex(ele => ele.id == post.id);
+    this.allPost[postIndex].commentLoader = true;
+   
     let obj =  {
       PostID: post.id,
       FromRow: post.fromRow != undefined ? post.fromRow : 0,
@@ -767,64 +845,68 @@ export class PublicSocialMediaComponent implements OnInit {
 
     this.userPostService.GetPostLoadComment(obj).subscribe(resp => {
       debugger;
-      this.spinner.hide();
-      this.buzzWallLoader =  false;
+      this.allPost[postIndex].commentLoader = false;
       if (resp.status == Status.Success) {
 
+        if(this.allPost[postIndex].addComment !=  undefined){
+          this.allPost[postIndex].addComment = undefined;   
+        }
         console.log(resp.data.postCommentList);
-        let postIndex = this.allPost.findIndex(post => post.id == 1);
+        
         if(this.allPost[postIndex].commentList != undefined && this.allPost[postIndex].commentList != null ){
-          this.allPost[postIndex].commentList = [...resp.data.postCommentList];
+          this.allPost[postIndex].commentList = [...this.allPost[postIndex].commentList, ...resp.data.postCommentList];
         }
         else{
           this.allPost[postIndex].commentList = resp.data.postCommentList;
-          if((resp.data.fromRow+ this.postLoadCommentSize )< resp.data.totalRow ){
-            this.allPost[postIndex].fromRow =  resp.data.fromRow + this.postLoadCommentSize; 
-          }
+        }
+        if(resp.data.fromRow< resp.data.totalRow ){
+          this.allPost[postIndex].fromRow =  resp.data.fromRow + this.postLoadCommentSize; 
         }
 
-        // this.allPost = [...this.allPost, ...resp.data.buzzWallList];
-        // this.totalBuzzWallRecord = resp.data.totalRow;
-        // if( (this.buzzWallPageNo+this.buzzWallPageSize) < this.totalBuzzWallRecord ){
-        //      this.buzzWallPageNo +=  this.buzzWallPageSize;
-        //      this.buzzWallPostLoadMore = true;
-        // }
-        // else{
-        //   this.buzzWallPostLoadMore  = false;
-        // }
+      }
+      else {
+        Swal.fire('Oops...', resp.error, 'error');
+      }
+    })
+  }
 
-        // if (this.allPost != undefined && this.allPost.length != 0) {
-        //   this.allPost.map(post => {
 
-        //     if(post.profileImg != null){
-        //       console.log("post", post);
-        //       console.log("post.userFirstName[0] + post.userLastName[0]", post.userFirstName[0] + post.userLastName[0]);
-        //       post.shortUserName = post.userFirstName[0] + post.userLastName[0]     
-        //     }
-        //     if (post.updatedDate != null) {
-        //       post.postTimeFromNow = moment(post.updatedDate).fromNow();
-        //     }
-        //     else {
-        //       post.postTimeFromNow = moment(post.createdDate).fromNow();
-        //     }
+  GetMyPostLoadComment(post) {
+    debugger;
+    // this.spinner.show();
+    /* FromRow 0 means starting record index  to (FromRow + pagesize) index    
+     * FromRow=0 and pagesize= 5   means starting record index is 0  and last record  index 4
+     * FromRow=1 and pagesize= 5   means starting record index is 5  and last record  index 9
+     */
+    let postIndex = this.LoggedInUserPosts.findIndex(ele => ele.id == post.id);
+    this.LoggedInUserPosts[postIndex].commentLoader = true;
+   
+    let obj =  {
+      PostID: post.id,
+      FromRow: post.fromRow != undefined ? post.fromRow : 0,
+      Size: this.postLoadCommentSize,  
+    }
 
-        //     // if(post.commentcount >= 1 ){
-        //     //   post.commentList.map(comment => {
-        //     //     if(comment?.commentUserProfileImg != null){
-        //     //       comment.shortUserName = comment.commentUserFirstName[0] + comment.commentUserLastName[0];     
-        //     //     }
-        //     //     if (comment.updatedDate != null) {
-        //     //       comment.postTimeFromNow = moment(comment.updatedDate).fromNow();
-        //     //     }
-        //     //     else {
-        //     //       comment.postTimeFromNow = moment(comment.createdDate).fromNow();
-        //     //     }
-    
-        //     //   })
-        //     // }
-        //     return post;
-        //   })
-        // }
+    this.userPostService.GetPostLoadComment(obj).subscribe(resp => {
+      debugger;
+      this.LoggedInUserPosts[postIndex].commentLoader = false;
+      if (resp.status == Status.Success) {
+
+        if(this.LoggedInUserPosts[postIndex].addComment !=  undefined){
+          this.LoggedInUserPosts[postIndex].addComment = undefined;   
+        }
+        console.log(resp.data.postCommentList);
+        
+        if(this.LoggedInUserPosts[postIndex].commentList != undefined && this.LoggedInUserPosts[postIndex].commentList != null ){
+          this.LoggedInUserPosts[postIndex].commentList = [...this.LoggedInUserPosts[postIndex].commentList, ...resp.data.postCommentList];
+        }
+        else{
+          this.LoggedInUserPosts[postIndex].commentList = resp.data.postCommentList;
+        }
+        if(resp.data.fromRow< resp.data.totalRow ){
+          this.LoggedInUserPosts[postIndex].fromRow =  resp.data.fromRow + this.postLoadCommentSize; 
+        }
+
       }
       else {
         Swal.fire('Oops...', resp.error, 'error');
@@ -933,11 +1015,13 @@ export class PublicSocialMediaComponent implements OnInit {
     if (tabValue == 'gallery') {
       this.GetAllUserGalleryByUserId();
     }
-    else if (tabValue == 'profile') {
-      this.GetAllUserPostByUserId();
+    else if (tabValue == 'buzzwall') {
+      // this.GetAllUserPostByUserId();
+      this.GetBuzzWallPost();
     }
     else if (tabValue == 'userPost') {
-      this.GetLoggedInUserPost();
+      // this.GetLoggedInUserPost();
+      this.GetMyPost();
     }
     else if (tabValue == 'blogs') {
       this.userPostBlog();
@@ -1176,6 +1260,66 @@ export class PublicSocialMediaComponent implements OnInit {
   }
 
   UserCommentOnPost(post, comment, postType?:string) {
+    debugger
+
+    if(comment.value != "" ){
+
+      if(postType == "allPost"){
+        let commentObj:any = {
+          commentUserName: this.userLoggedinInfo.firstName +' '+this.userLoggedinInfo.lastName ,
+          comment: comment.value,
+          
+        }   
+        let postIndex = this.allPost.findIndex(ele => ele.id == post.id)
+        // this.allPost[postIndex].commentcount  += 1;  
+        if(this.allPost[postIndex].addComment == undefined || this.allPost[postIndex].addComment == null )
+        {
+          this.allPost[postIndex].addComment  = [commentObj];
+        }
+        else{
+          this.allPost[postIndex].addComment =  [...this.allPost[postIndex].addComment, commentObj];
+        }  
+      }
+      else{
+        let commentObj:any = {
+          commentUserName: this.userLoggedinInfo.firstName +' '+this.userLoggedinInfo.lastName ,
+          comment: comment.value,
+          
+        }   
+        let postIndex = this.LoggedInUserPosts.findIndex(ele => ele.id == post.id)
+        // this.LoggedInUserPosts[postIndex].commentcount  += 1;  
+        if(this.LoggedInUserPosts[postIndex].addComment == undefined || this.LoggedInUserPosts[postIndex].addComment == null )
+        {
+          this.LoggedInUserPosts[postIndex].addComment  = [commentObj];
+        }
+        else{
+          this.LoggedInUserPosts[postIndex].addComment =  [...this.LoggedInUserPosts[postIndex].addComment, commentObj];
+        }
+      }
+ 
+
+      let obj:any = {
+        postId: post.id,
+        UserId: this.userLoggedinInfo.id,
+        Comment: comment.value
+      }
+
+      this.postCommentForm.get('comment').setValue('');
+      this.userPostService.userCommentOnPost(obj).subscribe(resp => {
+        comment.value == "";
+        this.spinner.hide();
+        if (resp.status == Status.Success) {
+          console.log('Your Post Comment  has been saved.')
+        }
+        else {
+          Swal.fire('Oops...', resp.message, 'error');
+        }
+      })
+    }
+    
+  }
+
+  UserCommentOnBuzzwallPost(post, comment, postType?:string) {
     debugger
 
     if(comment.value != "" ){

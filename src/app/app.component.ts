@@ -122,7 +122,13 @@ export class AppComponent implements OnInit {
         this.userPersonalInfo = resp.data;
 
         if (this.userPersonalInfo.profileImg != undefined) {
-          this.profileImageUrl = this.profileImgsrcpath + this.userPersonalInfo.profileImg;
+
+          if(this.userPersonalInfo.profileImg.startsWith('https://') ){
+            this.profileImageUrl = this.userPersonalInfo.profileImg;
+          }
+          else{
+            this.profileImageUrl = this.profileImgsrcpath + this.userPersonalInfo.profileImg;
+          }
         }
       }
       else {

@@ -47,7 +47,7 @@
         </div>
         <div class="site-main-navigation">
           <div class="navigation-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-            <img class="profile-image" *ngIf="userLogin && profileImageUrl != '' && profileImageUrl != undefined" [src]="profileImageUrl" alt="">
+            <img class="profile-image" *ngIf="userLogin && profileImageUrl != '' && profileImageUrl != undefined " [src]="profileImageUrl" alt="">
             <img class="profile-image" *ngIf="userLogin && (profileImageUrl == '' || profileImageUrl == undefined)" src="../assets/PublicAssets/images/varun.jpg" alt="">
             <img *ngIf="!userLogin" src="../assets/PublicAssets/images/user-default.png" alt="">
           </div>

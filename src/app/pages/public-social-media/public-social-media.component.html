@@ -87,7 +87,7 @@
       <ul class="nav nav-pills" id="pills-tab" role="tablist">
         <li class="nav-item">
           <a class="nav-link active" id="profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-            aria-controls="pills-home" aria-selected="true" (click)="TabClicked('profile')">
+            aria-controls="pills-home" aria-selected="true" (click)="TabClicked('buzzwall')">
             <div class="user-icon">
               <img src="../../../assets/PublicAssets/images/user-profille-icon.png" alt="">
               <img src="../../../assets/PublicAssets/images/user-profille-icon-color.png" class="img-top" alt="">
@@ -380,7 +380,8 @@
                             <h6>{{post.likecount}} React</h6>
                           </li>
                           <li>
-                            <h6>{{post.commentcount}} comments</h6>
+                            <h6 *ngIf="post?.addComment ==  undefined">{{post.commentcount}} comments</h6>
+                            <h6 *ngIf="post?.addComment !=  undefined">{{post.commentcount + post?.addComment.length }} comments</h6>
                           </li>
                           <li>
                             <h6>0 share</h6>
@@ -424,7 +425,7 @@
                       </ul>
                     </div>
 
-                    <div class="user-comments-list" *ngIf="post.commentcount >= 1 ">
+                    <div class="user-comments-list">
                       <div class="coment-lisitng">
                         <ul class="lisitng-start">
                           <ng-container *ngIf="post?.commentList == null || post?.commentList == undefined ">
@@ -435,7 +436,7 @@
                                     <img *ngIf="post?.commentUserProfileImg == null"
                                       src="../../../assets/PublicAssets/images/user-default.png">
                                     <img *ngIf="post?.commentUserProfileImg != null"
-                                      src="profileImgsrcpath+post?.commentUserProfileImg">
+                                      [src]="profileImgsrcpath+post?.commentUserProfileImg">
                                   </div>
                                   <!-- <small class="post-comment-avatar-placeholder"
                                     *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{(comment?.commentUserFirstName[0] + ' '+ comment?.commentUserLastName[0])|uppercase}}</small> -->
@@ -488,6 +489,29 @@
                                       <li class="comment-post-time" >{{comment?.postTimeFromNow}}</li>
                                     </ul>
                                   </div> -->
+
+                                </div>
+                              </div>
+                            </li>
+                          </ng-container>
+                          <ng-container *ngIf="post?.addComment != undefined">
+                            <li *ngFor="let comment of post?.addComment; let i = index;">
+                              <div class="d-flex flex-wrap">
+                                <div class="">
+                                  <div class="user-circel-img">
+                                    <img
+                                      *ngIf="userLoggedinInfo?.profileImg != undefined && userLoggedinInfo?.profileImg != null"
+                                      [src]="profileImgsrcpath+userLoggedinInfo?.profileImg">
+                                    <img
+                                      *ngIf="userLoggedinInfo?.profileImg == undefined && userLoggedinInfo?.profileImg == null"
+                                      src="../../../assets/PublicAssets/images/user-default.png">
+                                  </div>
+                                </div>
+                                <div class="">
+                                  <div class="user-comments">
+                                    <p><span>{{comment?.commentUserName}} :
+                                      </span>{{comment?.comment}} </p>
+                                  </div>
 
                                 </div>
                               </div>
@@ -563,8 +587,21 @@
                     </div>
 
                     <!-- <div class="load-more-text">Load more comments <span>9+</span></div> -->
-                    <div class="load-more-text" *ngIf="(post?.fromRow == undefined && post.commentcount >= 2) || (post?.fromRow != undefined && (post?.fromRow+postLoadCommentSize) < post?.commentcount )" (click)="GetPostLoadComment(post)">
+                    <div class="load-more-text"  *ngIf="((post?.fromRow == undefined && post.commentcount >= 2) || (post?.fromRow != undefined && (post?.fromRow) < post?.commentcount )) && (post?.commentLoader == undefined || post?.commentLoader == false) " (click)="GetBuzzWallPostLoadComment(post)">
                       Load more comments</div>
+
+                      <div class="col-md-12" *ngIf="post?.commentLoader == true">
+                        <div class="loader-bars">
+                          <div class="loader-bar"></div>
+                          <div class="loader-bar"></div>
+                          <div class="loader-bar"></div>
+                          <div class="loader-bar"></div>
+                          <div class="loader-bar"></div>
+                          <div class="loader-bar"></div>
+                          <div class="loader-bar"></div>
+                          <div class="loader-bar"></div>
+                        </div>
+                      </div>  
 
                     <div class="comment-box">
                       <form [formGroup]="postCommentForm">
@@ -578,8 +615,6 @@
                         </div>
                       </form>
                     </div>
-
-
                   </div>
                 </ng-container>
 
@@ -824,32 +859,66 @@
                       </ul>
                     </div>
 
-                    <div class="user-comments-list" *ngIf="post.commentcount >= 1 ">
+                    <div class="user-comments-list">
                       <div class="coment-lisitng">
                         <ul class="lisitng-start">
-                          <ng-container *ngFor="let comment of post.commentList; let i = index;">
+                          <ng-container *ngIf="post?.commentList == null || post?.commentList == undefined ">
                             <li>
                               <div class="d-flex flex-wrap">
+                                <div class="">
+                                  <div class="user-circel-img">
+                                    <img *ngIf="post?.commentUserProfileImg == null"
+                                      src="../../../assets/PublicAssets/images/user-default.png">
+                                    <img *ngIf="post?.commentUserProfileImg != null"
+                                      [src]="profileImgsrcpath+post?.commentUserProfileImg">
+                                  </div>
+                                  <!-- <small class="post-comment-avatar-placeholder"
+                                    *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{(comment?.commentUserFirstName[0] + ' '+ comment?.commentUserLastName[0])|uppercase}}</small> -->
+
+                                </div>
+                                <div class="">
+                                  <div class="user-comments">
+                                    <p><span>{{post?.postCommentUserName}} :
+                                    </span>{{post?.comment}} </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ng-container>
+                          <ng-container *ngIf="post?.commentList != null && post?.commentList != undefined ">
+                            <!-- <li *ngIf="(i < 1) || (i>1 && initLoadCommentInPost == post.id)"> -->
+                            <li *ngFor="let comment of post.commentList; let i = index;">
+                              <div class="d-flex flex-wrap">
+                                <!-- <div class="col-md-2"> -->
                                 <div class="">
                                   <div class="user-circel-img">
                                     <img
                                       *ngIf="comment?.commentUserProfileImg != undefined && comment?.commentUserProfileImg != null"
                                       [src]="profileImgsrcpath+comment?.commentUserProfileImg">
+                                    <img
+                                      *ngIf="comment?.commentUserProfileImg == undefined && comment?.commentUserProfileImg == null"
+                                      src="../../../assets/PublicAssets/images/user-default.png">
                                   </div>
-                                  <small class="post-comment-avatar-placeholder"
-                                    *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{comment?.shortUserName}}</small>
+                                  <!-- <small class="post-comment-avatar-placeholder"
+                                    *ngIf="comment?.commentUserProfileImg == undefined || comment?.commentUserProfileImg == null">{{(comment?.commentUserName|uppercase}}</small> -->
 
                                 </div>
+                                <!-- <div class="col-md-10"> -->
                                 <div class="">
                                   <div class="user-comments">
                                     <!-- <p><span>{{comment?.commentUserName}} : </span>{{comment?.comment}} </p> -->
-                                    <p><span>{{comment?.commentUserFirstName + ' '+ comment?.commentUserLastName}} :
+                                    <p><span>{{comment?.commentUserName}} :
                                       </span>{{comment?.comment}} </p>
                                   </div>
                                   <!-- <div class="user-reaction">
                                     <ul class="reaction-line">
-                                      <li  (click)="reactOnPostComment(comment,1, 'LoggedInUserPosts')" *ngIf="comment?.userCommentReactionStatus !=  true"> Like</li>
-                                      <li  (click)="reactOnPostComment(comment,0, 'LoggedInUserPosts')" *ngIf="comment?.userCommentReactionStatus ==  true"> UnLike</li>
+                                      <li>Like</li>
+                                    </ul>
+                                  </div> -->
+                                  <!-- <div class="user-reaction">
+                                    <ul class="reaction-line">
+                                      <li  (click)="reactOnPostComment(comment,1, 'allPost')" *ngIf="comment?.userCommentReactionStatus !=  true"> Like</li>
+                                      <li  (click)="reactOnPostComment(comment,0, 'allPost')" *ngIf="comment?.userCommentReactionStatus ==  true"> UnLike</li>
                                       <li *ngIf="comment?.reactionCount != 0"><img src="../../../assets/PublicAssets/images/like.jpg" >{{comment?.reactionCount}}</li>
                                       <li class="comment-post-time" >{{comment?.postTimeFromNow}}</li>
                                     </ul>
@@ -859,12 +928,51 @@
                               </div>
                             </li>
                           </ng-container>
+                          <ng-container *ngIf="post?.addComment != undefined">
+                            <li *ngFor="let comment of post?.addComment; let i = index;">
+                              <div class="d-flex flex-wrap">
+                                <div class="">
+                                  <div class="user-circel-img">
+                                    <img
+                                      *ngIf="userLoggedinInfo?.profileImg != undefined && userLoggedinInfo?.profileImg != null"
+                                      [src]="profileImgsrcpath+userLoggedinInfo?.profileImg">
+                                    <img
+                                      *ngIf="userLoggedinInfo?.profileImg == undefined && userLoggedinInfo?.profileImg == null"
+                                      src="../../../assets/PublicAssets/images/user-default.png">
+                                  </div>
+                                </div>
+                                <div class="">
+                                  <div class="user-comments">
+                                    <p><span>{{comment?.commentUserName}} :
+                                      </span>{{comment?.comment}} </p>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </li>
+                          </ng-container>
                         </ul>
                       </div>
                     </div>
 
-                    <div class="load-more-text" *ngIf="post.commentcount >= 2" (click)="initialLoadCommentOnPost(post)">
-                      Load more comments</div>
+                    <!-- <div class="load-more-text" *ngIf="post.commentcount >= 2" (click)="initialLoadCommentOnPost(post)">
+                      Load more comments</div> -->
+                      <div class="load-more-text"  *ngIf="((post?.fromRow == undefined && post.commentcount >= 2) || (post?.fromRow != undefined && (post?.fromRow) < post?.commentcount )) && (post?.commentLoader == undefined || post?.commentLoader == false) " (click)="GetMyPostLoadComment(post)">
+                        Load more comments</div>
+
+                        <div class="col-md-12" *ngIf="post?.commentLoader == true">
+                          <div class="loader-bars">
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                            <div class="loader-bar"></div>
+                          </div>
+                        </div>  
+
 
                     <div class="comment-box">
                       <form [formGroup]="postCommentForm">
@@ -904,6 +1012,8 @@
                     <div class="loader-bar"></div>
                   </div>
                 </div>
+
+                <div class="buzzWall-LoadMore" *ngIf="myPostLoadMore ==  true" (click)="GetMyPost()"> Load More Post </div>
 
               </div>
 

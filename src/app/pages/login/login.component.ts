@@ -9,6 +9,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import * as $ from 'jquery';
 import { VerifyEmailOtpComponent } from '../verify-email-otp/verify-email-otp.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+ 
 
 declare var $: any;
 
@@ -23,6 +26,8 @@ export class LoginComponent implements OnInit {
   submitLoginForm: boolean = false;
   blogData: any;
   redirectFromBlog: boolean =  false;
+  socialUser: any;
+  socialLoggedIn: boolean =  false;
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthenticationService,
@@ -31,6 +36,7 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private dialog: MatDialog,
+    private socialLoginService: AuthService,
 
 
   ) {
@@ -57,6 +63,17 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.socialLoginService.authState.subscribe((user) => {
+      debugger;
+      this.socialUser = user;
+      this.socialLoggedIn = (user != null);
+
+      if(this.socialLoggedIn == true){
+        console.log("fb", user)
+         this.userSocialLogin(user);
+      }
+    });
 
     if (JSON.parse(localStorage.getItem("keepMeLoggedIn"))) {
       let keepMeLoggedInObj = JSON.parse(localStorage.getItem("keepMeLoggedIn"));
@@ -181,6 +198,54 @@ export class LoginComponent implements OnInit {
 
     })
   }
+
+
+  signInWithGoogle(): void {
+    debugger;
+    this.socialLoginService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    .then(x => console.log("google",x));;
+  }
+ 
+  signInWithFB(): void {
+    debugger;
+    this.socialLoginService.signIn(FacebookLoginProvider.PROVIDER_ID)
+    .then(x => console.log("fb",x));;
+  } 
+ 
+  signOut(): void {
+    this.socialUser =  undefined;
+    this.socialLoggedIn =  false;
+    this.socialLoginService.signOut();
+  }
+
+  userSocialLogin(userdata){
+
+  debugger;
+   let userInfo = {
+    firstName: userdata.firstName,
+    lastName: userdata.lastName,
+    emailId: userdata.email,
+    category: 1,
+    travelEnthuiast: false,
+    profilePic: userdata.facebook.picture.data.url,
+   }
+
+     this.authService.userSocialLogin(userInfo).subscribe(resp => {
+      if (resp.status == Status.Success) {
+        this.signOut();
+        Swal.fire('Login Successfully', "You Are Successfully Logged In ", 'success');
+        debugger;
+        localStorage.setItem("id_token", resp.message);
+        this.authService.setUserdata(resp.data);
+        if (resp.data.roleId == 2) {
+          this.shareService.userLOggedInAction(true);
+          this.redirectFromBlog ==  true ? this.router.navigate(['/blog']) : this.router.navigate(['/social-media']);
+        }
+      }
+
+    })
+  }
+
 }
 
 

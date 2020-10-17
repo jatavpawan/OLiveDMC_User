@@ -98,5 +98,10 @@ export class AuthenticationService {
    return <Observable<ResponseModel>> this.dataService.postData('Login/ResetPassword', data);
  }
 
+ userSocialLogin(data){
+  return <Observable<ResponseModel>> this.dataService.postData('Login/userSocialLogin', data);
+ }
+ 
+
  
 }

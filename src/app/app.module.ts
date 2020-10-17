@@ -118,7 +118,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { DummyMap2Component } from './pages/dummy-map2/dummy-map2.component';
 import { DummyScrollComponent } from './pages/dummy-scroll/dummy-scroll.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+ 
 // export const MY_FORMATS = {
 //   parse: {
 //     dateInput: 'LL',
@@ -130,6 +132,27 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 //     monthYearA11yLabel: 'YYYY',
 //   },
 // };
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider(
+      "528961187921-ld24b25466u4t2lacn9r35asg000lfis.apps.googleusercontent.com"
+    )
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("374917643634190")
+  },
+  // {
+  //   id: LinkedInLoginProvider.PROVIDER_ID,
+  //   provider: new LinkedInLoginProvider("78iqy5cu2e1fgr")
+  // }
+]);
+
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -221,6 +244,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     NgxIntlTelInputModule,
     HighchartsChartModule,
     ScrollingModule,
+    SocialLoginModule
 
     // ShareButtonsModule,
     // ShareButtonsModule.withConfig({
@@ -271,7 +295,11 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     ProfessionalCareerService,
     FresherCareerService,
     BlogCommentService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
     // {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ],
   bootstrap: [AppComponent],
